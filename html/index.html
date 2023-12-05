@@ -8,7 +8,12 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/lavalamp.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-<script src="https://pixijs.download/v8.0.0-beta.11/pixi.min.js"></script>
+    <link rel="stylesheet" href="assets/css/leaflet.css" />
+    <style>
+        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+    </style>
+    <script src="https://pixijs.download/v8.0.0-beta.11/pixi.min.js"></script>
+    <script src="assets/js/leaflet.js"></script>
 </head>
 
 <body>
@@ -23,6 +28,12 @@
     </nav>
     <div id="overlay"></div>
     <div id="map"></div>
+    <script>
+        var map = L.map('map').setView([0, 0], 1);
+        L.tileLayer('https://api.maptiler.com/maps/streets-v2-dark/{z}/{x}/{y}.png?key=NKF9LyxYJZkT6U9okLjo', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        }).addTo(map);
+    </script>
     <div class="lamp">
         <div class="lava">
             <div class="blob"></div>
