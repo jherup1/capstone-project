@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/leaflet.css">
     <link rel="stylesheet" href="assets/css/lavalamp.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="assets/js/leaflet.js"></script>
 </head>
 
@@ -25,16 +26,56 @@
     <div id="overlay"></div>
     <div id="map"></div><div>
 <script>
-        var map = L.map('map').setView([20, 0], 2.4);
+        var map = L.map('map',{
+            preferCanvas: true,
+            wheelPxPerZoomLevel: 200
+        }).setView([20, 0], 2.4);
         L.tileLayer('https://api.maptiler.com/maps/streets-v2-dark/{z}/{x}/{y}.png?key=NKF9LyxYJZkT6U9okLjo', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
         }).addTo(map);
-        map.fitBounds([
-            [80, -167.8],
-            [-64.5, 179.3]
-        ]);
+        // map.fitBounds([
+        //     [80, -167.8],
+        //     [-64.5, 179.3]
+        // ])
 </script>
-</div>
+</div><script>
+  jQuery(function ($) {
+    $(document).ready(function () {
+      async function getData() {
+        $('#bodyText').hide();
+        const url =
+          'https://emerson-fleming.github.io/testSeniorStuff/universities_worldwide_async.json';
+        const response = await fetch(url);
+        const data = await response.json();
+        const schoolArray = Object.values(data);
+        console.log(schoolArray);
+        return schoolArray;
+      }
+
+      const icon = L.icon({
+        iconUrl: "assets/css/images/marker-icon.png",
+        //iconSize: [32, 32], // adjust the size according to your icon
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+      });
+
+      const layerGroup = L.featureGroup().addTo(map);
+
+      getData().then((schoolArray) => {
+        schoolArray.slice(20000,22500).forEach(({ latitude, longitude, name }) => {
+          layerGroup.addLayer(
+            L.marker([latitude, longitude], { icon }).bindPopup(
+              `University Name: ${name}`
+            )
+          );
+        });
+
+        map.fitBounds(layerGroup.getBounds());
+      });
+    });
+  });
+    
+</script>
     <div class="lamp">
         <div class="lava">
             <div class="blob"></div>
@@ -57,8 +98,10 @@
     
   
 </svg>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="module"></script>
 </body>
 
 </html>
