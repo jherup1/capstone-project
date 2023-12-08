@@ -1,6 +1,6 @@
 *, *:before, *:after {
   margin: 0;
-  padding: 0;
+  padding: 0px;
 }
 
 body {
@@ -88,5 +88,30 @@ nav .icon-burger .line {
   margin: 5px;
   border-radius: 0px;
   transition: all .3s ease-in-out;
+}
+
+#hs-element {
+  height: 250px;
+  width: 200px;
+  background-color: #d9d9d930;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 20px;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #d9d9d9;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #5865f2;
 }
 
