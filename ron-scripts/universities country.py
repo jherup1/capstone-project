@@ -1,72 +1,41 @@
+import json
 import asyncio
 import aiohttp
-import json
 from geopy.geocoders import Nominatim
-from concurrent.futures import ThreadPoolExecutor
-
-# Constants
-MAX_RETRIES = 3
-TIMEOUT = 10  # seconds
-
-geolocator = Nominatim(user_agent="university_locator")
 
 
-async def fetch_universities_in_bbox(session, south, west, north, east, retry=0):
-    if retry >= MAX_RETRIES:
-        print(f"Max retries reached for bbox {south},{west},{north},{east}")
-        return None
-
-
-async def reverse_geocode(executor, latitude, longitude):
-    def geocode():
-        try:
-            location = geolocator.reverse(
-                (latitude, longitude), exactly_one=True)
-            return location.address.split(",")[-1].strip() if location else "Unknown"
-        except Exception as e:
+async def reverse_geocode(session, latitude, longitude):
+    geolocator = Nominatim(user_agent="reverse_geocode")
+    try:
+        location = geolocator.reverse(
+            (latitude, longitude), language="en", exactly_one=True)
+        if location:
+            address_parts = location.address.split(',')
+            country = address_parts[-1].strip()
+            return country
+        else:
             return "Unknown"
+    except Exception as e:
+        print(f"Error in reverse geocoding: {e}")
+        return "Unknown"
 
-    return await asyncio.get_event_loop().run_in_executor(executor, geocode)
 
+async def add_country_to_json(input_file, output_file):
+    with open(input_file, 'r') as json_file:
+        universities = json.load(json_file)
 
-async def main():
-    bounding_boxes = [(lat, lon, lat + 15, lon + 15)
-                      for lat in range(-90, 90, 15) for lon in range(-180, 180, 15)]
-    universities = []
-
-    executor = ThreadPoolExecutor(max_workers=10)
     async with aiohttp.ClientSession() as session:
-        for i, bbox in enumerate(bounding_boxes):
-            print(
-                f"Processing bounding box {i+1}/{len(bounding_boxes)}: {bbox}")
-            response = None
-            for attempt in range(MAX_RETRIES):
-                response = await fetch_universities_in_bbox(session, *bbox)
-                if response:
-                    break
-                print(
-                    f"Retrying bbox {bbox} (attempt {attempt + 2}/{MAX_RETRIES})...")
-                await asyncio.sleep(1)  # Delay before retrying
+        for university in universities:
+            latitude = university["latitude"]
+            longitude = university["longitude"]
+            country = await reverse_geocode(session, latitude, longitude)
+            university["country"] = country
 
-            if response:
-                for element in response["elements"]:
-                    if element["type"] == "way" or element["type"] == "relation":
-                        if "tags" in element and "name" in element["tags"]:
-                            latitude = element["center"]["lat"]
-                            longitude = element["center"]["lon"]
-                            country = await reverse_geocode(executor, latitude, longitude)
-                            universities.append({
-                                "name": element["tags"]["name"],
-                                "latitude": latitude,
-                                "longitude": longitude,
-                                "country": country
-                            })
+    with open(output_file, 'w') as json_file:
+        json.dump(universities, json_file, indent=4)
 
-    json_output = json.dumps(universities, indent=4)
-    with open('universities_worldwide_async.json', 'w') as file:
-        file.write(json_output)
+if __name__ == "__main__":
+    input_file = "universities_worldwide_lat_long_data.json"
+    output_file = "universities_with_country.json"
 
-    print("Finished processing universities.")
-    executor.shutdown()
-
-asyncio.run(main())
+    asyncio.run(add_country_to_json(input_file, output_file))
