@@ -1,59 +1,33 @@
-import asyncio
-import aiohttp
 import json
+import requests
 
+# Load the existing JSON data
+with open('universities_worldwide_async.json', 'r') as file:
+    universities_data = json.load(file)
 
-async def fetch_universities_in_bbox(session, south, west, north, east):
-    query = f"""
-    [out:json][timeout:180];
-    (
-      way["amenity"="university"]({south},{west},{north},{east});
-      rel["amenity"="university"]({south},{west},{north},{east});
-    );
-    out center;
-    >;
-    out skel qt;
-    """
-    headers = {"Content-Type": "text/plain"}
+# Define a function for reverse geocoding
+def reverse_geocode(lat, lon):
+    url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&accept-language=en&addressdetails=1"
     try:
-        async with session.post("http://overpass-api.de/api/interpreter", data=query, headers=headers) as response:
-            if response.content_type == 'application/json':
-                data = await response.json()
-                print(
-                    f"Received JSON response for bbox {south},{west},{north},{east}: {data}")
-                return data
-            else:
-                content = await response.text()
-                print(
-                    f"Non-JSON response for bbox {south},{west},{north},{east}: {content}")
-                return None
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            return data.get("address", {}).get("country", "Unknown")
+        else:
+            return "Unknown"
     except Exception as e:
-        print(f"Error in bbox {south},{west},{north},{east}: {e}")
-        return None
+        return "Unknown"
 
 
-async def main():
-    bounding_boxes = [(lat, lon, lat + 60, lon + 60)
-                      for lat in range(-90, 90, 60) for lon in range(-180, 180, 60)]
-    universities = []
-    async with aiohttp.ClientSession() as session:
-        for i, bbox in enumerate(bounding_boxes):
-            print(
-                f"Processing bounding box {i+1}/{len(bounding_boxes)}: {bbox}")
-            response = await fetch_universities_in_bbox(session, *bbox)
-            if response:
-                for element in response.get("elements", []):
-                    if element["type"] == "way" or element["type"] == "relation":
-                        if "tags" in element and "name" in element["tags"]:
-                            universities.append({
-                                "name": element["tags"]["name"],
-                                "latitude": element["center"]["lat"],
-                                "longitude": element["center"]["lon"]
-                            })
+# Add country information to each university
+for university in universities_data:
+    latitude = university["latitude"]
+    longitude = university["longitude"]
+    country = reverse_geocode(latitude, longitude)
+    university["country"] = country
 
-    json_output = json.dumps(universities, indent=4)
-    with open('universities_worldwide_async.json', 'w') as file:
-        file.write(json_output)
-    print("Finished processing universities.")
+# Save the updated JSON data with country information
+with open('universities_with_country.json', 'w') as file:
+    json.dump(universities_data, file, indent=4)
 
-asyncio.run(main())
+print("Country information added to universities data.")
