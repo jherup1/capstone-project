@@ -1,5 +1,3 @@
-// index.js
-
 // Function to reset the gallery scroll
 function resetGalleryScroll() {
     const galleryContainer = document.querySelector('.horizontal-scroll-gallery');
@@ -13,10 +11,14 @@ function resetGalleryScroll() {
 // Check scroll position and reset if necessary
 setInterval(function() {
     const galleryContainer = document.querySelector('.horizontal-scroll-gallery');
-    const galleryWidth = galleryContainer.scrollWidth - galleryContainer.clientWidth;
-    const scrollPosition = galleryContainer.scrollLeft;
 
-    if (scrollPosition >= galleryWidth) {
-        resetGalleryScroll();
+    // Check if galleryContainer is not null before proceeding
+    if (galleryContainer) {
+        const galleryWidth = galleryContainer.offsetWidth - galleryContainer.clientWidth;
+        const scrollPosition = galleryContainer.scrollLeft;
+
+        if (scrollPosition >= galleryWidth) {
+            resetGalleryScroll();
+        }
     }
 }, 100);

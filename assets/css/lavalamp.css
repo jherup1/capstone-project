@@ -229,14 +229,14 @@ nav {
   white-space: nowrap;
 }
 
-.scrolling-column {
+#scrolling-column {
   display: flex;
   align-items: flex-end;
   height: 250px;
   /*width: 300px;*/
   position: relative;
-  /*white-space: normal;*/
-  /*margin-right: 10px;*/
+  white-space: normal;
+  margin-right: 10px;
 }
 
 #hs-title {

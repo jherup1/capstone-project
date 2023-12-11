@@ -90,14 +90,16 @@ nav .icon-burger .line {
   transition: all .3s ease-in-out;
 }
 
-#hs-element {
-  height: 250px;
-  width: 200px;
+#sampleDiv {
+  min-height: 250px;
+  width: 300px;
   background-color: #d9d9d930;
   margin-right: 5px;
   margin-left: 5px;
   border-radius: 20px;
   position: relative;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 ::-webkit-scrollbar {
