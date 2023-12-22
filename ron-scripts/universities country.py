@@ -1,33 +1,36 @@
-import json
 import requests
+import json
 
-# Load the existing JSON data
-with open('universities_worldwide_async.json', 'r') as file:
-    universities_data = json.load(file)
+# DID I DO PAGINATION CORRECTLY????
+def fetch_universities(page=1, per_page=200):
+    url = "https://api.openalex.org/institutions"
+    params = {
+        'per-page': per_page,
+        'page': page,
+    }
 
-# Define a function for reverse geocoding
-def reverse_geocode(lat, lon):
-    url = f"https://nominatim.openstreetmap.org/reverse?lat={lat}&lon={lon}&format=json&accept-language=en&addressdetails=1"
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            data = response.json()
-            return data.get("address", {}).get("country", "Unknown")
-        else:
-            return "Unknown"
-    except Exception as e:
-        return "Unknown"
+    response = requests.get(url, params=params)
+    if response.status_code == 200:
+        return response.json()['results']
+    else:
+        print(f"Failed to retrieve data: {response.status_code}")
+        return []
 
 
-# Add country information to each university
-for university in universities_data:
-    latitude = university["latitude"]
-    longitude = university["longitude"]
-    country = reverse_geocode(latitude, longitude)
-    university["country"] = country
+def write_to_json(data, filename):
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=4)
 
-# Save the updated JSON data with country information
-with open('universities_with_country.json', 'w') as file:
-    json.dump(universities_data, file, indent=4)
 
-print("Country information added to universities data.")
+def main():
+    all_universities = []
+    for page in range(1, 11):
+        print(f"Fetching page {page}...")
+        universities = fetch_universities(page)
+        all_universities.extend(universities)
+
+    write_to_json(all_universities, 'openalex_universities.json')
+
+
+if __name__ == '__main__':
+    main()
