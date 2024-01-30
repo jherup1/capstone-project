@@ -78,3 +78,6 @@ ron-scripts/openalex_universities.json
 
 # dotenv environment variables file
 .env
+
+# Firebase Admin SDK credentials
+psysearch-84c1b-firebase-adminsdk-rgp9z-ffc1a2913b
