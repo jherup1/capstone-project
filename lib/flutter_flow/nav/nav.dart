@@ -98,11 +98,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpWidget(),
             ),
             FFRoute(
-              name: 'createProfile',
-              path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
-            ),
-            FFRoute(
               name: 'homePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty
@@ -110,7 +105,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomePageWidget(
                       location: params.getParam('location',
                           ParamType.DocumentReference, false, ['locations']),
+                      school: params.getParam('school',
+                          ParamType.DocumentReference, false, ['schools']),
                     ),
+            ),
+            FFRoute(
+              name: 'createProfile',
+              path: 'createProfile',
+              builder: (context, params) => CreateProfileWidget(),
             ),
             FFRoute(
               name: 'forgotPassword',
@@ -130,6 +132,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'profilePage')
                   : ProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'supportPage',
+              path: 'supportPage',
+              builder: (context, params) => SupportPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

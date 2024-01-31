@@ -8,14 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'create_profile_model.dart';
 export 'create_profile_model.dart';
 
 class CreateProfileWidget extends StatefulWidget {
-  const CreateProfileWidget({Key? key}) : super(key: key);
+  const CreateProfileWidget({super.key});
 
   @override
-  _CreateProfileWidgetState createState() => _CreateProfileWidgetState();
+  State<CreateProfileWidget> createState() => _CreateProfileWidgetState();
 }
 
 class _CreateProfileWidgetState extends State<CreateProfileWidget> {
@@ -365,6 +366,50 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await launchUrl(Uri(
+                        scheme: 'mailto',
+                        path: 'support@psychology.org',
+                        query: {
+                          'subject': 'Psysearch Contact support',
+                        }
+                            .entries
+                            .map((MapEntry<String, String> e) =>
+                                '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                            .join('&')));
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 8.0),
+                        child: Text(
+                          'Contact Support',
+                          style: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .titleSmallFamily,
+                                color: FlutterFlowTheme.of(context).tertiary,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .titleSmallFamily),
+                              ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
