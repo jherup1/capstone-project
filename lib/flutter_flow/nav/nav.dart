@@ -98,11 +98,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpWidget(),
             ),
             FFRoute(
-              name: 'createProfile',
-              path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
-            ),
-            FFRoute(
               name: 'homePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty
@@ -319,10 +314,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFF121926),
+                  color: FlutterFlowTheme.of(context).primaryText,
                   child: Image.asset(
-                    'assets/images/splash_dashboard_02@3x.png',
-                    fit: BoxFit.fitHeight,
+                    'assets/images/ezgif-1-60d7f38f99.jpg',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;
