@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/school_information_bottom_widget.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components/school_information_bottom_widget.dart';
 import '/components/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -180,47 +179,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       () => _model.googleMapsCenter = latLng),
                                   initialLocation: _model.googleMapsCenter ??=
                                       currentUserLocationValue!,
-                                  markers: containerSchoolsRecordList
-                                      .map(
-                                        (containerSchoolsRecord) =>
-                                            FlutterFlowMarker(
-                                          containerSchoolsRecord.reference.path,
-                                          containerSchoolsRecord.myGeopoint!,
-                                          () async {
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              enableDrag: false,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child:
-                                                        SchoolInformationBottomWidget(
-                                                      schoolsDocument:
-                                                          containerSchoolsRecord,
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          },
-                                        ),
-                                      )
-                                      .toList(),
                                   markerColor: GoogleMarkerColor.red,
                                   mapType: MapType.normal,
                                   style: GoogleMapStyle.standard,

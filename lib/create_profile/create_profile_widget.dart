@@ -1,9 +1,6 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -326,13 +323,6 @@ class _CreateProfileWidgetState extends State<CreateProfileWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            await currentUserReference!
-                                .update(createUsersRecordData(
-                              displayName: _model.yourNameController.text,
-                              email: currentUserEmail,
-                              uid: currentUserUid,
-                            ));
-
                             context.pushNamed('homePage');
                           },
                           text: 'Save Changes',
