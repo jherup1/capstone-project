@@ -211,7 +211,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     labelText: 'Password',
                                     labelStyle:
                                         FlutterFlowTheme.of(context).bodySmall,
-                                    hintText: 'Enter your email here...',
+                                    hintText: 'Enter your password here...',
                                     hintStyle:
                                         FlutterFlowTheme.of(context).bodySmall,
                                     enabledBorder: OutlineInputBorder(
@@ -302,7 +302,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   }
 
                                   context.pushNamedAuth(
-                                      'createProfile', context.mounted);
+                                      'signUp', context.mounted);
                                 },
                                 child: Container(
                                   width: 150.0,
@@ -371,21 +371,30 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 0.0, 8.0),
-                                  child: Text(
-                                    'Login',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmallFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily),
-                                        ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed('signIn');
+                                    },
+                                    child: Text(
+                                      'Login',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],

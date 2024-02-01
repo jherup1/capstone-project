@@ -143,8 +143,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         verticalDirection: VerticalDirection.down,
                         clipBehavior: Clip.none,
                         children: [
-                          StreamBuilder<List<SchoolsRecord>>(
-                            stream: querySchoolsRecord(),
+                          FutureBuilder<List<SchoolsRecord>>(
+                            future: querySchoolsRecordOnce(
+                              queryBuilder: (schoolsRecord) =>
+                                  schoolsRecord.where(
+                                'myGeopoint',
+                                isLessThanOrEqualTo:
+                                    _model.googleMapsCenter?.toGeoPoint(),
+                              ),
+                              limit: 100,
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -162,35 +170,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               }
                               List<SchoolsRecord> containerSchoolsRecordList =
                                   snapshot.data!;
-                              return Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.85,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                ),
-                                child: FlutterFlowGoogleMap(
-                                  key: ValueKey(containerSchoolsRecordList
-                                      .take(1)
-                                      .toList()
-                                      .length
-                                      .toString()),
-                                  controller: _model.googleMapsController,
-                                  onCameraIdle: (latLng) => setState(
-                                      () => _model.googleMapsCenter = latLng),
-                                  initialLocation: _model.googleMapsCenter ??=
-                                      currentUserLocationValue!,
-                                  markerColor: GoogleMarkerColor.red,
-                                  mapType: MapType.normal,
-                                  style: GoogleMapStyle.standard,
-                                  initialZoom: 14.0,
-                                  allowInteraction: true,
-                                  allowZoom: true,
-                                  showZoomControls: true,
-                                  showLocation: true,
-                                  showCompass: false,
-                                  showMapToolbar: false,
-                                  showTraffic: false,
-                                  centerMapOnMarkerTap: true,
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Container(
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.85,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                  ),
+                                  child: FlutterFlowGoogleMap(
+                                    controller: _model.googleMapsController,
+                                    onCameraIdle: (latLng) => setState(
+                                        () => _model.googleMapsCenter = latLng),
+                                    initialLocation: _model.googleMapsCenter ??=
+                                        currentUserLocationValue!,
+                                    markers: containerSchoolsRecordList
+                                        .map(
+                                          (containerSchoolsRecord) =>
+                                              FlutterFlowMarker(
+                                            containerSchoolsRecord
+                                                .reference.path,
+                                            containerSchoolsRecord.myGeopoint!,
+                                          ),
+                                        )
+                                        .toList(),
+                                    markerColor: GoogleMarkerColor.red,
+                                    mapType: MapType.normal,
+                                    style: GoogleMapStyle.standard,
+                                    initialZoom: 7.0,
+                                    allowInteraction: true,
+                                    allowZoom: true,
+                                    showZoomControls: true,
+                                    showLocation: true,
+                                    showCompass: false,
+                                    showMapToolbar: false,
+                                    showTraffic: false,
+                                    centerMapOnMarkerTap: true,
+                                  ),
                                 ),
                               );
                             },
