@@ -10,26 +10,7 @@ import 'side_bar_nav_model.dart';
 export 'side_bar_nav_model.dart';
 
 class SideBarNavWidget extends StatefulWidget {
-  const SideBarNavWidget({
-    super.key,
-    this.oneBG,
-    this.oneIcon,
-    this.twoBG,
-    this.twoIcon,
-    this.threeColor,
-    this.threeIcon,
-    double? fourIcon,
-    this.fourColor,
-  }) : this.fourIcon = fourIcon ?? 12.0;
-
-  final Color? oneBG;
-  final Widget? oneIcon;
-  final Color? twoBG;
-  final Widget? twoIcon;
-  final Color? threeColor;
-  final Widget? threeIcon;
-  final double fourIcon;
-  final Widget? fourColor;
+  const SideBarNavWidget({super.key});
 
   @override
   State<SideBarNavWidget> createState() => _SideBarNavWidgetState();
@@ -128,7 +109,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.oneBG,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -169,7 +150,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.twoBG,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -219,7 +200,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.threeColor,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
@@ -269,7 +250,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   width: double.infinity,
                   height: 48.0,
                   decoration: BoxDecoration(
-                    color: widget.threeColor,
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(

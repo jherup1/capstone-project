@@ -99,23 +99,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               wrapWithModel(
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(
-                  oneBG: FlutterFlowTheme.of(context).primaryBackground,
-                  oneIcon: Icon(
-                    Icons.bar_chart_rounded,
-                    color: FlutterFlowTheme.of(context).primary,
-                  ),
-                  twoBG: FlutterFlowTheme.of(context).secondaryBackground,
-                  twoIcon: Icon(
-                    Icons.school_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                  threeColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  threeIcon: Icon(
-                    Icons.account_circle_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                ),
+                child: SideBarNavWidget(),
               ),
             Expanded(
               child: SingleChildScrollView(
