@@ -347,9 +347,10 @@ class _SupportPageWidgetState extends State<SupportPageWidget>
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Channel Name',
+                            labelText: 'Email',
                             labelStyle:
                                 FlutterFlowTheme.of(context).labelMedium,
+                            hintText: 'Enter your Email here',
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -393,9 +394,9 @@ class _SupportPageWidgetState extends State<SupportPageWidget>
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Channel ID',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelText: 'Phone Number',
+                            alignLabelWithHint: true,
+                            hintText: 'Enter your phone number here',
                             hintStyle: FlutterFlowTheme.of(context).labelMedium,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(

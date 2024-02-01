@@ -111,7 +111,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                 child: SideBarNavWidget(
                   oneBG: FlutterFlowTheme.of(context).secondaryBackground,
                   oneIcon: Icon(
-                    Icons.bar_chart_rounded,
+                    Icons.ten_mp,
                     color: FlutterFlowTheme.of(context).primaryText,
                   ),
                   twoBG: FlutterFlowTheme.of(context).secondaryBackground,
@@ -123,6 +123,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                   threeIcon: Icon(
                     Icons.account_circle_outlined,
                     color: FlutterFlowTheme.of(context).primary,
+                  ),
+                  fourColor: Icon(
+                    Icons.ten_mp_rounded,
+                    color: FlutterFlowTheme.of(context).alternate,
                   ),
                 ),
               ),
