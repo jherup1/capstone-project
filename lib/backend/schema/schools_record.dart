@@ -16,31 +16,19 @@ class SchoolsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "latitude" field.
-  double? _latitude;
-  double get latitude => _latitude ?? 0.0;
-  bool hasLatitude() => _latitude != null;
-
-  // "longitude" field.
-  double? _longitude;
-  double get longitude => _longitude ?? 0.0;
-  bool hasLongitude() => _longitude != null;
-
   // "name" field.
   String? _name;
   String get name => _name ?? '';
   bool hasName() => _name != null;
 
-  // "schoolLatLng" field.
-  LatLng? _schoolLatLng;
-  LatLng? get schoolLatLng => _schoolLatLng;
-  bool hasSchoolLatLng() => _schoolLatLng != null;
+  // "myGeopoint" field.
+  LatLng? _myGeopoint;
+  LatLng? get myGeopoint => _myGeopoint;
+  bool hasMyGeopoint() => _myGeopoint != null;
 
   void _initializeFields() {
-    _latitude = castToType<double>(snapshotData['latitude']);
-    _longitude = castToType<double>(snapshotData['longitude']);
     _name = snapshotData['name'] as String?;
-    _schoolLatLng = snapshotData['schoolLatLng'] as LatLng?;
+    _myGeopoint = snapshotData['myGeopoint'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -78,17 +66,13 @@ class SchoolsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createSchoolsRecordData({
-  double? latitude,
-  double? longitude,
   String? name,
-  LatLng? schoolLatLng,
+  LatLng? myGeopoint,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'latitude': latitude,
-      'longitude': longitude,
       'name': name,
-      'schoolLatLng': schoolLatLng,
+      'myGeopoint': myGeopoint,
     }.withoutNulls,
   );
 
@@ -100,15 +84,12 @@ class SchoolsRecordDocumentEquality implements Equality<SchoolsRecord> {
 
   @override
   bool equals(SchoolsRecord? e1, SchoolsRecord? e2) {
-    return e1?.latitude == e2?.latitude &&
-        e1?.longitude == e2?.longitude &&
-        e1?.name == e2?.name &&
-        e1?.schoolLatLng == e2?.schoolLatLng;
+    return e1?.name == e2?.name && e1?.myGeopoint == e2?.myGeopoint;
   }
 
   @override
-  int hash(SchoolsRecord? e) => const ListEquality()
-      .hash([e?.latitude, e?.longitude, e?.name, e?.schoolLatLng]);
+  int hash(SchoolsRecord? e) =>
+      const ListEquality().hash([e?.name, e?.myGeopoint]);
 
   @override
   bool isValidKey(Object? o) => o is SchoolsRecord;

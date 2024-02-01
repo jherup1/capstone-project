@@ -186,6 +186,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   borderRadius: BorderRadius.circular(0.0),
                                 ),
                                 child: FlutterFlowGoogleMap(
+                                  key: ValueKey(containerSchoolsRecordList
+                                      .take(1)
+                                      .toList()
+                                      .length
+                                      .toString()),
                                   controller: _model.googleMapsController,
                                   onCameraIdle: (latLng) => setState(
                                       () => _model.googleMapsCenter = latLng),
@@ -196,7 +201,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         (containerSchoolsRecord) =>
                                             FlutterFlowMarker(
                                           containerSchoolsRecord.reference.path,
-                                          containerSchoolsRecord.schoolLatLng!,
+                                          containerSchoolsRecord.myGeopoint!,
                                           () async {
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
