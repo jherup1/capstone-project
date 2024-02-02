@@ -1,41 +1,44 @@
 import '/backend/backend.dart';
 import '/components/side_bar_nav_widget.dart';
-import '/flutter_flow/flutter_flow_static_map.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/lat_lng.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mapbox_search/mapbox_search.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
-    Key? key,
+    super.key,
     this.location,
-  }) : super(key: key);
+    this.school,
+  });
 
   final DocumentReference? location;
+  final DocumentReference? school;
 
   @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
+  State<HomePageWidget> createState() => _HomePageWidgetState();
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
+    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
+        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -57,12 +60,30 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       );
     }
 
+    if (currentUserLocationValue == null) {
+      return Container(
+        color: FlutterFlowTheme.of(context).primaryBackground,
+        child: Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(
+                FlutterFlowTheme.of(context).primary,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
+        resizeToAvoidBottomInset: false,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Row(
           mainAxisSize: MainAxisSize.max,
@@ -77,23 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               wrapWithModel(
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(
-                  oneBG: FlutterFlowTheme.of(context).primaryBackground,
-                  oneIcon: Icon(
-                    Icons.bar_chart_rounded,
-                    color: FlutterFlowTheme.of(context).primary,
-                  ),
-                  twoBG: FlutterFlowTheme.of(context).secondaryBackground,
-                  twoIcon: Icon(
-                    Icons.school_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                  threeColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  threeIcon: Icon(
-                    Icons.account_circle_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                ),
+                child: SideBarNavWidget(),
               ),
             Expanded(
               child: SingleChildScrollView(
@@ -138,9 +143,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         verticalDirection: VerticalDirection.down,
                         clipBehavior: Clip.none,
                         children: [
-                          StreamBuilder<LocationsRecord>(
-                            stream:
-                                LocationsRecord.getDocument(widget.location!),
+                          FutureBuilder<List<SchoolsRecord>>(
+                            future: querySchoolsRecordOnce(
+                              queryBuilder: (schoolsRecord) =>
+                                  schoolsRecord.where(
+                                'myGeopoint',
+                                isLessThanOrEqualTo:
+                                    _model.googleMapsCenter?.toGeoPoint(),
+                              ),
+                              limit: 100,
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -156,25 +168,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 );
                               }
-                              final containerLocationsRecord = snapshot.data!;
-                              return Container(
-                                height:
-                                    MediaQuery.sizeOf(context).height * 0.85,
-                                decoration: BoxDecoration(),
-                                child: FlutterFlowStaticMap(
-                                  location:
-                                      containerLocationsRecord.addressLatLong!,
-                                  apiKey:
-                                      'pk.eyJ1Ijoicm9uYm9yZW5zIiwiYSI6ImNscmwwajAyODBnMzkyaHBraTQ0MWZ0bXIifQ.NajwbOMlqgAtrPdKCpaoGg',
-                                  style: MapBoxStyle.Outdoors,
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                              List<SchoolsRecord> containerSchoolsRecordList =
+                                  snapshot.data!;
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(12.0),
+                                child: Container(
                                   height:
-                                      MediaQuery.sizeOf(context).height * 1.0,
-                                  fit: BoxFit.cover,
-                                  borderRadius: BorderRadius.circular(24.0),
-                                  zoom: 12,
-                                  tilt: 0,
-                                  rotation: 0,
+                                      MediaQuery.sizeOf(context).height * 0.85,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                  ),
+                                  child: FlutterFlowGoogleMap(
+                                    controller: _model.googleMapsController,
+                                    onCameraIdle: (latLng) => setState(
+                                        () => _model.googleMapsCenter = latLng),
+                                    initialLocation: _model.googleMapsCenter ??=
+                                        currentUserLocationValue!,
+                                    markers: containerSchoolsRecordList
+                                        .map(
+                                          (containerSchoolsRecord) =>
+                                              FlutterFlowMarker(
+                                            containerSchoolsRecord
+                                                .reference.path,
+                                            containerSchoolsRecord.myGeopoint!,
+                                          ),
+                                        )
+                                        .toList(),
+                                    markerColor: GoogleMarkerColor.red,
+                                    mapType: MapType.normal,
+                                    style: GoogleMapStyle.standard,
+                                    initialZoom: 7.0,
+                                    allowInteraction: true,
+                                    allowZoom: true,
+                                    showZoomControls: true,
+                                    showLocation: true,
+                                    showCompass: false,
+                                    showMapToolbar: false,
+                                    showTraffic: false,
+                                    centerMapOnMarkerTap: true,
+                                  ),
                                 ),
                               );
                             },

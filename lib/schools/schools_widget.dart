@@ -10,14 +10,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'schools_model.dart';
 export 'schools_model.dart';
 
 class SchoolsWidget extends StatefulWidget {
-  const SchoolsWidget({Key? key}) : super(key: key);
+  const SchoolsWidget({super.key});
 
   @override
-  _SchoolsWidgetState createState() => _SchoolsWidgetState();
+  State<SchoolsWidget> createState() => _SchoolsWidgetState();
 }
 
 class _SchoolsWidgetState extends State<SchoolsWidget>
@@ -157,23 +158,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
               wrapWithModel(
                 model: _model.sideBarNavModel,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(
-                  oneBG: FlutterFlowTheme.of(context).secondaryBackground,
-                  oneIcon: Icon(
-                    Icons.bar_chart_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                  twoBG: FlutterFlowTheme.of(context).primaryBackground,
-                  twoIcon: Icon(
-                    Icons.school_outlined,
-                    color: FlutterFlowTheme.of(context).primary,
-                  ),
-                  threeColor: FlutterFlowTheme.of(context).secondaryBackground,
-                  threeIcon: Icon(
-                    Icons.account_circle_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                  ),
-                ),
+                child: SideBarNavWidget(),
               ),
             Expanded(
               child: Column(
@@ -1104,6 +1089,57 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                             ),
                                           ],
                                         ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 24.0, 0.0, 24.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchUrl(Uri(
+                                      scheme: 'mailto',
+                                      path: 'support@psychology.org',
+                                      query: {
+                                        'subject': 'Psysearch Contact support',
+                                      }
+                                          .entries
+                                          .map((MapEntry<String, String> e) =>
+                                              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                          .join('&')));
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 0.0, 8.0),
+                                      child: Text(
+                                        'Contact Support',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmallFamily),
+                                            ),
                                       ),
                                     ),
                                   ],

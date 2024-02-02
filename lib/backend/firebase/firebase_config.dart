@@ -5,13 +5,13 @@ Future initFirebase() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
-            apiKey: "AIzaSyAVJAa71zKElEBrbWDIhInsmik-Nl4aVws",
-            authDomain: "nocodeui-db3f9.firebaseapp.com",
-            projectId: "nocodeui-db3f9",
-            storageBucket: "nocodeui-db3f9.appspot.com",
-            messagingSenderId: "578639121291",
-            appId: "1:578639121291:web:4f4b40683c9f4c3102fd8e",
-            measurementId: "G-2FH2RCKBDV"));
+            apiKey: "AIzaSyBD7zoR8IGqcxH7BfVtJ_p5UkT641BQzTY",
+            authDomain: "psysearch-84c1b.firebaseapp.com",
+            projectId: "psysearch-84c1b",
+            storageBucket: "psysearch-84c1b.appspot.com",
+            messagingSenderId: "1094210897330",
+            appId: "1:1094210897330:web:78f2672678d2f81078d0ab",
+            measurementId: "G-22XGM85B1H"));
   } else {
     await Firebase.initializeApp();
   }
