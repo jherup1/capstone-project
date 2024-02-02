@@ -98,11 +98,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SignUpWidget(),
             ),
             FFRoute(
-              name: 'createProfile',
-              path: 'createProfile',
-              builder: (context, params) => CreateProfileWidget(),
-            ),
-            FFRoute(
               name: 'homePage',
               path: 'homePage',
               builder: (context, params) => params.isEmpty
@@ -110,6 +105,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : HomePageWidget(
                       location: params.getParam('location',
                           ParamType.DocumentReference, false, ['locations']),
+                      school: params.getParam('school',
+                          ParamType.DocumentReference, false, ['schools']),
                     ),
             ),
             FFRoute(
@@ -123,6 +120,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'schools')
                   : SchoolsWidget(),
+            ),
+            FFRoute(
+              name: 'supportPage',
+              path: 'supportPage',
+              builder: (context, params) => SupportPageWidget(),
             ),
             FFRoute(
               name: 'profilePage',
@@ -312,10 +314,10 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: Color(0xFF121926),
+                  color: FlutterFlowTheme.of(context).primaryText,
                   child: Image.asset(
-                    'assets/images/splash_dashboard_02@3x.png',
-                    fit: BoxFit.fitHeight,
+                    'assets/images/ezgif-1-60d7f38f99.jpg',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;

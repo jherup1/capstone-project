@@ -1,40 +1,48 @@
 {
   "project_info": {
-    "project_number": "578639121291",
-    "project_id": "nocodeui-db3f9",
-    "storage_bucket": "nocodeui-db3f9.appspot.com"
+    "project_number": "1094210897330",
+    "project_id": "psysearch-84c1b",
+    "storage_bucket": "psysearch-84c1b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:578639121291:android:e183c12b29f4ee2302fd8e",
+        "mobilesdk_app_id": "1:1094210897330:android:baf7d949189a7dbd78d0ab",
         "android_client_info": {
-          "package_name": "com.mycompany.dashboard"
+          "package_name": "com.flutterflow.psysearch"
         }
       },
       "oauth_client": [
         {
-          "client_id": "578639121291-ssf7r1tspqjqpstatf304mbaooe6tdnp.apps.googleusercontent.com",
+          "client_id": "1094210897330-6uju1negj891g502hbq5d2vupn8ptnem.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterflow.psysearch",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "1094210897330-bocv1nfpfb2qm2jco94is2d7lbmgam2d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCVHtQ5jyHVK7pKw3ex6xD1EU9PycgbS70"
+          "current_key": "AIzaSyAqPpAprvzegw4O1yBxSNJKuaSRXAVQFKo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "578639121291-ssf7r1tspqjqpstatf304mbaooe6tdnp.apps.googleusercontent.com",
+              "client_id": "1094210897330-bocv1nfpfb2qm2jco94is2d7lbmgam2d.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "578639121291-43ejtjpuokocjdvctjoctgbuf458iu9e.apps.googleusercontent.com",
+              "client_id": "1094210897330-3u09kohrh8ro7l17lhqi3gsmv92bcu2g.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mycompany.dashboard"
+                "bundle_id": "com.flutterflow.psysearch"
               }
             }
           ]
@@ -43,42 +51,34 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:578639121291:android:4411389c4ca15ee102fd8e",
+        "mobilesdk_app_id": "1:1094210897330:android:544dcc5f0401034a78d0ab",
         "android_client_info": {
-          "package_name": "com.mycompany.onboardingflow"
+          "package_name": "com.psysearch.dashboard"
         }
       },
       "oauth_client": [
         {
-          "client_id": "578639121291-74oekh3u21biegtg4ijed7lcq1aj9ae4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.mycompany.onboardingflow",
-            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
-          }
-        },
-        {
-          "client_id": "578639121291-ssf7r1tspqjqpstatf304mbaooe6tdnp.apps.googleusercontent.com",
+          "client_id": "1094210897330-bocv1nfpfb2qm2jco94is2d7lbmgam2d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCVHtQ5jyHVK7pKw3ex6xD1EU9PycgbS70"
+          "current_key": "AIzaSyAqPpAprvzegw4O1yBxSNJKuaSRXAVQFKo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "578639121291-ssf7r1tspqjqpstatf304mbaooe6tdnp.apps.googleusercontent.com",
+              "client_id": "1094210897330-bocv1nfpfb2qm2jco94is2d7lbmgam2d.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "578639121291-43ejtjpuokocjdvctjoctgbuf458iu9e.apps.googleusercontent.com",
+              "client_id": "1094210897330-3u09kohrh8ro7l17lhqi3gsmv92bcu2g.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.mycompany.dashboard"
+                "bundle_id": "com.flutterflow.psysearch"
               }
             }
           ]
