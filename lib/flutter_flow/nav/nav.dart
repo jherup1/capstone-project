@@ -122,16 +122,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : SchoolsWidget(),
             ),
             FFRoute(
-              name: 'supportPage',
-              path: 'supportPage',
-              builder: (context, params) => SupportPageWidget(),
-            ),
-            FFRoute(
               name: 'profilePage',
               path: 'profilePage',
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'profilePage')
                   : ProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'support_TicketList',
+              path: 'supportTicketList',
+              builder: (context, params) => SupportTicketListWidget(),
+            ),
+            FFRoute(
+              name: 'support_SubmitTicket',
+              path: 'supportSubmitTicket',
+              builder: (context, params) => SupportSubmitTicketWidget(),
+            ),
+            FFRoute(
+              name: 'support_TicketDetails',
+              path: 'supportTicketDetails',
+              asyncParams: {
+                'ticketRef': getDoc(
+                    ['supportTickets'], SupportTicketsRecord.fromSnapshot),
+              },
+              builder: (context, params) => SupportTicketDetailsWidget(
+                ticketRef: params.getParam('ticketRef', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'support',
+              path: 'support',
+              builder: (context, params) => SupportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
