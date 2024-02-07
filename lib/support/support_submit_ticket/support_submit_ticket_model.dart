@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/user_list/user_list_widget.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -27,6 +28,8 @@ class SupportSubmitTicketModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -51,11 +54,13 @@ class SupportSubmitTicketModel
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
+    sideBarNavModel = createModel(context, () => SideBarNavModel());
     userListSmallModel = createModel(context, () => UserListSmallModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
+    sideBarNavModel.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 

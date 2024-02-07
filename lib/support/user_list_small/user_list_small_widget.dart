@@ -48,6 +48,8 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,

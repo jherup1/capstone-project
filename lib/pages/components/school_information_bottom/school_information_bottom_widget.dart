@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,10 +15,10 @@ export 'school_information_bottom_model.dart';
 class SchoolInformationBottomWidget extends StatefulWidget {
   const SchoolInformationBottomWidget({
     super.key,
-    required this.schoolsDocument,
+    required this.name,
   });
 
-  final SchoolsRecord? schoolsDocument;
+  final DocumentReference? name;
 
   @override
   State<SchoolInformationBottomWidget> createState() =>
@@ -51,6 +52,8 @@ class _SchoolInformationBottomWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(0.0),
       child: BackdropFilter(

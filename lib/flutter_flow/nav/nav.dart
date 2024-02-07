@@ -103,8 +103,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'homePage')
                   : HomePageWidget(
-                      location: params.getParam('location',
-                          ParamType.DocumentReference, false, ['locations']),
                       school: params.getParam('school',
                           ParamType.DocumentReference, false, ['schools']),
                     ),
@@ -151,7 +149,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'support',
-              path: 'support',
+              path: 'supportDeprecated',
               builder: (context, params) => SupportWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

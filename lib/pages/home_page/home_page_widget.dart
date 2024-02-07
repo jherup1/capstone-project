@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
-import '/components/school_information_bottom/school_information_bottom_widget.dart';
-import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/components/school_information_bottom/school_information_bottom_widget.dart';
+import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,11 +16,9 @@ export 'home_page_model.dart';
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({
     super.key,
-    this.location,
     this.school,
   });
 
-  final DocumentReference? location;
   final DocumentReference? school;
 
   @override
@@ -61,6 +59,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       );
     }
 
+    context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -146,12 +145,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         children: [
                           FutureBuilder<List<SchoolsRecord>>(
                             future: querySchoolsRecordOnce(
-                              queryBuilder: (schoolsRecord) =>
-                                  schoolsRecord.where(
-                                'myGeopoint',
-                                isLessThanOrEqualTo:
-                                    _model.googleMapsCenter?.toGeoPoint(),
-                              ),
                               limit: 100,
                             ),
                             builder: (context, snapshot) {
@@ -185,8 +178,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                   child: FlutterFlowGoogleMap(
                                     controller: _model.googleMapsController,
-                                    onCameraIdle: (latLng) => setState(
-                                        () => _model.googleMapsCenter = latLng),
+                                    onCameraIdle: (latLng) =>
+                                        _model.googleMapsCenter = latLng,
                                     initialLocation: _model.googleMapsCenter ??=
                                         currentUserLocationValue!,
                                     markers: containerSchoolsRecordList
@@ -219,8 +212,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               context),
                                                       child:
                                                           SchoolInformationBottomWidget(
-                                                        schoolsDocument:
-                                                            containerSchoolsRecord,
+                                                        name:
+                                                            containerSchoolsRecord
+                                                                .reference,
                                                       ),
                                                     ),
                                                   );
@@ -231,7 +225,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ),
                                         )
                                         .toList(),
-                                    markerColor: GoogleMarkerColor.red,
+                                    markerColor: GoogleMarkerColor.violet,
                                     mapType: MapType.normal,
                                     style: GoogleMapStyle.standard,
                                     initialZoom: 7.0,

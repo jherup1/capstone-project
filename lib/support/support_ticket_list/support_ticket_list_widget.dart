@@ -53,6 +53,8 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
       );
     }
 
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -78,7 +80,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
                     child: FlutterFlowIconButton(
-                      borderColor: FlutterFlowTheme.of(context).primary,
+                      borderColor: FlutterFlowTheme.of(context).tertiary,
                       borderRadius: 12.0,
                       borderWidth: 2.0,
                       buttonSize: 40.0,
@@ -201,7 +203,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                     .secondaryBackground,
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: FlutterFlowTheme.of(context).alternate,
+                                  color: FlutterFlowTheme.of(context).tertiary,
                                   width: 2.0,
                                 ),
                               ),
@@ -480,7 +482,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .tertiary,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                       ),
@@ -547,7 +549,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .tertiary,
                                                         width: 2.0,
                                                       ),
                                                     ),
