@@ -84,6 +84,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
       );
     }
 
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,

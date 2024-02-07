@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,8 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Stack(
       children: [
         Container(
@@ -108,7 +111,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('homePage');
+                      context.pushNamed(
+                        'homePage',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
                     },
                     child: Container(
                       width: double.infinity,
@@ -150,7 +162,16 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed('schools');
+                      context.pushNamed(
+                        'schools',
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
+                      );
                     },
                     child: Container(
                       width: double.infinity,
@@ -169,7 +190,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
-                                Icons.school_outlined,
+                                Icons.school,
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 size: 24.0,
                               ),
@@ -220,7 +241,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
-                                Icons.account_circle_outlined,
+                                Icons.account_circle,
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 size: 24.0,
                               ),
@@ -244,7 +265,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     highlightColor: Colors.transparent,
                     onTap: () async {
                       context.pushNamed(
-                        'support',
+                        'support_SubmitTicket',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
@@ -271,9 +292,8 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
-                                Icons.question_answer,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                Icons.contact_support,
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 size: 24.0,
                               ),
                             ),
@@ -287,6 +307,60 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     ),
                   ),
                 ),
+                if (functions.isSupport(FFAppState().roleCache.toList()))
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'support_TicketList',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 48.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 4.0, 4.0, 4.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 12.0, 0.0),
+                                child: Icon(
+                                  Icons.question_answer,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                              Text(
+                                'Support Tickets',
+                                style: FlutterFlowTheme.of(context).bodyMedium,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

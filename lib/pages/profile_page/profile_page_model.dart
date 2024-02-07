@@ -1,8 +1,8 @@
-import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'profile_page_widget.dart' show ProfilePageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

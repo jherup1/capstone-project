@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
-import '/components/school_information_bottom/school_information_bottom_widget.dart';
-import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/components/school_information_bottom/school_information_bottom_widget.dart';
+import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

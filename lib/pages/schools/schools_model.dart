@@ -1,10 +1,10 @@
 import '/backend/backend.dart';
-import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'schools_widget.dart' show SchoolsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

@@ -63,6 +63,8 @@ class _SupportTicketDetailsWidgetState
       );
     }
 
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -194,7 +196,7 @@ class _SupportTicketDetailsWidgetState
                                                           .bodyMediumFamily,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primary,
+                                                      .primaryBackground,
                                                   useGoogleFonts: GoogleFonts
                                                           .asMap()
                                                       .containsKey(
@@ -238,7 +240,7 @@ class _SupportTicketDetailsWidgetState
                                             style: TextStyle(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .tertiary,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           )
@@ -349,7 +351,7 @@ class _SupportTicketDetailsWidgetState
                             ],
                             borderRadius: BorderRadius.circular(12.0),
                             border: Border.all(
-                              color: FlutterFlowTheme.of(context).alternate,
+                              color: FlutterFlowTheme.of(context).accent1,
                             ),
                           ),
                           child: Padding(
@@ -446,8 +448,7 @@ class _SupportTicketDetailsWidgetState
                                   child: Divider(
                                     height: 2.0,
                                     thickness: 2.0,
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
+                                    color: FlutterFlowTheme.of(context).accent1,
                                   ),
                                 ),
                                 Row(
@@ -554,7 +555,7 @@ class _SupportTicketDetailsWidgetState
                                           elevation: 2.0,
                                           borderColor:
                                               FlutterFlowTheme.of(context)
-                                                  .alternate,
+                                                  .accent1,
                                           borderWidth: 2.0,
                                           borderRadius: 8.0,
                                           margin:
@@ -633,7 +634,7 @@ class _SupportTicketDetailsWidgetState
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .alternate,
+                                                                .accent1,
                                                         width: 2.0,
                                                       ),
                                                     ),
@@ -660,7 +661,7 @@ class _SupportTicketDetailsWidgetState
                                                                   Border.all(
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .alternate,
+                                                                    .tertiary,
                                                               ),
                                                             ),
                                                             child: Padding(
@@ -727,7 +728,7 @@ class _SupportTicketDetailsWidgetState
                                                                           fontFamily:
                                                                               FlutterFlowTheme.of(context).labelSmallFamily,
                                                                           color:
-                                                                              FlutterFlowTheme.of(context).primary,
+                                                                              FlutterFlowTheme.of(context).tertiary,
                                                                           useGoogleFonts:
                                                                               GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).labelSmallFamily),
                                                                         ),
@@ -793,7 +794,7 @@ class _SupportTicketDetailsWidgetState
                                                 border: Border.all(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .alternate,
+                                                      .accent1,
                                                   width: 2.0,
                                                 ),
                                               ),
@@ -816,7 +817,7 @@ class _SupportTicketDetailsWidgetState
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .alternate,
+                                                              .tertiary,
                                                         ),
                                                       ),
                                                       child: Padding(
@@ -882,7 +883,7 @@ class _SupportTicketDetailsWidgetState
                                                                             .labelSmallFamily,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
+                                                                        .tertiary,
                                                                     useGoogleFonts: GoogleFonts
                                                                             .asMap()
                                                                         .containsKey(
@@ -1071,7 +1072,7 @@ class _SupportTicketDetailsWidgetState
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .alternate,
+                                                        .accent1,
                                                     width: 2.0,
                                                   ),
                                                   borderRadius:
@@ -1141,11 +1142,26 @@ class _SupportTicketDetailsWidgetState
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primary,
+                                                      .tertiary,
                                                   textStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .titleSmall,
+                                                          .titleSmall
+                                                          .override(
+                                                            fontFamily:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmallFamily,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryBackground,
+                                                            useGoogleFonts: GoogleFonts
+                                                                    .asMap()
+                                                                .containsKey(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmallFamily),
+                                                          ),
                                                   elevation: 3.0,
                                                   borderRadius:
                                                       BorderRadius.circular(
