@@ -91,198 +91,176 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
               Flexible(
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.8,
-                    height: MediaQuery.sizeOf(context).height * 0.9,
-                    decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: StreamBuilder<List<SupportTicketsRecord>>(
-                            stream: querySupportTicketsRecord(
-                              queryBuilder: (supportTicketsRecord) =>
-                                  supportTicketsRecord.orderBy('lastActive',
-                                      descending: true),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<SupportTicketsRecord>
-                                  listViewSupportTicketsRecordList =
-                                  snapshot.data!;
-                              if (listViewSupportTicketsRecordList.isEmpty) {
-                                return Center(
-                                  child: Container(
-                                    height: 330.0,
-                                    child: EmptyStateDynamicWidget(
-                                      icon: Icon(
-                                        Icons.live_help_outlined,
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
-                                        size: 90.0,
-                                      ),
-                                      title: 'No Support Tickets Exist',
-                                      body:
-                                          'Ah, you are in luck, none of your support tickets exist.',
-                                      buttonText: 'Create Ticket',
-                                      buttonAction: () async {
-                                        context
-                                            .pushNamed('support_SubmitTicket');
-                                      },
-                                    ),
-                                  ),
-                                );
-                              }
-                              return ListView.separated(
-                                padding: EdgeInsets.fromLTRB(
-                                  0,
-                                  12.0,
-                                  0,
-                                  44.0,
-                                ),
-                                scrollDirection: Axis.vertical,
-                                itemCount:
-                                    listViewSupportTicketsRecordList.length,
-                                separatorBuilder: (_, __) =>
-                                    SizedBox(height: 12.0),
-                                itemBuilder: (context, listViewIndex) {
-                                  final listViewSupportTicketsRecord =
-                                      listViewSupportTicketsRecordList[
-                                          listViewIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 0.0, 16.0, 0.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'support_TicketDetails',
-                                          queryParameters: {
-                                            'ticketRef': serializeParam(
-                                              listViewSupportTicketsRecord,
-                                              ParamType.Document,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            'ticketRef':
-                                                listViewSupportTicketsRecord,
-                                          },
-                                        );
-                                      },
-                                      child: Container(
-                                        width: double.infinity,
-                                        constraints: BoxConstraints(
-                                          maxWidth: 570.0,
+                  child: Padding(
+                    padding: EdgeInsets.all(24.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 1.0,
+                      height: MediaQuery.sizeOf(context).height * 1.0,
+                      decoration: BoxDecoration(),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: StreamBuilder<List<SupportTicketsRecord>>(
+                              stream: querySupportTicketsRecord(
+                                queryBuilder: (supportTicketsRecord) =>
+                                    supportTicketsRecord.orderBy('lastActive',
+                                        descending: true),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
                                         ),
-                                        decoration: BoxDecoration(
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<SupportTicketsRecord>
+                                    listViewSupportTicketsRecordList =
+                                    snapshot.data!;
+                                if (listViewSupportTicketsRecordList.isEmpty) {
+                                  return Center(
+                                    child: Container(
+                                      height: 330.0,
+                                      child: EmptyStateDynamicWidget(
+                                        icon: Icon(
+                                          Icons.live_help_outlined,
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            width: 2.0,
-                                          ),
+                                              .secondaryText,
+                                          size: 90.0,
                                         ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(12.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                listViewSupportTicketsRecord
-                                                    .name,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineSmall,
+                                        title: 'No Support Tickets Exist',
+                                        body:
+                                            'Ah, you are in luck, none of your support tickets exist.',
+                                        buttonText: 'Create Ticket',
+                                        buttonAction: () async {
+                                          context.pushNamed(
+                                              'support_SubmitTicket');
+                                        },
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return ListView.separated(
+                                  padding: EdgeInsets.fromLTRB(
+                                    0,
+                                    12.0,
+                                    0,
+                                    44.0,
+                                  ),
+                                  scrollDirection: Axis.vertical,
+                                  itemCount:
+                                      listViewSupportTicketsRecordList.length,
+                                  separatorBuilder: (_, __) =>
+                                      SizedBox(height: 12.0),
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewSupportTicketsRecord =
+                                        listViewSupportTicketsRecordList[
+                                            listViewIndex];
+                                    return Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'support_TicketDetails',
+                                            queryParameters: {
+                                              'ticketRef': serializeParam(
+                                                listViewSupportTicketsRecord,
+                                                ParamType.Document,
                                               ),
-                                              AutoSizeText(
-                                                listViewSupportTicketsRecord
-                                                    .description
-                                                    .maybeHandleOverflow(
-                                                        maxChars: 140),
-                                                maxLines: 3,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                                minFontSize: 12.0,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 4.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Container(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color: () {
-                                                          if (listViewSupportTicketsRecord
-                                                                  .priorityLevel ==
-                                                              'High') {
-                                                            return Color(
-                                                                0x4CFF5963);
-                                                          } else if (listViewSupportTicketsRecord
-                                                                  .priorityLevel ==
-                                                              'Medium') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent3;
-                                                          } else if (listViewSupportTicketsRecord
-                                                                  .priorityLevel ==
-                                                              'Emergency') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error;
-                                                          } else {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2;
-                                                          }
-                                                        }(),
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              'ticketRef':
+                                                  listViewSupportTicketsRecord,
+                                            },
+                                          );
+                                        },
+                                        child: Container(
+                                          width: double.infinity,
+                                          constraints: BoxConstraints(
+                                            maxWidth: 570.0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(12.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  listViewSupportTicketsRecord
+                                                      .name,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineSmall,
+                                                ),
+                                                AutoSizeText(
+                                                  listViewSupportTicketsRecord
+                                                      .description
+                                                      .maybeHandleOverflow(
+                                                          maxChars: 140),
+                                                  maxLines: 3,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium,
+                                                  minFontSize: 12.0,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 4.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Container(
+                                                        width: 12.0,
+                                                        height: 12.0,
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: () {
                                                             if (listViewSupportTicketsRecord
                                                                     .priorityLevel ==
                                                                 'High') {
-                                                              return FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error;
+                                                              return Color(
+                                                                  0x4CFF5963);
                                                             } else if (listViewSupportTicketsRecord
                                                                     .priorityLevel ==
                                                                 'Medium') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .tertiary;
+                                                                  .accent3;
                                                             } else if (listViewSupportTicketsRecord
                                                                     .priorityLevel ==
                                                                 'Emergency') {
@@ -292,355 +270,380 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                             } else {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondary;
+                                                                  .accent2;
                                                             }
                                                           }(),
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                -1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            listViewSupportTicketsRecord
-                                                                .priorityLevel,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium,
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          border: Border.all(
+                                                            color: () {
+                                                              if (listViewSupportTicketsRecord
+                                                                      .priorityLevel ==
+                                                                  'High') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error;
+                                                              } else if (listViewSupportTicketsRecord
+                                                                      .priorityLevel ==
+                                                                  'Medium') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary;
+                                                              } else if (listViewSupportTicketsRecord
+                                                                      .priorityLevel ==
+                                                                  'Emergency') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error;
+                                                              } else {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary;
+                                                              }
+                                                            }(),
+                                                            width: 2.0,
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    if (listViewSupportTicketsRecord
-                                                                .image !=
-                                                            null &&
-                                                        listViewSupportTicketsRecord
-                                                                .image !=
-                                                            '')
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                        child: Icon(
-                                                          Icons
-                                                              .attach_file_sharp,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 24.0,
+                                                      Expanded(
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  -1.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        8.0,
+                                                                        0.0,
+                                                                        8.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              listViewSupportTicketsRecord
+                                                                  .priorityLevel,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium,
+                                                            ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    Container(
-                                                      height: 32.0,
-                                                      decoration: BoxDecoration(
-                                                        color: () {
-                                                          if (listViewSupportTicketsRecord
-                                                                  .status ==
-                                                              'Submitted') {
-                                                            return FlutterFlowTheme
+                                                      if (listViewSupportTicketsRecord
+                                                                  .image !=
+                                                              null &&
+                                                          listViewSupportTicketsRecord
+                                                                  .image !=
+                                                              '')
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      12.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons
+                                                                .attach_file_sharp,
+                                                            color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .accent3;
-                                                          } else if (listViewSupportTicketsRecord
-                                                                  .status ==
-                                                              'In Progress') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1;
-                                                          } else if (listViewSupportTicketsRecord
-                                                                  .status ==
-                                                              'Complete') {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent2;
-                                                          } else {
-                                                            return FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground;
-                                                          }
-                                                        }(),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                        border: Border.all(
+                                                                .secondaryText,
+                                                            size: 24.0,
+                                                          ),
+                                                        ),
+                                                      Container(
+                                                        height: 32.0,
+                                                        decoration:
+                                                            BoxDecoration(
                                                           color: () {
                                                             if (listViewSupportTicketsRecord
                                                                     .status ==
                                                                 'Submitted') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .tertiary;
+                                                                  .accent3;
                                                             } else if (listViewSupportTicketsRecord
                                                                     .status ==
                                                                 'In Progress') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .primary;
+                                                                  .accent1;
                                                             } else if (listViewSupportTicketsRecord
                                                                     .status ==
                                                                 'Complete') {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .secondary;
+                                                                  .accent2;
                                                             } else {
                                                               return FlutterFlowTheme
                                                                       .of(context)
-                                                                  .error;
+                                                                  .secondaryBackground;
                                                             }
                                                           }(),
-                                                          width: 2.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                          border: Border.all(
+                                                            color: () {
+                                                              if (listViewSupportTicketsRecord
+                                                                      .status ==
+                                                                  'Submitted') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary;
+                                                              } else if (listViewSupportTicketsRecord
+                                                                      .status ==
+                                                                  'In Progress') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary;
+                                                              } else if (listViewSupportTicketsRecord
+                                                                      .status ==
+                                                                  'Complete') {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondary;
+                                                              } else {
+                                                                return FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error;
+                                                              }
+                                                            }(),
+                                                            width: 2.0,
+                                                          ),
                                                         ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      12.0,
-                                                                      0.0,
-                                                                      12.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            listViewSupportTicketsRecord
-                                                                .status,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  color: () {
-                                                                    if (listViewSupportTicketsRecord
-                                                                            .status ==
-                                                                        'Submitted') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary;
-                                                                    } else if (listViewSupportTicketsRecord
-                                                                            .status ==
-                                                                        'In Progress') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary;
-                                                                    } else if (listViewSupportTicketsRecord
-                                                                            .status ==
-                                                                        'Complete') {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary;
-                                                                    } else {
-                                                                      return FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error;
-                                                                    }
-                                                                  }(),
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              listViewSupportTicketsRecord
+                                                                  .status,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    color: () {
+                                                                      if (listViewSupportTicketsRecord
+                                                                              .status ==
+                                                                          'Submitted') {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .tertiary;
+                                                                      } else if (listViewSupportTicketsRecord
+                                                                              .status ==
+                                                                          'In Progress') {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .primary;
+                                                                      } else if (listViewSupportTicketsRecord
+                                                                              .status ==
+                                                                          'Complete') {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .secondary;
+                                                                      } else {
+                                                                        return FlutterFlowTheme.of(context)
+                                                                            .error;
+                                                                      }
+                                                                    }(),
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 4.0, 4.0, 4.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Expanded(
-                                                        child: RichText(
-                                                          textScaleFactor:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaleFactor,
-                                                          text: TextSpan(
-                                                            children: [
-                                                              TextSpan(
-                                                                text:
-                                                                    'Ticket #: ',
-                                                                style:
-                                                                    TextStyle(),
-                                                              ),
-                                                              TextSpan(
-                                                                text: listViewSupportTicketsRecord
-                                                                    .ticketID
-                                                                    .toString(),
-                                                                style:
-                                                                    TextStyle(
+                                                Container(
+                                                  width: double.infinity,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 4.0,
+                                                                4.0, 4.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Expanded(
+                                                          child: RichText(
+                                                            textScaleFactor:
+                                                                MediaQuery.of(
+                                                                        context)
+                                                                    .textScaleFactor,
+                                                            text: TextSpan(
+                                                              children: [
+                                                                TextSpan(
+                                                                  text:
+                                                                      'Ticket #: ',
+                                                                  style:
+                                                                      TextStyle(),
+                                                                ),
+                                                                TextSpan(
+                                                                  text: listViewSupportTicketsRecord
+                                                                      .ticketID
+                                                                      .toString(),
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .tertiary,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyLarge,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          dateTimeFormat(
+                                                              'relative',
+                                                              listViewSupportTicketsRecord
+                                                                  .lastActive!),
+                                                          textAlign:
+                                                              TextAlign.end,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelSmall,
+                                                        ),
+                                                        if (listViewSupportTicketsRecord
+                                                                .assignee !=
+                                                            null)
+                                                          FutureBuilder<
+                                                              UsersRecord>(
+                                                            future: UsersRecord
+                                                                .getDocumentOnce(
+                                                                    listViewSupportTicketsRecord
+                                                                        .assignee!),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
+                                                                  child:
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              }
+                                                              final containerUsersRecord =
+                                                                  snapshot
+                                                                      .data!;
+                                                              return Container(
+                                                                width: 32.0,
+                                                                height: 32.0,
+                                                                decoration:
+                                                                    BoxDecoration(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
+                                                                      .accent1,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  shape: BoxShape
+                                                                      .rectangle,
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .tertiary,
+                                                                    width: 2.0,
+                                                                  ),
                                                                 ),
-                                                              )
-                                                            ],
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        dateTimeFormat(
-                                                            'relative',
-                                                            listViewSupportTicketsRecord
-                                                                .lastActive!),
-                                                        textAlign:
-                                                            TextAlign.end,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall,
-                                                      ),
-                                                      if (listViewSupportTicketsRecord
-                                                              .assignee !=
-                                                          null)
-                                                        FutureBuilder<
-                                                            UsersRecord>(
-                                                          future: UsersRecord
-                                                              .getDocumentOnce(
-                                                                  listViewSupportTicketsRecord
-                                                                      .assignee!),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
+                                                                child: Padding(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              2.0),
                                                                   child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            6.0),
+                                                                    child:
+                                                                        CachedNetworkImage(
+                                                                      fadeInDuration:
+                                                                          Duration(
+                                                                              milliseconds: 200),
+                                                                      fadeOutDuration:
+                                                                          Duration(
+                                                                              milliseconds: 200),
+                                                                      imageUrl:
+                                                                          containerUsersRecord
+                                                                              .photoUrl,
+                                                                      width:
+                                                                          300.0,
+                                                                      height:
+                                                                          200.0,
+                                                                      fit: BoxFit
+                                                                          .cover,
                                                                     ),
                                                                   ),
                                                                 ),
                                                               );
-                                                            }
-                                                            final containerUsersRecord =
-                                                                snapshot.data!;
-                                                            return Container(
-                                                              width: 32.0,
-                                                              height: 32.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                shape: BoxShape
-                                                                    .rectangle,
-                                                                border:
-                                                                    Border.all(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  width: 2.0,
-                                                                ),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsets
-                                                                        .all(
-                                                                            2.0),
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              6.0),
-                                                                  child:
-                                                                      CachedNetworkImage(
-                                                                    fadeInDuration:
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                200),
-                                                                    fadeOutDuration:
-                                                                        Duration(
-                                                                            milliseconds:
-                                                                                200),
-                                                                    imageUrl:
-                                                                        containerUsersRecord
-                                                                            .photoUrl,
-                                                                    width:
-                                                                        300.0,
-                                                                    height:
-                                                                        200.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ),
-                                                    ].divide(
-                                                        SizedBox(width: 8.0)),
+                                                            },
+                                                          ),
+                                                      ].divide(
+                                                          SizedBox(width: 8.0)),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ].divide(SizedBox(height: 8.0)),
+                                              ].divide(SizedBox(height: 8.0)),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
