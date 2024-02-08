@@ -246,7 +246,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
+                          color: FlutterFlowTheme.of(context).tertiary,
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
@@ -278,7 +278,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('support');
+                  context.pushNamed('supportDeprecated');
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.max,

@@ -148,9 +148,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'support',
+              name: 'supportDeprecated',
               path: 'supportDeprecated',
-              builder: (context, params) => SupportWidget(),
+              builder: (context, params) => SupportDeprecatedWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
