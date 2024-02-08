@@ -316,7 +316,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
@@ -350,11 +350,20 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                     alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.8,
                       constraints: BoxConstraints(
                         maxWidth: 770.0,
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(0.0, 2.0),
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
                         padding:
