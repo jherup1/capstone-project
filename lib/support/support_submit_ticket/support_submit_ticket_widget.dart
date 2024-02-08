@@ -43,25 +43,6 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
       effects: [
         FadeEffect(
           curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: Offset(0.0, 110.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
           delay: 50.ms,
           duration: 400.ms,
           begin: 0.0,
@@ -196,7 +177,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation3': AnimationInfo(
+    'containerOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -235,7 +216,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
         ),
       ],
     ),
-    'containerOnPageLoadAnimation4': AnimationInfo(
+    'containerOnPageLoadAnimation3': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         FadeEffect(
@@ -411,104 +392,6 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         await launchUrl(Uri(
-                                                          scheme: 'tel',
-                                                          path:
-                                                              '(000) 000-0000',
-                                                        ));
-                                                      },
-                                                      child: Container(
-                                                        width: 120.0,
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 500.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      12.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent1,
-                                                            width: 2.0,
-                                                          ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      16.0,
-                                                                      8.0,
-                                                                      16.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Icon(
-                                                                Icons
-                                                                    .local_phone,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .tertiary,
-                                                                size: 36.0,
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            12.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  'Call Us',
-                                                                  textAlign:
-                                                                      TextAlign
-                                                                          .center,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ).animateOnPageLoad(
-                                                        animationsMap[
-                                                            'containerOnPageLoadAnimation1']!),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 16.0,
-                                                                0.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        await launchUrl(Uri(
                                                             scheme: 'mailto',
                                                             path:
                                                                 'test@test.com',
@@ -597,7 +480,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                       ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
-                                                            'containerOnPageLoadAnimation2']!),
+                                                            'containerOnPageLoadAnimation1']!),
                                                   ),
                                                 ),
                                               ].divide(SizedBox(width: 12.0)),
@@ -1088,7 +971,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                   ),
                                                 ),
                                               ).animateOnPageLoad(animationsMap[
-                                                  'containerOnPageLoadAnimation3']!),
+                                                  'containerOnPageLoadAnimation2']!),
                                             ),
                                             Align(
                                               alignment: AlignmentDirectional(
@@ -1263,7 +1146,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                       ),
                                                     ).animateOnPageLoad(
                                                         animationsMap[
-                                                            'containerOnPageLoadAnimation4']!),
+                                                            'containerOnPageLoadAnimation3']!),
                                                   ),
                                                 ],
                                               ).animateOnPageLoad(animationsMap[
