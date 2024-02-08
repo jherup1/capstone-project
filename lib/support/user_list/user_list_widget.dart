@@ -90,7 +90,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                   ),
                   Divider(
                     thickness: 1.0,
-                    color: FlutterFlowTheme.of(context).alternate,
+                    color: FlutterFlowTheme.of(context).tertiary,
                   ),
                   Expanded(
                     child: FutureBuilder<List<UsersRecord>>(
@@ -154,7 +154,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                   Divider(
                     height: 2.0,
                     thickness: 1.0,
-                    color: FlutterFlowTheme.of(context).alternate,
+                    color: FlutterFlowTheme.of(context).tertiary,
                   ),
                   MouseRegion(
                     opaque: false,

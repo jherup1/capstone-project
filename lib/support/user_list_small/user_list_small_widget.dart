@@ -74,7 +74,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   borderRadius: BorderRadius.circular(10.0),
                   shape: BoxShape.rectangle,
                   border: Border.all(
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: FlutterFlowTheme.of(context).tertiary,
                     width: 2.0,
                   ),
                 ),
@@ -126,7 +126,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                               .override(
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodySmallFamily,
-                                color: FlutterFlowTheme.of(context).primary,
+                                color: FlutterFlowTheme.of(context).tertiary,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodySmallFamily),
@@ -143,7 +143,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   color: FlutterFlowTheme.of(context).accent1,
                   borderRadius: BorderRadius.circular(12.0),
                   border: Border.all(
-                    color: FlutterFlowTheme.of(context).primary,
+                    color: FlutterFlowTheme.of(context).tertiary,
                     width: 2.0,
                   ),
                 ),
