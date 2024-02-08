@@ -66,154 +66,190 @@ class _SupportTicketDetailsWidgetState
 
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
-          width: MediaQuery.sizeOf(context).width * 0.5,
-          child: Drawer(
-            elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.sideBarNavModel2,
-              updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+    return FutureBuilder<UsersRecord>(
+      future: UsersRecord.getDocumentOnce(_model.selectedUser?.reference != null
+          ? _model.selectedUser!.reference
+          : widget.ticketRef!.assignee!),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-              ))
-                wrapWithModel(
-                  model: _model.sideBarNavModel1,
+          );
+        }
+        final supportTicketDetailsUsersRecord = snapshot.data!;
+        return GestureDetector(
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            drawer: Container(
+              width: MediaQuery.sizeOf(context).width * 0.5,
+              child: Drawer(
+                elevation: 16.0,
+                child: wrapWithModel(
+                  model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
                   child: SideBarNavWidget(),
                 ),
-              Flexible(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 60.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * 1.0,
-                      constraints: BoxConstraints(
-                        maxWidth: 770.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 2.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                      ),
-                      child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                constraints: BoxConstraints(
-                                  maxWidth: 1170.0,
-                                ),
-                                decoration: BoxDecoration(),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    if (responsiveVisibility(
-                                      context: context,
-                                      phone: false,
-                                      tablet: false,
-                                    ))
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 12.0, 0.0, 12.0),
-                                        child: SingleChildScrollView(
-                                          scrollDirection: Axis.horizontal,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 2.0, 0.0, 2.0),
-                                                child: FlutterFlowIconButton(
-                                                  borderColor:
-                                                      Colors.transparent,
-                                                  borderRadius: 30.0,
-                                                  borderWidth: 1.0,
-                                                  buttonSize: 40.0,
-                                                  icon: Icon(
-                                                    Icons.home_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryText,
-                                                    size: 22.0,
-                                                  ),
-                                                  onPressed: () {
-                                                    print(
-                                                        'IconButton pressed ...');
-                                                  },
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        8.0, 0.0, 8.0, 0.0),
-                                                child: Icon(
-                                                  Icons.chevron_right_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 16.0,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 8.0, 16.0, 8.0),
-                                                child: Container(
-                                                  height: 32.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent1,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                  ),
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
+              ),
+            ),
+            body: SafeArea(
+              top: true,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  if (responsiveVisibility(
+                    context: context,
+                    phone: false,
+                    tablet: false,
+                  ))
+                    wrapWithModel(
+                      model: _model.sideBarNavModel1,
+                      updateCallback: () => setState(() {}),
+                      child: SideBarNavWidget(),
+                    ),
+                  Flexible(
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 60.0, 0.0, 60.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.sizeOf(context).height * 1.0,
+                          constraints: BoxConstraints(
+                            maxWidth: 770.0,
+                          ),
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(0.0, 2.0),
+                              )
+                            ],
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 1170.0,
+                                    ),
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          phone: false,
+                                          tablet: false,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 0.0, 12.0),
+                                            child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(12.0, 4.0,
-                                                                12.0, 4.0),
-                                                    child: Text(
-                                                      'Ticket Details',
-                                                      style:
+                                                            .fromSTEB(0.0, 2.0,
+                                                                0.0, 2.0),
+                                                    child:
+                                                        FlutterFlowIconButton(
+                                                      borderColor:
+                                                          Colors.transparent,
+                                                      borderRadius: 30.0,
+                                                      borderWidth: 1.0,
+                                                      buttonSize: 40.0,
+                                                      icon: Icon(
+                                                        Icons.home_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 22.0,
+                                                      ),
+                                                      onPressed: () {
+                                                        print(
+                                                            'IconButton pressed ...');
+                                                      },
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(8.0, 0.0,
+                                                                8.0, 0.0),
+                                                    child: Icon(
+                                                      Icons
+                                                          .chevron_right_rounded,
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
+                                                              .secondaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 8.0,
+                                                                16.0, 8.0),
+                                                    child: Container(
+                                                      height: 32.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    12.0,
+                                                                    4.0,
+                                                                    12.0,
+                                                                    4.0),
+                                                        child: Text(
+                                                          'Ticket Details',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -228,200 +264,210 @@ class _SupportTicketDetailsWidgetState
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 16.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 12.0, 0.0),
+                                                  child: RichText(
+                                                    textScaleFactor:
+                                                        MediaQuery.of(context)
+                                                            .textScaleFactor,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text: 'Ticket #: ',
+                                                          style: TextStyle(),
+                                                        ),
+                                                        TextSpan(
+                                                          text: valueOrDefault<
+                                                              String>(
+                                                            widget.ticketRef
+                                                                ?.ticketID
+                                                                ?.toString(),
+                                                            '--',
+                                                          ),
+                                                          style: TextStyle(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .tertiary,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: Container(
+                                                  width: 12.0,
+                                                  height: 12.0,
+                                                  decoration: BoxDecoration(
+                                                    color: () {
+                                                      if (widget.ticketRef
+                                                              ?.priorityLevel ==
+                                                          'High') {
+                                                        return Color(
+                                                            0x4CFF5963);
+                                                      } else if (widget
+                                                              .ticketRef
+                                                              ?.priorityLevel ==
+                                                          'Medium') {
+                                                        return FlutterFlowTheme
+                                                                .of(context)
+                                                            .accent3;
+                                                      } else if (widget
+                                                              .ticketRef
+                                                              ?.priorityLevel ==
+                                                          'Emergency') {
+                                                        return FlutterFlowTheme
+                                                                .of(context)
+                                                            .error;
+                                                      } else {
+                                                        return FlutterFlowTheme
+                                                                .of(context)
+                                                            .accent2;
+                                                      }
+                                                    }(),
+                                                    shape: BoxShape.circle,
+                                                    border: Border.all(
+                                                      color: () {
+                                                        if (widget.ticketRef
+                                                                ?.priorityLevel ==
+                                                            'High') {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error;
+                                                        } else if (widget
+                                                                .ticketRef
+                                                                ?.priorityLevel ==
+                                                            'Medium') {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary;
+                                                        } else if (widget
+                                                                .ticketRef
+                                                                ?.priorityLevel ==
+                                                            'Emergency') {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error;
+                                                        } else {
+                                                          return FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondary;
+                                                        }
+                                                      }(),
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 4.0, 0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    widget.ticketRef
+                                                        ?.priorityLevel,
+                                                    '--',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium,
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 0.0, 12.0, 0.0),
-                                              child: RichText(
-                                                textScaleFactor:
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: 'Ticket #: ',
-                                                      style: TextStyle(),
-                                                    ),
-                                                    TextSpan(
-                                                      text: valueOrDefault<
-                                                          String>(
-                                                        widget
-                                                            .ticketRef?.ticketID
-                                                            ?.toString(),
-                                                        '--',
-                                                      ),
-                                                      style: TextStyle(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                      ),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineSmall,
-                                                ),
-                                              ),
-                                            ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Below are the details of this support ticket.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium,
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: 12.0,
-                                              height: 12.0,
-                                              decoration: BoxDecoration(
-                                                color: () {
-                                                  if (widget.ticketRef
-                                                          ?.priorityLevel ==
-                                                      'High') {
-                                                    return Color(0x4CFF5963);
-                                                  } else if (widget.ticketRef
-                                                          ?.priorityLevel ==
-                                                      'Medium') {
-                                                    return FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent3;
-                                                  } else if (widget.ticketRef
-                                                          ?.priorityLevel ==
-                                                      'Emergency') {
-                                                    return FlutterFlowTheme.of(
-                                                            context)
-                                                        .error;
-                                                  } else {
-                                                    return FlutterFlowTheme.of(
-                                                            context)
-                                                        .accent2;
-                                                  }
-                                                }(),
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: () {
-                                                    if (widget.ticketRef
-                                                            ?.priorityLevel ==
-                                                        'High') {
-                                                      return FlutterFlowTheme
-                                                              .of(context)
-                                                          .error;
-                                                    } else if (widget.ticketRef
-                                                            ?.priorityLevel ==
-                                                        'Medium') {
-                                                      return FlutterFlowTheme
-                                                              .of(context)
-                                                          .tertiary;
-                                                    } else if (widget.ticketRef
-                                                            ?.priorityLevel ==
-                                                        'Emergency') {
-                                                      return FlutterFlowTheme
-                                                              .of(context)
-                                                          .error;
-                                                    } else {
-                                                      return FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondary;
-                                                    }
-                                                  }(),
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                widget.ticketRef?.priorityLevel,
-                                                '--',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 4.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Below are the details of this support ticket.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    constraints: BoxConstraints(
-                                      maxWidth: 1170.0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 3.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(0.0, 1.0),
-                                        )
+                                        ),
                                       ],
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .accent1,
-                                      ),
                                     ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, -1.0),
                                     child: Padding(
                                       padding: EdgeInsets.all(16.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              widget.ticketRef?.name,
-                                              'Ticket Name',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium,
+                                      child: Container(
+                                        width: double.infinity,
+                                        constraints: BoxConstraints(
+                                          maxWidth: 1170.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 3.0,
+                                              color: Color(0x33000000),
+                                              offset: Offset(0.0, 1.0),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .accent1,
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Description',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                        ),
+                                        child: Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                valueOrDefault<String>(
+                                                  widget.ticketRef?.name,
+                                                  'Ticket Name',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 12.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Description',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .labelMedium
                                                       .override(
                                                         fontFamily:
@@ -437,300 +483,295 @@ class _SupportTicketDetailsWidgetState
                                                                         context)
                                                                     .labelMediumFamily),
                                                       ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              valueOrDefault<String>(
-                                                widget.ticketRef?.description,
-                                                'Long description goes here...',
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge,
-                                            ),
-                                          ),
-                                          if (widget.ticketRef?.image != null &&
-                                              widget.ticketRef?.image != '')
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 12.0, 0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await Navigator.push(
-                                                    context,
-                                                    PageTransition(
-                                                      type: PageTransitionType
-                                                          .fade,
-                                                      child:
-                                                          FlutterFlowExpandedImageView(
-                                                        image: Image.network(
-                                                          widget
-                                                              .ticketRef!.image,
-                                                          fit: BoxFit.contain,
-                                                        ),
-                                                        allowRotation: false,
-                                                        tag: widget
-                                                            .ticketRef!.image,
-                                                        useHeroAnimation: true,
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                                child: Hero(
-                                                  tag: widget.ticketRef!.image,
-                                                  transitionOnUserGestures:
-                                                      true,
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.network(
-                                                      widget.ticketRef!.image,
-                                                      width: double.infinity,
-                                                      height: 200.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 16.0, 0.0, 16.0),
-                                            child: Divider(
-                                              height: 2.0,
-                                              thickness: 2.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent1,
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                'Submitted on',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
-                                              ),
-                                              Text(
-                                                valueOrDefault<String>(
-                                                  dateTimeFormat(
-                                                      'MMMEd',
-                                                      widget.ticketRef
-                                                          ?.createdTime),
-                                                  '--',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  'Last Edited',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium,
-                                                ),
-                                                Text(
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 4.0, 0.0, 0.0),
+                                                child: Text(
                                                   valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                        'relative',
-                                                        widget.ticketRef
-                                                            ?.lastActive),
-                                                    '--',
+                                                    widget
+                                                        .ticketRef?.description,
+                                                    'Long description goes here...',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyLarge,
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-
-                                          // Create this as a component if you want to use it best.
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
+                                              ),
+                                              if (widget.ticketRef?.image !=
+                                                      null &&
+                                                  widget.ticketRef?.image != '')
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 0.0, 12.0),
-                                                  child: Text(
-                                                    'Status',
+                                                          0.0, 12.0, 0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await Navigator.push(
+                                                        context,
+                                                        PageTransition(
+                                                          type:
+                                                              PageTransitionType
+                                                                  .fade,
+                                                          child:
+                                                              FlutterFlowExpandedImageView(
+                                                            image:
+                                                                Image.network(
+                                                              widget.ticketRef!
+                                                                  .image,
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
+                                                            allowRotation:
+                                                                false,
+                                                            tag: widget
+                                                                .ticketRef!
+                                                                .image,
+                                                            useHeroAnimation:
+                                                                true,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                    child: Hero(
+                                                      tag: widget
+                                                          .ticketRef!.image,
+                                                      transitionOnUserGestures:
+                                                          true,
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.network(
+                                                          widget
+                                                              .ticketRef!.image,
+                                                          width:
+                                                              double.infinity,
+                                                          height: 200.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 16.0, 0.0, 16.0),
+                                                child: Divider(
+                                                  height: 2.0,
+                                                  thickness: 2.0,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .accent1,
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    'Submitted on',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium,
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 8.0),
-                                                  child: FlutterFlowDropDown<
-                                                      String>(
-                                                    controller: _model
-                                                            .dropDownValueController ??=
-                                                        FormFieldController<
-                                                            String>(
-                                                      _model.dropDownValue ??=
-                                                          valueOrDefault<
-                                                              String>(
-                                                        widget
-                                                            .ticketRef?.status,
-                                                        '--',
-                                                      ),
+                                                  Text(
+                                                    valueOrDefault<String>(
+                                                      dateTimeFormat(
+                                                          'MMMEd',
+                                                          widget.ticketRef
+                                                              ?.createdTime),
+                                                      '--',
                                                     ),
-                                                    options: [
-                                                      'Pending',
-                                                      'In Progress',
-                                                      'Complete',
-                                                      'Submitted'
-                                                    ],
-                                                    onChanged: (val) =>
-                                                        setState(() => _model
-                                                                .dropDownValue =
-                                                            val),
-                                                    width: double.infinity,
-                                                    height: 50.0,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium,
-                                                    hintText:
-                                                        'Please select...',
-                                                    icon: Icon(
-                                                      Icons
-                                                          .keyboard_arrow_down_rounded,
-                                                      color:
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 12.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      'Last Edited',
+                                                      style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      size: 24.0,
-                                                    ),
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
-                                                    elevation: 2.0,
-                                                    borderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent1,
-                                                    borderWidth: 2.0,
-                                                    borderRadius: 8.0,
-                                                    margin:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 4.0,
-                                                                16.0, 4.0),
-                                                    hidesUnderline: true,
-                                                    isSearchable: false,
-                                                    isMultiSelect: false,
-                                                  ),
-                                                ),
-                                                if ((widget.ticketRef
-                                                            ?.assignee !=
-                                                        null) ||
-                                                    (_model.selectedUser
-                                                            ?.reference !=
-                                                        null))
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0),
-                                                        child: Text(
-                                                          'Assigned to',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
                                                               .labelMedium,
-                                                        ),
+                                                    ),
+                                                    Text(
+                                                      valueOrDefault<String>(
+                                                        dateTimeFormat(
+                                                            'relative',
+                                                            widget.ticketRef
+                                                                ?.lastActive),
+                                                        '--',
                                                       ),
-                                                      Padding(
-                                                        padding:
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+
+                                              // Create this as a component if you want to use it best.
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 12.0, 0.0, 0.0),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  12.0),
+                                                      child: Text(
+                                                        'Status',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  8.0),
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              String>(
+                                                        controller: _model
+                                                                .dropDownValueController ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.dropDownValue ??=
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            widget.ticketRef
+                                                                ?.status,
+                                                            '--',
+                                                          ),
+                                                        ),
+                                                        options: [
+                                                          'Pending',
+                                                          'In Progress',
+                                                          'Complete',
+                                                          'Submitted'
+                                                        ],
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .dropDownValue =
+                                                                val),
+                                                        width: double.infinity,
+                                                        height: 50.0,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                        hintText:
+                                                            'Please select...',
+                                                        icon: Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          size: 24.0,
+                                                        ),
+                                                        fillColor: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        elevation: 2.0,
+                                                        borderColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        borderWidth: 2.0,
+                                                        borderRadius: 8.0,
+                                                        margin:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0),
-                                                        child: FutureBuilder<
-                                                            UsersRecord>(
-                                                          future: UsersRecord.getDocumentOnce(_model
-                                                                      .selectedUser
-                                                                      ?.reference !=
-                                                                  null
-                                                              ? _model
-                                                                  .selectedUser!
-                                                                  .reference
-                                                              : widget
-                                                                  .ticketRef!
-                                                                  .assignee!),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            final containerUsersRecord =
-                                                                snapshot.data!;
-                                                            return Container(
+                                                                    16.0,
+                                                                    4.0,
+                                                                    16.0,
+                                                                    4.0),
+                                                        hidesUnderline: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
+                                                      ),
+                                                    ),
+                                                    if ((widget.ticketRef
+                                                                ?.assignee !=
+                                                            null) ||
+                                                        (_model.selectedUser
+                                                                ?.reference !=
+                                                            null))
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        8.0),
+                                                            child: Text(
+                                                              'Assigned to',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        12.0),
+                                                            child: Container(
                                                               width: double
                                                                   .infinity,
                                                               decoration:
@@ -787,7 +828,7 @@ class _SupportTicketDetailsWidgetState
                                                                               BorderRadius.circular(10.0),
                                                                           child:
                                                                               Image.network(
-                                                                            containerUsersRecord.photoUrl,
+                                                                            supportTicketDetailsUsersRecord.photoUrl,
                                                                             width:
                                                                                 44.0,
                                                                             height:
@@ -814,7 +855,7 @@ class _SupportTicketDetailsWidgetState
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Text(
-                                                                            containerUsersRecord.displayName,
+                                                                            supportTicketDetailsUsersRecord.displayName,
                                                                             style:
                                                                                 FlutterFlowTheme.of(context).bodyLarge,
                                                                           ),
@@ -826,7 +867,7 @@ class _SupportTicketDetailsWidgetState
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              containerUsersRecord.email,
+                                                                              supportTicketDetailsUsersRecord.email,
                                                                               style: FlutterFlowTheme.of(context).labelSmall.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).labelSmallFamily,
                                                                                     color: FlutterFlowTheme.of(context).tertiary,
@@ -840,56 +881,35 @@ class _SupportTicketDetailsWidgetState
                                                                   ],
                                                                 ),
                                                               ),
-                                                            );
-                                                          },
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 8.0),
-                                                  child: Text(
-                                                    'Submitted By',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .labelMedium,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 12.0),
-                                                  child: FutureBuilder<
-                                                      UsersRecord>(
-                                                    future: UsersRecord
-                                                        .getDocumentOnce(widget
-                                                            .ticketRef!.owner!),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      // Customize what your widget looks like when it's loading.
-                                                      if (!snapshot.hasData) {
-                                                        return Center(
-                                                          child: SizedBox(
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            child:
-                                                                CircularProgressIndicator(
-                                                              valueColor:
-                                                                  AlwaysStoppedAnimation<
-                                                                      Color>(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                              ),
                                                             ),
                                                           ),
-                                                        );
-                                                      }
-                                                      final containerUsersRecord =
-                                                          snapshot.data!;
-                                                      return Container(
+                                                        ],
+                                                      ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  8.0),
+                                                      child: Text(
+                                                        'Submitted By',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium,
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  12.0),
+                                                      child: Container(
                                                         width: double.infinity,
                                                         decoration:
                                                             BoxDecoration(
@@ -947,7 +967,7 @@ class _SupportTicketDetailsWidgetState
                                                                             10.0),
                                                                     child: Image
                                                                         .network(
-                                                                      containerUsersRecord
+                                                                      supportTicketDetailsUsersRecord
                                                                           .photoUrl,
                                                                       width:
                                                                           44.0,
@@ -979,7 +999,7 @@ class _SupportTicketDetailsWidgetState
                                                                           .start,
                                                                   children: [
                                                                     Text(
-                                                                      containerUsersRecord
+                                                                      supportTicketDetailsUsersRecord
                                                                           .displayName,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -993,7 +1013,7 @@ class _SupportTicketDetailsWidgetState
                                                                           0.0),
                                                                       child:
                                                                           Text(
-                                                                        containerUsersRecord
+                                                                        supportTicketDetailsUsersRecord
                                                                             .email,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .labelSmall
@@ -1010,227 +1030,221 @@ class _SupportTicketDetailsWidgetState
                                                             ],
                                                           ),
                                                         ),
-                                                      );
-                                                    },
-                                                  ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent4,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return GestureDetector(
-                                                                  onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
-                                                                          .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: MediaQuery
-                                                                        .viewInsetsOf(
-                                                                            context),
-                                                                    child:
-                                                                        UserListWidget(),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(() =>
-                                                                    _model.selectedUser =
-                                                                        value));
-
-                                                            if (_model
-                                                                        .selectedUser
-                                                                        ?.reference
-                                                                        .id !=
-                                                                    null &&
-                                                                _model
-                                                                        .selectedUser
-                                                                        ?.reference
-                                                                        .id !=
-                                                                    '') {
-                                                              await widget
-                                                                  .ticketRef!
-                                                                  .reference
-                                                                  .update(
-                                                                      createSupportTicketsRecordData(
-                                                                assignee: _model
-                                                                    .selectedUser
-                                                                    ?.reference,
-                                                              ));
-                                                              ScaffoldMessenger
-                                                                      .of(context)
-                                                                  .showSnackBar(
-                                                                SnackBar(
-                                                                  content: Text(
-                                                                    'You have successfully assigned a user!',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).info,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                        ),
-                                                                  ),
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          4000),
+                                                      ),
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Expanded(
+                                                          child: Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        12.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                await showModalBottomSheet(
+                                                                  isScrollControlled:
+                                                                      true,
                                                                   backgroundColor:
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondary,
-                                                                ),
-                                                              );
-                                                            }
+                                                                          .accent4,
+                                                                  enableDrag:
+                                                                      false,
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (context) {
+                                                                    return GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding:
+                                                                            MediaQuery.viewInsetsOf(context),
+                                                                        child:
+                                                                            UserListWidget(),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    safeSetState(() =>
+                                                                        _model.selectedUser =
+                                                                            value));
 
-                                                            setState(() {});
-                                                          },
-                                                          text: 'Assign',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            height: 48.0,
-                                                            padding:
-                                                                EdgeInsetsDirectional
+                                                                if (_model
+                                                                            .selectedUser
+                                                                            ?.reference
+                                                                            .id !=
+                                                                        null &&
+                                                                    _model
+                                                                            .selectedUser
+                                                                            ?.reference
+                                                                            .id !=
+                                                                        '') {
+                                                                  await widget
+                                                                      .ticketRef!
+                                                                      .reference
+                                                                      .update(
+                                                                          createSupportTicketsRecordData(
+                                                                    assignee: _model
+                                                                        .selectedUser
+                                                                        ?.reference,
+                                                                  ));
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'You have successfully assigned a user!',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .override(
+                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                              color: FlutterFlowTheme.of(context).info,
+                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                            ),
+                                                                      ),
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              4000),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondary,
+                                                                    ),
+                                                                  );
+                                                                }
+
+                                                                setState(() {});
+                                                              },
+                                                              text: 'Assign',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                height: 48.0,
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         0.0,
                                                                         16.0,
                                                                         0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                                iconPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyLarge,
-                                                            elevation: 0.0,
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .accent1,
-                                                              width: 2.0,
+                                                                elevation: 0.0,
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                                  width: 2.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                              ),
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            await widget
-                                                                .ticketRef!
-                                                                .reference
-                                                                .update(
-                                                                    createSupportTicketsRecordData(
-                                                              status: _model
-                                                                  .dropDownValue,
-                                                              lastActive:
-                                                                  getCurrentTimestamp,
-                                                            ));
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'You have successfully updated the ticket!',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                      ),
-                                                                ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        4000),
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                              ),
-                                                            );
-                                                          },
-                                                          text: 'Update Ticket',
-                                                          options:
-                                                              FFButtonOptions(
-                                                            height: 48.0,
+                                                        Expanded(
+                                                          child: Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        16.0,
                                                                         0.0,
-                                                                        16.0,
+                                                                        12.0,
+                                                                        0.0,
                                                                         0.0),
-                                                            iconPadding:
-                                                                EdgeInsetsDirectional
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                await widget
+                                                                    .ticketRef!
+                                                                    .reference
+                                                                    .update(
+                                                                        createSupportTicketsRecordData(
+                                                                  status: _model
+                                                                      .dropDownValue,
+                                                                  lastActive:
+                                                                      getCurrentTimestamp,
+                                                                ));
+                                                                ScaffoldMessenger.of(
+                                                                        context)
+                                                                    .showSnackBar(
+                                                                  SnackBar(
+                                                                    content:
+                                                                        Text(
+                                                                      'You have successfully updated the ticket!',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).titleSmallFamily,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).info,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                          ),
+                                                                    ),
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            4000),
+                                                                    backgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                  ),
+                                                                );
+                                                              },
+                                                              text:
+                                                                  'Update Ticket',
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                height: 48.0,
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
+                                                                        16.0,
                                                                         0.0,
-                                                                        0.0,
-                                                                        0.0,
+                                                                        16.0,
                                                                         0.0),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .tertiary,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
+                                                                iconPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                textStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .override(
@@ -1245,39 +1259,41 @@ class _SupportTicketDetailsWidgetState
                                                                           .containsKey(
                                                                               FlutterFlowTheme.of(context).titleSmallFamily),
                                                                     ),
-                                                            elevation: 3.0,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
+                                                                elevation: 3.0,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            12.0),
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
+                                                      ].divide(SizedBox(
+                                                          width: 16.0)),
                                                     ),
-                                                  ].divide(
-                                                      SizedBox(width: 16.0)),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

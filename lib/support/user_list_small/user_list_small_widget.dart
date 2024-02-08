@@ -71,7 +71,8 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                 height: 40.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).accent1,
-                  borderRadius: BorderRadius.circular(12.0),
+                  borderRadius: BorderRadius.circular(10.0),
+                  shape: BoxShape.rectangle,
                   border: Border.all(
                     color: FlutterFlowTheme.of(context).primary,
                     width: 2.0,
