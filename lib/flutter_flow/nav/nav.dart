@@ -79,13 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -100,12 +100,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'homePage',
               path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'homePage')
-                  : HomePageWidget(
-                      school: params.getParam('school',
-                          ParamType.DocumentReference, false, ['schools']),
-                    ),
+              builder: (context, params) => HomePageWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
             ),
             FFRoute(
               name: 'forgotPassword',
@@ -115,16 +113,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'schools',
               path: 'schools',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'schools')
-                  : SchoolsWidget(),
+              builder: (context, params) => SchoolsWidget(),
             ),
             FFRoute(
               name: 'profilePage',
               path: 'profilePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'profilePage')
-                  : ProfilePageWidget(),
+              builder: (context, params) => ProfilePageWidget(),
             ),
             FFRoute(
               name: 'support_TicketList',

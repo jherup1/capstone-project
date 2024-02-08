@@ -71,8 +71,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 30.0, 10.0, 32.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 32.0),
                   child: Container(
                     width: double.infinity,
                     constraints: BoxConstraints(
@@ -80,7 +79,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                     ),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.circular(0.0),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -310,13 +308,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                 child: Container(
                                   width: 150.0,
                                   decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: [
                                       BoxShadow(
                                         blurRadius: 0.0,
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                            .primary600,
                                         offset: Offset(0.0, 3.0),
                                       )
                                     ],
