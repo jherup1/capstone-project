@@ -72,7 +72,7 @@ class _SupportTicketDetailsWidgetState
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
@@ -104,11 +104,20 @@ class _SupportTicketDetailsWidgetState
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: double.infinity,
+                    height: MediaQuery.sizeOf(context).height * 0.8,
                     constraints: BoxConstraints(
                       maxWidth: 770.0,
                     ),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 4.0,
+                          color: Color(0x33000000),
+                          offset: Offset(0.0, 2.0),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: Align(
                       alignment: AlignmentDirectional(0.0, 0.0),
@@ -989,70 +998,6 @@ class _SupportTicketDetailsWidgetState
                                                       ),
                                                     );
                                                   },
-                                                ),
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent3,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiary,
-                                                    width: 2.0,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(12.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                        'Developer Note (delete this)',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLargeFamily,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyLargeFamily),
-                                                                ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'You will have to change the reference above to link to your \"users\" collection if you don\'t already have it, you can utilize the collection added with this flow.',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelSmall,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
                                                 ),
                                               ),
                                               Row(

@@ -61,7 +61,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
@@ -92,8 +92,8 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                 child: Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
-                    width: MediaQuery.sizeOf(context).width * 0.9,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    width: MediaQuery.sizeOf(context).width * 0.8,
+                    height: MediaQuery.sizeOf(context).height * 0.9,
                     decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
