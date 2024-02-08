@@ -11,19 +11,20 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'support_model.dart';
-export 'support_model.dart';
+import 'support_deprecated_model.dart';
+export 'support_deprecated_model.dart';
 
-class SupportWidget extends StatefulWidget {
-  const SupportWidget({super.key});
+class SupportDeprecatedWidget extends StatefulWidget {
+  const SupportDeprecatedWidget({super.key});
 
   @override
-  State<SupportWidget> createState() => _SupportWidgetState();
+  State<SupportDeprecatedWidget> createState() =>
+      _SupportDeprecatedWidgetState();
 }
 
-class _SupportWidgetState extends State<SupportWidget>
+class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
     with TickerProviderStateMixin {
-  late SupportModel _model;
+  late SupportDeprecatedModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -90,7 +91,7 @@ class _SupportWidgetState extends State<SupportWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SupportModel());
+    _model = createModel(context, () => SupportDeprecatedModel());
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();

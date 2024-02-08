@@ -72,34 +72,6 @@ class _SupportTicketDetailsWidgetState
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: responsiveVisibility(
-          context: context,
-          tabletLandscape: false,
-          desktop: false,
-        )
-            ? AppBar(
-                backgroundColor:
-                    FlutterFlowTheme.of(context).secondaryBackground,
-                automaticallyImplyLeading: false,
-                leading: FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 30.0,
-                  borderWidth: 1.0,
-                  buttonSize: 60.0,
-                  icon: Icon(
-                    Icons.arrow_back_rounded,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 30.0,
-                  ),
-                  onPressed: () async {
-                    context.pop();
-                  },
-                ),
-                actions: [],
-                centerTitle: false,
-                elevation: 0.0,
-              )
-            : null,
         body: SafeArea(
           top: true,
           child: Align(
