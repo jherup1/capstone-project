@@ -12,5 +12,5 @@ export '/support/support_submit_ticket/support_submit_ticket_widget.dart'
     show SupportSubmitTicketWidget;
 export '/support/support_ticket_details/support_ticket_details_widget.dart'
     show SupportTicketDetailsWidget;
-export '/pages/support_deprecated/support_deprecated_widget.dart'
+export '/deprecated/support_deprecated/support_deprecated_widget.dart'
     show SupportDeprecatedWidget;

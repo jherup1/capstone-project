@@ -97,6 +97,17 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        drawer: Container(
+          width: MediaQuery.sizeOf(context).width * 0.5,
+          child: Drawer(
+            elevation: 16.0,
+            child: wrapWithModel(
+              model: _model.sideBarNavModel2,
+              updateCallback: () => setState(() {}),
+              child: SideBarNavWidget(),
+            ),
+          ),
+        ),
         body: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -107,7 +118,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
               tablet: false,
             ))
               wrapWithModel(
-                model: _model.sideBarNavModel,
+                model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
                 child: SideBarNavWidget(),
               ),
@@ -758,6 +769,44 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('supportDeprecated');
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 0.0, 8.0),
+                            child: Text(
+                              'Contact Support',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .titleSmallFamily,
+                                    color:
+                                        FlutterFlowTheme.of(context).tertiary,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .titleSmallFamily),
+                                  ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

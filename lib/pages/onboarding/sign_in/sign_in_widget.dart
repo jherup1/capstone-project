@@ -355,13 +355,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 child: Container(
                                   width: 150.0,
                                   decoration: BoxDecoration(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
+                                    color: FlutterFlowTheme.of(context).primary,
                                     boxShadow: [
                                       BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x33000000),
-                                        offset: Offset(0.0, 2.0),
+                                        blurRadius: 0.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary600,
+                                        offset: Offset(0.0, 3.0),
                                       )
                                     ],
                                     borderRadius: BorderRadius.circular(50.0),

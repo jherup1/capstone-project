@@ -28,7 +28,7 @@ class SupportSubmitTicketModel
 
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel;
+  late SideBarNavModel sideBarNavModel1;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -49,17 +49,20 @@ class SupportSubmitTicketModel
   UsersRecord? userRefSelected;
   // Model for user_ListSmall component.
   late UserListSmallModel userListSmallModel;
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel2;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    sideBarNavModel = createModel(context, () => SideBarNavModel());
+    sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     userListSmallModel = createModel(context, () => UserListSmallModel());
+    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    sideBarNavModel.dispose();
+    sideBarNavModel1.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 
@@ -67,6 +70,7 @@ class SupportSubmitTicketModel
     textController2?.dispose();
 
     userListSmallModel.dispose();
+    sideBarNavModel2.dispose();
   }
 
   /// Action blocks are added here.

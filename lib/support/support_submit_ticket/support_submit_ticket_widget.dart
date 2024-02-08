@@ -317,6 +317,17 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        drawer: Container(
+          width: MediaQuery.sizeOf(context).width * 0.5,
+          child: Drawer(
+            elevation: 16.0,
+            child: wrapWithModel(
+              model: _model.sideBarNavModel2,
+              updateCallback: () => setState(() {}),
+              child: SideBarNavWidget(),
+            ),
+          ),
+        ),
         body: SafeArea(
           top: true,
           child: Align(
@@ -324,11 +335,16 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                wrapWithModel(
-                  model: _model.sideBarNavModel,
-                  updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
-                ),
+                if (responsiveVisibility(
+                  context: context,
+                  phone: false,
+                  tablet: false,
+                ))
+                  wrapWithModel(
+                    model: _model.sideBarNavModel1,
+                    updateCallback: () => setState(() {}),
+                    child: SideBarNavWidget(),
+                  ),
                 Flexible(
                   child: Align(
                     alignment: AlignmentDirectional(0.0, 0.0),

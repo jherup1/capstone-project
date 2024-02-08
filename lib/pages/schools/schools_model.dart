@@ -18,17 +18,21 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
 
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel;
+  late SideBarNavModel sideBarNavModel1;
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel2;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    sideBarNavModel = createModel(context, () => SideBarNavModel());
+    sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
-    sideBarNavModel.dispose();
+    sideBarNavModel1.dispose();
+    sideBarNavModel2.dispose();
   }
 
   /// Action blocks are added here.
