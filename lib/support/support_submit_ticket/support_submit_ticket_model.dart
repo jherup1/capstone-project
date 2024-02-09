@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/user_list/user_list_widget.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
@@ -29,6 +30,8 @@ class SupportSubmitTicketModel
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for BreadcrumbsHeader component.
+  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
@@ -38,10 +41,8 @@ class SupportSubmitTicketModel
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for ChoiceChips widget.
+  String? choiceChipsValue;
   FormFieldController<List<String>>? choiceChipsValueController;
-  String? get choiceChipsValue => choiceChipsValueController?.value?.first;
-  set choiceChipsValue(String? val) =>
-      choiceChipsValueController?.value = val != null ? [val] : [];
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -58,6 +59,8 @@ class SupportSubmitTicketModel
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    breadcrumbsHeaderModel =
+        createModel(context, () => BreadcrumbsHeaderModel());
     userListSmallModel = createModel(context, () => UserListSmallModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
@@ -65,6 +68,7 @@ class SupportSubmitTicketModel
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
+    breadcrumbsHeaderModel.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();
 

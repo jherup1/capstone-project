@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'schools_widget.dart' show SchoolsWidget;
 import 'package:flutter/material.dart';
@@ -19,6 +20,8 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for BreadcrumbsHeader component.
+  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
@@ -26,12 +29,15 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    breadcrumbsHeaderModel =
+        createModel(context, () => BreadcrumbsHeaderModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
+    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
   }
 

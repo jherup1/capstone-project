@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'profile_page_widget.dart' show ProfilePageWidget;
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for BreadcrumbsHeader component.
+  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
@@ -24,12 +27,15 @@ class ProfilePageModel extends FlutterFlowModel<ProfilePageWidget> {
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    breadcrumbsHeaderModel =
+        createModel(context, () => BreadcrumbsHeaderModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
+    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
   }
 
