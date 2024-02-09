@@ -78,113 +78,114 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       );
     }
 
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        resizeToAvoidBottomInset: false,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
-          width: MediaQuery.sizeOf(context).width * 0.5,
-          child: Drawer(
-            elevation: 16.0,
-            child: wrapWithModel(
-              model: _model.sideBarNavModel2,
-              updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+    return StreamBuilder<List<SchoolsRecord>>(
+      stream: querySchoolsRecord(),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            body: Center(
+              child: SizedBox(
+                width: 50.0,
+                height: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).tertiary,
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-              ))
-                wrapWithModel(
-                  model: _model.sideBarNavModel1,
+          );
+        }
+        List<SchoolsRecord> homePageSchoolsRecordList = snapshot.data!;
+        return GestureDetector(
+          onTap: () => _model.unfocusNode.canRequestFocus
+              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+              : FocusScope.of(context).unfocus(),
+          child: Scaffold(
+            key: scaffoldKey,
+            resizeToAvoidBottomInset: false,
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            drawer: Container(
+              width: MediaQuery.sizeOf(context).width * 0.5,
+              child: Drawer(
+                elevation: 16.0,
+                child: wrapWithModel(
+                  model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
                   child: SideBarNavWidget(),
                 ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      wrapWithModel(
-                        model: _model.breadcrumbsHeaderModel,
-                        updateCallback: () => setState(() {}),
-                        child: BreadcrumbsHeaderWidget(),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 0.0, 16.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Dashboard',
-                              style: FlutterFlowTheme.of(context).headlineSmall,
+              ),
+            ),
+            body: SafeArea(
+              top: true,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (responsiveVisibility(
+                    context: context,
+                    phone: false,
+                    tablet: false,
+                  ))
+                    wrapWithModel(
+                      model: _model.sideBarNavModel1,
+                      updateCallback: () => setState(() {}),
+                      child: SideBarNavWidget(),
+                    ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          wrapWithModel(
+                            model: _model.breadcrumbsHeaderModel,
+                            updateCallback: () => setState(() {}),
+                            child: BreadcrumbsHeaderWidget(),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 16.0, 0.0, 16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Dashboard',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineSmall,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 4.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Nearby Universities',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodySmall,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 4.0, 0.0, 0.0),
-                              child: Text(
-                                'Nearby Universities',
-                                style: FlutterFlowTheme.of(context).bodySmall,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 0.0),
-                        child: Wrap(
-                          spacing: 8.0,
-                          runSpacing: 8.0,
-                          alignment: WrapAlignment.start,
-                          crossAxisAlignment: WrapCrossAlignment.start,
-                          direction: Axis.horizontal,
-                          runAlignment: WrapAlignment.start,
-                          verticalDirection: VerticalDirection.down,
-                          clipBehavior: Clip.none,
-                          children: [
-                            FutureBuilder<List<SchoolsRecord>>(
-                              future: querySchoolsRecordOnce(
-                                limit: 100,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).tertiary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<SchoolsRecord> containerSchoolsRecordList =
-                                    snapshot.data!;
-                                return ClipRRect(
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                12.0, 0.0, 12.0, 0.0),
+                            child: Wrap(
+                              spacing: 8.0,
+                              runSpacing: 8.0,
+                              alignment: WrapAlignment.start,
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              direction: Axis.horizontal,
+                              runAlignment: WrapAlignment.start,
+                              verticalDirection: VerticalDirection.down,
+                              clipBehavior: Clip.none,
+                              children: [
+                                ClipRRect(
                                   borderRadius: BorderRadius.circular(12.0),
                                   child: Container(
                                     height: MediaQuery.sizeOf(context).height *
@@ -203,14 +204,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       initialLocation:
                                           _model.googleMapsCenter ??=
                                               currentUserLocationValue!,
-                                      markers: containerSchoolsRecordList
+                                      markers: homePageSchoolsRecordList
                                           .map(
-                                            (containerSchoolsRecord) =>
+                                            (homePageSchoolsRecord) =>
                                                 FlutterFlowMarker(
-                                              containerSchoolsRecord
+                                              homePageSchoolsRecord
                                                   .reference.path,
-                                              containerSchoolsRecord
-                                                  .myGeopoint!,
+                                              homePageSchoolsRecord.myGeopoint!,
                                               () async {
                                                 await showModalBottomSheet(
                                                   isScrollControlled: true,
@@ -237,8 +237,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         child:
                                                             SchoolInformationBottomWidget(
                                                           name:
-                                                              containerSchoolsRecord
-                                                                  .reference,
+                                                              homePageSchoolsRecord
+                                                                  .name,
                                                         ),
                                                       ),
                                                     );
@@ -263,20 +263,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       centerMapOnMarkerTap: true,
                                     ),
                                   ),
-                                );
-                              },
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
