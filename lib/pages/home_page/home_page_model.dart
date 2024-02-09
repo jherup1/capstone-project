@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/school_information_bottom/school_information_bottom_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'home_page_widget.dart' show HomePageWidget;
@@ -18,6 +19,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for BreadcrumbsHeader component.
+  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
@@ -28,12 +31,15 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    breadcrumbsHeaderModel =
+        createModel(context, () => BreadcrumbsHeaderModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
+    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
   }
 

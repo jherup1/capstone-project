@@ -2,11 +2,11 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/user_list/user_list_widget.dart';
 import 'support_ticket_details_widget.dart' show SupportTicketDetailsWidget;
@@ -25,6 +25,8 @@ class SupportTicketDetailsModel
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for BreadcrumbsHeader component.
+  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -37,12 +39,15 @@ class SupportTicketDetailsModel
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    breadcrumbsHeaderModel =
+        createModel(context, () => BreadcrumbsHeaderModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
+    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
   }
 

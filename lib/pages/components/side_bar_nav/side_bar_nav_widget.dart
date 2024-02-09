@@ -52,19 +52,6 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 3.0,
-                color: Color(0x33000000),
-                offset: Offset(0.0, 1.0),
-              )
-            ],
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(0.0),
-              bottomRight: Radius.circular(12.0),
-              topLeft: Radius.circular(0.0),
-              topRight: Radius.circular(12.0),
-            ),
           ),
           child: Padding(
             padding: EdgeInsets.all(16.0),
