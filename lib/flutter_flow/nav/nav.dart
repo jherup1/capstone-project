@@ -79,13 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SignInWidget(),
+              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -100,14 +100,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'homePage',
               path: 'homePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'homePage')
-                  : HomePageWidget(
-                      location: params.getParam('location',
-                          ParamType.DocumentReference, false, ['locations']),
-                      school: params.getParam('school',
-                          ParamType.DocumentReference, false, ['schools']),
-                    ),
+              builder: (context, params) => HomePageWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
             ),
             FFRoute(
               name: 'forgotPassword',
@@ -117,21 +113,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'schools',
               path: 'schools',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'schools')
-                  : SchoolsWidget(),
-            ),
-            FFRoute(
-              name: 'supportPage',
-              path: 'supportPage',
-              builder: (context, params) => SupportPageWidget(),
+              builder: (context, params) => SchoolsWidget(),
             ),
             FFRoute(
               name: 'profilePage',
               path: 'profilePage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'profilePage')
-                  : ProfilePageWidget(),
+              builder: (context, params) => ProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'support_TicketList',
+              path: 'supportTicketList',
+              builder: (context, params) => SupportTicketListWidget(),
+            ),
+            FFRoute(
+              name: 'support_SubmitTicket',
+              path: 'supportSubmitTicket',
+              builder: (context, params) => SupportSubmitTicketWidget(),
+            ),
+            FFRoute(
+              name: 'support_TicketDetails',
+              path: 'supportTicketDetails',
+              asyncParams: {
+                'ticketRef': getDoc(
+                    ['supportTickets'], SupportTicketsRecord.fromSnapshot),
+              },
+              builder: (context, params) => SupportTicketDetailsWidget(
+                ticketRef: params.getParam('ticketRef', ParamType.Document),
+              ),
+            ),
+            FFRoute(
+              name: 'supportDeprecated',
+              path: 'supportDeprecated',
+              builder: (context, params) => SupportDeprecatedWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -314,9 +327,9 @@ class FFRoute {
               : builder(context, ffParams);
           final child = appStateNotifier.loading
               ? Container(
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/ezgif-1-60d7f38f99.jpg',
+                    'assets/images/file-F16TsDmmcQ2FLEFRO03pYzWB.jpg',
                     fit: BoxFit.contain,
                   ),
                 )
