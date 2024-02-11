@@ -79,7 +79,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     }
 
     return StreamBuilder<List<SchoolsRecord>>(
-      stream: querySchoolsRecord(),
+      stream: querySchoolsRecord(
+        queryBuilder: (schoolsRecord) => schoolsRecord.where(
+          'myGeopoint',
+          isLessThanOrEqualTo: _model.googleMapsCenter?.toGeoPoint(),
+        ),
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -237,8 +242,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         child:
                                                             SchoolInformationBottomWidget(
                                                           name:
-                                                              homePageSchoolsRecord
-                                                                  .name,
+                                                              homePageSchoolsRecord,
                                                         ),
                                                       ),
                                                     );
@@ -252,7 +256,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       markerColor: GoogleMarkerColor.violet,
                                       mapType: MapType.normal,
                                       style: GoogleMapStyle.standard,
-                                      initialZoom: 7.0,
+                                      initialZoom: 9.0,
                                       allowInteraction: true,
                                       allowZoom: true,
                                       showZoomControls: true,
