@@ -113,6 +113,7 @@ dependencies:
 
 dependency_overrides:
   intl: ^0.18.1
+  collection: ^1.18.0
 
 dev_dependencies:
   flutter_launcher_icons: 0.13.1
