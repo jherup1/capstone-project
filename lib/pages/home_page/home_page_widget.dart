@@ -40,6 +40,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
         .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+
+    //Initialize visibleRegionBounds with a default value
+    _model.visibleRegionBounds = LatLngBounds(
+      southwest: LatLng(0.0, 0.0),
+      northeast: LatLng(0.0, 0.0),
+    );
   }
 
   @override
@@ -79,7 +85,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     }
 
     return StreamBuilder<List<SchoolsRecord>>(
-      stream: querySchoolsRecord(),
+      stream: FirebaseFirestore.instance
+        .collection('schools')
+        .where('myGeopoint', isGreaterThanOrEqualTo: _model.visibleRegionBounds!.southwest.toJson())
+        .where('myGeopoint', isLessThanOrEqualTo: _model.visibleRegionBounds!.northeast.toJson())
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => SchoolsRecord.fromSnapshot(doc)).toList()),
+
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -199,8 +211,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     child: FlutterFlowGoogleMap(
                                       controller: _model.googleMapsController,
-                                      onCameraIdle: (latLng) =>
-                                          _model.googleMapsCenter = latLng,
+                                      onCameraIdle: (latLng) {
+                                          _model.googleMapsCenter = latLng;
+                                          _model.googleMapsController.future.then((controller) async {
+                                            final LatLngBounds? bounds = await controller.getVisibleRegion();
+                                            if (bounds != null){
+                                              setState(() {
+                                                _model.visibleRegionBounds = bounds;
+                                              });
+                                            }
+                                          });
+                                      },
                                       initialLocation:
                                           _model.googleMapsCenter ??=
                                               currentUserLocationValue!,
@@ -237,8 +258,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         child:
                                                             SchoolInformationBottomWidget(
                                                           name:
-                                                              homePageSchoolsRecord
-                                                                  .name,
+                                                              homePageSchoolsRecord.name,
                                                         ),
                                                       ),
                                                     );
@@ -252,7 +272,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       markerColor: GoogleMarkerColor.violet,
                                       mapType: MapType.normal,
                                       style: GoogleMapStyle.standard,
-                                      initialZoom: 7.0,
+                                      initialZoom: 9.0,
                                       allowInteraction: true,
                                       allowZoom: true,
                                       showZoomControls: true,

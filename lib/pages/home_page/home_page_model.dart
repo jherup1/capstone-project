@@ -28,6 +28,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+  LatLngBounds? visibleRegionBounds;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
