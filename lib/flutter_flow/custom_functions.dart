@@ -12,7 +12,7 @@ import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
-String? newCustomFunction() {
+String? addSchoolToUser() {
   Future<void> addSchoolToUser(String school) async {
     try {
       final userDoc = await FirebaseFirestore.instance
@@ -63,4 +63,20 @@ bool isSupport(List<String>? roles) {
     return false;
   }
   return roles.contains("SUPPORT") || roles.contains("ADMIN");
+}
+
+int? indexMarkerIdentifier(
+  LatLng? centerMarkerCoordinate,
+  List<LatLng>? listofLocation,
+) {
+  // return index of argument 1 in argument 2
+  if (centerMarkerCoordinate == null || listofLocation == null) {
+    return null;
+  }
+  for (int i = 0; i < listofLocation.length; i++) {
+    if (centerMarkerCoordinate == listofLocation[i]) {
+      return i;
+    }
+  }
+  return null;
 }
