@@ -221,10 +221,9 @@ extension GoRouterExtensions on GoRouter {
 extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
-  Map<String, dynamic> get allParams => <String, dynamic>{}
-    ..addAll(pathParameters)
-    ..addAll(queryParameters)
-    ..addAll(extraMap);
+
+  Map<String, dynamic> get allParams =>
+      <String, dynamic>{...pathParameters, ...uri.queryParameters, ...extraMap};
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -312,7 +311,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/signIn';
           }
           return null;
