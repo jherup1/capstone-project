@@ -386,7 +386,8 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location =
+        GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
