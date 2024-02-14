@@ -23,28 +23,28 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel2;
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
-  // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel2;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
         createModel(context, () => BreadcrumbsHeaderModel());
-    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
-    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
+    breadcrumbsHeaderModel.dispose();
   }
 
   /// Action blocks are added here.
