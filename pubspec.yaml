@@ -110,6 +110,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   flutter_map: ^6.1.0
+  fluster: ^1.2.0
 
 dependency_overrides:
   intl: ^0.18.1
