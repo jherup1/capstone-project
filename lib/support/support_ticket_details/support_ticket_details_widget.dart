@@ -132,7 +132,10 @@ class _SupportTicketDetailsWidgetState
                             wrapWithModel(
                               model: _model.breadcrumbsHeaderModel,
                               updateCallback: () => setState(() {}),
-                              child: BreadcrumbsHeaderWidget(),
+                              child: BreadcrumbsHeaderWidget(
+                                pageDetails:
+                                    'Details of ticket (Add more detailed description)',
+                              ),
                             ),
                             Flexible(
                               child: Align(

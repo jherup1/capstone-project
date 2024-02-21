@@ -218,7 +218,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                 model: _model.breadcrumbsHeaderModel,
                                 updateCallback: () => setState(() {}),
                                 child: BreadcrumbsHeaderWidget(
-                                  pageDetails: widget.pageDetails,
+                                  pageDetails:
+                                      'Schools (Add more detailed description)',
                                 ),
                               ),
                               Align(
@@ -548,7 +549,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                                       color: Colors.white,
                                                                                       fontSize: 18.0,
                                                                                       fontWeight: FontWeight.w500,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                     ),
                                                                               ),
                                                                             ],
@@ -846,7 +847,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                                       color: Colors.white,
                                                                                       fontSize: 18.0,
                                                                                       fontWeight: FontWeight.w500,
-                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleMediumFamily),
+                                                                                      useGoogleFonts: GoogleFonts.asMap().containsKey('Outfit'),
                                                                                     ),
                                                                               ),
                                                                             ],

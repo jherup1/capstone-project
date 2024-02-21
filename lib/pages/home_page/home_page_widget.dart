@@ -156,7 +156,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     model: _model.breadcrumbsHeaderModel,
                                     updateCallback: () => setState(() {}),
                                     child: BreadcrumbsHeaderWidget(
-                                      pageDetails: 'Nearby Universities',
+                                      pageDetails:
+                                          'Nearby Universities (Add more detailed description)',
                                     ),
                                   ),
                                   Padding(

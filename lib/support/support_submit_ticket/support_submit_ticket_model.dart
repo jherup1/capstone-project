@@ -41,8 +41,11 @@ class SupportSubmitTicketModel
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
   FormFieldController<List<String>>? choiceChipsValueController;
+  String? get choiceChipsValue =>
+      choiceChipsValueController?.value?.firstOrNull;
+  set choiceChipsValue(String? val) =>
+      choiceChipsValueController?.value = val != null ? [val] : [];
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -57,6 +60,7 @@ class SupportSubmitTicketModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
@@ -65,6 +69,7 @@ class SupportSubmitTicketModel
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();

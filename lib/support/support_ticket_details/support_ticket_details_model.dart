@@ -37,6 +37,7 @@ class SupportTicketDetailsModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
@@ -44,6 +45,7 @@ class SupportTicketDetailsModel
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
