@@ -99,7 +99,10 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                         wrapWithModel(
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
-                          child: BreadcrumbsHeaderWidget(),
+                          child: BreadcrumbsHeaderWidget(
+                            pageDetails:
+                                'List of Tickets (Add more detailed description)',
+                          ),
                         ),
                         Align(
                           alignment: AlignmentDirectional(0.0, 0.0),

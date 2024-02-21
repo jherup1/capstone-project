@@ -338,7 +338,10 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                           wrapWithModel(
                             model: _model.breadcrumbsHeaderModel,
                             updateCallback: () => setState(() {}),
-                            child: BreadcrumbsHeaderWidget(),
+                            child: BreadcrumbsHeaderWidget(
+                              pageDetails:
+                                  'Create a ticket (Add more detailed description)',
+                            ),
                           ),
                           Flexible(
                             child: Align(
@@ -748,7 +751,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                       onChanged: (val) =>
                                                           setState(() => _model
                                                                   .choiceChipsValue =
-                                                              val?.first),
+                                                              val?.firstOrNull),
                                                       selectedChipStyle:
                                                           ChipStyle(
                                                         backgroundColor:

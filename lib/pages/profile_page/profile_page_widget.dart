@@ -135,7 +135,10 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                         wrapWithModel(
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
-                          child: BreadcrumbsHeaderWidget(),
+                          child: BreadcrumbsHeaderWidget(
+                            pageDetails:
+                                'Profile Page (Add more detailed description)',
+                          ),
                         ),
                         Expanded(
                           child: Align(

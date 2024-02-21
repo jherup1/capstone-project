@@ -33,6 +33,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
@@ -40,6 +41,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
         createModel(context, () => BreadcrumbsHeaderModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();

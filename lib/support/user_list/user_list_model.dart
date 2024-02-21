@@ -18,10 +18,12 @@ class UserListModel extends FlutterFlowModel<UserListWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     userListSmallModels = FlutterFlowDynamicModels(() => UserListSmallModel());
   }
 
+  @override
   void dispose() {
     userListSmallModels.dispose();
   }
