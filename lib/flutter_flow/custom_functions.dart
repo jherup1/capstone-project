@@ -54,10 +54,6 @@ String? addSchool() {
   return null;
 }
 
-List<LatLng> drawPolygon(List<LatLng> pos) {
-  return pos;
-}
-
 bool isSupport(List<String>? roles) {
   if (roles == null) {
     return false;
