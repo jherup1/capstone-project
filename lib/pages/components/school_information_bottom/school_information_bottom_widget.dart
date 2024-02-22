@@ -172,8 +172,8 @@ class _SchoolInformationBottomWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 16.0, 0.0),
                                     child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        Navigator.pop(context);
                                       },
                                       text: 'Cancel',
                                       options: FFButtonOptions(

@@ -80,3 +80,13 @@ int? indexMarkerIdentifier(
   }
   return null;
 }
+
+String extractPageName(String url) {
+  Uri uri = Uri.parse(url);
+  List<String> pathSegments = uri.pathSegments;
+  if (pathSegments.isNotEmpty) {
+    return pathSegments.last;
+  } else {
+    return 'XXX';
+  }
+}

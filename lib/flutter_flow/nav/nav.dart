@@ -113,7 +113,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'schools',
               path: 'schools',
-              builder: (context, params) => SchoolsWidget(),
+              builder: (context, params) => SchoolsWidget(
+                pageTitle: params.getParam('pageTitle', ParamType.String),
+                pageDetails: params.getParam('pageDetails', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'profilePage',

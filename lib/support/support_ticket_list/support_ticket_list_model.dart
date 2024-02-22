@@ -27,6 +27,7 @@ class SupportTicketListModel extends FlutterFlowModel<SupportTicketListWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
@@ -34,6 +35,7 @@ class SupportTicketListModel extends FlutterFlowModel<SupportTicketListWidget> {
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();

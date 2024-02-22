@@ -33,10 +33,12 @@ class SupportDeprecatedModel extends FlutterFlowModel<SupportDeprecatedWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode1?.dispose();
