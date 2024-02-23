@@ -10,6 +10,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:psy_search/custom_code/widgets/map.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -208,79 +209,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .primaryBackground,
                                               ),
                                             ),
-                                            child: FlutterFlowGoogleMap(
-                                              controller:
-                                                  _model.googleMapsController,
-                                              onCameraIdle: (latLng) => _model
-                                                  .googleMapsCenter = latLng,
-                                              initialLocation:
-                                                  _model.googleMapsCenter ??=
-                                                      currentUserLocationValue!,
-                                              markers: homePageSchoolsRecordList
-                                                  .take(50)
-                                                  .toList()
-                                                  .map(
-                                                    (homePageSchoolsRecord) =>
-                                                        FlutterFlowMarker(
-                                                      homePageSchoolsRecord
-                                                          .reference.path,
-                                                      homePageSchoolsRecord
-                                                          .myGeopoint!,
-                                                      () async {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () => _model
-                                                                      .unfocusNode
-                                                                      .canRequestFocus
-                                                                  ? FocusScope.of(
-                                                                          context)
-                                                                      .requestFocus(
-                                                                          _model
-                                                                              .unfocusNode)
-                                                                  : FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    SchoolInformationBottomWidget(
-                                                                  name:
-                                                                      homePageSchoolsRecord,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      },
-                                                    ),
-                                                  )
-                                                  .toList(),
-                                              markerColor:
-                                                  GoogleMarkerColor.violet,
-                                              mapType: MapType.normal,
-                                              style: GoogleMapStyle.standard,
-                                              initialZoom: 9.0,
-                                              allowInteraction: true,
-                                              allowZoom: true,
-                                              showZoomControls: true,
-                                              showLocation: true,
-                                              showCompass: false,
-                                              showMapToolbar: false,
-                                              showTraffic: false,
-                                              centerMapOnMarkerTap: true,
-                                            ),
+                                            child: Map(
+                                              width: double.infinity,
+                                              height: double.infinity,
+                                              schools: homePageSchoolsRecordList,
+                                            )
                                           ),
                                         ),
                                       ],

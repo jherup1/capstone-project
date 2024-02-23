@@ -113,7 +113,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
                   child: Text(
                     valueOrDefault<String>(
                       functions.extractPageName(
-                          'psysearch://psysearch.com${GoRouter.of(context).location}'),
+                          'psysearch://psysearch.com${ModalRoute.of(context)!.settings.name}'), //GoRoute.of(context).location
                       'test',
                     ),
                     style: FlutterFlowTheme.of(context).labelLarge,
