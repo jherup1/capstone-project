@@ -209,7 +209,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                 updateCallback: () => setState(() {}),
                                 child: BreadcrumbsHeaderWidget(
                                   pageDetails:
-                                      'Schools (Add more detailed description)',
+                                      'Find a school that fits you, and add it to your favorites by clicking the star!',
+                                  pageTitle: 'Schools',
                                 ),
                               ),
                               Align(

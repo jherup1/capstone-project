@@ -90,8 +90,8 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
                           child: BreadcrumbsHeaderWidget(
-                            pageDetails:
-                                'List of Tickets (Add more detailed description)',
+                            pageDetails: 'Click on a ticket to vew details',
+                            pageTitle: 'List of Tickets',
                           ),
                         ),
                         Align(

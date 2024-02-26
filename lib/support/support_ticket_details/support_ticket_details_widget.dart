@@ -123,8 +123,8 @@ class _SupportTicketDetailsWidgetState
                               model: _model.breadcrumbsHeaderModel,
                               updateCallback: () => setState(() {}),
                               child: BreadcrumbsHeaderWidget(
-                                pageDetails:
-                                    'Details of ticket (Add more detailed description)',
+                                pageDetails: 'Details of ticket',
+                                pageTitle: 'Support Ticket',
                               ),
                             ),
                             Flexible(
