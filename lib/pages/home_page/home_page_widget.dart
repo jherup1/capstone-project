@@ -8,7 +8,6 @@ import '/pages/components/school_information_bottom/school_information_bottom_wi
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
@@ -51,15 +50,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
     if (currentUserLocationValue == null) {
       return Container(
@@ -104,182 +94,210 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           );
         }
         List<SchoolsRecord> homePageSchoolsRecordList = snapshot.data!;
-        return GestureDetector(
-          onTap: () => _model.unfocusNode.canRequestFocus
-              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-              : FocusScope.of(context).unfocus(),
-          child: Scaffold(
-            key: scaffoldKey,
-            resizeToAvoidBottomInset: false,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            drawer: Container(
-              width: MediaQuery.sizeOf(context).width * 0.5,
-              child: Drawer(
-                elevation: 16.0,
-                child: wrapWithModel(
-                  model: _model.sideBarNavModel2,
-                  updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
-                ),
-              ),
-            ),
-            body: SafeArea(
-              top: true,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (responsiveVisibility(
-                    context: context,
-                    phone: false,
-                    tablet: false,
-                  ))
-                    wrapWithModel(
+        return Title(
+            title: 'homePage',
+            color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
+            child: GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: Scaffold(
+                key: scaffoldKey,
+                resizeToAvoidBottomInset: false,
+                backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+                drawer: Container(
+                  width: MediaQuery.sizeOf(context).width * 0.5,
+                  child: Drawer(
+                    elevation: 16.0,
+                    child: wrapWithModel(
                       model: _model.sideBarNavModel1,
                       updateCallback: () => setState(() {}),
                       child: SideBarNavWidget(),
                     ),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
+                  ),
+                ),
+                body: SafeArea(
+                  top: true,
+                  child: Stack(
+                    children: [
+                      Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          wrapWithModel(
-                            model: _model.breadcrumbsHeaderModel,
-                            updateCallback: () => setState(() {}),
-                            child: BreadcrumbsHeaderWidget(),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 16.0, 0.0, 16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Dashboard',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall,
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Nearby Universities',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodySmall,
-                                  ),
-                                ),
-                              ],
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                            tablet: false,
+                          ))
+                            wrapWithModel(
+                              model: _model.sideBarNavModel2,
+                              updateCallback: () => setState(() {}),
+                              child: SideBarNavWidget(),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 12.0, 0.0),
-                            child: Wrap(
-                              spacing: 8.0,
-                              runSpacing: 8.0,
-                              alignment: WrapAlignment.start,
-                              crossAxisAlignment: WrapCrossAlignment.start,
-                              direction: Axis.horizontal,
-                              runAlignment: WrapAlignment.start,
-                              verticalDirection: VerticalDirection.down,
-                              clipBehavior: Clip.none,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  child: Container(
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.85,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                      ),
-                                    ),
-                                    child: FlutterFlowGoogleMap(
-                                      controller: _model.googleMapsController,
-                                      onCameraIdle: (latLng) =>
-                                          _model.googleMapsCenter = latLng,
-                                      initialLocation:
-                                          _model.googleMapsCenter ??=
-                                              currentUserLocationValue!,
-                                      markers: homePageSchoolsRecordList
-                                          .map(
-                                            (homePageSchoolsRecord) =>
-                                                FlutterFlowMarker(
-                                              homePageSchoolsRecord
-                                                  .reference.path,
-                                              homePageSchoolsRecord.myGeopoint!,
-                                              () async {
-                                                await showModalBottomSheet(
-                                                  isScrollControlled: true,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  enableDrag: false,
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child:
-                                                            SchoolInformationBottomWidget(
-                                                          name:
-                                                              homePageSchoolsRecord,
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                ).then((value) =>
-                                                    safeSetState(() {}));
-                                              },
-                                            ),
-                                          )
-                                          .toList(),
-                                      markerColor: GoogleMarkerColor.violet,
-                                      mapType: MapType.normal,
-                                      style: GoogleMapStyle.standard,
-                                      initialZoom: 9.0,
-                                      allowInteraction: true,
-                                      allowZoom: true,
-                                      showZoomControls: true,
-                                      showLocation: true,
-                                      showCompass: false,
-                                      showMapToolbar: false,
-                                      showTraffic: false,
-                                      centerMapOnMarkerTap: true,
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model.breadcrumbsHeaderModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: BreadcrumbsHeaderWidget(
+                                      pageDetails:
+                                          'Find a nearby school, or look globablly!',
+                                      pageTitle: 'Home Page',
                                     ),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 16.0, 0.0, 16.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Dashboard',
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineSmall,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 4.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Nearby Universities',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodySmall,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Wrap(
+                                      spacing: 8.0,
+                                      runSpacing: 8.0,
+                                      alignment: WrapAlignment.start,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.start,
+                                      direction: Axis.horizontal,
+                                      runAlignment: WrapAlignment.start,
+                                      verticalDirection: VerticalDirection.down,
+                                      clipBehavior: Clip.none,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                          child: Container(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.85,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                            ),
+                                            child: FlutterFlowGoogleMap(
+                                              controller:
+                                                  _model.googleMapsController,
+                                              onCameraIdle: (latLng) => _model
+                                                  .googleMapsCenter = latLng,
+                                              initialLocation:
+                                                  _model.googleMapsCenter ??=
+                                                      currentUserLocationValue!,
+                                              markers: homePageSchoolsRecordList
+                                                  .take(50)
+                                                  .toList()
+                                                  .map(
+                                                    (homePageSchoolsRecord) =>
+                                                        FlutterFlowMarker(
+                                                      homePageSchoolsRecord
+                                                          .reference.path,
+                                                      homePageSchoolsRecord
+                                                          .myGeopoint!,
+                                                      () async {
+                                                        await showModalBottomSheet(
+                                                          isScrollControlled:
+                                                              true,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          enableDrag: false,
+                                                          context: context,
+                                                          builder: (context) {
+                                                            return GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    SchoolInformationBottomWidget(
+                                                                  name:
+                                                                      homePageSchoolsRecord,
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            safeSetState(
+                                                                () {}));
+                                                      },
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                              markerColor:
+                                                  GoogleMarkerColor.violet,
+                                              mapType: MapType.normal,
+                                              style: GoogleMapStyle.standard,
+                                              initialZoom: 9.0,
+                                              allowInteraction: true,
+                                              allowZoom: true,
+                                              showZoomControls: true,
+                                              showLocation: true,
+                                              showCompass: false,
+                                              showMapToolbar: false,
+                                              showTraffic: false,
+                                              centerMapOnMarkerTap: true,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-        );
+            ));
       },
     );
   }

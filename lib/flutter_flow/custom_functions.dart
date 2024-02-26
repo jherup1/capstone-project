@@ -54,10 +54,6 @@ String? addSchool() {
   return null;
 }
 
-List<LatLng> drawPolygon(List<LatLng> pos) {
-  return pos;
-}
-
 bool isSupport(List<String>? roles) {
   if (roles == null) {
     return false;
@@ -79,4 +75,14 @@ int? indexMarkerIdentifier(
     }
   }
   return null;
+}
+
+String extractPageName(String url) {
+  Uri uri = Uri.parse(url);
+  List<String> pathSegments = uri.pathSegments;
+  if (pathSegments.isNotEmpty) {
+    return pathSegments.last;
+  } else {
+    return 'XXX';
+  }
 }

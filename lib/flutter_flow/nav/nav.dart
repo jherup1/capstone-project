@@ -113,7 +113,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'schools',
               path: 'schools',
-              builder: (context, params) => SchoolsWidget(),
+              builder: (context, params) => SchoolsWidget(
+                pageTitle: params.getParam('pageTitle', ParamType.String),
+                pageDetails: params.getParam('pageDetails', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'profilePage',
@@ -145,6 +148,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'supportDeprecated',
               path: 'supportDeprecated',
               builder: (context, params) => SupportDeprecatedWidget(),
+            ),
+            FFRoute(
+              name: 'adminManage',
+              path: 'adminManage',
+              builder: (context, params) => AdminManageWidget(),
+            ),
+            FFRoute(
+              name: 'individualSchool',
+              path: 'individualSchool',
+              builder: (context, params) => IndividualSchoolWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -317,6 +330,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
