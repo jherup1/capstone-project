@@ -1,19 +1,27 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'breadcrumbs_header_widget.dart' show BreadcrumbsHeaderWidget;
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'admin_manage_widget.dart' show AdminManageWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class BreadcrumbsHeaderModel extends FlutterFlowModel<BreadcrumbsHeaderWidget> {
+class AdminManageModel extends FlutterFlowModel<AdminManageWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  final unfocusNode = FocusNode();
+
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {}
+  void dispose() {
+    unfocusNode.dispose();
+  }
 
   /// Action blocks are added here.
 

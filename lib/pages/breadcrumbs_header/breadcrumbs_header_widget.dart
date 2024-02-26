@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +11,12 @@ class BreadcrumbsHeaderWidget extends StatefulWidget {
   const BreadcrumbsHeaderWidget({
     super.key,
     String? pageDetails,
-  }) : this.pageDetails = pageDetails ?? 'detailsxxx';
+    String? pageTitle,
+  })  : this.pageDetails = pageDetails ?? 'detailsxxx',
+        this.pageTitle = pageTitle ?? 'XXX';
 
   final String pageDetails;
+  final String pageTitle;
 
   @override
   State<BreadcrumbsHeaderWidget> createState() =>
@@ -111,11 +113,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Text(
-                    valueOrDefault<String>(
-                      functions.extractPageName(
-                          'psysearch://psysearch.com${GoRouter.of(context).location}'),
-                      'test',
-                    ),
+                    widget.pageTitle,
                     style: FlutterFlowTheme.of(context).labelLarge,
                   ),
                 ),

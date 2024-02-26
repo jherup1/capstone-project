@@ -126,8 +126,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
                           child: BreadcrumbsHeaderWidget(
-                            pageDetails:
-                                'Profile Page (Add more detailed description)',
+                            pageDetails: 'Customize your settings!',
+                            pageTitle: 'Profile Page',
                           ),
                         ),
                         Expanded(

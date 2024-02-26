@@ -148,6 +148,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'supportDeprecated',
               path: 'supportDeprecated',
               builder: (context, params) => SupportDeprecatedWidget(),
+            ),
+            FFRoute(
+              name: 'adminManage',
+              path: 'adminManage',
+              builder: (context, params) => AdminManageWidget(),
+            ),
+            FFRoute(
+              name: 'individualSchool',
+              path: 'individualSchool',
+              builder: (context, params) => IndividualSchoolWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
