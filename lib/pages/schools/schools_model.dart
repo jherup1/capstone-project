@@ -9,7 +9,6 @@ import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'schools_widget.dart' show SchoolsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +26,7 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
@@ -34,6 +34,7 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();

@@ -14,3 +14,6 @@ export '/support/support_ticket_details/support_ticket_details_widget.dart'
     show SupportTicketDetailsWidget;
 export '/deprecated/support_deprecated/support_deprecated_widget.dart'
     show SupportDeprecatedWidget;
+export '/admin/admin_manage/admin_manage_widget.dart' show AdminManageWidget;
+export '/pages/individual_school/individual_school_widget.dart'
+    show IndividualSchoolWidget;

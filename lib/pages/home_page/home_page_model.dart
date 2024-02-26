@@ -9,7 +9,6 @@ import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -23,28 +22,30 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   final unfocusNode = FocusNode();
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel2;
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for GoogleMap widget.
   LatLng? googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
-  // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel2;
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
+    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
         createModel(context, () => BreadcrumbsHeaderModel());
-    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
-    breadcrumbsHeaderModel.dispose();
     sideBarNavModel2.dispose();
+    breadcrumbsHeaderModel.dispose();
   }
 
   /// Action blocks are added here.
