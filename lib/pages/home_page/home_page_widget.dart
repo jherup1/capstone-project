@@ -1,12 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/school_information_bottom/school_information_bottom_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -29,15 +31,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   late HomePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  LatLng? currentUserLocationValue;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
 
-    getCurrentUserLocation(defaultLocation: LatLng(0.0, 0.0), cached: true)
-        .then((loc) => setState(() => currentUserLocationValue = loc));
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -51,30 +50,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-    if (currentUserLocationValue == null) {
-      return Container(
-        color: FlutterFlowTheme.of(context).primaryBackground,
-        child: Center(
-          child: SizedBox(
-            width: 50.0,
-            height: 50.0,
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                FlutterFlowTheme.of(context).tertiary,
-              ),
-            ),
-          ),
-        ),
-      );
-    }
 
     return StreamBuilder<List<SchoolsRecord>>(
-      stream: querySchoolsRecord(
-        queryBuilder: (schoolsRecord) => schoolsRecord.where(
-          'myGeopoint',
-          isLessThanOrEqualTo: _model.googleMapsCenter?.toGeoPoint(),
-        ),
-      ),
+      stream: querySchoolsRecord(),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -103,7 +81,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   : FocusScope.of(context).unfocus(),
               child: Scaffold(
                 key: scaffoldKey,
-                resizeToAvoidBottomInset: false,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 drawer: Container(
                   width: MediaQuery.sizeOf(context).width * 0.5,
@@ -209,78 +186,83 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .primaryBackground,
                                               ),
                                             ),
-                                            child: FlutterFlowGoogleMap(
-                                              controller:
-                                                  _model.googleMapsController,
-                                              onCameraIdle: (latLng) => _model
-                                                  .googleMapsCenter = latLng,
-                                              initialLocation:
-                                                  _model.googleMapsCenter ??=
-                                                      currentUserLocationValue!,
-                                              markers: homePageSchoolsRecordList
-                                                  .take(50)
-                                                  .toList()
-                                                  .map(
-                                                    (homePageSchoolsRecord) =>
-                                                        FlutterFlowMarker(
-                                                      homePageSchoolsRecord
-                                                          .reference.path,
-                                                      homePageSchoolsRecord
-                                                          .myGeopoint!,
-                                                      () async {
-                                                        await showModalBottomSheet(
-                                                          isScrollControlled:
-                                                              true,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          enableDrag: false,
-                                                          context: context,
-                                                          builder: (context) {
-                                                            return GestureDetector(
-                                                              onTap: () => _model
-                                                                      .unfocusNode
-                                                                      .canRequestFocus
-                                                                  ? FocusScope.of(
-                                                                          context)
-                                                                      .requestFocus(
-                                                                          _model
-                                                                              .unfocusNode)
-                                                                  : FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child: Padding(
-                                                                padding: MediaQuery
-                                                                    .viewInsetsOf(
-                                                                        context),
-                                                                child:
-                                                                    SchoolInformationBottomWidget(
-                                                                  name:
-                                                                      homePageSchoolsRecord,
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            safeSetState(
-                                                                () {}));
-                                                      },
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.8,
+                                              child: custom_widgets
+                                                  .CustomMarkerWidget(
+                                                width: double.infinity,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.8,
+                                                defaultImageUrl:
+                                                    'https://imgur.com/a/hkQbWJJ',
+                                                mapZoomLevel: 8.0,
+                                                clusterColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary600,
+                                                isWeb: isWeb,
+                                                appIconSize: 90,
+                                                webIconSize: 60,
+                                                clusterRadius: 250,
+                                                positions:
+                                                    homePageSchoolsRecordList
+                                                        .map(
+                                                            (e) => e.myGeopoint)
+                                                        .withoutNulls
+                                                        .toList(),
+                                                rebuildPage: () async {
+                                                  setState(() {});
+                                                  _model.tap =
+                                                      await querySchoolsRecordOnce(
+                                                    queryBuilder:
+                                                        (schoolsRecord) =>
+                                                            schoolsRecord.where(
+                                                      'myGeopoint',
+                                                      isEqualTo: FFAppState()
+                                                          .tapped
+                                                          ?.toGeoPoint(),
                                                     ),
-                                                  )
-                                                  .toList(),
-                                              markerColor:
-                                                  GoogleMarkerColor.violet,
-                                              mapType: MapType.normal,
-                                              style: GoogleMapStyle.standard,
-                                              initialZoom: 9.0,
-                                              allowInteraction: true,
-                                              allowZoom: true,
-                                              showZoomControls: true,
-                                              showLocation: true,
-                                              showCompass: false,
-                                              showMapToolbar: false,
-                                              showTraffic: false,
-                                              centerMapOnMarkerTap: true,
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child:
+                                                              SchoolInformationBottomWidget(
+                                                            name: _model.tap!,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
+
+                                                  setState(() {});
+                                                },
+                                              ),
                                             ),
                                           ),
                                         ),

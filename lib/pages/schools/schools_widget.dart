@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -534,7 +535,10 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                                 ),
                                                                               ),
                                                                               Text(
-                                                                                containerVarItem.name,
+                                                                                valueOrDefault<String>(
+                                                                                  currentUserEmail,
+                                                                                  '[email]',
+                                                                                ),
                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                       fontFamily: 'Outfit',
                                                                                       color: Colors.white,
