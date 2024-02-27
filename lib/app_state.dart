@@ -51,4 +51,10 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInRoleCache(int _index, String _value) {
     _roleCache.insert(_index, _value);
   }
+
+  LatLng? _tapped;
+  LatLng? get tapped => _tapped;
+  set tapped(LatLng? _value) {
+    _tapped = _value;
+  }
 }
