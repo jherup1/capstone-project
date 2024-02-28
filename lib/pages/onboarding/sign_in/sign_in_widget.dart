@@ -137,7 +137,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.emailAddressController',
                                           const Duration(milliseconds: 100),
-                                          () => setState(() {}),
+                                          () async {
+                                            setState(() {
+                                              FFAppState().loginAttempt = '';
+                                            });
+                                          },
                                         ),
                                         autofocus: true,
                                         textCapitalization:
@@ -203,6 +207,10 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                     _model
                                                         .emailAddressController
                                                         ?.clear();
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .loginAttempt = '';
+                                                    });
                                                     setState(() {});
                                                   },
                                                   child: const Icon(
@@ -240,7 +248,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.passwordController',
                                         const Duration(milliseconds: 100),
-                                        () => setState(() {}),
+                                        () async {
+                                          setState(() {
+                                            FFAppState().loginAttempt = '';
+                                          });
+                                        },
                                       ),
                                       obscureText: !_model.passwordVisibility,
                                       decoration: InputDecoration(
@@ -318,23 +330,100 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ],
                               ),
                             ),
-                            Align(
-                              alignment: const AlignmentDirectional(-0.93, 0.0),
-                              child: Text(
-                                'Hello World',
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      color: FlutterFlowTheme.of(context).error,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
+                            Builder(
+                              builder: (context) {
+                                if (FFAppState().loginAttempt == '') {
+                                  return Opacity(
+                                    opacity: 0.0,
+                                    child: Text(
+                                      ' ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
                                     ),
-                              ),
+                                  );
+                                } else if (FFAppState().loginAttempt ==
+                                    'invalid-credential') {
+                                  return Visibility(
+                                    visible: FFAppState().loginAttempt ==
+                                        'invalid-credential',
+                                    child: Align(
+                                      alignment:
+                                          const AlignmentDirectional(-0.87, 0.0),
+                                      child: Text(
+                                        'Invalid email or password. Please try again',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                    ),
+                                  );
+                                } else if (FFAppState().loginAttempt ==
+                                    'too-many-requests') {
+                                  return Align(
+                                    alignment: const AlignmentDirectional(-0.8, 0.0),
+                                    child: Text(
+                                      'Too many login attempts. Please try again in a moment.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
+                                          ),
+                                    ),
+                                  );
+                                } else if (FFAppState().loginAttempt ==
+                                    'unknown') {
+                                  return Align(
+                                    alignment: const AlignmentDirectional(-0.85, 0.0),
+                                    child: Text(
+                                      'An unknown error has occured. Please try again.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
+                                          ),
+                                    ),
+                                  );
+                                } else {
+                                  return Opacity(
+                                    opacity: 0.0,
+                                    child: Text(
+                                      ' ',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                  );
+                                }
+                              },
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(

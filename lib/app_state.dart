@@ -56,4 +56,10 @@ class FFAppState extends ChangeNotifier {
   set tapped(LatLng? value) {
     _tapped = value;
   }
+
+  String _loginAttempt = '';
+  String get loginAttempt => _loginAttempt;
+  set loginAttempt(String value) {
+    _loginAttempt = value;
+  }
 }
