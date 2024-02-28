@@ -1,11 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_up_model.dart';
@@ -18,28 +16,10 @@ class SignUpWidget extends StatefulWidget {
   State<SignUpWidget> createState() => _SignUpWidgetState();
 }
 
-class _SignUpWidgetState extends State<SignUpWidget>
-    with TickerProviderStateMixin {
+class _SignUpWidgetState extends State<SignUpWidget> {
   late SignUpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = {
-    'textFieldOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        TintEffect(
-          curve: Curves.easeInOut,
-          delay: 220.ms,
-          duration: 1950.ms,
-          color: const Color(0xFFFF0000),
-          begin: 0.0,
-          end: 0.53,
-        ),
-      ],
-    ),
-  };
 
   @override
   void initState() {
@@ -54,13 +34,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
 
     _model.confirmPasswordController ??= TextEditingController();
     _model.confirmPasswordFocusNode ??= FocusNode();
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -471,13 +444,179 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             validator: _model
                                                 .confirmPasswordControllerValidator
                                                 .asValidator(context),
-                                          ).animateOnActionTrigger(
-                                            animationsMap[
-                                                'textFieldOnActionTriggerAnimation']!,
                                           ),
                                         ),
                                       ],
                                     ),
+                                  ),
+                                  Builder(
+                                    builder: (context) {
+                                      if (FFAppState().createAccountAttempt ==
+                                          '') {
+                                        return Opacity(
+                                          opacity: 0.0,
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              ' ',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ),
+                                        );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'email-already-in-use') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.89, 0.0),
+                                          child: Text(
+                                            'Email already in use. Please login.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'invalid-email') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.82, 0.0),
+                                          child: Text(
+                                            'Invalid email. Please enter a valid email and try again.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'weak-password') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.8, 0.0),
+                                          child: Text(
+                                            'Password is too weak. Please try a stronger password.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'too-many-requests') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.78, 0.0),
+                                          child: Text(
+                                            'Too many sign up attempts. Please try again in a moment.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'unknown') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.84, 0.0),
+                                          child: Text(
+                                            'An unknown error has occured. Please try again.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
+                                      } else {
+                                        return Opacity(
+                                          opacity: 0.0,
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              ' ',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                    },
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(

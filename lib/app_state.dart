@@ -62,4 +62,10 @@ class FFAppState extends ChangeNotifier {
   set loginAttempt(String value) {
     _loginAttempt = value;
   }
+
+  String _createAccountAttempt = '';
+  String get createAccountAttempt => _createAccountAttempt;
+  set createAccountAttempt(String value) {
+    _createAccountAttempt = value;
+  }
 }
