@@ -30,14 +30,15 @@ Future signIn(
     );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'invalid-credential') {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Invalid email or password. Please try again.',
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
-      );
+      loginStatus(e.code);
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(
+      //       'Invalid email or password. Please try again.',
+      //       style: TextStyle(color: Colors.red),
+      //     ),
+      //   ),
+      // );
     } else if (e.code == 'too-many-requests') {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

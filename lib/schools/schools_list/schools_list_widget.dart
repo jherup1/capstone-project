@@ -1,24 +1,22 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/schools_card_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/schools/schools_card/schools_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
-import 'favorite_schools_list_model.dart';
-export 'favorite_schools_list_model.dart';
+import 'schools_list_model.dart';
+export 'schools_list_model.dart';
 
-class FavoriteSchoolsListWidget extends StatefulWidget {
-  const FavoriteSchoolsListWidget({super.key});
+class SchoolsListWidget extends StatefulWidget {
+  const SchoolsListWidget({super.key});
 
   @override
-  State<FavoriteSchoolsListWidget> createState() =>
-      _FavoriteSchoolsListWidgetState();
+  State<SchoolsListWidget> createState() => _SchoolsListWidgetState();
 }
 
-class _FavoriteSchoolsListWidgetState extends State<FavoriteSchoolsListWidget> {
-  late FavoriteSchoolsListModel _model;
+class _SchoolsListWidgetState extends State<SchoolsListWidget> {
+  late SchoolsListModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -29,7 +27,7 @@ class _FavoriteSchoolsListWidgetState extends State<FavoriteSchoolsListWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => FavoriteSchoolsListModel());
+    _model = createModel(context, () => SchoolsListModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -53,19 +51,16 @@ class _FavoriteSchoolsListWidgetState extends State<FavoriteSchoolsListWidget> {
       ),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
-        child: PagedListView<DocumentSnapshot<Object?>?, FavoriteSchoolsRecord>(
+        child: PagedListView<DocumentSnapshot<Object?>?, SchoolsRecord>(
           pagingController: _model.setListViewController(
-            FavoriteSchoolsRecord.collection.where(
-              'uid',
-              isEqualTo: currentUserUid,
-            ),
+            SchoolsRecord.collection,
           ),
           padding: EdgeInsets.zero,
           primary: false,
           shrinkWrap: true,
           reverse: false,
           scrollDirection: Axis.horizontal,
-          builderDelegate: PagedChildBuilderDelegate<FavoriteSchoolsRecord>(
+          builderDelegate: PagedChildBuilderDelegate<SchoolsRecord>(
             // Customize what your widget looks like when it's loading the first page.
             firstPageProgressIndicatorBuilder: (_) => Center(
               child: SizedBox(
@@ -92,12 +87,12 @@ class _FavoriteSchoolsListWidgetState extends State<FavoriteSchoolsListWidget> {
             ),
 
             itemBuilder: (context, _, listViewIndex) {
-              final listViewFavoriteSchoolsRecord =
+              final listViewSchoolsRecord =
                   _model.listViewPagingController!.itemList![listViewIndex];
               return SchoolsCardWidget(
                 key: Key(
-                    'Keylqh_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
-                parameter1: listViewFavoriteSchoolsRecord.schoolName,
+                    'Key6g8_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                parameter1: listViewSchoolsRecord.name,
               );
             },
           ),

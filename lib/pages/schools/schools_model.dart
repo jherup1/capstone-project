@@ -1,8 +1,8 @@
-import '/components/favorite_schools_list_widget.dart';
-import '/components/schools_list_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/schools/favorite_schools_list/favorite_schools_list_widget.dart';
+import '/schools/schools_list/schools_list_widget.dart';
 import 'schools_widget.dart' show SchoolsWidget;
 import 'package:flutter/material.dart';
 
