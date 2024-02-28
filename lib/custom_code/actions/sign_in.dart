@@ -36,7 +36,6 @@ Future signIn(
       FFAppState().update(() {
         FFAppState().loginAttempt = e.code;
       });
-      loginStatus(e.code);
     } else if (e.code == 'too-many-requests') {
       FFAppState().update(() {
         FFAppState().loginAttempt = e.code;
