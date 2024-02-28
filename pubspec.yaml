@@ -52,7 +52,7 @@ dependencies:
   flutter_plugin_android_lifecycle: any
   font_awesome_flutter: any
   from_css_color: any
-  go_router: 13.2.0
+  go_router: any
   google_fonts: any
   google_maps_flutter: any
   google_sign_in: any
@@ -108,7 +108,7 @@ dependencies:
   http: any
   typed_data: any
   latlng: any
-  geolocator_web: ^3.0.0
+  geolocator_web: any
 
 dependency_overrides:
   intl: any
