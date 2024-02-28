@@ -48,7 +48,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     context.watch<FFAppState>();
 
     return StreamBuilder<List<SchoolsRecord>>(
-      stream: querySchoolsRecord(),
+      stream: querySchoolsRecord(
+        limit: 50,
+      ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -195,7 +197,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             .height *
                                                         0.8,
                                                 defaultImageUrl:
-                                                    'https://imgur.com/a/hkQbWJJ',
+                                                    'https://res.cloudinary.com/dl6aqq2yy/image/upload/v1675264413/samples/animals/cat.jpg',
                                                 mapZoomLevel: 8.0,
                                                 clusterColor:
                                                     FlutterFlowTheme.of(context)

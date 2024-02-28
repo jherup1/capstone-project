@@ -1,21 +1,15 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'sign_in_widget.dart' show SignInWidget;
+import 'schools_card_widget.dart' show SchoolsCardWidget;
 import 'package:flutter/material.dart';
 
-class SignInModel extends FlutterFlowModel<SignInWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-
+class SchoolsCardModel extends FlutterFlowModel<SchoolsCardWidget> {
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Action blocks are added here.
 
