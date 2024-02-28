@@ -18,6 +18,9 @@ Future signIn(
   try {
     final user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
+    FFAppState().update(() {
+      FFAppState().loginAttempt = 'success';
+    });
     context.pushNamed(
       'homePage',
       extra: <String, dynamic>{
@@ -30,24 +33,18 @@ Future signIn(
     );
   } on FirebaseAuthException catch (e) {
     if (e.code == 'invalid-credential') {
+      FFAppState().update(() {
+        FFAppState().loginAttempt = e.code;
+      });
       loginStatus(e.code);
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     content: Text(
-      //       'Invalid email or password. Please try again.',
-      //       style: TextStyle(color: Colors.red),
-      //     ),
-      //   ),
-      // );
     } else if (e.code == 'too-many-requests') {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Too many attempts. Please wait a moment then try again.',
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
-      );
+      FFAppState().update(() {
+        FFAppState().loginAttempt = e.code;
+      });
+    } else {
+      FFAppState().update(() {
+        FFAppState().loginAttempt = 'unknown';
+      });
     }
   }
 }

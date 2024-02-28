@@ -136,9 +136,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         if (Theme.of(context).brightness ==
                                             Brightness.dark)
                                           Image.asset(
-                                            'assets/images/ezgif-1-60d7f38f99.jpg',
+                                            'assets/images/file-F16TsDmmcQ2FLEFRO03pYzWB.jpg',
                                             width: 150.0,
-                                            height: 40.0,
+                                            height: 100.0,
                                             fit: BoxFit.fitWidth,
                                           ),
                                       ],
