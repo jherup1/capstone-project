@@ -33,27 +33,6 @@ String? addSchoolToUser() {
   return null;
 }
 
-String? addSchool() {
-  Future<void> addSchoolToUser(String school) async {
-    try {
-      final userDoc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUserUid)
-          .get();
-      final userSchoolList = List<String>.from(userDoc['userSchoolList'] ?? []);
-      userSchoolList.add(school);
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUserUid)
-          .update({'userSchoolList': userSchoolList});
-    } catch (e) {
-      print('Error adding school to user: $e');
-    }
-  }
-
-  return null;
-}
-
 bool isSupport(List<String>? roles) {
   if (roles == null) {
     return false;

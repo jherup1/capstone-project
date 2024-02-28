@@ -95,7 +95,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -130,7 +130,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
                       child: Text(
                         'Manage Support Users',
                         style: FlutterFlowTheme.of(context)
@@ -146,7 +146,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 16.0, 16.0, 16.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -167,7 +167,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                 ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -226,7 +226,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -245,7 +245,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                 ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: StreamBuilder<List<UsersRecord>>(
                               stream: queryUsersRecord(
@@ -281,7 +281,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                     final rowUsersRecord =
                                         rowUsersRecordList[rowIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 12.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -300,7 +300,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: Text(
                                               rowUsersRecord
@@ -332,7 +332,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: Text(
                                               rowUsersRecord.email,
@@ -368,9 +368,9 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                             options: FFButtonOptions(
                                               width: 100.0,
                                               height: 36.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -405,7 +405,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -464,9 +464,9 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                   options: FFButtonOptions(
                                     width: 150.0,
                                     height: 36.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)

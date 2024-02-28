@@ -52,16 +52,21 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,
+      onEnter: ((event) async {
+        setState(() => _model.iuserHovered = true);
+      }),
+      onExit: ((event) async {
+        setState(() => _model.iuserHovered = false);
+      }),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 150),
+        duration: const Duration(milliseconds: 150),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: _model.iuserHovered!
-              ? FlutterFlowTheme.of(context).primaryBackground
+          color: _model.iuserHovered? FlutterFlowTheme.of(context).primaryBackground
               : FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(12.0, 8.0, 12.0, 8.0),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -78,7 +83,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(2.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
@@ -92,7 +97,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -114,7 +119,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.userRef?.role,
@@ -147,9 +152,9 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   ),
                 ),
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                     child: Text(
                       'ME',
                       textAlign: TextAlign.center,
@@ -162,12 +167,6 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
           ),
         ),
       ),
-      onEnter: ((event) async {
-        setState(() => _model.iuserHovered = true);
-      }),
-      onExit: ((event) async {
-        setState(() => _model.iuserHovered = false);
-      }),
     );
   }
 }

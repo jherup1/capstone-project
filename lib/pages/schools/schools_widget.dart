@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -7,8 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +19,7 @@ class SchoolsWidget extends StatefulWidget {
     super.key,
     this.pageTitle,
     String? pageDetails,
-  }) : this.pageDetails = pageDetails ?? 'detailsxxx';
+  }) : pageDetails = pageDetails ?? 'detailsxxx';
 
   final String? pageTitle;
   final String pageDetails;
@@ -50,8 +49,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(30.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(30.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -69,8 +68,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(30.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(30.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -88,8 +87,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(30.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(30.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -107,8 +106,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(30.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(30.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -171,14 +170,14 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                drawer: Container(
+                drawer: SizedBox(
                   width: MediaQuery.sizeOf(context).width * 0.5,
                   child: Drawer(
                     elevation: 16.0,
                     child: wrapWithModel(
                       model: _model.sideBarNavModel2,
                       updateCallback: () => setState(() {}),
-                      child: SideBarNavWidget(),
+                      child: const SideBarNavWidget(),
                     ),
                   ),
                 ),
@@ -196,11 +195,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                         wrapWithModel(
                           model: _model.sideBarNavModel1,
                           updateCallback: () => setState(() {}),
-                          child: SideBarNavWidget(),
+                          child: const SideBarNavWidget(),
                         ),
                       Flexible(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -208,16 +207,16 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                               wrapWithModel(
                                 model: _model.breadcrumbsHeaderModel,
                                 updateCallback: () => setState(() {}),
-                                child: BreadcrumbsHeaderWidget(
+                                child: const BreadcrumbsHeaderWidget(
                                   pageDetails:
                                       'Find a school that fits you, and add it to your favorites by clicking the star!',
                                   pageTitle: 'Schools',
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 32.0, 16.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
@@ -226,7 +225,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 4.0,
                                           color: Color(0x33000000),
@@ -235,13 +234,13 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                       ],
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
-                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    alignment: const AlignmentDirectional(0.0, -1.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 16.0),
                                           child: SingleChildScrollView(
                                             child: Column(
@@ -250,7 +249,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 1.0, 0.0, 0.0),
                                                   child: Container(
@@ -266,11 +265,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                   .of(context)
                                                               .lineColor,
                                                           offset:
-                                                              Offset(0.0, 1.0),
+                                                              const Offset(0.0, 1.0),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                          BorderRadius.only(
+                                                          const BorderRadius.only(
                                                         bottomLeft:
                                                             Radius.circular(
                                                                 0.0),
@@ -287,7 +286,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(16.0),
+                                                          const EdgeInsets.all(16.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -298,7 +297,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -322,7 +321,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                         .headlineSmall,
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -345,7 +344,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                   'Button pressed ...');
                                                             },
                                                             text: 'Add School',
-                                                            icon: Icon(
+                                                            icon: const Icon(
                                                               Icons.add_rounded,
                                                               size: 15.0,
                                                             ),
@@ -354,14 +353,14 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                               width: 150.0,
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -384,7 +383,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -401,7 +400,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 16.0, 0.0, 0.0),
                                                   child: Text(
@@ -421,7 +420,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 4.0),
                                                     child: Builder(
@@ -446,7 +445,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                     containerVarIndex];
                                                             return Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           8.0,
@@ -458,7 +457,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                     BoxDecoration(
                                                                   color: Colors
                                                                       .white,
-                                                                  boxShadow: [
+                                                                  boxShadow: const [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           4.0,
@@ -475,7 +474,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                               12.0),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -496,7 +495,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiary,
                                                                           borderRadius:
-                                                                              BorderRadius.only(
+                                                                              const BorderRadius.only(
                                                                             bottomLeft:
                                                                                 Radius.circular(0.0),
                                                                             bottomRight:
@@ -510,7 +509,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(12.0),
+                                                                              const EdgeInsets.all(12.0),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -524,11 +523,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                                 width: 36.0,
                                                                                 height: 36.0,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: Color(0x98FFFFFF),
+                                                                                  color: const Color(0x98FFFFFF),
                                                                                   borderRadius: BorderRadius.circular(12.0),
                                                                                 ),
-                                                                                alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                child: Icon(
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                child: const Icon(
                                                                                   Icons.desktop_windows,
                                                                                   color: Colors.white,
                                                                                   size: 20.0,
@@ -536,8 +535,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                               ),
                                                                               Text(
                                                                                 valueOrDefault<String>(
-                                                                                  currentUserEmail,
-                                                                                  '[email]',
+                                                                                  functions.addSchoolToUser(),
+                                                                                  'name',
                                                                                 ),
                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                       fontFamily: 'Outfit',
@@ -598,7 +597,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 16.0),
                                           child: SingleChildScrollView(
                                             child: Column(
@@ -607,7 +606,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 1.0, 0.0, 0.0),
                                                   child: Container(
@@ -623,11 +622,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                   .of(context)
                                                               .lineColor,
                                                           offset:
-                                                              Offset(0.0, 1.0),
+                                                              const Offset(0.0, 1.0),
                                                         )
                                                       ],
                                                       borderRadius:
-                                                          BorderRadius.only(
+                                                          const BorderRadius.only(
                                                         bottomLeft:
                                                             Radius.circular(
                                                                 0.0),
@@ -644,7 +643,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(16.0),
+                                                          const EdgeInsets.all(16.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -655,7 +654,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -679,7 +678,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                         .headlineSmall,
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -702,7 +701,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 16.0, 0.0, 0.0),
                                                   child: Text(
@@ -722,7 +721,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 4.0),
                                                     child: Builder(
@@ -747,7 +746,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                     containerVarIndex];
                                                             return Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           8.0,
@@ -759,7 +758,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                     BoxDecoration(
                                                                   color: Colors
                                                                       .white,
-                                                                  boxShadow: [
+                                                                  boxShadow: const [
                                                                     BoxShadow(
                                                                       blurRadius:
                                                                           4.0,
@@ -776,7 +775,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                               12.0),
                                                                 ),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -797,7 +796,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                           color:
                                                                               FlutterFlowTheme.of(context).tertiary,
                                                                           borderRadius:
-                                                                              BorderRadius.only(
+                                                                              const BorderRadius.only(
                                                                             bottomLeft:
                                                                                 Radius.circular(0.0),
                                                                             bottomRight:
@@ -811,7 +810,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                         child:
                                                                             Padding(
                                                                           padding:
-                                                                              EdgeInsets.all(12.0),
+                                                                              const EdgeInsets.all(12.0),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -825,11 +824,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                                 width: 36.0,
                                                                                 height: 36.0,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: Color(0x98FFFFFF),
+                                                                                  color: const Color(0x98FFFFFF),
                                                                                   borderRadius: BorderRadius.circular(12.0),
                                                                                 ),
-                                                                                alignment: AlignmentDirectional(0.0, 0.0),
-                                                                                child: Icon(
+                                                                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                                                                child: const Icon(
                                                                                   Icons.desktop_windows,
                                                                                   color: Colors.white,
                                                                                   size: 20.0,
@@ -871,9 +870,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                                               size: 24.0,
                                                                             ),
                                                                             onPressed:
-                                                                                () {
-                                                                              print('IconButton pressed ...');
-                                                                            },
+                                                                                () async {},
                                                                           ),
                                                                         ],
                                                                       ),
@@ -896,7 +893,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 24.0, 0.0, 24.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -913,7 +910,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget>
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           8.0, 8.0, 0.0, 8.0),
                                                   child: Text(
