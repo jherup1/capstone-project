@@ -349,59 +349,52 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       ),
                                     ),
                                   ),
-                                  Align(
-                                    alignment: const AlignmentDirectional(1.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: ((_model.emailAddressController
-                                                          .text ==
-                                                      '') ||
-                                              (_model.passwordController
-                                                          .text ==
-                                                      ''))
-                                          ? null
-                                          : () {
-                                              print('Button pressed ...');
-                                            },
-                                      text: 'Sign In',
-                                      options: FFButtonOptions(
-                                        width: 150.0,
-                                        height: 50.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color: Colors.white,
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w600,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                        elevation: 10.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                        disabledColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        disabledTextColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent3,
+                                  FFButtonWidget(
+                                    onPressed: ((_model.emailAddressController
+                                                        .text ==
+                                                    '') ||
+                                            (_model.passwordController
+                                                        .text ==
+                                                    ''))
+                                        ? null
+                                        : () {
+                                            print('Button pressed ...');
+                                          },
+                                    text: 'Sign In',
+                                    options: FFButtonOptions(
+                                      width: 150.0,
+                                      height: 50.0,
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).tertiary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily,
+                                            color: Colors.white,
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.w600,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily),
+                                          ),
+                                      elevation: 10.0,
+                                      borderSide: const BorderSide(
+                                        color: Colors.transparent,
                                       ),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      disabledColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                      disabledTextColor:
+                                          FlutterFlowTheme.of(context).accent3,
                                     ),
                                   ),
                                   InkWell(
