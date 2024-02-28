@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -143,10 +145,34 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget>
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 0.0, 0.0),
-                                    child: Text(
-                                      'Account',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleSmall,
+                                    child: StreamBuilder<UsersRecord>(
+                                      stream: UsersRecord.getDocument(
+                                          currentUserReference!),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        final textUsersRecord = snapshot.data!;
+                                        return Text(
+                                          textUsersRecord.email,
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleSmall,
+                                        );
+                                      },
                                     ),
                                   ),
                                   Padding(

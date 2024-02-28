@@ -1,9 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sign_up_model.dart';
@@ -16,10 +18,28 @@ class SignUpWidget extends StatefulWidget {
   State<SignUpWidget> createState() => _SignUpWidgetState();
 }
 
-class _SignUpWidgetState extends State<SignUpWidget> {
+class _SignUpWidgetState extends State<SignUpWidget>
+    with TickerProviderStateMixin {
   late SignUpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'textFieldOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
+      effects: [
+        TintEffect(
+          curve: Curves.easeInOut,
+          delay: 220.ms,
+          duration: 1950.ms,
+          color: const Color(0xFFFF0000),
+          begin: 0.0,
+          end: 0.53,
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -34,6 +54,13 @@ class _SignUpWidgetState extends State<SignUpWidget> {
 
     _model.confirmPasswordController ??= TextEditingController();
     _model.confirmPasswordFocusNode ??= FocusNode();
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -444,6 +471,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                             validator: _model
                                                 .confirmPasswordControllerValidator
                                                 .asValidator(context),
+                                          ).animateOnActionTrigger(
+                                            animationsMap[
+                                                'textFieldOnActionTriggerAnimation']!,
                                           ),
                                         ),
                                       ],
