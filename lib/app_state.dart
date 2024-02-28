@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -25,36 +24,36 @@ class FFAppState extends ChangeNotifier {
 
   List<String> _roleCache = [];
   List<String> get roleCache => _roleCache;
-  set roleCache(List<String> _value) {
-    _roleCache = _value;
+  set roleCache(List<String> value) {
+    _roleCache = value;
   }
 
-  void addToRoleCache(String _value) {
-    _roleCache.add(_value);
+  void addToRoleCache(String value) {
+    _roleCache.add(value);
   }
 
-  void removeFromRoleCache(String _value) {
-    _roleCache.remove(_value);
+  void removeFromRoleCache(String value) {
+    _roleCache.remove(value);
   }
 
-  void removeAtIndexFromRoleCache(int _index) {
-    _roleCache.removeAt(_index);
+  void removeAtIndexFromRoleCache(int index) {
+    _roleCache.removeAt(index);
   }
 
   void updateRoleCacheAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _roleCache[_index] = updateFn(_roleCache[_index]);
+    _roleCache[index] = updateFn(_roleCache[index]);
   }
 
-  void insertAtIndexInRoleCache(int _index, String _value) {
-    _roleCache.insert(_index, _value);
+  void insertAtIndexInRoleCache(int index, String value) {
+    _roleCache.insert(index, value);
   }
 
   LatLng? _tapped;
   LatLng? get tapped => _tapped;
-  set tapped(LatLng? _value) {
-    _tapped = _value;
+  set tapped(LatLng? value) {
+    _tapped = value;
   }
 }

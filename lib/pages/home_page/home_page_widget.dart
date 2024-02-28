@@ -1,16 +1,12 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/pages/components/school_information_bottom/school_information_bottom_widget.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -82,14 +78,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: Scaffold(
                 key: scaffoldKey,
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-                drawer: Container(
+                drawer: SizedBox(
                   width: MediaQuery.sizeOf(context).width * 0.5,
                   child: Drawer(
                     elevation: 16.0,
                     child: wrapWithModel(
                       model: _model.sideBarNavModel1,
                       updateCallback: () => setState(() {}),
-                      child: SideBarNavWidget(),
+                      child: const SideBarNavWidget(),
                     ),
                   ),
                 ),
@@ -110,7 +106,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             wrapWithModel(
                               model: _model.sideBarNavModel2,
                               updateCallback: () => setState(() {}),
-                              child: SideBarNavWidget(),
+                              child: const SideBarNavWidget(),
                             ),
                           Expanded(
                             child: SingleChildScrollView(
@@ -122,14 +118,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   wrapWithModel(
                                     model: _model.breadcrumbsHeaderModel,
                                     updateCallback: () => setState(() {}),
-                                    child: BreadcrumbsHeaderWidget(
+                                    child: const BreadcrumbsHeaderWidget(
                                       pageDetails:
                                           'Find a nearby school, or look globablly!',
                                       pageTitle: 'Home Page',
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 0.0, 16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -145,7 +141,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'Nearby Universities',
@@ -157,7 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Wrap(
                                       spacing: 8.0,
@@ -186,7 +182,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .primaryBackground,
                                               ),
                                             ),
-                                            child: Container(
+                                            child: SizedBox(
                                               width: double.infinity,
                                               height: MediaQuery.sizeOf(context)
                                                       .height *

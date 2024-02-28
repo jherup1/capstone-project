@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'side_bar_nav_model.dart';
 export 'side_bar_nav_model.dart';
@@ -53,14 +52,14 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -83,14 +82,14 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                   child: Text(
                     'Menu',
                     style: FlutterFlowTheme.of(context).bodySmall,
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -100,7 +99,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       context.pushNamed(
                         'homePage',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -117,12 +116,12 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
                                 Icons.map,
@@ -141,7 +140,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -151,7 +150,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       context.pushNamed(
                         'schools',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -168,12 +167,12 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
                                 Icons.school,
@@ -192,7 +191,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -202,7 +201,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       context.pushNamed(
                         'profilePage',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -219,12 +218,12 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
                                 Icons.account_circle,
@@ -243,7 +242,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: InkWell(
                     splashColor: Colors.transparent,
                     focusColor: Colors.transparent,
@@ -253,7 +252,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       context.pushNamed(
                         'support_SubmitTicket',
                         extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
+                          kTransitionInfoKey: const TransitionInfo(
                             hasTransition: true,
                             transitionType: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
@@ -270,12 +269,12 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 4.0, 4.0, 4.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 12.0, 0.0),
                               child: Icon(
                                 Icons.contact_support,
@@ -295,7 +294,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                 ),
                 if (functions.isSupport(FFAppState().roleCache.toList()))
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -305,7 +304,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         context.pushNamed(
                           'support_TicketList',
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                               duration: Duration(milliseconds: 0),
@@ -322,13 +321,13 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 4.0, 4.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 12.0, 0.0),
                                 child: Icon(
                                   Icons.question_answer,
@@ -352,9 +351,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
           ),
         ),
         Align(
-          alignment: AlignmentDirectional(-1.0, 1.0),
+          alignment: const AlignmentDirectional(-1.0, 1.0),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 10.0),
             child: FlutterFlowIconButton(
               borderColor: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: 5.0,

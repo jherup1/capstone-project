@@ -1,20 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -79,23 +72,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
               path: 'signIn',
-              builder: (context, params) => SignInWidget(),
+              builder: (context, params) => const SignInWidget(),
             ),
             FFRoute(
               name: 'signUp',
               path: 'signUp',
-              builder: (context, params) => SignUpWidget(),
+              builder: (context, params) => const SignUpWidget(),
             ),
             FFRoute(
               name: 'homePage',
@@ -108,7 +101,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'forgotPassword',
               path: 'forgotPassword',
-              builder: (context, params) => ForgotPasswordWidget(),
+              builder: (context, params) => const ForgotPasswordWidget(),
             ),
             FFRoute(
               name: 'schools',
@@ -121,17 +114,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'profilePage',
               path: 'profilePage',
-              builder: (context, params) => ProfilePageWidget(),
+              builder: (context, params) => const ProfilePageWidget(),
             ),
             FFRoute(
               name: 'support_TicketList',
               path: 'supportTicketList',
-              builder: (context, params) => SupportTicketListWidget(),
+              builder: (context, params) => const SupportTicketListWidget(),
             ),
             FFRoute(
               name: 'support_SubmitTicket',
               path: 'supportSubmitTicket',
-              builder: (context, params) => SupportSubmitTicketWidget(),
+              builder: (context, params) => const SupportSubmitTicketWidget(),
             ),
             FFRoute(
               name: 'support_TicketDetails',
@@ -147,17 +140,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'supportDeprecated',
               path: 'supportDeprecated',
-              builder: (context, params) => SupportDeprecatedWidget(),
+              builder: (context, params) => const SupportDeprecatedWidget(),
             ),
             FFRoute(
               name: 'adminManage',
               path: 'adminManage',
-              builder: (context, params) => AdminManageWidget(),
+              builder: (context, params) => const AdminManageWidget(),
             ),
             FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
-              builder: (context, params) => IndividualSchoolWidget(),
+              builder: (context, params) => const IndividualSchoolWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -389,7 +382,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

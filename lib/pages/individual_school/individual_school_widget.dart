@@ -70,7 +70,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                         print('IconButton pressed ...');
                       },
                     ),
-                    actions: [],
+                    actions: const [],
                     centerTitle: false,
                     elevation: 0.0,
                   )
@@ -78,19 +78,19 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
             body: SafeArea(
               top: true,
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 5.0, 0.0),
                               child: FlutterFlowIconButton(
                                 buttonSize: 45.0,
@@ -106,7 +106,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 0.0, 5.0, 0.0),
                               child: Text(
                                 'School Details',
@@ -136,14 +136,14 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                         fit: BoxFit.cover,
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: Text(
                                 '[School Name] - [Program Name]',
@@ -164,7 +164,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 '[School/Program Description]',
@@ -183,7 +183,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 '[School/Program Contact or Website]',
@@ -202,7 +202,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: Text(
                                 '[More Details]',
@@ -222,13 +222,13 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 16.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -239,7 +239,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: Text(
                                           '[Accept Rate]',
@@ -264,7 +264,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -275,7 +275,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: Text(
                                           '[Average Semester Cost]',
@@ -300,7 +300,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -311,7 +311,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: Text(
                                           '[Other Details]',
@@ -336,7 +336,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -347,7 +347,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             12.0, 12.0, 12.0, 12.0),
                                         child: Text(
                                           '[School/Program Address Location]',
@@ -375,7 +375,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () {
@@ -385,9 +385,9 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 55.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
