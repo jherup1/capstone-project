@@ -65,3 +65,13 @@ String extractPageName(String url) {
     return 'XXX';
   }
 }
+
+String loginStatus(String error) {
+  if (error == 'invalid-credential') {
+    return 'Invalid email or password. Please try again.';
+  } else if (error == 'too-many-requests') {
+    return 'Too many attempts. Please wait a moment and try again';
+  } else {
+    return 'Any unexpected error has occured. Please try again later.';
+  }
+}

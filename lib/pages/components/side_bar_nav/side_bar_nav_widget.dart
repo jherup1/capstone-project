@@ -66,9 +66,9 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                     children: [
                       if (Theme.of(context).brightness == Brightness.light)
                         Image.asset(
-                          'assets/images/ezgif-1-60d7f38f99.jpg',
-                          width: 130.0,
-                          height: 40.0,
+                          'assets/images/file-F16TsDmmcQ2FLEFRO03pYzWB.jpg',
+                          width: 150.0,
+                          height: 120.0,
                           fit: BoxFit.fitWidth,
                         ),
                       if (Theme.of(context).brightness == Brightness.dark)
