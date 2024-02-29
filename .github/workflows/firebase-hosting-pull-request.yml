@@ -2,10 +2,10 @@ name: Flutter Firebase Deployment
 on:
   push:
     branches:
-      - main
+      - firebase
   pull_request_target:
     branches:
-      - main
+      - firebase
 jobs:
   build_web:
     name: Build Flutter (Web)
