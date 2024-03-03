@@ -1,30 +1,43 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'admin_manage_model.dart';
-export 'admin_manage_model.dart';
+import 'admin_tickets_model.dart';
+export 'admin_tickets_model.dart';
 
-class AdminManageWidget extends StatefulWidget {
-  const AdminManageWidget({super.key});
+class AdminTicketsWidget extends StatefulWidget {
+  const AdminTicketsWidget({super.key});
 
   @override
-  State<AdminManageWidget> createState() => _AdminManageWidgetState();
+  State<AdminTicketsWidget> createState() => _AdminTicketsWidgetState();
 }
 
-class _AdminManageWidgetState extends State<AdminManageWidget> {
-  late AdminManageModel _model;
+class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
+  late AdminTicketsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminManageModel());
+    _model = createModel(context, () => AdminTicketsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.adminActionOutput1 =
+          await UsersRecord.getDocumentOnce(currentUserReference!);
+      if (valueOrDefault(currentUserDocument?.role, '') == '"admin"') {
+        context.pushNamed('adminTickets');
+      } else {
+        context.pushNamed('homePage');
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -41,7 +54,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
     context.watch<FFAppState>();
 
     return Title(
-        title: 'adminManage',
+        title: 'adminTickets',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -101,7 +114,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Administration',
+                            'Administration - Tickets',
                             style: FlutterFlowTheme.of(context)
                                 .headlineLarge
                                 .override(
@@ -303,9 +316,7 @@ class _AdminManageWidgetState extends State<AdminManageWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 0.0),
                                             child: Text(
-                                              rowUsersRecord
-                                                  .hasTitle()
-                                                  .toString(),
+                                              rowUsersRecord.email,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall

@@ -1,7 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -601,6 +603,33 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                 ),
                                           ),
                                         );
+                                      } else if (FFAppState()
+                                              .createAccountAttempt ==
+                                          'passwords-do-not-match') {
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(-0.86, 0.0),
+                                          child: Text(
+                                            'Passwords do not match. Please try again.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  useGoogleFonts: GoogleFonts
+                                                          .asMap()
+                                                      .containsKey(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMediumFamily),
+                                                ),
+                                          ),
+                                        );
                                       } else {
                                         return Opacity(
                                           opacity: 0.0,
@@ -637,6 +666,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                           ''))
                                               ? null
                                               : () async {
+                                                  await actions.signUp(
+                                                    context,
+                                                    _model
+                                                        .emailAddressController
+                                                        .text,
+                                                    _model.passwordController
+                                                        .text,
+                                                    _model
+                                                        .confirmPasswordController
+                                                        .text,
+                                                  );
                                                   GoRouter.of(context)
                                                       .prepareAuthEvent();
                                                   if (_model.passwordController
@@ -668,6 +708,26 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                   if (user == null) {
                                                     return;
                                                   }
+
+                                                  await UsersRecord.collection
+                                                      .doc(user.uid)
+                                                      .update(
+                                                          createUsersRecordData(
+                                                        email: _model
+                                                            .emailAddressController
+                                                            .text,
+                                                        role: 'user',
+                                                      ));
+
+                                                  await currentUserReference!
+                                                      .update(
+                                                          createUsersRecordData(
+                                                    email: _model
+                                                        .emailAddressController
+                                                        .text,
+                                                    uid: currentUserUid,
+                                                    role: 'user',
+                                                  ));
 
                                                   context.pushNamedAuth(
                                                     'signIn',

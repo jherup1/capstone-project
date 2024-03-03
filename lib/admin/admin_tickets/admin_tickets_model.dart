@@ -1,11 +1,14 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'admin_manage_widget.dart' show AdminManageWidget;
+import 'admin_tickets_widget.dart' show AdminTicketsWidget;
 import 'package:flutter/material.dart';
 
-class AdminManageModel extends FlutterFlowModel<AdminManageWidget> {
+class AdminTicketsModel extends FlutterFlowModel<AdminTicketsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Read Document] action in adminTickets widget.
+  UsersRecord? adminActionOutput1;
 
   /// Initialization and disposal methods.
 
