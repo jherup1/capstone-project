@@ -713,21 +713,26 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                       .doc(user.uid)
                                                       .update(
                                                           createUsersRecordData(
-                                                        email: _model
-                                                            .emailAddressController
-                                                            .text,
-                                                        role: 'user',
+                                                        role: '"user"',
                                                       ));
 
                                                   await currentUserReference!
-                                                      .update(
-                                                          createUsersRecordData(
-                                                    email: _model
-                                                        .emailAddressController
-                                                        .text,
-                                                    uid: currentUserUid,
-                                                    role: 'user',
-                                                  ));
+                                                      .update({
+                                                    ...createUsersRecordData(
+                                                      uid: currentUserReference
+                                                          ?.id,
+                                                      email: _model
+                                                          .emailAddressController
+                                                          .text,
+                                                      role: '"user"',
+                                                    ),
+                                                    ...mapToFirestore(
+                                                      {
+                                                        'created_time': FieldValue
+                                                            .serverTimestamp(),
+                                                      },
+                                                    ),
+                                                  });
 
                                                   context.pushNamedAuth(
                                                     'signIn',
