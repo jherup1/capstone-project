@@ -14,8 +14,15 @@ Future signUp(
   BuildContext context,
   String email,
   String password,
+  String confirmPassword,
 ) async {
   try {
+    if (password != confirmPassword) {
+      FFAppState().update(() {
+        FFAppState().createAccountAttempt = 'passwords-do-not-match';
+      });
+      return;
+    }
     final user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
     FFAppState().update(() {
@@ -49,6 +56,14 @@ Future signUp(
         FFAppState().createAccountAttempt = e.code;
       });
     } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.code,
+            style: TextStyle(color: Colors.red),
+          ),
+        ),
+      );
       FFAppState().update(() {
         FFAppState().createAccountAttempt = 'unknown';
       });

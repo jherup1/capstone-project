@@ -143,14 +143,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const SupportDeprecatedWidget(),
             ),
             FFRoute(
-              name: 'adminManage',
-              path: 'adminManage',
-              builder: (context, params) => const AdminManageWidget(),
+              name: 'adminTickets',
+              path: 'adminTickets',
+              requireAuth: true,
+              builder: (context, params) => const AdminTicketsWidget(),
             ),
             FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
               builder: (context, params) => const IndividualSchoolWidget(),
+            ),
+            FFRoute(
+              name: 'adminSchools',
+              path: 'adminSchools',
+              requireAuth: true,
+              builder: (context, params) => const AdminSchoolsWidget(),
+            ),
+            FFRoute(
+              name: 'adminUsers',
+              path: 'adminUsers',
+              requireAuth: true,
+              builder: (context, params) => const AdminUsersWidget(),
+            ),
+            FFRoute(
+              name: 'adminPortal',
+              path: 'adminPortal',
+              requireAuth: true,
+              builder: (context, params) => AdminPortalWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

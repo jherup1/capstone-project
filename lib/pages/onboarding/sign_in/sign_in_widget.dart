@@ -472,6 +472,22 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                   .emailAddressController.text,
                                               _model.passwordController.text,
                                             );
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+
+                                            final user = await authManager
+                                                .signInWithEmail(
+                                              context,
+                                              _model
+                                                  .emailAddressController.text,
+                                              _model.passwordController.text,
+                                            );
+                                            if (user == null) {
+                                              return;
+                                            }
+
+                                            context.goNamedAuth(
+                                                'homePage', context.mounted);
                                           },
                                     text: 'Sign In',
                                     options: FFButtonOptions(
