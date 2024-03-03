@@ -162,7 +162,9 @@ class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
                       color: FlutterFlowTheme.of(context).primaryText,
                       size: 24.0,
                     ),
-                    onPressed: () async {},
+                    onPressed: () async {
+                      context.pushNamed('individualSchool');
+                    },
                   ),
                 ],
               ),
