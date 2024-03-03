@@ -32,9 +32,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.adminActionOutput1 =
           await UsersRecord.getDocumentOnce(currentUserReference!);
-      if (valueOrDefault(currentUserDocument?.role, '') == '"admin"') {
-        context.pushNamed('adminSchools');
-      } else {
+      if (valueOrDefault(currentUserDocument?.role, '') != 'admin') {
         context.pushNamed('homePage');
       }
     });
@@ -116,6 +114,24 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            buttonSize: 60.0,
+                            icon: Icon(
+                              Icons.chevron_left,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                          ),
+                        ],
+                      ),
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),

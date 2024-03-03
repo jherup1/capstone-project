@@ -32,9 +32,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.adminActionOutput1 =
           await UsersRecord.getDocumentOnce(currentUserReference!);
-      if (valueOrDefault(currentUserDocument?.role, '') == '"admin"') {
-        context.pushNamed('adminTickets');
-      } else {
+      if (valueOrDefault(currentUserDocument?.role, '') != 'admin') {
         context.pushNamed('homePage');
       }
     });
@@ -79,8 +77,8 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                         color: FlutterFlowTheme.of(context).primaryText,
                         size: 30.0,
                       ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
+                      onPressed: () async {
+                        context.safePop();
                       },
                     ),
                     actions: [
@@ -91,8 +89,12 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                           color: FlutterFlowTheme.of(context).primaryText,
                           size: 24.0,
                         ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
+                        onPressed: () async {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          context.goNamedAuth('signIn', context.mounted);
                         },
                       ),
                     ],
@@ -113,6 +115,17 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          FlutterFlowIconButton(
+                            buttonSize: 60.0,
+                            icon: Icon(
+                              Icons.chevron_left,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                          ),
                           Text(
                             'Administration - Tickets',
                             style: FlutterFlowTheme.of(context)
@@ -127,16 +140,22 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                           .headlineLargeFamily),
                                 ),
                           ),
-                          FlutterFlowIconButton(
-                            buttonSize: 60.0,
-                            icon: Icon(
-                              Icons.settings,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 24.0,
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                1400.0, 0.0, 0.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderColor: Colors.transparent,
+                              borderRadius: 30.0,
+                              buttonSize: 60.0,
+                              icon: Icon(
+                                Icons.settings,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                              onPressed: () {
+                                print('IconButton pressed ...');
+                              },
                             ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
                           ),
                         ],
                       ),
