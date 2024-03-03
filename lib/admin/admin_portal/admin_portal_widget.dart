@@ -37,9 +37,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.adminActionOutput1 =
           await UsersRecord.getDocumentOnce(currentUserReference!);
-      if (valueOrDefault(currentUserDocument?.role, '') == '"admin"') {
-        context.pushNamed('adminPortal');
-      } else {
+      if (valueOrDefault(currentUserDocument?.role, '') != 'admin') {
         context.goNamed('homePage');
       }
     });
