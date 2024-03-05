@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,8 +41,8 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 110.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 110.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -61,8 +60,8 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 110.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 110.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -80,8 +79,8 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 110.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 110.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -139,7 +138,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(300.0, 12.0, 100.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(300.0, 12.0, 100.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -154,11 +153,11 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: Container(
                                     width: 120.0,
-                                    constraints: BoxConstraints(
+                                    constraints: const BoxConstraints(
                                       maxWidth: 500.0,
                                     ),
                                     decoration: BoxDecoration(
@@ -172,7 +171,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 16.0, 8.0, 16.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -189,7 +188,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: Text(
                                               'Call Us',
@@ -208,7 +207,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
@@ -232,7 +231,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                     },
                                     child: Container(
                                       width: 120.0,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 500.0,
                                       ),
                                       decoration: BoxDecoration(
@@ -247,7 +246,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 16.0, 8.0, 16.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -264,7 +263,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                               size: 36.0,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 12.0, 0.0, 0.0),
                                               child: Text(
@@ -283,12 +282,12 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       'containerOnPageLoadAnimation2']!),
                                 ),
                               ),
-                            ].divide(SizedBox(width: 12.0)),
+                            ].divide(const SizedBox(width: 12.0)),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 4.0, 0.0, 0.0),
                               child: Text(
                                 'Send an email straight to our support',
@@ -307,7 +306,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -357,7 +356,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                   ),
                                   style:
@@ -420,7 +419,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 12.0),
                                   ),
                                   style:
@@ -478,7 +477,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 24.0, 16.0, 12.0),
                                   ),
                                   style:
@@ -493,15 +492,15 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                   validator: _model.textController3Validator
                                       .asValidator(context),
                                 ),
-                              ].divide(SizedBox(height: 12.0)),
+                              ].divide(const SizedBox(height: 12.0)),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 16.0, 0.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: 500.0,
                               ),
                               decoration: BoxDecoration(
@@ -514,7 +513,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
@@ -525,7 +524,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                       size: 32.0,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Upload Screenshot',
@@ -541,7 +540,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                 'containerOnPageLoadAnimation3']!),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 12.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -568,15 +567,15 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                     context: context,
                                     builder: (alertDialogContext) {
                                       return AlertDialog(
-                                        title: Text(
+                                        title: const Text(
                                             'Complete the following information'),
-                                        content: Text(
+                                        content: const Text(
                                             'Please ensure you have filled out all the boxes to submit a ticket.'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
                                                 alertDialogContext),
-                                            child: Text('Ok'),
+                                            child: const Text('Ok'),
                                           ),
                                         ],
                                       );
@@ -585,15 +584,15 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                 }
                               },
                               text: 'Send Email',
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.email_outlined,
                                 size: 15.0,
                               ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 48.0,
-                                padding: EdgeInsets.all(0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsets.all(0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -608,7 +607,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 4.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -623,7 +622,7 @@ class _SupportDeprecatedWidgetState extends State<SupportDeprecatedWidget>
                   wrapWithModel(
                     model: _model.sideBarNavModel,
                     updateCallback: () => setState(() {}),
-                    child: SideBarNavWidget(),
+                    child: const SideBarNavWidget(),
                   ),
                 ],
               ),
