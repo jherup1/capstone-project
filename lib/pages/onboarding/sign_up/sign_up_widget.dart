@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -1099,16 +1098,9 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     children: [
                                       FFButtonWidget(
                                         onPressed: () async {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          final user = await authManager
-                                              .signInAnonymously(context);
-                                          if (user == null) {
-                                            return;
-                                          }
-
-                                          context.goNamedAuth(
-                                              'homePage', context.mounted);
+                                          await actions.guestLogin(
+                                            context,
+                                          );
                                         },
                                         text: 'Continue as Guest',
                                         options: FFButtonOptions(

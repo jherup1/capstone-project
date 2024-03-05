@@ -622,15 +622,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                               children: [
                                 FFButtonWidget(
                                   onPressed: () async {
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final user = await authManager
-                                        .signInAnonymously(context);
-                                    if (user == null) {
-                                      return;
-                                    }
-
-                                    context.goNamedAuth(
-                                        'homePage', context.mounted);
+                                    await actions.guestLogin(
+                                      context,
+                                    );
                                   },
                                   text: 'Continue as Guest',
                                   options: FFButtonOptions(
