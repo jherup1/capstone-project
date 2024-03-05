@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'breadcrumbs_header_model.dart';
 export 'breadcrumbs_header_model.dart';
@@ -12,8 +11,8 @@ class BreadcrumbsHeaderWidget extends StatefulWidget {
     super.key,
     String? pageDetails,
     String? pageTitle,
-  })  : this.pageDetails = pageDetails ?? 'detailsxxx',
-        this.pageTitle = pageTitle ?? 'XXX';
+  })  : pageDetails = pageDetails ?? 'detailsxxx',
+        pageTitle = pageTitle ?? 'XXX';
 
   final String pageDetails;
   final String pageTitle;
@@ -56,7 +55,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
       height: 50.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(0.0),
@@ -74,7 +73,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
               desktop: false,
             ))
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 2.0, 0.0, 2.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(15.0, 2.0, 0.0, 2.0),
                 child: FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 30.0,
@@ -96,7 +95,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
               desktop: false,
             ))
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                 child: Icon(
                   Icons.chevron_right_rounded,
                   color: FlutterFlowTheme.of(context).secondaryText,
@@ -104,14 +103,14 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
                 ),
               ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Text(
                     widget.pageTitle,
                     style: FlutterFlowTheme.of(context).labelLarge,
@@ -120,7 +119,7 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
               child: Icon(
                 Icons.chevron_right_rounded,
                 color: FlutterFlowTheme.of(context).secondaryText,
@@ -128,15 +127,15 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 16.0, 8.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Text(
                     widget.pageDetails,
                     style: FlutterFlowTheme.of(context).bodyLarge,

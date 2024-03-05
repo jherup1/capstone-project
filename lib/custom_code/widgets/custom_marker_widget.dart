@@ -1,8 +1,9 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-// Imports other custom widgets
-// Imports custom functions
+import 'index.dart'; // Imports other custom widgets
+import '/custom_code/actions/index.dart'; // Imports custom actions
+import '/flutter_flow/custom_functions.dart'; // Imports custom functions
 import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
@@ -221,7 +222,6 @@ class CustomMarkerWidget extends StatefulWidget {
     this.width,
     this.height,
     required this.positions,
-    required this.defaultImageUrl,
     required this.rebuildPage,
     required this.mapZoomLevel,
     required this.clusterColor,
@@ -233,7 +233,6 @@ class CustomMarkerWidget extends StatefulWidget {
 
   final double? width;
   final double? height;
-  final String defaultImageUrl;
   final Future<dynamic> Function() rebuildPage;
   final List<LatLng> positions;
   final double mapZoomLevel;
@@ -308,24 +307,7 @@ class _CustomMarkerWidgetState extends State<CustomMarkerWidget> {
     List<gm.Marker> markers = <gm.Marker>[];
 
     for (final location in widget.positions) {
-      print("Fetching image for location: $location");
-
-      // Fetch image from web and decode
-      final response = await http.get(Uri.parse(widget.defaultImageUrl));
-
-      if (response.statusCode != 200) {
-        print(
-            "Failed to fetch image. HTTP Status Code: ${response.statusCode}");
-        continue;
-      }
-
-      // Decode the image using the 'image' library
-      Uint8List roundedImageBytes =
-          RoundImageHelper.getRoundImageFromWeb((iconSize).toInt(), response) ??
-              Uint8List.fromList([]);
-
-      final gm.BitmapDescriptor icon =
-          await getBitmapDescriptorFromUint8List(roundedImageBytes);
+      final gm.BitmapDescriptor icon = gm.BitmapDescriptor.defaultMarker;
 
       ClusterMarker clusterMarker = ClusterMarker(
         icon: icon,
@@ -408,7 +390,7 @@ class _CustomMarkerWidgetState extends State<CustomMarkerWidget> {
         gm.CameraPosition(target: center, zoom: widget.mapZoomLevel)));
   }
 
-  Timer? _debounce;
+  Timer? _debounce; // Declare a Timer variable
 
   @override
   void dispose() {
@@ -438,13 +420,16 @@ class _CustomMarkerWidgetState extends State<CustomMarkerWidget> {
                 _controller.complete(controller);
                 //_animateToCenter(controller);
               },
-              onCameraMoveStarted: () async {},
+              onCameraMoveStarted: () async {
+                //
+              },
               onCameraIdle: () async {},
               onCameraMove: (gm.CameraPosition position) async {
                 if (_debounce?.isActive ?? false)
                   _debounce?.cancel(); // If there's an active timer, cancel it
 
                 _debounce = Timer(Duration(milliseconds: 50), () async {
+                  // Place the code that you want to debounce here.
                   print("camera move after debounce");
 
                   gm.GoogleMapController controller = await _controller.future;

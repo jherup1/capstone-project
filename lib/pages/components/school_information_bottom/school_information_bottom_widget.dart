@@ -53,7 +53,7 @@ class _SchoolInformationBottomWidgetState
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(0.0),
         child: BackdropFilter(
@@ -62,12 +62,12 @@ class _SchoolInformationBottomWidgetState
             sigmaY: 8.0,
           ),
           child: Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0x00EEEEEE),
+                color: const Color(0x00EEEEEE),
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Column(
@@ -75,7 +75,7 @@ class _SchoolInformationBottomWidgetState
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       constraints: BoxConstraints(
@@ -84,7 +84,7 @@ class _SchoolInformationBottomWidgetState
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 12.0,
                             color: Color(0x33000000),
@@ -95,14 +95,14 @@ class _SchoolInformationBottomWidgetState
                         shape: BoxShape.rectangle,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -123,7 +123,7 @@ class _SchoolInformationBottomWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'A subtitle for this modal that happens to be here.',
@@ -153,7 +153,7 @@ class _SchoolInformationBottomWidgetState
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'FlutterFlow is an amazing platform that allows developers to create powerful, interactive and responsive mobile and web applications. It is built using Flutter, a popular open-source framework for creating cross-platform applications, and offers a wide range of features that make app development faster and more efficient. With FlutterFlow, developers can create beautiful and engaging user interfaces, implement complex logic and animations, and easily connect to APIs and other services. \n\nAdditionally, it provides real-time collaboration feature, so multiple developers can work on the same project simultaneously. Overall, FlutterFlow is a fantastic tool for any developer looking to build high-quality apps quickly and easily.',
@@ -161,14 +161,14 @@ class _SchoolInformationBottomWidgetState
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 12.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 16.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -176,9 +176,9 @@ class _SchoolInformationBottomWidgetState
                                       },
                                       text: 'Cancel',
                                       options: FFButtonOptions(
-                                        padding: EdgeInsets.all(24.0),
+                                        padding: const EdgeInsets.all(24.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -201,9 +201,9 @@ class _SchoolInformationBottomWidgetState
                                     },
                                     text: 'Add Favorite',
                                     options: FFButtonOptions(
-                                      padding: EdgeInsets.all(24.0),
+                                      padding: const EdgeInsets.all(24.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -220,7 +220,7 @@ class _SchoolInformationBottomWidgetState
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 1.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),

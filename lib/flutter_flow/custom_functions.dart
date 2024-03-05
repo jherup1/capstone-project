@@ -33,27 +33,6 @@ String? addSchoolToUser() {
   return null;
 }
 
-String? addSchool() {
-  Future<void> addSchoolToUser(String school) async {
-    try {
-      final userDoc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUserUid)
-          .get();
-      final userSchoolList = List<String>.from(userDoc['userSchoolList'] ?? []);
-      userSchoolList.add(school);
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUserUid)
-          .update({'userSchoolList': userSchoolList});
-    } catch (e) {
-      print('Error adding school to user: $e');
-    }
-  }
-
-  return null;
-}
-
 bool isSupport(List<String>? roles) {
   if (roles == null) {
     return false;
@@ -85,4 +64,30 @@ String extractPageName(String url) {
   } else {
     return 'XXX';
   }
+}
+
+bool addUserDoc(
+  String firstName,
+  String? lastName,
+  String email,
+  String? phoneNumber,
+  String? photoURL,
+  String uid,
+  String role,
+) {
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  users.doc(uid).set({
+    'email': email,
+    'display_name': firstName,
+    'created_time': DateTime.now(),
+    'uid': uid,
+    'phone_number': phoneNumber,
+    'photo_url': photoURL,
+    'last_active_time': DateTime.now(),
+    'role': role,
+    'last_name': lastName,
+    'schools': [],
+  });
+  return true;
 }

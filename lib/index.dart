@@ -14,6 +14,9 @@ export '/support/support_ticket_details/support_ticket_details_widget.dart'
     show SupportTicketDetailsWidget;
 export '/deprecated/support_deprecated/support_deprecated_widget.dart'
     show SupportDeprecatedWidget;
-export '/admin/admin_manage/admin_manage_widget.dart' show AdminManageWidget;
+export '/admin/admin_tickets/admin_tickets_widget.dart' show AdminTicketsWidget;
 export '/pages/individual_school/individual_school_widget.dart'
     show IndividualSchoolWidget;
+export '/admin/admin_schools/admin_schools_widget.dart' show AdminSchoolsWidget;
+export '/admin/admin_users/admin_users_widget.dart' show AdminUsersWidget;
+export '/admin/admin_portal/admin_portal_widget.dart' show AdminPortalWidget;
