@@ -123,6 +123,7 @@ dev_dependencies:
 
   flutter_test:
     sdk: flutter
+  test: ^1.25.2
 
 
 flutter_launcher_icons:
