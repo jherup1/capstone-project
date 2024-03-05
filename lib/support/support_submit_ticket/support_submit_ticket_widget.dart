@@ -327,8 +327,8 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                             model: _model.breadcrumbsHeaderModel,
                             updateCallback: () => setState(() {}),
                             child: const BreadcrumbsHeaderWidget(
-                              pageDetails:
-                                  'Create a ticket (Add more detailed description)',
+                              pageDetails: 'Create a support ticket here',
+                              pageTitle: 'Support',
                             ),
                           ),
                           Flexible(

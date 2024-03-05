@@ -447,12 +447,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                               ),
                                             ),
                                             StreamBuilder<List<SchoolsRecord>>(
-                                              stream: querySchoolsRecord(
-                                                queryBuilder: (schoolsRecord) =>
-                                                    schoolsRecord
-                                                        .orderBy('name'),
-                                                singleRecord: true,
-                                              ),
+                                              stream: querySchoolsRecord(),
                                               builder: (context, snapshot) {
                                                 // Customize what your widget looks like when it's loading.
                                                 if (!snapshot.hasData) {
@@ -476,16 +471,6 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 List<SchoolsRecord>
                                                     schoolsListSchoolsRecordList =
                                                     snapshot.data!;
-                                                // Return an empty Container when the item does not exist.
-                                                if (snapshot.data!.isEmpty) {
-                                                  return Container();
-                                                }
-                                                final schoolsListSchoolsRecord =
-                                                    schoolsListSchoolsRecordList
-                                                            .isNotEmpty
-                                                        ? schoolsListSchoolsRecordList
-                                                            .first
-                                                        : null;
                                                 return wrapWithModel(
                                                   model:
                                                       _model.schoolsListModel,

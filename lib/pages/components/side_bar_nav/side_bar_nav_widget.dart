@@ -421,23 +421,55 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
           alignment: const AlignmentDirectional(-1.0, 1.0),
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 10.0),
-            child: FlutterFlowIconButton(
-              borderColor: FlutterFlowTheme.of(context).secondaryBackground,
-              borderRadius: 5.0,
-              borderWidth: 5.0,
-              buttonSize: 48.0,
-              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-              icon: Icon(
-                Icons.logout,
-                color: FlutterFlowTheme.of(context).primaryText,
-                size: 28.0,
-              ),
-              onPressed: () async {
-                GoRouter.of(context).prepareAuthEvent();
-                await authManager.signOut();
-                GoRouter.of(context).clearRedirectLocation();
+            child: Builder(
+              builder: (context) {
+                if (valueOrDefault(currentUserDocument?.role, '') != 'guest') {
+                  return Align(
+                    alignment: const AlignmentDirectional(-1.0, 1.0),
+                    child: FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 5.0,
+                      borderWidth: 5.0,
+                      buttonSize: 48.0,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      icon: Icon(
+                        Icons.logout,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 28.0,
+                      ),
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
 
-                context.goNamedAuth('signIn', context.mounted);
+                        context.goNamedAuth('signIn', context.mounted);
+                      },
+                    ),
+                  );
+                } else {
+                  return Align(
+                    alignment: const AlignmentDirectional(-1.0, 1.0),
+                    child: FlutterFlowIconButton(
+                      borderColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: 5.0,
+                      borderWidth: 5.0,
+                      buttonSize: 48.0,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      icon: Icon(
+                        Icons.login,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 28.0,
+                      ),
+                      onPressed: () async {
+                        context.pushNamed('signIn');
+                      },
+                    ),
+                  );
+                }
               },
             ),
           ),
