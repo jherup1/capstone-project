@@ -389,7 +389,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 12.0, 0.0),
                                   child: Icon(
-                                    Icons.question_answer,
+                                    Icons.admin_panel_settings_sharp,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
                                     size: 24.0,

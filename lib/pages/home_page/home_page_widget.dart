@@ -84,194 +84,183 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   width: MediaQuery.sizeOf(context).width * 0.5,
                   child: Drawer(
                     elevation: 16.0,
-                    child: wrapWithModel(
-                      model: _model.sideBarNavModel1,
-                      updateCallback: () => setState(() {}),
-                      child: const SideBarNavWidget(),
+                    child: Visibility(
+                      visible: responsiveVisibility(
+                        context: context,
+                        tabletLandscape: false,
+                        desktop: false,
+                      ),
+                      child: wrapWithModel(
+                        model: _model.sideBarNavModel1,
+                        updateCallback: () => setState(() {}),
+                        child: const SideBarNavWidget(),
+                      ),
                     ),
                   ),
                 ),
                 body: SafeArea(
                   top: true,
-                  child: Stack(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (responsiveVisibility(
-                            context: context,
-                            phone: false,
-                            tablet: false,
-                          ))
-                            wrapWithModel(
-                              model: _model.sideBarNavModel2,
-                              updateCallback: () => setState(() {}),
-                              child: const SideBarNavWidget(),
-                            ),
-                          Expanded(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  wrapWithModel(
-                                    model: _model.breadcrumbsHeaderModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: const BreadcrumbsHeaderWidget(
-                                      pageDetails:
-                                          'Find a nearby school, or look globablly!',
-                                      pageTitle: 'Home Page',
+                      if (responsiveVisibility(
+                        context: context,
+                        phone: false,
+                        tablet: false,
+                      ))
+                        wrapWithModel(
+                          model: _model.sideBarNavModel2,
+                          updateCallback: () => setState(() {}),
+                          child: const SideBarNavWidget(),
+                        ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              wrapWithModel(
+                                model: _model.breadcrumbsHeaderModel,
+                                updateCallback: () => setState(() {}),
+                                child: const BreadcrumbsHeaderWidget(
+                                  pageDetails:
+                                      'Find a nearby school, or look globally!',
+                                  pageTitle: 'Home Page',
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 0.0, 16.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Dashboard',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall,
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 16.0, 0.0, 16.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Dashboard',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineSmall,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Nearby Universities',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall,
-                                          ),
-                                        ),
-                                      ],
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 4.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Nearby Universities',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodySmall,
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 12.0, 0.0),
-                                    child: Wrap(
-                                      spacing: 8.0,
-                                      runSpacing: 8.0,
-                                      alignment: WrapAlignment.start,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      direction: Axis.horizontal,
-                                      runAlignment: WrapAlignment.start,
-                                      verticalDirection: VerticalDirection.down,
-                                      clipBehavior: Clip.none,
-                                      children: [
-                                        ClipRRect(
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 12.0, 0.0),
+                                child: Wrap(
+                                  spacing: 8.0,
+                                  runSpacing: 8.0,
+                                  alignment: WrapAlignment.start,
+                                  crossAxisAlignment: WrapCrossAlignment.start,
+                                  direction: Axis.horizontal,
+                                  runAlignment: WrapAlignment.start,
+                                  verticalDirection: VerticalDirection.down,
+                                  clipBehavior: Clip.none,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.85,
+                                        decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(12.0),
-                                          child: Container(
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.85,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                            ),
-                                            child: SizedBox(
-                                              width: double.infinity,
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.8,
-                                              child: custom_widgets
-                                                  .CustomMarkerWidget(
-                                                width: double.infinity,
-                                                height:
-                                                    MediaQuery.sizeOf(context)
-                                                            .height *
-                                                        0.8,
-                                                defaultImageUrl:
-                                                    'https://res.cloudinary.com/dl6aqq2yy/image/upload/v1675264413/samples/animals/cat.jpg',
-                                                mapZoomLevel: 8.0,
-                                                clusterColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary600,
-                                                isWeb: isWeb,
-                                                appIconSize: 90,
-                                                webIconSize: 60,
-                                                clusterRadius: 250,
-                                                positions:
-                                                    homePageSchoolsRecordList
-                                                        .map(
-                                                            (e) => e.myGeopoint)
-                                                        .withoutNulls
-                                                        .toList(),
-                                                rebuildPage: () async {
-                                                  setState(() {});
-                                                  _model.tap =
-                                                      await querySchoolsRecordOnce(
-                                                    queryBuilder:
-                                                        (schoolsRecord) =>
-                                                            schoolsRecord.where(
-                                                      'myGeopoint',
-                                                      isEqualTo: FFAppState()
-                                                          .tapped
-                                                          ?.toGeoPoint(),
-                                                    ),
-                                                    singleRecord: true,
-                                                  ).then((s) => s.firstOrNull);
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return GestureDetector(
-                                                        onTap: () => _model
-                                                                .unfocusNode
-                                                                .canRequestFocus
-                                                            ? FocusScope.of(
-                                                                    context)
-                                                                .requestFocus(_model
-                                                                    .unfocusNode)
-                                                            : FocusScope.of(
-                                                                    context)
-                                                                .unfocus(),
-                                                        child: Padding(
-                                                          padding: MediaQuery
-                                                              .viewInsetsOf(
-                                                                  context),
-                                                          child:
-                                                              SchoolInformationBottomWidget(
-                                                            name: _model.tap!,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      safeSetState(() {}));
-
-                                                  setState(() {});
-                                                },
-                                              ),
-                                            ),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
                                           ),
                                         ),
-                                      ],
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.8,
+                                          child:
+                                              custom_widgets.CustomMarkerWidget(
+                                            width: double.infinity,
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
+                                                0.8,
+                                            mapZoomLevel: 8.0,
+                                            clusterColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary600,
+                                            isWeb: isWeb,
+                                            appIconSize: 90,
+                                            webIconSize: 60,
+                                            clusterRadius: 250,
+                                            positions: homePageSchoolsRecordList
+                                                .map((e) => e.myGeopoint)
+                                                .withoutNulls
+                                                .toList(),
+                                            rebuildPage: () async {
+                                              setState(() {});
+                                              _model.tap =
+                                                  await querySchoolsRecordOnce(
+                                                queryBuilder: (schoolsRecord) =>
+                                                    schoolsRecord.where(
+                                                  'myGeopoint',
+                                                  isEqualTo: FFAppState()
+                                                      .tapped
+                                                      ?.toGeoPoint(),
+                                                ),
+                                                singleRecord: true,
+                                              ).then((s) => s.firstOrNull);
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                enableDrag: false,
+                                                context: context,
+                                                builder: (context) {
+                                                  return GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          SchoolInformationBottomWidget(
+                                                        name: _model.tap!,
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+
+                                              setState(() {});
+                                            },
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),

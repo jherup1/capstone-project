@@ -55,6 +55,11 @@ class UsersRecord extends FirestoreRecord {
   String get role => _role ?? '';
   bool hasRole() => _role != null;
 
+  // "schools" field.
+  List<DocumentReference>? _schools;
+  List<DocumentReference> get schools => _schools ?? const [];
+  bool hasSchools() => _schools != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -64,6 +69,7 @@ class UsersRecord extends FirestoreRecord {
     _photoUrl = snapshotData['photo_url'] as String?;
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
+    _schools = getDataList(snapshotData['schools']);
   }
 
   static CollectionReference get collection =>
@@ -130,6 +136,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
 
   @override
   bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
         e1?.createdTime == e2?.createdTime &&
@@ -137,7 +144,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.photoUrl == e2?.photoUrl &&
         e1?.lastActiveTime == e2?.lastActiveTime &&
-        e1?.role == e2?.role;
+        e1?.role == e2?.role &&
+        listEquality.equals(e1?.schools, e2?.schools);
   }
 
   @override
@@ -149,7 +157,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.phoneNumber,
         e?.photoUrl,
         e?.lastActiveTime,
-        e?.role
+        e?.role,
+        e?.schools
       ]);
 
   @override

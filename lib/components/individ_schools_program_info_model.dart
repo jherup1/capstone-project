@@ -1,8 +1,10 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'schools_card_widget.dart' show SchoolsCardWidget;
+import 'individ_schools_program_info_widget.dart'
+    show IndividSchoolsProgramInfoWidget;
 import 'package:flutter/material.dart';
 
-class SchoolsCardModel extends FlutterFlowModel<SchoolsCardWidget> {
+class IndividSchoolsProgramInfoModel
+    extends FlutterFlowModel<IndividSchoolsProgramInfoWidget> {
   /// Initialization and disposal methods.
 
   @override

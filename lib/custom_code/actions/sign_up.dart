@@ -15,6 +15,9 @@ Future signUp(
   String email,
   String password,
   String confirmPassword,
+  String firstName,
+  String? lastName,
+  String? phoneNumber,
 ) async {
   try {
     if (password != confirmPassword) {
@@ -23,8 +26,10 @@ Future signUp(
       });
       return;
     }
-    final user = await FirebaseAuth.instance
+    final credential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
+    bool addDoc = addUserDoc(firstName, lastName, email, phoneNumber, null,
+        credential.user!.uid, 'user');
     FFAppState().update(() {
       FFAppState().createAccountAttempt = 'success';
     });
