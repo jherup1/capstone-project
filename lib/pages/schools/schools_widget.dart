@@ -1,3 +1,5 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -295,13 +297,40 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                         .titleSmall,
                                               ),
                                             ),
-                                            wrapWithModel(
-                                              model: _model
-                                                  .favoriteSchoolsListModel,
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              child:
-                                                  const FavoriteSchoolsListWidget(),
+                                            StreamBuilder<UsersRecord>(
+                                              stream: UsersRecord.getDocument(
+                                                  currentUserReference!),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final favoriteSchoolsListUsersRecord =
+                                                    snapshot.data!;
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .favoriteSchoolsListModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child:
+                                                      const FavoriteSchoolsListWidget(),
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),
@@ -417,11 +446,54 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                         .titleSmall,
                                               ),
                                             ),
-                                            wrapWithModel(
-                                              model: _model.schoolsListModel,
-                                              updateCallback: () =>
-                                                  setState(() {}),
-                                              child: const SchoolsListWidget(),
+                                            StreamBuilder<List<SchoolsRecord>>(
+                                              stream: querySchoolsRecord(
+                                                queryBuilder: (schoolsRecord) =>
+                                                    schoolsRecord
+                                                        .orderBy('name'),
+                                                singleRecord: true,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<SchoolsRecord>
+                                                    schoolsListSchoolsRecordList =
+                                                    snapshot.data!;
+                                                // Return an empty Container when the item does not exist.
+                                                if (snapshot.data!.isEmpty) {
+                                                  return Container();
+                                                }
+                                                final schoolsListSchoolsRecord =
+                                                    schoolsListSchoolsRecordList
+                                                            .isNotEmpty
+                                                        ? schoolsListSchoolsRecordList
+                                                            .first
+                                                        : null;
+                                                return wrapWithModel(
+                                                  model:
+                                                      _model.schoolsListModel,
+                                                  updateCallback: () =>
+                                                      setState(() {}),
+                                                  child: const SchoolsListWidget(),
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),

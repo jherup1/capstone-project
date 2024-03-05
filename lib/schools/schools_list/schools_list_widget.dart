@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/schools/schools_card/schools_card_widget.dart';
+import '/schools/school_card_all/school_card_all_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -89,9 +89,9 @@ class _SchoolsListWidgetState extends State<SchoolsListWidget> {
             itemBuilder: (context, _, listViewIndex) {
               final listViewSchoolsRecord =
                   _model.listViewPagingController!.itemList![listViewIndex];
-              return SchoolsCardWidget(
+              return SchoolCardAllWidget(
                 key: Key(
-                    'Key6g8_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                    'Keyk9s_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
                 parameter1: listViewSchoolsRecord.name,
               );
             },

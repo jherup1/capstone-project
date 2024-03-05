@@ -65,3 +65,29 @@ String extractPageName(String url) {
     return 'XXX';
   }
 }
+
+bool addUserDoc(
+  String firstName,
+  String? lastName,
+  String email,
+  String? phoneNumber,
+  String? photoURL,
+  String uid,
+  String role,
+) {
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  users.doc(uid).set({
+    'email': email,
+    'display_name': firstName,
+    'created_time': DateTime.now(),
+    'uid': uid,
+    'phone_number': phoneNumber,
+    'photo_url': photoURL,
+    'last_active_time': DateTime.now(),
+    'role': role,
+    'last_name': lastName,
+    'schools': [],
+  });
+  return true;
+}

@@ -2,7 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/schools/schools_card/schools_card_widget.dart';
+import '/schools/schools_card_favorited/schools_card_favorited_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -45,64 +45,87 @@ class _FavoriteSchoolsListWidgetState extends State<FavoriteSchoolsListWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      width: double.infinity,
-      height: 240.0,
-      decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
-      ),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
-        child: PagedListView<DocumentSnapshot<Object?>?, FavoriteSchoolsRecord>(
-          pagingController: _model.setListViewController(
-            FavoriteSchoolsRecord.collection.where(
-              'uid',
-              isEqualTo: currentUserUid,
+    return StreamBuilder<UsersRecord>(
+      stream: UsersRecord.getDocument(currentUserReference!),
+      builder: (context, snapshot) {
+        // Customize what your widget looks like when it's loading.
+        if (!snapshot.hasData) {
+          return Center(
+            child: SizedBox(
+              width: 50.0,
+              height: 50.0,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  FlutterFlowTheme.of(context).tertiary,
+                ),
+              ),
             ),
+          );
+        }
+        final containerUsersRecord = snapshot.data!;
+        return Container(
+          width: double.infinity,
+          height: 240.0,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
-          padding: EdgeInsets.zero,
-          primary: false,
-          shrinkWrap: true,
-          reverse: false,
-          scrollDirection: Axis.horizontal,
-          builderDelegate: PagedChildBuilderDelegate<FavoriteSchoolsRecord>(
-            // Customize what your widget looks like when it's loading the first page.
-            firstPageProgressIndicatorBuilder: (_) => Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).tertiary,
-                  ),
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 4.0),
+            child: PagedListView<DocumentSnapshot<Object?>?,
+                FavoriteSchoolsRecord>(
+              pagingController: _model.setListViewController(
+                FavoriteSchoolsRecord.collection.where(
+                  'uid',
+                  isEqualTo: containerUsersRecord.uid,
                 ),
               ),
-            ),
-            // Customize what your widget looks like when it's loading another page.
-            newPageProgressIndicatorBuilder: (_) => Center(
-              child: SizedBox(
-                width: 50.0,
-                height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).tertiary,
+              padding: EdgeInsets.zero,
+              primary: false,
+              shrinkWrap: true,
+              reverse: false,
+              scrollDirection: Axis.horizontal,
+              builderDelegate: PagedChildBuilderDelegate<FavoriteSchoolsRecord>(
+                // Customize what your widget looks like when it's loading the first page.
+                firstPageProgressIndicatorBuilder: (_) => Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).tertiary,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
+                // Customize what your widget looks like when it's loading another page.
+                newPageProgressIndicatorBuilder: (_) => Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).tertiary,
+                      ),
+                    ),
+                  ),
+                ),
 
-            itemBuilder: (context, _, listViewIndex) {
-              final listViewFavoriteSchoolsRecord =
-                  _model.listViewPagingController!.itemList![listViewIndex];
-              return SchoolsCardWidget(
-                key: Key(
-                    'Keylqh_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
-                parameter1: listViewFavoriteSchoolsRecord.schoolName,
-              );
-            },
+                itemBuilder: (context, _, listViewIndex) {
+                  final listViewFavoriteSchoolsRecord =
+                      _model.listViewPagingController!.itemList![listViewIndex];
+                  return SchoolsCardFavoritedWidget(
+                    key: Key(
+                        'Keylqh_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                    parameter1: listViewFavoriteSchoolsRecord.schoolName,
+                    favoriteSchools: containerUsersRecord.reference,
+                    schools: listViewFavoriteSchoolsRecord.reference,
+                  );
+                },
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

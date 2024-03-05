@@ -1,29 +1,37 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'schools_card_model.dart';
-export 'schools_card_model.dart';
+import 'schools_card_favorited_model.dart';
+export 'schools_card_favorited_model.dart';
 
-class SchoolsCardWidget extends StatefulWidget {
-  const SchoolsCardWidget({
+class SchoolsCardFavoritedWidget extends StatefulWidget {
+  const SchoolsCardFavoritedWidget({
     super.key,
     this.parameter1,
+    this.favoriteSchools,
+    this.schools,
   });
 
   final String? parameter1;
+  final DocumentReference? favoriteSchools;
+  final DocumentReference? schools;
 
   @override
-  State<SchoolsCardWidget> createState() => _SchoolsCardWidgetState();
+  State<SchoolsCardFavoritedWidget> createState() =>
+      _SchoolsCardFavoritedWidgetState();
 }
 
-class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
+class _SchoolsCardFavoritedWidgetState extends State<SchoolsCardFavoritedWidget>
     with TickerProviderStateMixin {
-  late SchoolsCardModel _model;
+  late SchoolsCardFavoritedModel _model;
 
   final animationsMap = {
     'containerOnPageLoadAnimation': AnimationInfo(
@@ -56,7 +64,7 @@ class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SchoolsCardModel());
+    _model = createModel(context, () => SchoolsCardFavoritedModel());
 
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -132,10 +140,33 @@ class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
                           size: 20.0,
                         ),
                       ),
-                      Text(
-                        widget.parameter1!,
-                        style:
-                            FlutterFlowTheme.of(context).titleMedium.override(
+                      StreamBuilder<List<SchoolsRecord>>(
+                        stream: querySchoolsRecord(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).tertiary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<SchoolsRecord> textSchoolsRecordList =
+                              snapshot.data!;
+                          return Text(
+                            valueOrDefault<String>(
+                              textSchoolsRecordList.first.name,
+                              'school',
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
                                   fontFamily: 'Outfit',
                                   color: Colors.white,
                                   fontSize: 18.0,
@@ -143,6 +174,8 @@ class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
                                   useGoogleFonts:
                                       GoogleFonts.asMap().containsKey('Outfit'),
                                 ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -163,7 +196,10 @@ class _SchoolsCardWidgetState extends State<SchoolsCardWidget>
                       size: 24.0,
                     ),
                     onPressed: () async {
-                      context.pushNamed('individualSchool');
+                      await actions.addFavoriteSchool(
+                        currentUserReference!.id,
+                        widget.favoriteSchools!.id,
+                      );
                     },
                   ),
                 ],

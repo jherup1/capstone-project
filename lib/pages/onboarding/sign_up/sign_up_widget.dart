@@ -1,5 +1,4 @@
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -28,8 +27,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     super.initState();
     _model = createModel(context, () => SignUpModel());
 
+    _model.firstNameController ??= TextEditingController();
+    _model.firstNameFocusNode ??= FocusNode();
+
+    _model.lastNameController ??= TextEditingController();
+    _model.lastNameFocusNode ??= FocusNode();
+
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
+
+    _model.phoneNumberController ??= TextEditingController();
+    _model.phoneNumberFocusNode ??= FocusNode();
 
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
@@ -148,23 +156,22 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                     0.0, 16.0, 0.0, 0.0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.emailAddressController,
+                                                  _model.firstNameController,
                                               focusNode:
-                                                  _model.emailAddressFocusNode,
+                                                  _model.firstNameFocusNode,
                                               onChanged: (_) =>
                                                   EasyDebounce.debounce(
-                                                '_model.emailAddressController',
+                                                '_model.firstNameController',
                                                 const Duration(milliseconds: 100),
                                                 () => setState(() {}),
                                               ),
                                               obscureText: false,
                                               decoration: InputDecoration(
-                                                labelText: 'Email Address',
+                                                labelText: 'First Name',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall,
-                                                hintText:
-                                                    'Enter your email here...',
+                                                hintText: 'First Name',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall,
@@ -221,12 +228,292 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
+                                              keyboardType: TextInputType.name,
                                               validator: _model
-                                                  .emailAddressControllerValidator
+                                                  .firstNameControllerValidator
                                                   .asValidator(context),
                                             ),
                                           ),
                                         ),
+                                        SizedBox(
+                                          height: 10.0,
+                                          child: VerticalDivider(
+                                            thickness: 1.0,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 16.0, 0.0, 0.0),
+                                            child: TextFormField(
+                                              controller:
+                                                  _model.lastNameController,
+                                              focusNode:
+                                                  _model.lastNameFocusNode,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.lastNameController',
+                                                const Duration(milliseconds: 100),
+                                                () => setState(() {}),
+                                              ),
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    'Last Name (Optional)',
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                hintText: 'Last Name',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                contentPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(16.0, 24.0,
+                                                            0.0, 24.0),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              keyboardType: TextInputType.name,
+                                              validator: _model
+                                                  .lastNameControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 16.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: TextFormField(
+                                            controller:
+                                                _model.emailAddressController,
+                                            focusNode:
+                                                _model.emailAddressFocusNode,
+                                            onChanged: (_) =>
+                                                EasyDebounce.debounce(
+                                              '_model.emailAddressController',
+                                              const Duration(milliseconds: 100),
+                                              () => setState(() {}),
+                                            ),
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              labelText: 'Email Address',
+                                              labelStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall,
+                                              hintText:
+                                                  'Enter your email here...',
+                                              hintStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall,
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(40.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(40.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(40.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 2.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(40.0),
+                                              ),
+                                              filled: true,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              contentPadding:
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(16.0, 24.0, 0.0,
+                                                          24.0),
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium,
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            validator: _model
+                                                .emailAddressControllerValidator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 16.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        if (false)
+                                          Expanded(
+                                            child: TextFormField(
+                                              controller:
+                                                  _model.phoneNumberController,
+                                              focusNode:
+                                                  _model.phoneNumberFocusNode,
+                                              onChanged: (_) =>
+                                                  EasyDebounce.debounce(
+                                                '_model.phoneNumberController',
+                                                const Duration(milliseconds: 100),
+                                                () => setState(() {}),
+                                              ),
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                labelText:
+                                                    'Phone Number (Optional)',
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                hintText: '+1 (123) 456-7890',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 2.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          40.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                contentPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(16.0, 24.0,
+                                                            0.0, 24.0),
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                              keyboardType: TextInputType.phone,
+                                              validator: _model
+                                                  .phoneNumberControllerValidator
+                                                  .asValidator(context),
+                                              inputFormatters: [
+                                                _model.phoneNumberMask
+                                              ],
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -655,13 +942,17 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         FFButtonWidget(
-                                          onPressed: ((_model.emailAddressController
-                                                              .text ==
+                                          onPressed: ((_model
+                                                              .firstNameController.text ==
                                                           '') ||
-                                                  (_model.passwordController
+                                                  (_model
+                                                              .passwordController
                                                               .text ==
                                                           '') ||
                                                   (_model.confirmPasswordController
+                                                              .text ==
+                                                          '') ||
+                                                  (_model.emailAddressController
                                                               .text ==
                                                           ''))
                                               ? null
@@ -676,78 +967,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                     _model
                                                         .confirmPasswordController
                                                         .text,
-                                                  );
-                                                  GoRouter.of(context)
-                                                      .prepareAuthEvent();
-                                                  if (_model.passwordController
-                                                          .text !=
-                                                      _model
-                                                          .confirmPasswordController
-                                                          .text) {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      const SnackBar(
-                                                        content: Text(
-                                                          'Passwords don\'t match!',
-                                                        ),
-                                                      ),
-                                                    );
-                                                    return;
-                                                  }
-
-                                                  final user = await authManager
-                                                      .createAccountWithEmail(
-                                                    context,
-                                                    _model
-                                                        .emailAddressController
+                                                    _model.firstNameController
                                                         .text,
-                                                    _model.passwordController
+                                                    _model.lastNameController
                                                         .text,
-                                                  );
-                                                  if (user == null) {
-                                                    return;
-                                                  }
-
-                                                  await UsersRecord.collection
-                                                      .doc(user.uid)
-                                                      .update(
-                                                          createUsersRecordData(
-                                                        role: '"user"',
-                                                      ));
-
-                                                  await currentUserReference!
-                                                      .update({
-                                                    ...createUsersRecordData(
-                                                      uid: currentUserReference
-                                                          ?.id,
-                                                      email: _model
-                                                          .emailAddressController
-                                                          .text,
-                                                      role: '"user"',
-                                                    ),
-                                                    ...mapToFirestore(
-                                                      {
-                                                        'created_time': FieldValue
-                                                            .serverTimestamp(),
-                                                      },
-                                                    ),
-                                                  });
-
-                                                  context.pushNamedAuth(
-                                                    'signIn',
-                                                    context.mounted,
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          const TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .rightToLeft,
-                                                        duration: Duration(
-                                                            milliseconds: 400),
-                                                      ),
-                                                    },
+                                                    _model.phoneNumberController
+                                                        .text,
                                                   );
                                                 },
                                           text: 'Sign Up',
