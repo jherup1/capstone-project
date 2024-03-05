@@ -89,10 +89,33 @@ class _SchoolsListWidgetState extends State<SchoolsListWidget> {
             itemBuilder: (context, _, listViewIndex) {
               final listViewSchoolsRecord =
                   _model.listViewPagingController!.itemList![listViewIndex];
-              return SchoolCardAllWidget(
-                key: Key(
-                    'Keyk9s_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
-                parameter1: listViewSchoolsRecord.name,
+              return StreamBuilder<List<SchoolsRecord>>(
+                stream: querySchoolsRecord(
+                  limit: 20,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            FlutterFlowTheme.of(context).tertiary,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                  List<SchoolsRecord> schoolCardAllSchoolsRecordList =
+                      snapshot.data!;
+                  return SchoolCardAllWidget(
+                    key: Key(
+                        'Keyk9s_${listViewIndex}_of_${_model.listViewPagingController!.itemList!.length}'),
+                    parameter1: listViewSchoolsRecord.name,
+                  );
+                },
               );
             },
           ),
