@@ -252,7 +252,9 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 16.0),
                             child: StreamBuilder<List<SchoolsRecord>>(
-                              stream: querySchoolsRecord(),
+                              stream: querySchoolsRecord(
+                                limit: 20,
+                              ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
