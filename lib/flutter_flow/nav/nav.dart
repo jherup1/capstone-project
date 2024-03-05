@@ -86,12 +86,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'signIn',
               path: 'signIn',
               builder: (context, params) => const SignInWidget(),
-              builder: (context, params) => const SignInWidget(),
             ),
             FFRoute(
               name: 'signUp',
               path: 'signUp',
-              builder: (context, params) => const SignUpWidget(),
               builder: (context, params) => const SignUpWidget(),
             ),
             FFRoute(
@@ -145,12 +143,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'supportDeprecated',
               path: 'supportDeprecated',
               builder: (context, params) => const SupportDeprecatedWidget(),
-              builder: (context, params) => const SupportDeprecatedWidget(),
             ),
             FFRoute(
-              name: 'adminManage',
-              path: 'adminManage',
-              builder: (context, params) => const AdminManageWidget(),
               name: 'adminTickets',
               path: 'adminTickets',
               requireAuth: true,
