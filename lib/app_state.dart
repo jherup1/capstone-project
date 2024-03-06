@@ -68,4 +68,10 @@ class FFAppState extends ChangeNotifier {
   set createAccountAttempt(String value) {
     _createAccountAttempt = value;
   }
+
+  String _updateAccountAttempt = '';
+  String get updateAccountAttempt => _updateAccountAttempt;
+  set updateAccountAttempt(String value) {
+    _updateAccountAttempt = value;
+  }
 }

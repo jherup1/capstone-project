@@ -1,7 +1,7 @@
 import '/backend/backend.dart';
+import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'admin_tickets_widget.dart' show AdminTicketsWidget;
 import 'package:flutter/material.dart';
 

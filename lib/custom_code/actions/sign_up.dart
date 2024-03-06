@@ -61,14 +61,6 @@ Future signUp(
         FFAppState().createAccountAttempt = e.code;
       });
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            e.code,
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
-      );
       FFAppState().update(() {
         FFAppState().createAccountAttempt = 'unknown';
       });
