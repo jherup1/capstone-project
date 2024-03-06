@@ -25,7 +25,6 @@ Future<void> submitTicket(
     'status': status,
     'lastActive': getCurrentTimestamp(),
     'ticketID': randomInteger(10000, 19999),
-    // 'assignee': assignee, // Mock or set this as needed
   });
 }
 
