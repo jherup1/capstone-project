@@ -8,7 +8,6 @@ import 'schema/util/firestore_util.dart';
 import 'schema/users_record.dart';
 import 'schema/schools_record.dart';
 import 'schema/support_tickets_record.dart';
-import 'schema/favorite_schools_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,7 +18,6 @@ export 'schema/util/schema_util.dart';
 export 'schema/users_record.dart';
 export 'schema/schools_record.dart';
 export 'schema/support_tickets_record.dart';
-export 'schema/favorite_schools_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -127,43 +125,6 @@ Future<List<SupportTicketsRecord>> querySupportTicketsRecordOnce({
     queryCollectionOnce(
       SupportTicketsRecord.collection,
       SupportTicketsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-/// Functions to query FavoriteSchoolsRecords (as a Stream and as a Future).
-Future<int> queryFavoriteSchoolsRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      FavoriteSchoolsRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<FavoriteSchoolsRecord>> queryFavoriteSchoolsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      FavoriteSchoolsRecord.collection,
-      FavoriteSchoolsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<FavoriteSchoolsRecord>> queryFavoriteSchoolsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      FavoriteSchoolsRecord.collection,
-      FavoriteSchoolsRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
