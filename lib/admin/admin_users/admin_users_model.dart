@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'admin_users_widget.dart' show AdminUsersWidget;
 import 'package:flutter/material.dart';
@@ -9,21 +10,20 @@ class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Read Document] action in adminUsers widget.
   UsersRecord? adminActionOutput1;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
+  // Model for sideBarNav component.
+  late SideBarNavModel sideBarNavModel;
 
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    sideBarNavModel = createModel(context, () => SideBarNavModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    sideBarNavModel.dispose();
   }
 
   /// Action blocks are added here.

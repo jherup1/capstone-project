@@ -5,6 +5,7 @@ import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/support/user_list/user_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -148,88 +149,287 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'Support Tickets',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmallFamily),
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 10.0),
+                                    child: Text(
+                                      'Support Tickets',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium,
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         8.0, 0.0, 8.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Open',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily),
+                                    child: StreamBuilder<
+                                        List<SupportTicketsRecord>>(
+                                      stream: querySupportTicketsRecord(
+                                        limit: 10,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                                ),
                                               ),
-                                        ),
-                                        Text(
-                                          'Pending',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily),
+                                            ),
+                                          );
+                                        }
+                                        List<SupportTicketsRecord>
+                                            rowSupportTicketsRecordList =
+                                            snapshot.data!;
+                                        return Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: List.generate(
+                                              rowSupportTicketsRecordList
+                                                  .length, (rowIndex) {
+                                            final rowSupportTicketsRecord =
+                                                rowSupportTicketsRecordList[
+                                                    rowIndex];
+                                            return Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 12.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 5.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      rowSupportTicketsRecord
+                                                          .name,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 14.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 5.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        rowSupportTicketsRecord
+                                                            .assignee?.id,
+                                                        'Not Assigned',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodySmall
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmallFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                fontSize: 14.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Builder(
+                                                    builder: (context) =>
+                                                        Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: const AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      const UserListWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              setState(() {}));
+                                                        },
+                                                        text: 'Assign',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width: 100.0,
+                                                          height: 36.0,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodySmallFamily,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                  ),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      18.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 10.0,
+                                                                0.0, 0.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        await rowSupportTicketsRecord
+                                                            .reference
+                                                            .delete();
+                                                      },
+                                                      text: 'Delete',
+                                                      options: FFButtonOptions(
+                                                        width: 100.0,
+                                                        height: 36.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodySmallFamily),
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(18.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                        ),
-                                        Text(
-                                          'Closed',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                useGoogleFonts: GoogleFonts
-                                                        .asMap()
-                                                    .containsKey(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMediumFamily),
-                                              ),
-                                        ),
-                                      ],
+                                            );
+                                          }),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ],
@@ -241,21 +441,25 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text(
-                                    'Assign Support Users',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleMediumFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMediumFamily),
-                                        ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: Text(
+                                      'Assign Support Users',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleMediumFamily),
+                                          ),
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
@@ -265,8 +469,9 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                         queryBuilder: (usersRecord) =>
                                             usersRecord.where(
                                           'role',
-                                          isEqualTo: '\'support\'',
+                                          isEqualTo: 'support',
                                         ),
+                                        limit: 10,
                                       ),
                                       builder: (context, snapshot) {
                                         // Customize what your widget looks like when it's loading.
@@ -323,7 +528,8 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                             .fromSTEB(0.0, 5.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      rowUsersRecord.email,
+                                                      rowUsersRecord
+                                                          .displayName,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -377,53 +583,59 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                               ),
                                                     ),
                                                   ),
-                                                  FFButtonWidget(
-                                                    onPressed: () {
-                                                      print(
-                                                          'Button pressed ...');
-                                                    },
-                                                    text: 'Assign',
-                                                    options: FFButtonOptions(
-                                                      width: 100.0,
-                                                      height: 36.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodySmallFamily,
-                                                                color: Colors
-                                                                    .white,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodySmallFamily),
-                                                              ),
-                                                      elevation: 0.0,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              18.0),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 10.0,
+                                                                0.0, 0.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () {
+                                                        print(
+                                                            'Button pressed ...');
+                                                      },
+                                                      text: 'Assign',
+                                                      options: FFButtonOptions(
+                                                        width: 100.0,
+                                                        height: 36.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmallFamily,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodySmallFamily),
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(18.0),
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -451,7 +663,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                               queryBuilder: (usersRecord) =>
                                                   usersRecord.where(
                                                 'role',
-                                                isEqualTo: '\'support\').lengt',
+                                                isEqualTo: 'support',
                                               ),
                                             ),
                                             builder: (context, snapshot) {
@@ -499,43 +711,6 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                               );
                                             },
-                                          ),
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Add Support User',
-                                          options: FFButtonOptions(
-                                            width: 150.0,
-                                            height: 36.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodySmall
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodySmallFamily,
-                                                      color: Colors.white,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodySmallFamily),
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(18.0),
                                           ),
                                         ),
                                       ],

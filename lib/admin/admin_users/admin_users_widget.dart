@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -36,9 +37,6 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
       }
     });
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -63,47 +61,14 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: responsiveVisibility(
-              context: context,
-              tabletLandscape: false,
-              desktop: false,
-            )
-                ? AppBar(
-                    backgroundColor:
-                        FlutterFlowTheme.of(context).primaryBackground,
-                    automaticallyImplyLeading: false,
-                    leading: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      buttonSize: 60.0,
-                      icon: Icon(
-                        Icons.arrow_back_rounded,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
-                      ),
-                      onPressed: () {
-                        print('IconButton pressed ...');
-                      },
-                    ),
-                    actions: [
-                      FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        buttonSize: 60.0,
-                        icon: Icon(
-                          Icons.logout,
-                          color: FlutterFlowTheme.of(context).primaryText,
-                          size: 24.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
-                      ),
-                    ],
-                    centerTitle: false,
-                    elevation: 0.0,
-                  )
-                : null,
+            drawer: Drawer(
+              elevation: 16.0,
+              child: wrapWithModel(
+                model: _model.sideBarNavModel,
+                updateCallback: () => setState(() {}),
+                child: const SideBarNavWidget(),
+              ),
+            ),
             body: SafeArea(
               top: true,
               child: SingleChildScrollView(
@@ -131,38 +96,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: TextFormField(
-                          controller: _model.textController,
-                          focusNode: _model.textFieldFocusNode,
-                          autofocus: true,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: 'Search Users',
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                            enabledBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            focusedErrorBorder: InputBorder.none,
-                            filled: true,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                          validator: _model.textControllerValidator
-                              .asValidator(context),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
                           const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                       child: StreamBuilder<List<UsersRecord>>(
-                        stream: queryUsersRecord(),
+                        stream: queryUsersRecord(
+                          limit: 20,
+                        ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
                           if (!snapshot.hasData) {
@@ -195,7 +133,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(60.0),
                                       child: Image.network(
-                                        'https://images.unsplash.com/photo-1706708316348-942c80a29576?w=\${userData.photo_url}&h=\${userData.photo_url}',
+                                        columnUsersRecord.photoUrl,
                                         width: 60.0,
                                         height: 60.0,
                                         fit: BoxFit.cover,
@@ -209,30 +147,111 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            columnUsersRecord.email,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMediumFamily,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryText,
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 5.0),
+                                            child: Container(
+                                              width: 200.0,
+                                              height: 30.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      columnUsersRecord
+                                                          .displayName,
+                                                      style:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleMediumFamily),
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(5.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      columnUsersRecord
+                                                          .lastName,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 5.0),
+                                            child: Container(
+                                              width: 200.0,
+                                              height: 30.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                              ),
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Text(
+                                                  columnUsersRecord.email,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
                                                 ),
+                                              ),
+                                            ),
                                           ),
                                           Container(
-                                            width: 90.0,
+                                            width: 200.0,
                                             height: 30.0,
                                             decoration: BoxDecoration(
                                               color:
@@ -270,11 +289,77 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         ],
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.9, 0.0),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.9, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await columnUsersRecord.reference
+                                              .update(createUsersRecordData(
+                                            role: 'admin',
+                                          ));
+                                        },
                                         child: Container(
+                                          width: 170.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        8.0, 4.0, 4.0, 4.0),
+                                                child: Icon(
+                                                  Icons
+                                                      .admin_panel_settings_sharp,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Set role to admin',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.9, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          if (columnUsersRecord.role !=
+                                              'admin') {
+                                            await columnUsersRecord.reference
+                                                .update(createUsersRecordData(
+                                              role: 'support',
+                                            ));
+                                          }
+                                        },
+                                        child: Container(
+                                          width: 200.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -297,22 +382,40 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   size: 24.0,
                                                 ),
                                               ),
-                                              Text(
-                                                'Make admin',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Set role to support',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.9, 0.0),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.9, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          if (columnUsersRecord.role !=
+                                              'admin') {
+                                            await columnUsersRecord.reference
+                                                .update(createUsersRecordData(
+                                              role: 'user',
+                                            ));
+                                          }
+                                        },
                                         child: Container(
+                                          width: 200.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -335,22 +438,48 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   size: 24.0,
                                                 ),
                                               ),
-                                              Text(
-                                                'Make support',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Set role to user',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
                                               ),
                                             ],
                                           ),
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(0.9, 0.0),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.9, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          if (columnUsersRecord.email.isEmpty) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content: Text(
+                                                  'Email required!',
+                                                ),
+                                              ),
+                                            );
+                                            return;
+                                          }
+                                          await authManager.resetPassword(
+                                            email: columnUsersRecord.email,
+                                            context: context,
+                                          );
+                                        },
                                         child: Container(
+                                          width: 200.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -372,11 +501,67 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   size: 24.0,
                                                 ),
                                               ),
-                                              Text(
-                                                'Reset Password',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Reset Password',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.9, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await columnUsersRecord.reference
+                                              .delete();
+                                        },
+                                        child: Container(
+                                          width: 200.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 4.0, 4.0, 4.0),
+                                                child: Icon(
+                                                  Icons
+                                                      .person_remove_alt_1_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Remove User',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
                                               ),
                                             ],
                                           ),

@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
@@ -1241,7 +1242,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                 .doc()
                                                 .set(
                                                     createSupportTicketsRecordData(
-                                                  owner: null,
+                                                  owner: currentUserReference,
                                                   name: _model
                                                       .textController1.text,
                                                   description: _model

@@ -7,7 +7,6 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -359,9 +358,9 @@ class FFRoute {
               ? isWeb
                   ? Container()
                   : Container(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Colors.transparent,
                       child: Image.asset(
-                        'assets/images/darkmodepsysearchlogo.jpg',
+                        'assets/images/lightmodepsysearchlogo.jpg',
                         fit: BoxFit.contain,
                       ),
                     )

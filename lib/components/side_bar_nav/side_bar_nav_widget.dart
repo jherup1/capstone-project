@@ -465,7 +465,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         size: 28.0,
                       ),
                       onPressed: () async {
-                        context.pushNamed('signIn');
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
+
+                        context.pushNamedAuth('signIn', context.mounted);
                       },
                     ),
                   );
