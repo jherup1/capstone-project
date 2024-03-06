@@ -111,6 +111,7 @@ dependencies:
   geolocator_web: any
   infinite_scroll_pagination: ^4.0.0
   mask_text_input_formatter: ^2.9.0
+  fake_cloud_firestore: ^2.4.8
 
 dependency_overrides:
   intl: any
