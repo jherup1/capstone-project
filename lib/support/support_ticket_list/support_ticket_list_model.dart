@@ -1,6 +1,6 @@
+import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import 'support_ticket_list_widget.dart' show SupportTicketListWidget;
 import 'package:flutter/material.dart';
 

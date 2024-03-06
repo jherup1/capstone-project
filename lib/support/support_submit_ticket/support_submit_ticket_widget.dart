@@ -1,5 +1,7 @@
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,8 +9,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
-import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/user_list/user_list_widget.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;

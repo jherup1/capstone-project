@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
+import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import 'support_submit_ticket_widget.dart' show SupportSubmitTicketWidget;
 import 'package:flutter/material.dart';

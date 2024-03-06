@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
+import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/pages/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/pages/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/support/empty_state_dynamic/empty_state_dynamic_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';

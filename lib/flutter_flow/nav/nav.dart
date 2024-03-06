@@ -7,6 +7,7 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -138,11 +139,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'supportDeprecated',
-              path: 'supportDeprecated',
-              builder: (context, params) => const SupportDeprecatedWidget(),
-            ),
-            FFRoute(
               name: 'adminTickets',
               path: 'adminTickets',
               requireAuth: true,
@@ -173,6 +169,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 school: params.getParam(
                     'school', ParamType.DocumentReference, false, ['schools']),
               ),
+            ),
+            FFRoute(
+              name: 'editProfilePage',
+              path: 'editProfile',
+              builder: (context, params) => const EditProfilePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -355,13 +356,15 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Container(
-                  color: Colors.transparent,
-                  child: Image.asset(
-                    'assets/images/file-F16TsDmmcQ2FLEFRO03pYzWB.jpg',
-                    fit: BoxFit.contain,
-                  ),
-                )
+              ? isWeb
+                  ? Container()
+                  : Container(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      child: Image.asset(
+                        'assets/images/darkmodepsysearchlogo.jpg',
+                        fit: BoxFit.contain,
+                      ),
+                    )
               : page;
 
           final transitionInfo = state.transitionInfo;
