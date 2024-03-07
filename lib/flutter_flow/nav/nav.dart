@@ -155,10 +155,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const AdminSchoolsWidget(),
             ),
             FFRoute(
-              name: 'adminUsers',
-              path: 'adminUsers',
+              name: 'adminUsersOld',
+              path: 'adminUsersOld',
               requireAuth: true,
-              builder: (context, params) => const AdminUsersWidget(),
+              builder: (context, params) => const AdminUsersOldWidget(),
             ),
             FFRoute(
               name: 'adminPortal',
@@ -173,6 +173,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'editProfilePage',
               path: 'editProfile',
               builder: (context, params) => const EditProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'adminUsers',
+              path: 'adminUsers',
+              requireAuth: true,
+              builder: (context, params) => AdminUsersWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
