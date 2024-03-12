@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'school_scroll_fav_model.dart';
 export 'school_scroll_fav_model.dart';
 
@@ -43,8 +42,6 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),
       builder: (context, snapshot) {

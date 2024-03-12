@@ -10,7 +10,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/support/user_list/user_list_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'support_ticket_details_model.dart';
 export 'support_ticket_details_model.dart';
 
@@ -50,8 +49,6 @@ class _SupportTicketDetailsWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return FutureBuilder<UsersRecord>(
       future: UsersRecord.getDocumentOnce(_model.selectedUser?.reference != null
           ? _model.selectedUser!.reference
@@ -156,9 +153,9 @@ class _SupportTicketDetailsWidgetState
                                                             .fromSTEB(16.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: RichText(
-                                                      textScaleFactor:
+                                                      textScaler:
                                                           MediaQuery.of(context)
-                                                              .textScaleFactor,
+                                                              .textScaler,
                                                       text: TextSpan(
                                                         children: [
                                                           const TextSpan(

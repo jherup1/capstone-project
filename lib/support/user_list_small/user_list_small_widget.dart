@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'user_list_small_model.dart';
 export 'user_list_small_model.dart';
 
@@ -47,8 +46,6 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,
@@ -62,7 +59,8 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
         duration: const Duration(milliseconds: 150),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: _model.iuserHovered? FlutterFlowTheme.of(context).primaryBackground
+          color: _model.iuserHovered
+              ? FlutterFlowTheme.of(context).primaryBackground
               : FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(

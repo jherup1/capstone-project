@@ -6,7 +6,6 @@ import '/schools/school_scroll/school_scroll_widget.dart';
 import '/schools/school_scroll_fav/school_scroll_fav_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'schools_model.dart';
 export 'schools_model.dart';
 
@@ -46,8 +45,6 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Title(
         title: 'schools',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),

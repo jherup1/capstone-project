@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'school_scroll_model.dart';
 export 'school_scroll_model.dart';
 
@@ -43,8 +42,6 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       height: 250.0,
       decoration: const BoxDecoration(

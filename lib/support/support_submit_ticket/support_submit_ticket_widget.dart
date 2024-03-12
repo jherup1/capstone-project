@@ -17,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'support_submit_ticket_model.dart';
 export 'support_submit_ticket_model.dart';
@@ -279,8 +278,6 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Title(
         title: 'support_SubmitTicket',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
