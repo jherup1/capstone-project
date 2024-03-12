@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'set_priority_menu_model.dart';
 export 'set_priority_menu_model.dart';
 
@@ -44,8 +43,6 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

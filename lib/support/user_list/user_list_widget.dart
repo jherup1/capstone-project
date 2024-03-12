@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'user_list_model.dart';
 export 'user_list_model.dart';
 
@@ -40,8 +39,6 @@ class _UserListWidgetState extends State<UserListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -176,7 +173,8 @@ class _UserListWidgetState extends State<UserListWidget> {
                         curve: Curves.easeInOut,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: _model.mouseRegionHovered? FlutterFlowTheme.of(context).primaryBackground
+                          color: _model.mouseRegionHovered
+                              ? FlutterFlowTheme.of(context).primaryBackground
                               : FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                         ),

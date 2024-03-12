@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'admin_users_widget.dart' show AdminUsersWidget;
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,12 @@ class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   List<UsersRecord> simpleSearchResults = [];
+  // State field(s) for RoleFilters widget.
+  FormFieldController<List<String>>? roleFiltersValueController;
+  String? get roleFiltersValue =>
+      roleFiltersValueController?.value?.firstOrNull;
+  set roleFiltersValue(String? val) =>
+      roleFiltersValueController?.value = val != null ? [val] : [];
 
   /// Initialization and disposal methods.
 

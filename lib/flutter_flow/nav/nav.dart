@@ -138,27 +138,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'adminTickets',
-              path: 'adminTickets',
-              requireAuth: true,
-              builder: (context, params) => const AdminTicketsWidget(),
-            ),
-            FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
               builder: (context, params) => const IndividualSchoolWidget(),
-            ),
-            FFRoute(
-              name: 'adminSchools',
-              path: 'adminSchools',
-              requireAuth: true,
-              builder: (context, params) => const AdminSchoolsWidget(),
-            ),
-            FFRoute(
-              name: 'adminUsersOld',
-              path: 'adminUsersOld',
-              requireAuth: true,
-              builder: (context, params) => const AdminUsersOldWidget(),
             ),
             FFRoute(
               name: 'adminPortal',
@@ -179,6 +161,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'adminUsers',
               requireAuth: true,
               builder: (context, params) => AdminUsersWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
+            ),
+            FFRoute(
+              name: 'adminTickets',
+              path: 'adminTickets',
+              requireAuth: true,
+              builder: (context, params) => AdminTicketsWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
+            ),
+            FFRoute(
+              name: 'adminSchools',
+              path: 'adminSchools',
+              requireAuth: true,
+              builder: (context, params) => AdminSchoolsWidget(
                 school: params.getParam(
                     'school', ParamType.DocumentReference, false, ['schools']),
               ),
