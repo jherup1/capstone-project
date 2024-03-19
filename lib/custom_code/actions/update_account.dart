@@ -9,14 +9,15 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 Future updateAccount(
   BuildContext context,
   String email,
   String firstName,
   String? lastName,
-  String? phoneNumber,
   String uid,
+  String password,
 ) async {
   try {
     if (email == "") {
@@ -31,14 +32,34 @@ Future updateAccount(
       });
       return;
     }
+    if (password == "") {
+      FFAppState().update(() {
+        FFAppState().updateAccountAttempt = 'no-password';
+      });
+    }
+    final user = FirebaseAuth.instance.currentUser;
+    user?.reauthenticateWithCredential(
+      EmailAuthProvider.credential(
+        email: user!.email!,
+        password: password,
+      ),
+    );
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     users.doc(uid).update({
       'email': email,
       'display_name': firstName,
       'last_name': lastName,
-      'phone_number': phoneNumber,
       'last_active_time': DateTime.now(),
     });
+    if (user != null) {
+      if (user.displayName != firstName) {
+        user.updateDisplayName(firstName);
+      }
+      if (user.email != email) {
+        user.verifyBeforeUpdateEmail(email);
+      }
+    }
+
     FFAppState().update(() {
       FFAppState().updateAccountAttempt = 'success';
     });
