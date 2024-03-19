@@ -993,6 +993,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                     _model.phoneNumberController
                                                         .text,
                                                   );
+                                                  await actions
+                                                      .sendVerificationEmail(
+                                                    context,
+                                                  );
                                                 },
                                           text: 'Sign Up',
                                           options: FFButtonOptions(

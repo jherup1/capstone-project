@@ -1,5 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -467,52 +465,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                     ''))
                                         ? null
                                         : () async {
-                                            Function() navigate = () {};
                                             await actions.signIn(
                                               context,
                                               _model
                                                   .emailAddressController.text,
                                               _model.passwordController.text,
                                             );
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-
-                                            final user = await authManager
-                                                .signInWithEmail(
-                                              context,
-                                              _model
-                                                  .emailAddressController.text,
-                                              _model.passwordController.text,
-                                            );
-                                            if (user == null) {
-                                              return;
-                                            }
-
-                                            navigate = () =>
-                                                context.goNamedAuth('homePage',
-                                                    context.mounted);
-                                            if ((valueOrDefault(
-                                                        currentUserDocument
-                                                            ?.role,
-                                                        '') !=
-                                                    'user') &&
-                                                (valueOrDefault(
-                                                        currentUserDocument
-                                                            ?.role,
-                                                        '') !=
-                                                    'support') &&
-                                                (valueOrDefault(
-                                                        currentUserDocument
-                                                            ?.role,
-                                                        '') !=
-                                                    'admin')) {
-                                              await currentUserReference!
-                                                  .update(createUsersRecordData(
-                                                role: 'user',
-                                              ));
-                                            }
-
-                                            navigate();
                                           },
                                     text: 'Sign In',
                                     options: FFButtonOptions(
