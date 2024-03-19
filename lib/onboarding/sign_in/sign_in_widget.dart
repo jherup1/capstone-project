@@ -137,6 +137,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           '_model.emailAddressController',
                                           const Duration(milliseconds: 100),
                                           () async {
+                                            if (FFAppState().loginAttempt ==
+                                                'email-not-verified') {
+                                              return;
+                                            }
+
                                             setState(() {
                                               FFAppState().loginAttempt = '';
                                             });
@@ -206,6 +211,12 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                     _model
                                                         .emailAddressController
                                                         ?.clear();
+                                                    if (FFAppState()
+                                                            .loginAttempt ==
+                                                        'email-not-verified') {
+                                                      return;
+                                                    }
+
                                                     setState(() {
                                                       FFAppState()
                                                           .loginAttempt = '';
@@ -248,6 +259,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         '_model.passwordController',
                                         const Duration(milliseconds: 100),
                                         () async {
+                                          if (FFAppState().loginAttempt ==
+                                              'email-not-verified') {
+                                            return;
+                                          }
+
                                           setState(() {
                                             FFAppState().loginAttempt = '';
                                           });
@@ -412,6 +428,27 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           ),
                                     ),
                                   );
+                                } else if (FFAppState().loginAttempt ==
+                                    'email-not-verified') {
+                                  return Align(
+                                    alignment: const AlignmentDirectional(-0.83, 0.0),
+                                    child: Text(
+                                      'Email not verified. Please verify email and try again.',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily,
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily),
+                                          ),
+                                    ),
+                                  );
                                 } else {
                                   return Opacity(
                                     opacity: 0.0,
@@ -512,6 +549,45 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ],
                               ),
                             ),
+                            if (FFAppState().loginAttempt ==
+                                'email-not-verified')
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  await actions.sendVerificationEmail(
+                                    context,
+                                    _model.emailAddressController.text,
+                                    _model.passwordController.text,
+                                  );
+                                },
+                                text: 'Resend Verification Email',
+                                options: FFButtonOptions(
+                                  width: 200.0,
+                                  height: 50.0,
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).tertiary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .titleSmallFamily,
+                                        color: Colors.white,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmallFamily),
+                                      ),
+                                  elevation: 10.0,
+                                  borderSide: const BorderSide(
+                                    color: Colors.transparent,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
+                              ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 24.0),
