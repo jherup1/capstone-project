@@ -1,4 +1,5 @@
 export 'sign_in.dart' show signIn;
+export 'update_location.dart' show updateLocation;
 export 'sign_up.dart' show signUp;
 export 'guest_login.dart' show guestLogin;
 export 'update_account.dart' show updateAccount;
