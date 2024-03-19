@@ -10,18 +10,15 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future sendVerificationEmail(BuildContext context) async {
-  final firebaseAuth = FirebaseAuth.instance;
-
+Future sendVerificationEmail(
+  BuildContext context,
+  String email,
+  String password,
+) async {
   try {
-    final user = await firebaseAuth.currentUser;
-    if (user != null && !user.emailVerified) {
-      await user.sendEmailVerification();
-      //print('Verification email sent to ${user.email}');
-    } else {
-      //print('User is either null or already verified');
-    }
-  } on FirebaseAuthException catch (e) {
-    //print('Error sending verification email: $e');
-  }
+    final userCredential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
+    await userCredential.user?.sendEmailVerification();
+    FirebaseAuth.instance.signOut();
+  } on FirebaseAuthException catch (e) {}
 }
