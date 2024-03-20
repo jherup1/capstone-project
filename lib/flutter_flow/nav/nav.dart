@@ -7,7 +7,6 @@ import '/backend/backend.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -141,27 +140,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'adminTickets',
-              path: 'adminTickets',
-              requireAuth: true,
-              builder: (context, params) => const AdminTicketsWidget(),
-            ),
-            FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
               builder: (context, params) => const IndividualSchoolWidget(),
-            ),
-            FFRoute(
-              name: 'adminSchools',
-              path: 'adminSchools',
-              requireAuth: true,
-              builder: (context, params) => const AdminSchoolsWidget(),
-            ),
-            FFRoute(
-              name: 'adminUsers',
-              path: 'adminUsers',
-              requireAuth: true,
-              builder: (context, params) => const AdminUsersWidget(),
             ),
             FFRoute(
               name: 'adminPortal',
@@ -176,6 +157,33 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'editProfilePage',
               path: 'editProfile',
               builder: (context, params) => const EditProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'adminUsers',
+              path: 'adminUsers',
+              requireAuth: true,
+              builder: (context, params) => AdminUsersWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
+            ),
+            FFRoute(
+              name: 'adminTickets',
+              path: 'adminTickets',
+              requireAuth: true,
+              builder: (context, params) => AdminTicketsWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
+            ),
+            FFRoute(
+              name: 'adminSchools',
+              path: 'adminSchools',
+              requireAuth: true,
+              builder: (context, params) => AdminSchoolsWidget(
+                school: params.getParam(
+                    'school', ParamType.DocumentReference, false, ['schools']),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -366,9 +374,9 @@ class FFRoute {
               ? isWeb
                   ? Container()
                   : Container(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      color: Colors.transparent,
                       child: Image.asset(
-                        'assets/images/darkmodepsysearchlogo.jpg',
+                        'assets/images/lightmodepsysearchlogo.jpg',
                         fit: BoxFit.contain,
                       ),
                     )

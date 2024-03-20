@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'side_bar_nav_model.dart';
 export 'side_bar_nav_model.dart';
 
@@ -40,8 +39,6 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Stack(
       children: [
         Container(
@@ -310,7 +307,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'support_TicketList',
+                            'adminTickets',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: const TransitionInfo(
                                 hasTransition: true,
@@ -465,7 +462,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                         size: 28.0,
                       ),
                       onPressed: () async {
-                        context.pushNamed('signIn');
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
+
+                        context.pushNamedAuth('signIn', context.mounted);
                       },
                     ),
                   );

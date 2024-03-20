@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'admin_portal_model.dart';
 export 'admin_portal_model.dart';
 
@@ -54,8 +53,6 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<List<SchoolsRecord>>(
       stream: querySchoolsRecord(
         limit: 50,
@@ -447,7 +444,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                            'adminTickets');
+                                                            'support_TicketList');
                                                       },
                                                       child: Row(
                                                         mainAxisSize:

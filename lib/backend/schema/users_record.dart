@@ -65,6 +65,11 @@ class UsersRecord extends FirestoreRecord {
   List<DocumentReference> get schools => _schools ?? const [];
   bool hasSchools() => _schools != null;
 
+  // "location" field.
+  LatLng? _location;
+  LatLng? get location => _location;
+  bool hasLocation() => _location != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -76,6 +81,7 @@ class UsersRecord extends FirestoreRecord {
     _role = snapshotData['role'] as String?;
     _lastName = snapshotData['last_name'] as String?;
     _schools = getDataList(snapshotData['schools']);
+    _location = snapshotData['location'] as LatLng?;
   }
 
   static CollectionReference get collection =>
@@ -121,6 +127,7 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? lastName,
+  LatLng? location,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -133,6 +140,7 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'last_name': lastName,
+      'location': location,
     }.withoutNulls,
   );
 
@@ -154,7 +162,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
         e1?.lastName == e2?.lastName &&
-        listEquality.equals(e1?.schools, e2?.schools);
+        listEquality.equals(e1?.schools, e2?.schools) &&
+        e1?.location == e2?.location;
   }
 
   @override
@@ -168,7 +177,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.lastActiveTime,
         e?.role,
         e?.lastName,
-        e?.schools
+        e?.schools,
+        e?.location
       ]);
 
   @override

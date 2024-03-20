@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import 'sign_up_widget.dart' show SignUpWidget;
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   ///  State fields for stateful widgets in this page.
@@ -19,11 +18,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
-  // State field(s) for phoneNumber widget.
-  FocusNode? phoneNumberFocusNode;
-  TextEditingController? phoneNumberController;
-  final phoneNumberMask = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
-  String? Function(BuildContext, String?)? phoneNumberControllerValidator;
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordController;
@@ -54,9 +48,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
     emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
-
-    phoneNumberFocusNode?.dispose();
-    phoneNumberController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordController?.dispose();

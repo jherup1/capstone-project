@@ -8,7 +8,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'support_ticket_list_model.dart';
 export 'support_ticket_list_model.dart';
 
@@ -42,8 +41,6 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Title(
         title: 'support_TicketList',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -508,10 +505,9 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: RichText(
-                                                                  textScaleFactor:
-                                                                      MediaQuery.of(
-                                                                              context)
-                                                                          .textScaleFactor,
+                                                                  textScaler: MediaQuery.of(
+                                                                          context)
+                                                                      .textScaler,
                                                                   text:
                                                                       TextSpan(
                                                                     children: [

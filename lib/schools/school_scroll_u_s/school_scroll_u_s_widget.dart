@@ -6,18 +6,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'school_scroll_model.dart';
-export 'school_scroll_model.dart';
+import 'school_scroll_u_s_model.dart';
+export 'school_scroll_u_s_model.dart';
 
-class SchoolScrollWidget extends StatefulWidget {
-  const SchoolScrollWidget({super.key});
+class SchoolScrollUSWidget extends StatefulWidget {
+  const SchoolScrollUSWidget({super.key});
 
   @override
-  State<SchoolScrollWidget> createState() => _SchoolScrollWidgetState();
+  State<SchoolScrollUSWidget> createState() => _SchoolScrollUSWidgetState();
 }
 
-class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
-  late SchoolScrollModel _model;
+class _SchoolScrollUSWidgetState extends State<SchoolScrollUSWidget> {
+  late SchoolScrollUSModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +28,7 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SchoolScrollModel());
+    _model = createModel(context, () => SchoolScrollUSModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

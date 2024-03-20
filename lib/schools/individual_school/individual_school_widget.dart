@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'individual_school_model.dart';
 export 'individual_school_model.dart';
 
@@ -37,8 +36,6 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Title(
         title: 'individualSchool',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),

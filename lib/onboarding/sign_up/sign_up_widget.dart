@@ -35,9 +35,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.phoneNumberController ??= TextEditingController();
-    _model.phoneNumberFocusNode ??= FocusNode();
-
     _model.passwordController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
@@ -426,103 +423,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                 .asValidator(context),
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 16.0, 0.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        if (false)
-                                          Expanded(
-                                            child: TextFormField(
-                                              controller:
-                                                  _model.phoneNumberController,
-                                              focusNode:
-                                                  _model.phoneNumberFocusNode,
-                                              onChanged: (_) =>
-                                                  EasyDebounce.debounce(
-                                                '_model.phoneNumberController',
-                                                const Duration(milliseconds: 100),
-                                                () => setState(() {}),
-                                              ),
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                labelText:
-                                                    'Phone Number (Optional)',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall,
-                                                hintText: '+1 (123) 456-7890',
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall,
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryBackground,
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          40.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          40.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          40.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0x00000000),
-                                                    width: 2.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          40.0),
-                                                ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                contentPadding:
-                                                    const EdgeInsetsDirectional
-                                                        .fromSTEB(16.0, 24.0,
-                                                            0.0, 24.0),
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              keyboardType: TextInputType.phone,
-                                              validator: _model
-                                                  .phoneNumberControllerValidator
-                                                  .asValidator(context),
-                                              inputFormatters: [
-                                                _model.phoneNumberMask
-                                              ],
-                                            ),
-                                          ),
                                       ],
                                     ),
                                   ),
@@ -990,7 +890,15 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                         .text,
                                                     _model.lastNameController
                                                         .text,
-                                                    _model.phoneNumberController
+                                                    null,
+                                                  );
+                                                  await actions
+                                                      .sendVerificationEmail(
+                                                    context,
+                                                    _model
+                                                        .emailAddressController
+                                                        .text,
+                                                    _model.passwordController
                                                         .text,
                                                   );
                                                 },

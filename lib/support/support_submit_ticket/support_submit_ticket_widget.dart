@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
@@ -16,7 +17,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'support_submit_ticket_model.dart';
 export 'support_submit_ticket_model.dart';
@@ -278,8 +278,6 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Title(
         title: 'support_SubmitTicket',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -1241,7 +1239,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget>
                                                 .doc()
                                                 .set(
                                                     createSupportTicketsRecordData(
-                                                  owner: null,
+                                                  owner: currentUserReference,
                                                   name: _model
                                                       .textController1.text,
                                                   description: _model
