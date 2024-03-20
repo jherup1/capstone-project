@@ -74,4 +74,10 @@ class FFAppState extends ChangeNotifier {
   set updateAccountAttempt(String value) {
     _updateAccountAttempt = value;
   }
+
+  String _passwordChangeAttempt = '';
+  String get passwordChangeAttempt => _passwordChangeAttempt;
+  set passwordChangeAttempt(String value) {
+    _passwordChangeAttempt = value;
+  }
 }
