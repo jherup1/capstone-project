@@ -12,10 +12,10 @@ export 'school_information_bottom_model.dart';
 class SchoolInformationBottomWidget extends StatefulWidget {
   const SchoolInformationBottomWidget({
     super.key,
-    required this.name,
+    required this.school,
   });
 
-  final SchoolsRecord? name;
+  final InstitutionRecord? school;
 
   @override
   State<SchoolInformationBottomWidget> createState() =>
@@ -112,8 +112,8 @@ class _SchoolInformationBottomWidgetState
                                       children: [
                                         Text(
                                           valueOrDefault<String>(
-                                            widget.name?.name,
-                                            'schoolNameXXX',
+                                            widget.school?.displayName,
+                                            'School name not available',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .headlineLarge,
@@ -123,7 +123,10 @@ class _SchoolInformationBottomWidgetState
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
-                                            'A subtitle for this modal that happens to be here.',
+                                            valueOrDefault<String>(
+                                              widget.school?.address,
+                                              'Address not available',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium,
                                           ),
@@ -153,7 +156,10 @@ class _SchoolInformationBottomWidgetState
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
-                                'FlutterFlow is an amazing platform that allows developers to create powerful, interactive and responsive mobile and web applications. It is built using Flutter, a popular open-source framework for creating cross-platform applications, and offers a wide range of features that make app development faster and more efficient. With FlutterFlow, developers can create beautiful and engaging user interfaces, implement complex logic and animations, and easily connect to APIs and other services. \n\nAdditionally, it provides real-time collaboration feature, so multiple developers can work on the same project simultaneously. Overall, FlutterFlow is a fantastic tool for any developer looking to build high-quality apps quickly and easily.',
+                                valueOrDefault<String>(
+                                  widget.school?.description,
+                                  'Description not available',
+                                ),
                                 style: FlutterFlowTheme.of(context).labelLarge,
                               ),
                             ),

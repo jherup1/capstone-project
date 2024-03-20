@@ -8,6 +8,9 @@ import 'schema/util/firestore_util.dart';
 import 'schema/users_record.dart';
 import 'schema/schools_record.dart';
 import 'schema/support_tickets_record.dart';
+import 'schema/school_data_record.dart';
+import 'schema/institution_record.dart';
+import 'schema/ranking_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +21,9 @@ export 'schema/util/schema_util.dart';
 export 'schema/users_record.dart';
 export 'schema/schools_record.dart';
 export 'schema/support_tickets_record.dart';
+export 'schema/school_data_record.dart';
+export 'schema/institution_record.dart';
+export 'schema/ranking_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -125,6 +131,123 @@ Future<List<SupportTicketsRecord>> querySupportTicketsRecordOnce({
     queryCollectionOnce(
       SupportTicketsRecord.collection,
       SupportTicketsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SchoolDataRecords (as a Stream and as a Future).
+Future<int> querySchoolDataRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SchoolDataRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SchoolDataRecord>> querySchoolDataRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SchoolDataRecord.collection,
+      SchoolDataRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SchoolDataRecord>> querySchoolDataRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SchoolDataRecord.collection,
+      SchoolDataRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query InstitutionRecords (as a Stream and as a Future).
+Future<int> queryInstitutionRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      InstitutionRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<InstitutionRecord>> queryInstitutionRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      InstitutionRecord.collection(parent),
+      InstitutionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<InstitutionRecord>> queryInstitutionRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      InstitutionRecord.collection(parent),
+      InstitutionRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query RankingRecords (as a Stream and as a Future).
+Future<int> queryRankingRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      RankingRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<RankingRecord>> queryRankingRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      RankingRecord.collection(parent),
+      RankingRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<RankingRecord>> queryRankingRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      RankingRecord.collection(parent),
+      RankingRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
