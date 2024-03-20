@@ -114,7 +114,7 @@ dependencies:
   fake_cloud_firestore: any
   text_search: any
   geolocator: any
-  flutter_map: any
+  flutter_map: 6.1.0
   flutter_map_supercluster: any
   latlong2: ^0.9.0
 
