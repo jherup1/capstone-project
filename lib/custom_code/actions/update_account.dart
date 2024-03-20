@@ -38,7 +38,7 @@ Future updateAccount(
       });
     }
     final user = FirebaseAuth.instance.currentUser;
-    user?.reauthenticateWithCredential(
+    await user?.reauthenticateWithCredential(
       EmailAuthProvider.credential(
         email: user!.email!,
         password: password,
@@ -64,8 +64,14 @@ Future updateAccount(
       FFAppState().updateAccountAttempt = 'success';
     });
   } on FirebaseException catch (e) {
-    FFAppState().update(() {
-      FFAppState().updateAccountAttempt = 'unknown';
-    });
+    if (e.code == 'invalid-credential') {
+      FFAppState().update(() {
+        FFAppState().updateAccountAttempt = e.code;
+      });
+    } else {
+      FFAppState().update(() {
+        FFAppState().updateAccountAttempt = 'unknown';
+      });
+    }
   }
 }

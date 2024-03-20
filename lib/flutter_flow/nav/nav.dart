@@ -113,7 +113,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'profilePage',
-              path: 'profilePage',
+              path: 'profile',
               builder: (context, params) => const ProfilePageWidget(),
             ),
             FFRoute(
@@ -182,6 +182,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 school: params.getParam(
                     'school', ParamType.DocumentReference, false, ['schools']),
               ),
+            ),
+            FFRoute(
+              name: 'changePasswordPage',
+              path: 'changePassowrd',
+              builder: (context, params) => const ChangePasswordPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

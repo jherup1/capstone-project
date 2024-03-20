@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -470,9 +471,24 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print(
-                                          'Button-ForgotPassword pressed ...');
+                                    onPressed: () async {
+                                      if (_model.emailAddressController.text
+                                          .isEmpty) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                            content: Text(
+                                              'Email required!',
+                                            ),
+                                          ),
+                                        );
+                                        return;
+                                      }
+                                      await authManager.resetPassword(
+                                        email:
+                                            _model.emailAddressController.text,
+                                        context: context,
+                                      );
                                     },
                                     text: 'Forgot Password?',
                                     options: FFButtonOptions(

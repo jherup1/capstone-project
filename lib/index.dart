@@ -20,3 +20,5 @@ export '/profiles/edit_profile_page/edit_profile_page_widget.dart'
 export '/admin/admin_users/admin_users_widget.dart' show AdminUsersWidget;
 export '/admin/admin_tickets/admin_tickets_widget.dart' show AdminTicketsWidget;
 export '/admin/admin_schools/admin_schools_widget.dart' show AdminSchoolsWidget;
+export '/profiles/change_password_page/change_password_page_widget.dart'
+    show ChangePasswordPageWidget;
