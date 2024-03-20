@@ -15,7 +15,7 @@ class SchoolInformationBottomWidget extends StatefulWidget {
     required this.school,
   });
 
-  final InstitutionRecord? school;
+  final SchoolsRecord? school;
 
   @override
   State<SchoolInformationBottomWidget> createState() =>
@@ -112,7 +112,7 @@ class _SchoolInformationBottomWidgetState
                                       children: [
                                         Text(
                                           valueOrDefault<String>(
-                                            widget.school?.displayName,
+                                            widget.school?.name,
                                             'School name not available',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -124,7 +124,8 @@ class _SchoolInformationBottomWidgetState
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              widget.school?.address,
+                                              widget.school?.myGeopoint
+                                                  ?.toString(),
                                               'Address not available',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -157,7 +158,7 @@ class _SchoolInformationBottomWidgetState
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.school?.description,
+                                  widget.school?.myGeopoint?.toString(),
                                   'Description not available',
                                 ),
                                 style: FlutterFlowTheme.of(context).labelLarge,

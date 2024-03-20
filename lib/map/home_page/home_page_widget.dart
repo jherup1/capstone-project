@@ -1,13 +1,16 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/school_information_bottom/school_information_bottom_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -46,6 +49,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'homePage',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -207,7 +212,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             },
                           ),
                           StreamBuilder<List<SchoolsRecord>>(
-                            stream: querySchoolsRecord(),
+                            stream: querySchoolsRecord(
+                              limit: 3000,
+                            ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -243,10 +250,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     builder: (context) => SizedBox(
                                       width: double.infinity,
                                       height: double.infinity,
-                                      child: custom_widgets.ClusterMap(
+                                      child: custom_widgets.ClusterMapCopy(
                                         width: double.infinity,
                                         height: double.infinity,
-                                        zoom: 10,
+                                        zoom: 15,
                                         initialCenter:
                                             currentUserDocument?.location,
                                         markerLocations:
@@ -254,6 +261,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 .map((e) => e.myGeopoint)
                                                 .withoutNulls
                                                 .toList(),
+                                        rebuildPage: () async {
+                                          setState(() {});
+                                          _model.tap =
+                                              await querySchoolsRecordOnce(
+                                            queryBuilder: (schoolsRecord) =>
+                                                schoolsRecord.where(
+                                              'myGeopoint',
+                                              isEqualTo: FFAppState()
+                                                  .tapped
+                                                  ?.toGeoPoint(),
+                                            ),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child:
+                                                      SchoolInformationBottomWidget(
+                                                    school: _model.tap!,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+
+                                          setState(() {});
+                                        },
                                       ),
                                     ),
                                   ),
