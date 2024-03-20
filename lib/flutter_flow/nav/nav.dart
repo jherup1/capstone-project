@@ -71,16 +71,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? const HomePageWidget()
-          : const SignInWidget(),
+      errorBuilder: (context, state) =>
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => appStateNotifier.loggedIn
-              ? const HomePageWidget()
-              : const SignInWidget(),
+          builder: (context, _) =>
+              appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -140,50 +138,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'supportDeprecated',
+              path: 'supportDeprecated',
+              builder: (context, params) => const SupportDeprecatedWidget(),
+            ),
+            FFRoute(
+              name: 'adminManage',
+              path: 'adminManage',
+              builder: (context, params) => const AdminManageWidget(),
+            ),
+            FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
               builder: (context, params) => const IndividualSchoolWidget(),
-            ),
-            FFRoute(
-              name: 'adminPortal',
-              path: 'adminPortal',
-              requireAuth: true,
-              builder: (context, params) => AdminPortalWidget(
-                school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
-              ),
-            ),
-            FFRoute(
-              name: 'editProfilePage',
-              path: 'editProfile',
-              builder: (context, params) => const EditProfilePageWidget(),
-            ),
-            FFRoute(
-              name: 'adminUsers',
-              path: 'adminUsers',
-              requireAuth: true,
-              builder: (context, params) => AdminUsersWidget(
-                school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
-              ),
-            ),
-            FFRoute(
-              name: 'adminTickets',
-              path: 'adminTickets',
-              requireAuth: true,
-              builder: (context, params) => AdminTicketsWidget(
-                school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
-              ),
-            ),
-            FFRoute(
-              name: 'adminSchools',
-              path: 'adminSchools',
-              requireAuth: true,
-              builder: (context, params) => AdminSchoolsWidget(
-                school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
-              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -261,14 +228,14 @@ extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
 
-  Map<String, dynamic> get allParams {
+Map<String, dynamic> get allParams {
+    var uri = Uri.parse(location);
     return <String, dynamic>{
       ...pathParameters,
       ...uri.queryParameters,
       ...extraMap
     };
   }
-
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -356,7 +323,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
+            appStateNotifier.setRedirectLocationIfUnset(state.location);
             return '/signIn';
           }
           return null;
@@ -422,8 +389,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() =>
-      const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
