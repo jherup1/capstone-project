@@ -112,18 +112,14 @@ dependencies:
   infinite_scroll_pagination: any
   mask_text_input_formatter: any
   fake_cloud_firestore: any
+  text_search: any
+  geolocator: ^11.0.0
 
 dependency_overrides:
   intl: any
   collection: any
-
-dependency_overrides:
-  http: 1.2.0
-  uuid: ^4.0.0
-
-dependency_overrides:
-  http: 1.2.0
-  uuid: ^4.0.0
+  http: any
+  uuid: any
 
 dev_dependencies:
   flutter_launcher_icons: any
