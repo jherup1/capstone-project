@@ -60,7 +60,7 @@ class ClusterIcons {
   ui.Picture addClusterNumbers(int clusterSize) {
     recorder = ui.PictureRecorder();
     canvas = Canvas(recorder!);
-    late double fontSize;
+    double fontSize;
     if (isWeb) {
       print("its is web");
       fontSize = 20;
@@ -249,16 +249,16 @@ class CustomMarkerWidget extends StatefulWidget {
 class _CustomMarkerWidgetState extends State<CustomMarkerWidget> {
   ValueNotifier<bool> isCameraMovingNotifier = ValueNotifier(false);
 
-  late Future<Set<gm.Marker>> future;
+  Future<Set<gm.Marker>> future;
   final Completer<gm.GoogleMapController> _controller =
       Completer<gm.GoogleMapController>();
   List<gm.Marker> listMarkers = [];
-  late gm.LatLng center;
-  late double currentZoom;
+  gm.LatLng center;
+  double currentZoom;
   Fluster<ClusterMarker>? fluster;
   Set<gm.Marker> clusters = {};
   List<ClusterMarker> clusterMarkers = [];
-  late final int iconSize;
+  final int iconSize;
 
   @override
   void initState() {

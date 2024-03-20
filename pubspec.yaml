@@ -35,12 +35,12 @@ dependencies:
   dropdown_button2: any
   easy_debounce: any
   file_picker: any
-  firebase_auth: any
+  firebase_auth: ^4.17.4
   firebase_auth_platform_interface: any
-  firebase_auth_web: any
-  firebase_core: any
+  firebase_auth_web: ^5.9.4
+  firebase_core: ^2.25.4
   firebase_core_platform_interface: any
-  firebase_core_web: any
+  firebase_core_web: ^2.11.4
   firebase_performance: any
   firebase_performance_platform_interface: any
   firebase_performance_web: any
@@ -113,7 +113,9 @@ dependencies:
   mask_text_input_formatter: any
   fake_cloud_firestore: any
   text_search: any
-  geolocator: ^11.0.0
+  geolocator: any
+  flutter_map: any
+  flutter_map_supercluster: any
 
 dependency_overrides:
   intl: any
