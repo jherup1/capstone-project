@@ -47,8 +47,8 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
       decoration: const BoxDecoration(
         color: Colors.transparent,
       ),
-      child: StreamBuilder<List<SchoolsRecord>>(
-        stream: querySchoolsRecord(
+      child: StreamBuilder<List<SchoolDataRecord>>(
+        stream: querySchoolDataRecord(
           limit: 20,
         ),
         builder: (context, snapshot) {
@@ -66,15 +66,15 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
               ),
             );
           }
-          List<SchoolsRecord> listViewSchoolsRecordList = snapshot.data!;
+          List<SchoolDataRecord> listViewSchoolDataRecordList = snapshot.data!;
           return ListView.separated(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             scrollDirection: Axis.horizontal,
-            itemCount: listViewSchoolsRecordList.length,
+            itemCount: listViewSchoolDataRecordList.length,
             separatorBuilder: (_, __) => const SizedBox(width: 20.0),
             itemBuilder: (context, listViewIndex) {
-              final listViewSchoolsRecord =
-                  listViewSchoolsRecordList[listViewIndex];
+              final listViewSchoolDataRecord =
+                  listViewSchoolDataRecordList[listViewIndex];
               return StreamBuilder<UsersRecord>(
                 stream: UsersRecord.getDocument(currentUserReference!),
                 builder: (context, snapshot) {
@@ -120,6 +120,12 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                           height: 175.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context).primary,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.network(
+                                listViewSchoolDataRecord.primaryPhoto,
+                              ).image,
+                            ),
                             borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
@@ -133,7 +139,10 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 10.0, 10.0),
                               child: Text(
-                                listViewSchoolsRecord.name,
+                                valueOrDefault<String>(
+                                  listViewSchoolDataRecord.displayName,
+                                  'school',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall
                                     .override(
@@ -187,7 +196,7 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                                     await actions.addFavSchool(
                                       context,
                                       containerUsersRecord.uid,
-                                      listViewSchoolsRecord.reference,
+                                      listViewSchoolDataRecord.reference,
                                     );
                                   },
                                 ),

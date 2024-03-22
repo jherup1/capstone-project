@@ -76,8 +76,8 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                 separatorBuilder: (_, __) => const SizedBox(width: 20.0),
                 itemBuilder: (context, schoolsIndex) {
                   final schoolsItem = schools[schoolsIndex];
-                  return StreamBuilder<SchoolsRecord>(
-                    stream: SchoolsRecord.getDocument(schoolsItem),
+                  return StreamBuilder<SchoolDataRecord>(
+                    stream: SchoolDataRecord.getDocument(schoolsItem),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -93,7 +93,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                           ),
                         );
                       }
-                      final containerSchoolsRecord = snapshot.data!;
+                      final containerSchoolDataRecord = snapshot.data!;
                       return Container(
                         width: 300.0,
                         height: 100.0,
@@ -130,7 +130,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                       10.0, 0.0, 10.0, 10.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      containerSchoolsRecord.name,
+                                      containerSchoolDataRecord.displayName,
                                       'name',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -188,7 +188,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                         await actions.deleteFavSchool(
                                           context,
                                           currentUserUid,
-                                          containerSchoolsRecord.reference,
+                                          containerSchoolDataRecord.reference,
                                         );
                                       },
                                     ),

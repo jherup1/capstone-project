@@ -211,10 +211,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               );
                             },
                           ),
-                          StreamBuilder<List<SchoolsRecord>>(
-                            stream: querySchoolsRecord(
-                              limit: 3000,
-                            ),
+                          StreamBuilder<List<SchoolDataRecord>>(
+                            stream: querySchoolDataRecord(),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.
                               if (!snapshot.hasData) {
@@ -230,7 +228,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                                 );
                               }
-                              List<SchoolsRecord> containerSchoolsRecordList =
+                              List<SchoolDataRecord>
+                                  containerSchoolDataRecordList =
                                   snapshot.data!;
                               return ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
@@ -257,17 +256,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         initialCenter:
                                             currentUserDocument?.location,
                                         markerLocations:
-                                            containerSchoolsRecordList
-                                                .map((e) => e.myGeopoint)
+                                            containerSchoolDataRecordList
+                                                .map((e) => e.geoPoint)
                                                 .withoutNulls
                                                 .toList(),
                                         rebuildPage: () async {
                                           setState(() {});
                                           _model.tap =
-                                              await querySchoolsRecordOnce(
-                                            queryBuilder: (schoolsRecord) =>
-                                                schoolsRecord.where(
-                                              'myGeopoint',
+                                              await querySchoolDataRecordOnce(
+                                            queryBuilder: (schoolDataRecord) =>
+                                                schoolDataRecord.where(
+                                              'geoPoint',
                                               isEqualTo: FFAppState()
                                                   .tapped
                                                   ?.toGeoPoint(),

@@ -72,6 +72,14 @@ Future updateAccount(
       FFAppState().update(() {
         FFAppState().updateAccountAttempt = 'unknown';
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            e.code,
+            style: TextStyle(color: Colors.red),
+          ),
+        ),
+      );
     }
   }
 }

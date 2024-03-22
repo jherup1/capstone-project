@@ -19,10 +19,9 @@ class ClusterMapCopy extends StatefulWidget {
     this.width,
     this.height,
     this.zoom,
-    required this.initialCenter, // Assuming this is Flutter Flow's LatLng
-    required this.markerLocations, // Assuming these are Flutter Flow's LatLng
+    required this.initialCenter,
+    required this.markerLocations,
     required this.rebuildPage,
-    this.urlTemplate,
   });
 
   final Future<dynamic> Function() rebuildPage;
@@ -31,7 +30,6 @@ class ClusterMapCopy extends StatefulWidget {
   final int? zoom;
   final LatLng? initialCenter; // Flutter Flow's LatLng
   final List<LatLng> markerLocations; // Flutter Flow's LatLng
-  final String? urlTemplate;
 
   @override
   State<ClusterMapCopy> createState() => _ClusterMapCopyState();
@@ -39,8 +37,8 @@ class ClusterMapCopy extends StatefulWidget {
 
 class _ClusterMapCopyState extends State<ClusterMapCopy> {
   late List<Marker> _markers;
+  late final MapController _mapController;
 
-  // Conversion function
   latlong2.LatLng convertToLatlong2(LatLng ffLatLng) {
     return latlong2.LatLng(ffLatLng.latitude, ffLatLng.longitude);
   }
@@ -48,6 +46,7 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
   @override
   void initState() {
     super.initState();
+    _mapController = MapController();
     _markers = widget.markerLocations.map((location) {
       final latlong2Location = convertToLatlong2(location);
       return Marker(
@@ -56,7 +55,7 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
         point: latlong2Location,
         builder: (ctx) => GestureDetector(
           onTap: () async {
-            // Here we update the FFAppState().tapped with the marker's LatLng
+            // Update the FFAppState().tapped with the marker's LatLng for bottom sheet
             FFAppState().tapped =
                 LatLng(latlong2Location.latitude, latlong2Location.longitude);
             await widget.rebuildPage();
@@ -74,47 +73,66 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
         : null;
 
     return Scaffold(
-      body: SizedBox(
-        width: widget.width ?? MediaQuery.of(context).size.width,
-        height: widget.height ?? MediaQuery.of(context).size.height,
-        child: FlutterMap(
-          options: MapOptions(
-            center: latlong2InitialCenter,
-            zoom: widget.zoom?.toDouble() ?? 13,
-            minZoom: 3,
-            maxZoom: 17,
-          ),
-          children: [
-            TileLayer(
-              urlTemplate: widget.urlTemplate ??
-                  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-              subdomains: ['a', 'b', 'c'],
-            ),
-            MarkerClusterLayerWidget(
-              options: MarkerClusterLayerOptions(
-                spiderfyCircleRadius: 80,
-                spiderfySpiralDistanceMultiplier: 2,
-                circleSpiralSwitchover: 12,
-                maxClusterRadius: 120,
-                size: Size(40, 40),
-                fitBoundsOptions: FitBoundsOptions(
-                  padding: EdgeInsets.all(50),
-                ),
-                markers: _markers,
-                polygonOptions: PolygonOptions(
-                    borderColor: Colors.blueAccent,
-                    color: Colors.black12,
-                    borderStrokeWidth: 3),
-                builder: (context, markers) {
-                  return FloatingActionButton(
-                    child: Text(markers.length.toString()),
-                    onPressed: null,
-                  );
-                },
+      body: Stack(
+        children: [
+          SizedBox(
+            width: widget.width ?? MediaQuery.of(context).size.width,
+            height: widget.height ?? MediaQuery.of(context).size.height,
+            child: FlutterMap(
+              mapController: _mapController, // Use the MapController here
+              options: MapOptions(
+                center: latlong2InitialCenter,
+                zoom: widget.zoom?.toDouble() ?? 13,
+                minZoom: 3,
+                maxZoom: 17,
               ),
+              children: [
+                TileLayer(
+                  urlTemplate:
+                      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                  subdomains: ['a', 'b', 'c', 'd'],
+                ),
+                MarkerClusterLayerWidget(
+                  options: MarkerClusterLayerOptions(
+                    spiderfyCircleRadius: 80,
+                    spiderfySpiralDistanceMultiplier: 2,
+                    circleSpiralSwitchover: 12,
+                    maxClusterRadius: 120,
+                    size: Size(40, 40),
+                    fitBoundsOptions: FitBoundsOptions(
+                      padding: EdgeInsets.all(50),
+                    ),
+                    markers: _markers,
+                    polygonOptions: PolygonOptions(
+                      borderColor: Colors.blueAccent,
+                      color: Colors.black12,
+                      borderStrokeWidth: 3,
+                    ),
+                    builder: (context, markers) {
+                      return FloatingActionButton(
+                        child: Text(markers.length.toString()),
+                        onPressed: null,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            right: 20,
+            bottom: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                // When tapped, this button centers the map on initialCenter
+                _mapController.move(convertToLatlong2(widget.initialCenter!),
+                    widget.zoom?.toDouble() ?? 13);
+              },
+              child: Icon(Icons.center_focus_strong),
+              backgroundColor: Color(0x4741ff),
+            ),
+          ),
+        ],
       ),
     );
   }
