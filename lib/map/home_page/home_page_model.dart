@@ -20,7 +20,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // Stores action output result for [Firestore Query - Query a collection] action in ClusterMapCopy widget.
-  SchoolsRecord? tap;
+  SchoolDataRecord? tap;
 
   /// Initialization and disposal methods.
 

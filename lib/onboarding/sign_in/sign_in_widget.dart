@@ -149,6 +149,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           },
                                         ),
                                         autofocus: true,
+                                        autofillHints: const [AutofillHints.email],
                                         textCapitalization:
                                             TextCapitalization.none,
                                         obscureText: false,
@@ -270,6 +271,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           });
                                         },
                                       ),
+                                      autofillHints: const [AutofillHints.password],
                                       obscureText: !_model.passwordVisibility,
                                       decoration: InputDecoration(
                                         labelText: 'Password',

@@ -17,7 +17,7 @@ class SchoolInformationBottomWidget extends StatefulWidget {
     required this.school,
   });
 
-  final SchoolsRecord? school;
+  final SchoolDataRecord? school;
 
   @override
   State<SchoolInformationBottomWidget> createState() =>
@@ -77,6 +77,7 @@ class _SchoolInformationBottomWidgetState
                     alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.3,
                       constraints: BoxConstraints(
                         maxWidth: MediaQuery.sizeOf(context).width * 0.8,
                         maxHeight: MediaQuery.sizeOf(context).height * 1.0,
@@ -114,7 +115,7 @@ class _SchoolInformationBottomWidgetState
                                       children: [
                                         Text(
                                           valueOrDefault<String>(
-                                            widget.school?.name,
+                                            widget.school?.displayName,
                                             'School name not available',
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -126,8 +127,7 @@ class _SchoolInformationBottomWidgetState
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              widget.school?.myGeopoint
-                                                  ?.toString(),
+                                              widget.school?.schoolWebsite,
                                               'Address not available',
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -160,7 +160,7 @@ class _SchoolInformationBottomWidgetState
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.school?.myGeopoint?.toString(),
+                                  widget.school?.description,
                                   'Description not available',
                                 ),
                                 style: FlutterFlowTheme.of(context).labelLarge,
@@ -172,6 +172,7 @@ class _SchoolInformationBottomWidgetState
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
@@ -208,7 +209,6 @@ class _SchoolInformationBottomWidgetState
                                         currentUserUid,
                                         widget.school!.reference,
                                       );
-                                      Navigator.pop(context);
                                     },
                                     text: 'Add Favorite',
                                     options: FFButtonOptions(
