@@ -95,7 +95,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'homePage',
               builder: (context, params) => HomePageWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.LatLng,
+                ),
               ),
             ),
             FFRoute(
@@ -107,8 +109,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'schools',
               path: 'schools',
               builder: (context, params) => SchoolsWidget(
-                pageTitle: params.getParam('pageTitle', ParamType.String),
-                pageDetails: params.getParam('pageDetails', ParamType.String),
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -134,7 +142,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ['supportTickets'], SupportTicketsRecord.fromSnapshot),
               },
               builder: (context, params) => SupportTicketDetailsWidget(
-                ticketRef: params.getParam('ticketRef', ParamType.Document),
+                ticketRef: params.getParam(
+                  'ticketRef',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
@@ -148,7 +159,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => AdminPortalWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
               ),
             ),
             FFRoute(
@@ -162,7 +177,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => AdminUsersWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
               ),
             ),
             FFRoute(
@@ -171,7 +190,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => AdminTicketsWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
               ),
             ),
             FFRoute(
@@ -180,7 +203,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               requireAuth: true,
               builder: (context, params) => AdminSchoolsWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
               ),
             ),
             FFRoute(
@@ -321,8 +348,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 

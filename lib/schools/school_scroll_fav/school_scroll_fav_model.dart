@@ -3,15 +3,9 @@ import 'school_scroll_fav_widget.dart' show SchoolScrollFavWidget;
 import 'package:flutter/material.dart';
 
 class SchoolScrollFavModel extends FlutterFlowModel<SchoolScrollFavWidget> {
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'side_bar_nav_model.dart';
 export 'side_bar_nav_model.dart';
 
@@ -81,7 +82,13 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                   child: Text(
                     'Menu',
-                    style: FlutterFlowTheme.of(context).bodySmall,
+                    style: FlutterFlowTheme.of(context).bodySmall.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).bodySmallFamily,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).bodySmallFamily),
+                        ),
                   ),
                 ),
                 Padding(
@@ -127,7 +134,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                             ),
                             Text(
                               'Map',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
                             ),
                           ],
                         ),
@@ -178,7 +195,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                             ),
                             Text(
                               'Schools',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
                             ),
                           ],
                         ),
@@ -233,8 +260,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                 ),
                                 Text(
                                   'Profile',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
                                 ),
                               ],
                             ),
@@ -286,7 +322,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                             ),
                             Text(
                               'Support',
-                              style: FlutterFlowTheme.of(context).bodyMedium,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
                             ),
                           ],
                         ),
@@ -343,8 +389,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                 ),
                                 Text(
                                   'Support Tickets',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
                                 ),
                               ],
                             ),
@@ -400,8 +455,17 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                 ),
                                 Text(
                                   'Admin Portal',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
                                 ),
                               ],
                             ),
