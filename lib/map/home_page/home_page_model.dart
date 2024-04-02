@@ -22,8 +22,6 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   // Stores action output result for [Firestore Query - Query a collection] action in ClusterMapCopy widget.
   SchoolDataRecord? tap;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -39,8 +37,4 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     sideBarNavModel2.dispose();
     breadcrumbsHeaderModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

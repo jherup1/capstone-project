@@ -109,6 +109,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -129,6 +130,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodySmallFamily,
                                 color: FlutterFlowTheme.of(context).tertiary,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodySmallFamily),
@@ -156,7 +158,13 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                     child: Text(
                       'ME',
                       textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyMediumFamily),
+                          ),
                     ),
                   ),
                 ),

@@ -18,8 +18,6 @@ class AdminPortalModel extends FlutterFlowModel<AdminPortalWidget> {
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -35,8 +33,4 @@ class AdminPortalModel extends FlutterFlowModel<AdminPortalWidget> {
     sideBarNavModel2.dispose();
     breadcrumbsHeaderModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

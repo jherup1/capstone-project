@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'breadcrumbs_header_model.dart';
 export 'breadcrumbs_header_model.dart';
 
@@ -110,7 +111,13 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Text(
                     widget.pageTitle,
-                    style: FlutterFlowTheme.of(context).labelLarge,
+                    style: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily:
+                              FlutterFlowTheme.of(context).labelLargeFamily,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: GoogleFonts.asMap().containsKey(
+                              FlutterFlowTheme.of(context).labelLargeFamily),
+                        ),
                   ),
                 ),
               ),
@@ -147,7 +154,13 @@ class _BreadcrumbsHeaderWidgetState extends State<BreadcrumbsHeaderWidget> {
                         const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Text(
                       widget.pageDetails,
-                      style: FlutterFlowTheme.of(context).bodyLarge,
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).bodyLargeFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).bodyLargeFamily),
+                          ),
                     ),
                   ),
                 ),

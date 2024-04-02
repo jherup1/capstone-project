@@ -34,8 +34,6 @@ class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
   set roleFiltersValue(String? val) =>
       roleFiltersValueController?.value = val != null ? [val] : [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -53,8 +51,4 @@ class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -72,6 +72,7 @@ class _EmptyStateDynamicWidgetState extends State<EmptyStateDynamicWidget> {
                     fontFamily:
                         FlutterFlowTheme.of(context).headlineSmallFamily,
                     color: FlutterFlowTheme.of(context).primaryText,
+                    letterSpacing: 0.0,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).headlineSmallFamily),
                   ),
@@ -82,7 +83,12 @@ class _EmptyStateDynamicWidgetState extends State<EmptyStateDynamicWidget> {
             child: Text(
               widget.body,
               textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).labelMedium,
+              style: FlutterFlowTheme.of(context).labelMedium.override(
+                    fontFamily: FlutterFlowTheme.of(context).labelMediumFamily,
+                    letterSpacing: 0.0,
+                    useGoogleFonts: GoogleFonts.asMap().containsKey(
+                        FlutterFlowTheme.of(context).labelMediumFamily),
+                  ),
             ),
           ),
           Padding(
@@ -97,7 +103,12 @@ class _EmptyStateDynamicWidgetState extends State<EmptyStateDynamicWidget> {
                 padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                 iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
-                textStyle: FlutterFlowTheme.of(context).titleSmall,
+                textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                      fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
+                      letterSpacing: 0.0,
+                      useGoogleFonts: GoogleFonts.asMap().containsKey(
+                          FlutterFlowTheme.of(context).titleSmallFamily),
+                    ),
                 elevation: 3.0,
                 borderSide: const BorderSide(
                   color: Colors.transparent,
