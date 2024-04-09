@@ -31,6 +31,9 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
     super.initState();
     _model = createModel(context, () => ChangePasswordPageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'changePasswordPage'});
+
     _model.emailAddressFocusNode ??= FocusNode();
 
     _model.currentPasswordController ??= TextEditingController();

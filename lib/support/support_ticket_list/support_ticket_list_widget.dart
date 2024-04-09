@@ -29,6 +29,8 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
     super.initState();
     _model = createModel(context, () => SupportTicketListModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'support_TicketList'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

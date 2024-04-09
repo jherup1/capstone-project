@@ -159,29 +159,50 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                                 topRight: Radius.circular(16.0),
                               ),
                             ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(-1.0, 1.0),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    10.0, 0.0, 10.0, 10.0),
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    listViewSchoolDataRecord.displayName,
-                                    'school',
+                            child: Container(
+                              width: 100.0,
+                              height: 75.0,
+                              constraints: const BoxConstraints(
+                                minHeight: 0.0,
+                                maxHeight: 75.0,
+                              ),
+                              decoration: BoxDecoration(
+                                color: listViewSchoolDataRecord.primaryPhoto !=
+                                            ''
+                                    ? const Color(0x50000000)
+                                    : Colors.transparent,
+                                borderRadius: const BorderRadius.only(
+                                  bottomLeft: Radius.circular(0.0),
+                                  bottomRight: Radius.circular(0.0),
+                                  topLeft: Radius.circular(16.0),
+                                  topRight: Radius.circular(16.0),
+                                ),
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Align(
+                                alignment: const AlignmentDirectional(-1.0, 1.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 10.0),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      listViewSchoolDataRecord.displayName,
+                                      'school',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily,
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmallFamily),
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .headlineSmallFamily,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineSmallFamily),
-                                      ),
                                 ),
                               ),
                             ),

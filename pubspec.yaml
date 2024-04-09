@@ -34,6 +34,9 @@ dependencies:
   dropdown_button2: 2.3.9
   easy_debounce: 2.0.1
   file_picker: 6.1.1
+  firebase_analytics: 10.8.8
+  firebase_analytics_platform_interface: 3.9.8
+  firebase_analytics_web: 0.5.5+20
   firebase_auth: 4.17.7
   firebase_auth_platform_interface: 7.1.7
   firebase_auth_web: 5.9.7
@@ -48,6 +51,7 @@ dependencies:
   firebase_storage_web: 3.7.2
   fluster:
   flutter_animate: 4.1.1+1
+  flutter_blurhash: 0.8.2
   flutter_cache_manager: 3.3.1
   flutter_map:
   flutter_map_marker_cluster:
@@ -79,6 +83,7 @@ dependencies:
   json_path: 0.6.2
   latlong2:
   mime_type: 1.0.0
+  octo_image: 2.0.0
   page_transition: 2.1.0
   path_provider: 2.0.14
   path_provider_android: 2.0.25

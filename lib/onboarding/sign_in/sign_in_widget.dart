@@ -27,6 +27,7 @@ class _SignInWidgetState extends State<SignInWidget> {
     super.initState();
     _model = createModel(context, () => SignInModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'signIn'});
     _model.emailAddressController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 

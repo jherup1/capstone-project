@@ -37,6 +37,8 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
     super.initState();
     _model = createModel(context, () => SupportSubmitTicketModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'support_SubmitTicket'});
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 

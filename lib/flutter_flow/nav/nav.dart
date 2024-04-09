@@ -214,6 +214,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'changePasswordPage',
               path: 'changePassowrd',
               builder: (context, params) => const ChangePasswordPageWidget(),
+            ),
+            FFRoute(
+              name: 'DashboardKPI',
+              path: 'dashboardKPI',
+              builder: (context, params) => DashboardKPIWidget(
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

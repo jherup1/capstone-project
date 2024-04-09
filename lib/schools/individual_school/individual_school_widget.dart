@@ -24,6 +24,8 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
     super.initState();
     _model = createModel(context, () => IndividualSchoolModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'individualSchool'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

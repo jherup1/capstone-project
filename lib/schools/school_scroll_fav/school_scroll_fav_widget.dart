@@ -105,10 +105,9 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                       return Container(
                         width: 300.0,
                         height: 100.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: const [
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x33000000),
@@ -140,30 +139,41 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                   topRight: Radius.circular(16.0),
                                 ),
                               ),
-                              child: Align(
-                                alignment: const AlignmentDirectional(-1.0, 1.0),
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 10.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      containerSchoolDataRecord.displayName,
-                                      'name',
+                              child: Container(
+                                width: 100.0,
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                  color:
+                                      containerSchoolDataRecord
+                                                      .primaryPhoto !=
+                                                  ''
+                                          ? const Color(0x50000000)
+                                          : const Color(0x00000000),
+                                ),
+                                child: Align(
+                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 10.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        containerSchoolDataRecord.displayName,
+                                        'name',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            fontFamily:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmallFamily,
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineSmallFamily),
+                                          ),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineSmallFamily,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineSmallFamily),
-                                        ),
                                   ),
                                 ),
                               ),
