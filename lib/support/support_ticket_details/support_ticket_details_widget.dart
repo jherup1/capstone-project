@@ -37,6 +37,8 @@ class _SupportTicketDetailsWidgetState
     super.initState();
     _model = createModel(context, () => SupportTicketDetailsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'support_TicketDetails'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

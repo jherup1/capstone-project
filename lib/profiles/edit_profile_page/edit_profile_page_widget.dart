@@ -30,6 +30,9 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
     super.initState();
     _model = createModel(context, () => EditProfilePageModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'editProfilePage'});
+
     _model.firstNameFocusNode ??= FocusNode();
 
     _model.lastNameFocusNode ??= FocusNode();

@@ -1,3 +1,4 @@
+import '/admin/edit_school/edit_school_widget.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
@@ -33,6 +34,8 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
     super.initState();
     _model = createModel(context, () => AdminSchoolsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'adminSchools'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -114,19 +117,62 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Schools',
-                              style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .headlineSmallFamily,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .headlineSmallFamily),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 20.0, 0.0),
+                                  child: Text(
+                                    'Schools',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineSmallFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmallFamily),
+                                        ),
                                   ),
+                                ),
+                                FFButtonWidget(
+                                  onPressed: () {
+                                    print('Button pressed ...');
+                                  },
+                                  text: 'Create School Profile',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 10.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily,
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmallFamily),
+                                        ),
+                                    elevation: 3.0,
+                                    borderSide: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -435,8 +481,9 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                 Builder(
                                   builder: (context) {
                                     if (_model.isShowFullList) {
-                                      return StreamBuilder<List<SchoolsRecord>>(
-                                        stream: querySchoolsRecord(
+                                      return StreamBuilder<
+                                          List<SchoolDataRecord>>(
+                                        stream: querySchoolDataRecord(
                                           limit: 10,
                                         ),
                                         builder: (context, snapshot) {
@@ -458,19 +505,20 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                               ),
                                             );
                                           }
-                                          List<SchoolsRecord>
-                                              listViewSchoolsRecordList =
+                                          List<SchoolDataRecord>
+                                              listViewSchoolDataRecordList =
                                               snapshot.data!;
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
-                                            itemCount: listViewSchoolsRecordList
-                                                .length,
+                                            itemCount:
+                                                listViewSchoolDataRecordList
+                                                    .length,
                                             itemBuilder:
                                                 (context, listViewIndex) {
-                                              final listViewSchoolsRecord =
-                                                  listViewSchoolsRecordList[
+                                              final listViewSchoolDataRecord =
+                                                  listViewSchoolDataRecordList[
                                                       listViewIndex];
                                               return Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -528,8 +576,8 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             15.0),
                                                               ),
                                                               child: Text(
-                                                                listViewSchoolsRecord
-                                                                    .name,
+                                                                listViewSchoolDataRecord
+                                                                    .aliasNames,
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -592,7 +640,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             0.0,
                                                                             0.0),
                                                                 child: Text(
-                                                                  'Description: ${listViewIndex.toString()}',
+                                                                  'Description: ${listViewSchoolDataRecord.description}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -688,71 +736,126 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                       alignment:
                                                           const AlignmentDirectional(
                                                               0.9, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    6.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 200.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        4.0),
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
+                                                      child: Builder(
+                                                        builder: (context) =>
+                                                            Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      6.0,
+                                                                      0.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: const AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          EditSchoolWidget(
+                                                                        schoolDoc:
+                                                                            listViewSchoolDataRecord,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
+                                                            },
+                                                            child: Container(
+                                                              width: 200.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            4.0),
+                                                              ),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
                                                                             4.0,
                                                                             4.0),
-                                                                child: Icon(
-                                                                  Icons.edit,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  size: 24.0,
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .edit,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                child: Text(
-                                                                  'Edit School',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
-                                                                ),
+                                                                    child: Text(
+                                                                      'Edit School',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -771,7 +874,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
-                                                          await listViewSchoolsRecord
+                                                          await listViewSchoolDataRecord
                                                               .reference
                                                               .delete();
                                                         },

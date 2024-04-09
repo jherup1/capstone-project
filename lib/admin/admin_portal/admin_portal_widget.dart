@@ -32,6 +32,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
     super.initState();
     _model = createModel(context, () => AdminPortalModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'adminPortal'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.adminActionOutput1 =
