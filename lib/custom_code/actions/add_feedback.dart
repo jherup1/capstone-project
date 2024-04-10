@@ -8,20 +8,23 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-//import 'package:cloud_firestore/cloud_firestore.dart';
-
-Future deleteFavSchool(
+Future<bool> addFeedback(
   BuildContext context,
-  String uid,
-  DocumentReference schoolRef,
+  String? feedbackText,
+  int feedbackNumber,
+  String? uid,
 ) async {
   try {
-    CollectionReference users = FirebaseFirestore.instance.collection('users');
-    users.doc(uid).update({
-      'schools': FieldValue.arrayRemove([schoolRef]),
+    CollectionReference feedback =
+        FirebaseFirestore.instance.collection('feedback');
+    await feedback.add({
+      'uid': uid,
+      'submissionDate': FieldValue.serverTimestamp(),
+      'reviewNumber': feedbackNumber,
+      'reviewDescription': feedbackText,
     });
+    return true;
   } on FirebaseException catch (e) {
-    return;
+    return false;
   }
-  // Add your function code here!
 }

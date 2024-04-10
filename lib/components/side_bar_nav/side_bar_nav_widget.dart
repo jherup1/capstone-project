@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/components/feed_back_bottom/feed_back_bottom_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -59,7 +60,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (Theme.of(context).brightness == Brightness.light)
                         Image.asset(
@@ -129,7 +130,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               child: Icon(
                                 Icons.map,
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                                size: 28.0,
                               ),
                             ),
                             Text(
@@ -139,6 +140,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -190,7 +192,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               child: Icon(
                                 Icons.school,
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                                size: 28.0,
                               ),
                             ),
                             Text(
@@ -200,6 +202,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyMediumFamily,
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey(
@@ -255,7 +258,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                     Icons.account_circle,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    size: 24.0,
+                                    size: 28.0,
                                   ),
                                 ),
                                 Text(
@@ -265,6 +268,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -317,7 +321,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               child: Icon(
                                 Icons.contact_support,
                                 color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                                size: 28.0,
                               ),
                             ),
                             Text(
@@ -325,13 +329,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
+                                        .containsKey('Plus Jakarta Sans'),
                                   ),
                             ),
                           ],
@@ -384,7 +386,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                     Icons.question_answer,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    size: 24.0,
+                                    size: 28.0,
                                   ),
                                 ),
                                 Text(
@@ -392,13 +394,11 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
+                                            .containsKey('Plus Jakarta Sans'),
                                       ),
                                 ),
                               ],
@@ -450,7 +450,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                     Icons.admin_panel_settings_sharp,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    size: 24.0,
+                                    size: 28.0,
                                   ),
                                 ),
                                 Text(
@@ -460,6 +460,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -516,7 +517,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                     Icons.dashboard_sharp,
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
-                                    size: 24.0,
+                                    size: 28.0,
                                   ),
                                 ),
                                 Text(
@@ -526,6 +527,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
+                                        fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -540,68 +542,191 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget> {
                       ),
                     ),
                   ),
+                Flexible(
+                  child: Align(
+                    alignment: const AlignmentDirectional(-1.0, 1.0),
+                    child: Builder(
+                      builder: (context) {
+                        if (valueOrDefault(currentUserDocument?.role, '') !=
+                            'guest') {
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, 1.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: 5.0,
+                                  borderWidth: 5.0,
+                                  buttonSize: 48.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.logout,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 28.0,
+                                  ),
+                                  onPressed: () async {
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
+                                    context.goNamedAuth(
+                                        'signIn', context.mounted);
+                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(1.0, 1.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    'Log Out',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey('Plus Jakarta Sans'),
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, 1.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: 5.0,
+                                  borderWidth: 5.0,
+                                  buttonSize: 48.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.login,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 28.0,
+                                  ),
+                                  onPressed: () async {
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
+                                    context.pushNamedAuth(
+                                        'signIn', context.mounted);
+                                  },
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(1.0, 1.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Text(
+                                    'Log in',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          fontSize: 18.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed(
+                      'DashboardKPI',
+                      extra: <String, dynamic>{
+                        kTransitionInfoKey: const TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 0),
+                        ),
+                      },
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 20.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Align(
+                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      child: InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: const FeedBackBottomWidget(),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                        child: Text(
+                          'Send Us Feedback',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                color: FlutterFlowTheme.of(context).accent2,
+                                fontSize: 15.0,
+                                letterSpacing: 0.0,
+                                decoration: TextDecoration.underline,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
-            ),
-          ),
-        ),
-        Align(
-          alignment: const AlignmentDirectional(-1.0, 1.0),
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 10.0),
-            child: Builder(
-              builder: (context) {
-                if (valueOrDefault(currentUserDocument?.role, '') != 'guest') {
-                  return Align(
-                    alignment: const AlignmentDirectional(-1.0, 1.0),
-                    child: FlutterFlowIconButton(
-                      borderColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: 5.0,
-                      borderWidth: 5.0,
-                      buttonSize: 48.0,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      icon: Icon(
-                        Icons.logout,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 28.0,
-                      ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
-
-                        context.goNamedAuth('signIn', context.mounted);
-                      },
-                    ),
-                  );
-                } else {
-                  return Align(
-                    alignment: const AlignmentDirectional(-1.0, 1.0),
-                    child: FlutterFlowIconButton(
-                      borderColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: 5.0,
-                      borderWidth: 5.0,
-                      buttonSize: 48.0,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      icon: Icon(
-                        Icons.login,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 28.0,
-                      ),
-                      onPressed: () async {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
-
-                        context.pushNamedAuth('signIn', context.mounted);
-                      },
-                    ),
-                  );
-                }
-              },
             ),
           ),
         ),

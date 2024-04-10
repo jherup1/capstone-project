@@ -7,3 +7,4 @@ export 'add_fav_school.dart' show addFavSchool;
 export 'delete_fav_school.dart' show deleteFavSchool;
 export 'send_verification_email.dart' show sendVerificationEmail;
 export 'password_change.dart' show passwordChange;
+export 'add_feedback.dart' show addFeedback;
