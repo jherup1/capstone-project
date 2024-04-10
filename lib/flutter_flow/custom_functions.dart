@@ -71,3 +71,20 @@ bool addUserDoc(
   });
   return true;
 }
+
+double averageRating(List<FeedbackRecord> feedbackList) {
+  if (feedbackList.isEmpty) {
+    return 0.0;
+  }
+
+  int sum = 0;
+  for (FeedbackRecord feedback in feedbackList) {
+    if (feedback.reviewNumber >= 1 && feedback.reviewNumber <= 5) {
+      sum += feedback.reviewNumber;
+    }
+  }
+
+  double average = sum / feedbackList.length;
+
+  return average;
+}

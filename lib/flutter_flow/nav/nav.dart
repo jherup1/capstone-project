@@ -228,6 +228,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'allSchools',
+              path: 'allSchools',
+              builder: (context, params) => const AllSchoolsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

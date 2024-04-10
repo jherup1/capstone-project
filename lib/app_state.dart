@@ -80,4 +80,10 @@ class FFAppState extends ChangeNotifier {
   set passwordChangeAttempt(String value) {
     _passwordChangeAttempt = value;
   }
+
+  int _smile = 5;
+  int get smile => _smile;
+  set smile(int value) {
+    _smile = value;
+  }
 }
