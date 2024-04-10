@@ -79,9 +79,7 @@ double averageRating(List<FeedbackRecord> feedbackList) {
 
   int sum = 0;
   for (FeedbackRecord feedback in feedbackList) {
-    if (feedback.reviewNumber >= 1 && feedback.reviewNumber <= 5) {
-      sum += feedback.reviewNumber;
-    }
+    sum += feedback.reviewNumber;
   }
 
   double average = sum / feedbackList.length;

@@ -77,7 +77,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                     alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
-                      height: MediaQuery.sizeOf(context).height * 0.5,
+                      height: MediaQuery.sizeOf(context).height * 0.6,
                       constraints: BoxConstraints(
                         maxWidth: MediaQuery.sizeOf(context).width * 0.8,
                         maxHeight: MediaQuery.sizeOf(context).height * 1.0,
@@ -180,7 +180,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                 alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.3,
-                                  height: 200.0,
+                                  height: 100.0,
                                   decoration: BoxDecoration(
                                     color:
                                         FlutterFlowTheme.of(context).tertiary,
