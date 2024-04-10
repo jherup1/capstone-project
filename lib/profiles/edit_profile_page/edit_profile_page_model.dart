@@ -32,8 +32,6 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -62,8 +60,4 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
 
     sideBarNavModel2.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -27,8 +27,6 @@ class AdminSchoolsModel extends FlutterFlowModel<AdminSchoolsWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   List<SchoolsRecord> simpleSearchResults = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -46,8 +44,4 @@ class AdminSchoolsModel extends FlutterFlowModel<AdminSchoolsWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

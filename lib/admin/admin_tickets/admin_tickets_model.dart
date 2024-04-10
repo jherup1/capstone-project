@@ -27,8 +27,6 @@ class AdminTicketsModel extends FlutterFlowModel<AdminTicketsWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   List<SupportTicketsRecord> simpleSearchResults = [];
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
@@ -46,8 +44,4 @@ class AdminTicketsModel extends FlutterFlowModel<AdminTicketsWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

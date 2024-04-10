@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'user_list_model.dart';
 export 'user_list_model.dart';
 
@@ -56,7 +57,10 @@ class _UserListWidgetState extends State<UserListWidget> {
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
-                  offset: Offset(0.0, 2.0),
+                  offset: Offset(
+                    0.0,
+                    2.0,
+                  ),
                 )
               ],
               borderRadius: BorderRadius.circular(12.0),
@@ -72,7 +76,15 @@ class _UserListWidgetState extends State<UserListWidget> {
                         const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Assign User',
-                      style: FlutterFlowTheme.of(context).headlineSmall,
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .headlineSmallFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .headlineSmallFamily),
+                              ),
                     ),
                   ),
                   Padding(
@@ -80,7 +92,13 @@ class _UserListWidgetState extends State<UserListWidget> {
                         const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
                     child: Text(
                       'Select a user from the list below to continue.',
-                      style: FlutterFlowTheme.of(context).labelMedium,
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
                     ),
                   ),
                   Divider(
@@ -91,6 +109,10 @@ class _UserListWidgetState extends State<UserListWidget> {
                     child: FutureBuilder<List<UsersRecord>>(
                       future: queryUsersRecordOnce(
                         queryBuilder: (usersRecord) => usersRecord
+                            .where(
+                              'role',
+                              isEqualTo: 'support' != '' ? 'support' : null,
+                            )
                             .orderBy('created_time', descending: true),
                       ),
                       builder: (context, snapshot) {
@@ -191,8 +213,18 @@ class _UserListWidgetState extends State<UserListWidget> {
                                   child: Text(
                                     'Close',
                                     textAlign: TextAlign.center,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily),
+                                        ),
                                   ),
                                 ),
                               ),

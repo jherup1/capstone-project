@@ -19,6 +19,15 @@ Future sendVerificationEmail(
     final userCredential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
     await userCredential.user?.sendEmailVerification();
-    FirebaseAuth.instance.signOut();
-  } on FirebaseAuthException catch (e) {}
+    await FirebaseAuth.instance.signOut();
+  } on FirebaseAuthException catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          e.code,
+          style: TextStyle(color: Colors.red),
+        ),
+      ),
+    );
+  }
 }

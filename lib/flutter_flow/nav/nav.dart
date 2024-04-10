@@ -97,7 +97,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'homePage',
               builder: (context, params) => HomePageWidget(
                 school: params.getParam(
-                    'school', ParamType.DocumentReference, false, ['schools']),
+                  'school',
+                  ParamType.LatLng,
+                ),
               ),
             ),
             FFRoute(
@@ -109,13 +111,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'schools',
               path: 'schools',
               builder: (context, params) => SchoolsWidget(
-                pageTitle: params.getParam('pageTitle', ParamType.String),
-                pageDetails: params.getParam('pageDetails', ParamType.String),
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
               name: 'profilePage',
-              path: 'profilePage',
+              path: 'profile',
               builder: (context, params) => const ProfilePageWidget(),
             ),
             FFRoute(
@@ -136,13 +144,97 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ['supportTickets'], SupportTicketsRecord.fromSnapshot),
               },
               builder: (context, params) => SupportTicketDetailsWidget(
-                ticketRef: params.getParam('ticketRef', ParamType.Document),
+                ticketRef: params.getParam(
+                  'ticketRef',
+                  ParamType.Document,
+                ),
               ),
             ),
             FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
               builder: (context, params) => const IndividualSchoolWidget(),
+            ),
+            FFRoute(
+              name: 'adminPortal',
+              path: 'adminPortal',
+              requireAuth: true,
+              builder: (context, params) => AdminPortalWidget(
+                school: params.getParam(
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'editProfilePage',
+              path: 'editProfile',
+              builder: (context, params) => const EditProfilePageWidget(),
+            ),
+            FFRoute(
+              name: 'adminUsers',
+              path: 'adminUsers',
+              requireAuth: true,
+              builder: (context, params) => AdminUsersWidget(
+                school: params.getParam(
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'adminTickets',
+              path: 'adminTickets',
+              requireAuth: true,
+              builder: (context, params) => AdminTicketsWidget(
+                school: params.getParam(
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'adminSchools',
+              path: 'adminSchools',
+              requireAuth: true,
+              builder: (context, params) => AdminSchoolsWidget(
+                school: params.getParam(
+                  'school',
+                  ParamType.DocumentReference,
+                  false,
+                  ['schools'],
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'changePasswordPage',
+              path: 'changePassowrd',
+              builder: (context, params) => const ChangePasswordPageWidget(),
+            ),
+            FFRoute(
+              name: 'DashboardKPI',
+              path: 'dashboardKPI',
+              builder: (context, params) => DashboardKPIWidget(
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'allSchools',
+              path: 'allSchools',
+              builder: (context, params) => const AllSchoolsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -283,8 +375,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 
@@ -332,15 +428,13 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? isWeb
-                  ? Container()
-                  : Container(
-                      color: Colors.transparent,
-                      child: Image.asset(
-                        'assets/images/lightmodepsysearchlogo.jpg',
-                        fit: BoxFit.contain,
-                      ),
-                    )
+              ? Container(
+                  color: Colors.transparent,
+                  child: Image.asset(
+                    'assets/images/lightmodepsysearchlogo.jpg',
+                    fit: BoxFit.contain,
+                  ),
+                )
               : page;
 
           final transitionInfo = state.transitionInfo;

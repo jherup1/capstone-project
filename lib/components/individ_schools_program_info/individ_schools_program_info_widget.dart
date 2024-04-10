@@ -56,6 +56,7 @@ class _IndividSchoolsProgramInfoWidgetState
                         FlutterFlowTheme.of(context).headlineMediumFamily,
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 24.0,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).headlineMediumFamily),
@@ -69,6 +70,7 @@ class _IndividSchoolsProgramInfoWidgetState
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                     color: FlutterFlowTheme.of(context).secondaryText,
+                    letterSpacing: 0.0,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).bodyMediumFamily),
                   ),
@@ -81,6 +83,7 @@ class _IndividSchoolsProgramInfoWidgetState
               style: FlutterFlowTheme.of(context).bodySmall.override(
                     fontFamily: FlutterFlowTheme.of(context).bodySmallFamily,
                     color: FlutterFlowTheme.of(context).secondaryText,
+                    letterSpacing: 0.0,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).bodySmallFamily),
                   ),
@@ -93,6 +96,7 @@ class _IndividSchoolsProgramInfoWidgetState
               style: FlutterFlowTheme.of(context).titleMedium.override(
                     fontFamily: FlutterFlowTheme.of(context).titleMediumFamily,
                     color: FlutterFlowTheme.of(context).primaryText,
+                    letterSpacing: 0.0,
                     fontWeight: FontWeight.w500,
                     useGoogleFonts: GoogleFonts.asMap().containsKey(
                         FlutterFlowTheme.of(context).titleMediumFamily),
@@ -121,6 +125,7 @@ class _IndividSchoolsProgramInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -146,6 +151,7 @@ class _IndividSchoolsProgramInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -171,6 +177,7 @@ class _IndividSchoolsProgramInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -196,6 +203,7 @@ class _IndividSchoolsProgramInfoWidgetState
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
                               color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
@@ -224,6 +232,7 @@ class _IndividSchoolsProgramInfoWidgetState
                       fontFamily:
                           FlutterFlowTheme.of(context).titleMediumFamily,
                       color: Colors.white,
+                      letterSpacing: 0.0,
                       useGoogleFonts: GoogleFonts.asMap().containsKey(
                           FlutterFlowTheme.of(context).titleMediumFamily),
                     ),
