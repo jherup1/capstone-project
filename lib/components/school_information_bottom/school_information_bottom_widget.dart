@@ -1,22 +1,23 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'school_information_bottom_model.dart';
 export 'school_information_bottom_model.dart';
 
 class SchoolInformationBottomWidget extends StatefulWidget {
   const SchoolInformationBottomWidget({
     super.key,
-    required this.name,
+    required this.school,
   });
 
-  final SchoolsRecord? name;
+  final SchoolDataRecord? school;
 
   @override
   State<SchoolInformationBottomWidget> createState() =>
@@ -50,8 +51,6 @@ class _SchoolInformationBottomWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
       alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
@@ -74,66 +73,44 @@ class _SchoolInformationBottomWidgetState
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
-                    child: Container(
-                      width: double.infinity,
-                      constraints: BoxConstraints(
-                        maxWidth: MediaQuery.sizeOf(context).width * 0.8,
-                        maxHeight: MediaQuery.sizeOf(context).height * 1.0,
-                      ),
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 12.0,
-                            color: Color(0x33000000),
-                            offset: Offset(0.0, 5.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(16.0),
-                        shape: BoxShape.rectangle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 12.0),
-                              child: Row(
+                  Expanded(
+                    child: Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.6,
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.sizeOf(context).width * 0.8,
+                          maxHeight: MediaQuery.sizeOf(context).height * 1.0,
+                        ),
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 12.0,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0.0,
+                                5.0,
+                              ),
+                            )
+                          ],
+                          borderRadius: BorderRadius.circular(16.0),
+                          shape: BoxShape.rectangle,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 0.0, 20.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          valueOrDefault<String>(
-                                            widget.name?.name,
-                                            'schoolNameXXX',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineLarge,
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 0.0),
-                                          child: Text(
-                                            'A subtitle for this modal that happens to be here.',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                   FlutterFlowIconButton(
                                     borderColor: Colors.transparent,
                                     borderRadius: 30.0,
@@ -151,86 +128,237 @@ class _SchoolInformationBottomWidgetState
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Text(
-                                'FlutterFlow is an amazing platform that allows developers to create powerful, interactive and responsive mobile and web applications. It is built using Flutter, a popular open-source framework for creating cross-platform applications, and offers a wide range of features that make app development faster and more efficient. With FlutterFlow, developers can create beautiful and engaging user interfaces, implement complex logic and animations, and easily connect to APIs and other services. \n\nAdditionally, it provides real-time collaboration feature, so multiple developers can work on the same project simultaneously. Overall, FlutterFlow is a fantastic tool for any developer looking to build high-quality apps quickly and easily.',
-                                style: FlutterFlowTheme.of(context).labelLarge,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 16.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        Navigator.pop(context);
-                                      },
-                                      text: 'Cancel',
-                                      options: FFButtonOptions(
-                                        padding: const EdgeInsets.all(24.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .labelLarge,
-                                        elevation: 0.0,
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 20.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.network(
+                                        valueOrDefault<String>(
+                                          widget.school?.primaryPhoto,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/1p4ti2vl8vtg/lightmodepsysearchlogo.jpg',
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
+                                        width: 250.0,
+                                        height: 150.0,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),
-                                  FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
-                                    },
-                                    text: 'Add Favorite',
-                                    options: FFButtonOptions(
-                                      padding: const EdgeInsets.all(24.0),
-                                      iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmallFamily,
-                                            color: Colors.white,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmallFamily),
+                                    Expanded(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    widget.school?.displayName,
+                                                    'School name not available',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .headlineLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineLargeFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineLargeFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      widget.school
+                                                          ?.schoolWebsite,
+                                                      'Address not available',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                      elevation: 1.0,
-                                      borderSide: const BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
+                                        ),
                                       ),
-                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 0.0),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      widget.school?.description,
+                                      'Description not available',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelLargeFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLargeFamily),
+                                        ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Align(
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 20.0, 12.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 16.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              Navigator.pop(context);
+                                            },
+                                            text: 'Cancel',
+                                            options: FFButtonOptions(
+                                              padding: const EdgeInsets.all(24.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLargeFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLargeFamily),
+                                                      ),
+                                              elevation: 0.0,
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                width: 2.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                          ),
+                                        ),
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            await actions.addFavSchool(
+                                              context,
+                                              currentUserUid,
+                                              widget.school!.reference,
+                                            );
+                                          },
+                                          text: 'Add Favorite',
+                                          options: FFButtonOptions(
+                                            padding: const EdgeInsets.all(24.0),
+                                            iconPadding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      fontFamily:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmallFamily,
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts: GoogleFonts
+                                                              .asMap()
+                                                          .containsKey(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily),
+                                                    ),
+                                            elevation: 1.0,
+                                            borderSide: const BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

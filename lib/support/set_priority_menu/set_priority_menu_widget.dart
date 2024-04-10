@@ -2,7 +2,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'set_priority_menu_model.dart';
 export 'set_priority_menu_model.dart';
 
@@ -44,8 +44,6 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -59,7 +57,10 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
-                  offset: Offset(0.0, 2.0),
+                  offset: Offset(
+                    0.0,
+                    2.0,
+                  ),
                 )
               ],
               borderRadius: BorderRadius.circular(12.0),
@@ -76,7 +77,13 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                     child: Text(
                       'Set Priority Level',
                       textAlign: TextAlign.start,
-                      style: FlutterFlowTheme.of(context).labelMedium,
+                      style: FlutterFlowTheme.of(context).labelMedium.override(
+                            fontFamily:
+                                FlutterFlowTheme.of(context).labelMediumFamily,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                FlutterFlowTheme.of(context).labelMediumFamily),
+                          ),
                     ),
                   ),
                   Padding(
@@ -110,8 +117,17 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                                     8.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Emergency',
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
                                 ),
                               ),
                             ),
@@ -157,7 +173,17 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                                   8.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'High',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
                               ),
                             ),
                           ),
@@ -201,7 +227,17 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                                   8.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Medium',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
                               ),
                             ),
                           ),
@@ -245,7 +281,17 @@ class _SetPriorityMenuWidgetState extends State<SetPriorityMenuWidget> {
                                   8.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Low',
-                                style: FlutterFlowTheme.of(context).bodyMedium,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
                               ),
                             ),
                           ),

@@ -28,6 +28,7 @@ Future signUp(
     }
     final credential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
+    credential.user!.updateDisplayName(firstName);
     bool addDoc = addUserDoc(firstName, lastName, email, phoneNumber, null,
         credential.user!.uid, 'user');
     FFAppState().update(() {

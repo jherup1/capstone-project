@@ -17,13 +17,9 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
   // Model for schoolScrollFav component.
   late SchoolScrollFavModel schoolScrollFavModel;
   // Model for schoolScroll component.
-  late SchoolScrollModel schoolScrollModel1;
-  // Model for schoolScroll component.
-  late SchoolScrollModel schoolScrollModel2;
+  late SchoolScrollModel schoolScrollModel;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
@@ -31,8 +27,7 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
     breadcrumbsHeaderModel =
         createModel(context, () => BreadcrumbsHeaderModel());
     schoolScrollFavModel = createModel(context, () => SchoolScrollFavModel());
-    schoolScrollModel1 = createModel(context, () => SchoolScrollModel());
-    schoolScrollModel2 = createModel(context, () => SchoolScrollModel());
+    schoolScrollModel = createModel(context, () => SchoolScrollModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
@@ -42,12 +37,7 @@ class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
     sideBarNavModel1.dispose();
     breadcrumbsHeaderModel.dispose();
     schoolScrollFavModel.dispose();
-    schoolScrollModel1.dispose();
-    schoolScrollModel2.dispose();
+    schoolScrollModel.dispose();
     sideBarNavModel2.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

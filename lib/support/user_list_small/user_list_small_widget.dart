@@ -1,9 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'user_list_small_model.dart';
 export 'user_list_small_model.dart';
 
@@ -47,8 +47,6 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return MouseRegion(
       opaque: false,
       cursor: MouseCursor.defer ?? MouseCursor.defer,
@@ -62,7 +60,8 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
         duration: const Duration(milliseconds: 150),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
-          color: _model.iuserHovered? FlutterFlowTheme.of(context).primaryBackground
+          color: _model.iuserHovered
+              ? FlutterFlowTheme.of(context).primaryBackground
               : FlutterFlowTheme.of(context).secondaryBackground,
         ),
         child: Padding(
@@ -70,31 +69,6 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: 40.0,
-                height: 40.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).accent1,
-                  borderRadius: BorderRadius.circular(10.0),
-                  shape: BoxShape.rectangle,
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    width: 2.0,
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      widget.userRef!.photoUrl,
-                      width: 32.0,
-                      height: 32.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 8.0, 0.0),
@@ -111,6 +85,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily:
                                   FlutterFlowTheme.of(context).bodyMediumFamily,
+                              letterSpacing: 0.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: GoogleFonts.asMap().containsKey(
                                   FlutterFlowTheme.of(context)
@@ -131,6 +106,7 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                                 fontFamily: FlutterFlowTheme.of(context)
                                     .bodySmallFamily,
                                 color: FlutterFlowTheme.of(context).tertiary,
+                                letterSpacing: 0.0,
                                 useGoogleFonts: GoogleFonts.asMap().containsKey(
                                     FlutterFlowTheme.of(context)
                                         .bodySmallFamily),
@@ -141,28 +117,39 @@ class _UserListSmallWidgetState extends State<UserListSmallWidget> {
                   ),
                 ),
               ),
-              Container(
-                height: 32.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).accent1,
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    width: 2.0,
+              if (widget.userRef?.uid == currentUserUid)
+                Container(
+                  height: 32.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).accent1,
+                    borderRadius: BorderRadius.circular(12.0),
+                    border: Border.all(
+                      color: FlutterFlowTheme.of(context).tertiary,
+                      width: 2.0,
+                    ),
                   ),
-                ),
-                child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                    child: Text(
-                      'ME',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
+                  child: Align(
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      child: Text(
+                        'ME',
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily:
+                                  FlutterFlowTheme.of(context).bodyMediumFamily,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily),
+                            ),
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

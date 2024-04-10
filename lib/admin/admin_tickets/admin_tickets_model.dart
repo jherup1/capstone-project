@@ -6,19 +6,26 @@ import 'admin_tickets_widget.dart' show AdminTicketsWidget;
 import 'package:flutter/material.dart';
 
 class AdminTicketsModel extends FlutterFlowModel<AdminTicketsWidget> {
+  ///  Local state fields for this page.
+
+  SchoolsRecord? school;
+
+  bool isShowFullList = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - Read Document] action in adminTickets widget.
-  UsersRecord? adminActionOutput1;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel1;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
-
-  /// Initialization and disposal methods.
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  List<SupportTicketsRecord> simpleSearchResults = [];
 
   @override
   void initState(BuildContext context) {
@@ -34,9 +41,7 @@ class AdminTicketsModel extends FlutterFlowModel<AdminTicketsWidget> {
     sideBarNavModel1.dispose();
     sideBarNavModel2.dispose();
     breadcrumbsHeaderModel.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

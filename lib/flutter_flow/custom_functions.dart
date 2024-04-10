@@ -67,6 +67,22 @@ bool addUserDoc(
     'role': role,
     'last_name': lastName,
     'schools': [],
+    'location': GeoPoint(39.530895, -119.814972),
   });
   return true;
+}
+
+double averageRating(List<FeedbackRecord> feedbackList) {
+  if (feedbackList.isEmpty) {
+    return 0.0;
+  }
+
+  int sum = 0;
+  for (FeedbackRecord feedback in feedbackList) {
+    sum += feedback.reviewNumber;
+  }
+
+  double average = sum / feedbackList.length;
+
+  return average;
 }

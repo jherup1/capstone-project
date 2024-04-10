@@ -10,8 +10,6 @@ class IndividualSchoolModel extends FlutterFlowModel<IndividualSchoolWidget> {
   // Model for individSchoolsProgramInfo component.
   late IndividSchoolsProgramInfoModel individSchoolsProgramInfoModel;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     individSchoolsProgramInfoModel =
@@ -23,8 +21,4 @@ class IndividualSchoolModel extends FlutterFlowModel<IndividualSchoolWidget> {
     unfocusNode.dispose();
     individSchoolsProgramInfoModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

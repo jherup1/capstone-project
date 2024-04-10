@@ -60,6 +60,11 @@ class UsersRecord extends FirestoreRecord {
   String get lastName => _lastName ?? '';
   bool hasLastName() => _lastName != null;
 
+  // "location" field.
+  LatLng? _location;
+  LatLng? get location => _location;
+  bool hasLocation() => _location != null;
+
   // "schools" field.
   List<DocumentReference>? _schools;
   List<DocumentReference> get schools => _schools ?? const [];
@@ -75,6 +80,7 @@ class UsersRecord extends FirestoreRecord {
     _lastActiveTime = snapshotData['last_active_time'] as DateTime?;
     _role = snapshotData['role'] as String?;
     _lastName = snapshotData['last_name'] as String?;
+    _location = snapshotData['location'] as LatLng?;
     _schools = getDataList(snapshotData['schools']);
   }
 
@@ -121,6 +127,7 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? lastActiveTime,
   String? role,
   String? lastName,
+  LatLng? location,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -133,6 +140,7 @@ Map<String, dynamic> createUsersRecordData({
       'last_active_time': lastActiveTime,
       'role': role,
       'last_name': lastName,
+      'location': location,
     }.withoutNulls,
   );
 
@@ -154,6 +162,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.lastActiveTime == e2?.lastActiveTime &&
         e1?.role == e2?.role &&
         e1?.lastName == e2?.lastName &&
+        e1?.location == e2?.location &&
         listEquality.equals(e1?.schools, e2?.schools);
   }
 
@@ -168,6 +177,7 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.lastActiveTime,
         e?.role,
         e?.lastName,
+        e?.location,
         e?.schools
       ]);
 
