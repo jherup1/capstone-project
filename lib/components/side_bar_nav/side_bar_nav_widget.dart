@@ -640,7 +640,7 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget>
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            'adminTickets',
+                            'support_TicketList',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: const TransitionInfo(
                                 hasTransition: true,

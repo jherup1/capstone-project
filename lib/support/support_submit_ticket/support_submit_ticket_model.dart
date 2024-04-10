@@ -1,9 +1,7 @@
-import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/support/user_list_small/user_list_small_widget.dart';
 import 'support_submit_ticket_widget.dart' show SupportSubmitTicketWidget;
 import 'package:flutter/material.dart';
 
@@ -17,13 +15,9 @@ class SupportSubmitTicketModel
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   String? get choiceChipsValue =>
@@ -35,10 +29,6 @@ class SupportSubmitTicketModel
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  // Stores action output result for [Bottom Sheet - user_List] action in Container widget.
-  UsersRecord? userRefSelected;
-  // Model for user_ListSmall component.
-  late UserListSmallModel userListSmallModel;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
@@ -47,7 +37,6 @@ class SupportSubmitTicketModel
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
         createModel(context, () => BreadcrumbsHeaderModel());
-    userListSmallModel = createModel(context, () => UserListSmallModel());
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
@@ -56,13 +45,9 @@ class SupportSubmitTicketModel
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
     breadcrumbsHeaderModel.dispose();
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
-
-    userListSmallModel.dispose();
     sideBarNavModel2.dispose();
   }
 }
