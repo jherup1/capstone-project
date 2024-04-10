@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/support/empty_state_dynamic/empty_state_dynamic_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'support_ticket_list_model.dart';
@@ -597,94 +596,6 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                                               .labelSmallFamily),
                                                                 ),
                                                           ),
-                                                          if (listViewSupportTicketsRecord
-                                                                  .assignee !=
-                                                              null)
-                                                            FutureBuilder<
-                                                                UsersRecord>(
-                                                              future: UsersRecord
-                                                                  .getDocumentOnce(
-                                                                      listViewSupportTicketsRecord
-                                                                          .assignee!),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          50.0,
-                                                                      height:
-                                                                          50.0,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .tertiary,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                }
-                                                                final containerUsersRecord =
-                                                                    snapshot
-                                                                        .data!;
-                                                                return Container(
-                                                                  width: 32.0,
-                                                                  height: 32.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent1,
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    shape: BoxShape
-                                                                        .rectangle,
-                                                                    border:
-                                                                        Border
-                                                                            .all(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      width:
-                                                                          2.0,
-                                                                    ),
-                                                                  ),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding:
-                                                                        const EdgeInsets.all(
-                                                                            2.0),
-                                                                    child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              6.0),
-                                                                      child:
-                                                                          CachedNetworkImage(
-                                                                        fadeInDuration:
-                                                                            const Duration(milliseconds: 200),
-                                                                        fadeOutDuration:
-                                                                            const Duration(milliseconds: 200),
-                                                                        imageUrl:
-                                                                            containerUsersRecord.photoUrl,
-                                                                        width:
-                                                                            300.0,
-                                                                        height:
-                                                                            200.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ),
                                                         ].divide(const SizedBox(
                                                             width: 8.0)),
                                                       ),
