@@ -106,6 +106,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'forgotPassword',
               path: 'forgotPassword',
               builder: (context, params) => const ForgotPasswordWidget(),
+              builder: (context, params) => const ForgotPasswordWidget(),
             ),
             FFRoute(
               name: 'schools',
@@ -130,10 +131,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'support_TicketList',
               path: 'supportTicketList',
               builder: (context, params) => const SupportTicketListWidget(),
+              builder: (context, params) => const SupportTicketListWidget(),
             ),
             FFRoute(
               name: 'support_SubmitTicket',
               path: 'supportSubmitTicket',
+              builder: (context, params) => const SupportSubmitTicketWidget(),
               builder: (context, params) => const SupportSubmitTicketWidget(),
             ),
             FFRoute(
