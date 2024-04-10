@@ -3,7 +3,6 @@ import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'edit_profile_page_widget.dart' show EditProfilePageWidget;
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -25,21 +24,20 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressController;
   String? Function(BuildContext, String?)? emailAddressControllerValidator;
-  // State field(s) for phoneNumber widget.
-  FocusNode? phoneNumberFocusNode;
-  TextEditingController? phoneNumberController;
-  final phoneNumberMask = MaskTextInputFormatter(mask: '+# (###) ###-##-##');
-  String? Function(BuildContext, String?)? phoneNumberControllerValidator;
+  // State field(s) for password widget.
+  FocusNode? passwordFocusNode;
+  TextEditingController? passwordController;
+  late bool passwordVisibility;
+  String? Function(BuildContext, String?)? passwordControllerValidator;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
     sideBarNavModel1 = createModel(context, () => SideBarNavModel());
     breadcrumbsHeaderModel =
         createModel(context, () => BreadcrumbsHeaderModel());
+    passwordVisibility = false;
     sideBarNavModel2 = createModel(context, () => SideBarNavModel());
   }
 
@@ -57,13 +55,9 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
     emailAddressFocusNode?.dispose();
     emailAddressController?.dispose();
 
-    phoneNumberFocusNode?.dispose();
-    phoneNumberController?.dispose();
+    passwordFocusNode?.dispose();
+    passwordController?.dispose();
 
     sideBarNavModel2.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

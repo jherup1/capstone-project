@@ -19,10 +19,8 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   late SideBarNavModel sideBarNavModel2;
   // Model for BreadcrumbsHeader component.
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
-  // Stores action output result for [Firestore Query - Query a collection] action in CustomMarkerWidget widget.
-  SchoolsRecord? tap;
-
-  /// Initialization and disposal methods.
+  // Stores action output result for [Firestore Query - Query a collection] action in ClusterMapCopy widget.
+  SchoolDataRecord? tap;
 
   @override
   void initState(BuildContext context) {
@@ -39,8 +37,4 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
     sideBarNavModel2.dispose();
     breadcrumbsHeaderModel.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

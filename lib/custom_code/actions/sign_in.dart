@@ -16,8 +16,15 @@ Future signIn(
   String password,
 ) async {
   try {
-    final user = await FirebaseAuth.instance
+    final userCredential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
+    if (userCredential.user?.emailVerified == false) {
+      FFAppState().update(() {
+        FFAppState().loginAttempt = 'email-not-verified';
+      });
+      FirebaseAuth.instance.signOut();
+      return;
+    }
     FFAppState().update(() {
       FFAppState().loginAttempt = 'success';
     });

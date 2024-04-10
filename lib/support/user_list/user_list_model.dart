@@ -11,8 +11,6 @@ class UserListModel extends FlutterFlowModel<UserListWidget> {
   // State field(s) for MouseRegion widget.
   bool mouseRegionHovered = false;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     userListSmallModels = FlutterFlowDynamicModels(() => UserListSmallModel());
@@ -22,8 +20,4 @@ class UserListModel extends FlutterFlowModel<UserListWidget> {
   void dispose() {
     userListSmallModels.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }
