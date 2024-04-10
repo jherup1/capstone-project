@@ -56,11 +56,6 @@ class SupportTicketsRecord extends FirestoreRecord {
   DateTime? get lastActive => _lastActive;
   bool hasLastActive() => _lastActive != null;
 
-  // "image" field.
-  String? _image;
-  String get image => _image ?? '';
-  bool hasImage() => _image != null;
-
   // "ticketID" field.
   int? _ticketID;
   int get ticketID => _ticketID ?? 0;
@@ -75,7 +70,6 @@ class SupportTicketsRecord extends FirestoreRecord {
     _priorityLevel = snapshotData['priorityLevel'] as String?;
     _status = snapshotData['status'] as String?;
     _lastActive = snapshotData['lastActive'] as DateTime?;
-    _image = snapshotData['image'] as String?;
     _ticketID = castToType<int>(snapshotData['ticketID']);
   }
 
@@ -122,7 +116,6 @@ Map<String, dynamic> createSupportTicketsRecordData({
   String? priorityLevel,
   String? status,
   DateTime? lastActive,
-  String? image,
   int? ticketID,
 }) {
   final firestoreData = mapToFirestore(
@@ -135,7 +128,6 @@ Map<String, dynamic> createSupportTicketsRecordData({
       'priorityLevel': priorityLevel,
       'status': status,
       'lastActive': lastActive,
-      'image': image,
       'ticketID': ticketID,
     }.withoutNulls,
   );
@@ -157,7 +149,6 @@ class SupportTicketsRecordDocumentEquality
         e1?.priorityLevel == e2?.priorityLevel &&
         e1?.status == e2?.status &&
         e1?.lastActive == e2?.lastActive &&
-        e1?.image == e2?.image &&
         e1?.ticketID == e2?.ticketID;
   }
 
@@ -171,7 +162,6 @@ class SupportTicketsRecordDocumentEquality
         e?.priorityLevel,
         e?.status,
         e?.lastActive,
-        e?.image,
         e?.ticketID
       ]);
 

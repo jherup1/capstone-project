@@ -365,26 +365,6 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        if (listViewSupportTicketsRecord
-                                                                    .image !=
-                                                                '')
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        12.0,
-                                                                        0.0),
-                                                            child: Icon(
-                                                              Icons
-                                                                  .attach_file_sharp,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          ),
                                                         Container(
                                                           height: 32.0,
                                                           decoration:

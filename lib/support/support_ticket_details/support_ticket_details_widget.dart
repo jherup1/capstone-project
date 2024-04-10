@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -468,74 +467,6 @@ class _SupportTicketDetailsWidgetState
                                                         ),
                                                   ),
                                                 ),
-                                                if (widget.ticketRef?.image !=
-                                                        null &&
-                                                    widget.ticketRef?.image !=
-                                                        '')
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 12.0,
-                                                                0.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        await Navigator.push(
-                                                          context,
-                                                          PageTransition(
-                                                            type:
-                                                                PageTransitionType
-                                                                    .fade,
-                                                            child:
-                                                                FlutterFlowExpandedImageView(
-                                                              image:
-                                                                  Image.network(
-                                                                widget
-                                                                    .ticketRef!
-                                                                    .image,
-                                                                fit: BoxFit
-                                                                    .contain,
-                                                              ),
-                                                              allowRotation:
-                                                                  false,
-                                                              tag: widget
-                                                                  .ticketRef!
-                                                                  .image,
-                                                              useHeroAnimation:
-                                                                  true,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Hero(
-                                                        tag: widget
-                                                            .ticketRef!.image,
-                                                        transitionOnUserGestures:
-                                                            true,
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          child: Image.network(
-                                                            widget.ticketRef!
-                                                                .image,
-                                                            width:
-                                                                double.infinity,
-                                                            height: 200.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(

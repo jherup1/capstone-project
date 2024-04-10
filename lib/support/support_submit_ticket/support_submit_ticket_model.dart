@@ -24,11 +24,6 @@ class SupportSubmitTicketModel
       choiceChipsValueController?.value?.firstOrNull;
   set choiceChipsValue(String? val) =>
       choiceChipsValueController?.value = val != null ? [val] : [];
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
-
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 

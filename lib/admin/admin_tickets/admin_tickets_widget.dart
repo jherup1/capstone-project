@@ -458,18 +458,6 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          60.0),
-                                                  child: Image.network(
-                                                    listViewSupportTicketsRecord
-                                                        .image,
-                                                    width: 60.0,
-                                                    height: 60.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -1058,17 +1046,6 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          60.0),
-                                                  child: Image.network(
-                                                    searchResultItem.image,
-                                                    width: 60.0,
-                                                    height: 60.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
                                                 Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(

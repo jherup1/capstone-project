@@ -234,98 +234,109 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           );
                         },
                       ),
-                      StreamBuilder<List<SchoolDataRecord>>(
-                        stream: querySchoolDataRecord(),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).tertiary,
+                      Flexible(
+                        child: Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: StreamBuilder<List<SchoolDataRecord>>(
+                            stream: querySchoolDataRecord(),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).tertiary,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<SchoolDataRecord> containerSchoolDataRecordList =
-                              snapshot.data!;
-                          return ClipRRect(
-                            borderRadius: BorderRadius.circular(12.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 0.85,
-                              height: MediaQuery.sizeOf(context).height * 0.85,
-                              decoration: BoxDecoration(
+                                );
+                              }
+                              List<SchoolDataRecord>
+                                  containerSchoolDataRecordList =
+                                  snapshot.data!;
+                              return ClipRRect(
                                 borderRadius: BorderRadius.circular(12.0),
-                                border: Border.all(
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                ),
-                              ),
-                              child: AuthUserStreamWidget(
-                                builder: (context) => SizedBox(
-                                  width: double.infinity,
-                                  height: double.infinity,
-                                  child: custom_widgets.ClusterMapCopy(
-                                    width: double.infinity,
-                                    height: double.infinity,
-                                    zoom: 15,
-                                    initialCenter:
-                                        currentUserDocument?.location,
-                                    markerLocations:
-                                        containerSchoolDataRecordList
-                                            .map((e) => e.geoPoint)
-                                            .withoutNulls
-                                            .toList(),
-                                    rebuildPage: () async {
-                                      setState(() {});
-                                      _model.tap =
-                                          await querySchoolDataRecordOnce(
-                                        queryBuilder: (schoolDataRecord) =>
-                                            schoolDataRecord.where(
-                                          'geoPoint',
-                                          isEqualTo:
-                                              FFAppState().tapped?.toGeoPoint(),
-                                        ),
-                                        singleRecord: true,
-                                      ).then((s) => s.firstOrNull);
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        enableDrag: false,
-                                        context: context,
-                                        builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child:
-                                                  SchoolInformationBottomWidget(
-                                                school: _model.tap!,
-                                              ),
+                                child: Container(
+                                  width:
+                                      MediaQuery.sizeOf(context).width * 0.85,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 0.85,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                  ),
+                                  child: AuthUserStreamWidget(
+                                    builder: (context) => SizedBox(
+                                      width: double.infinity,
+                                      height: double.infinity,
+                                      child: custom_widgets.ClusterMapCopy(
+                                        width: double.infinity,
+                                        height: double.infinity,
+                                        zoom: 15,
+                                        initialCenter:
+                                            currentUserDocument?.location,
+                                        markerLocations:
+                                            containerSchoolDataRecordList
+                                                .map((e) => e.geoPoint)
+                                                .withoutNulls
+                                                .toList(),
+                                        rebuildPage: () async {
+                                          setState(() {});
+                                          _model.tap =
+                                              await querySchoolDataRecordOnce(
+                                            queryBuilder: (schoolDataRecord) =>
+                                                schoolDataRecord.where(
+                                              'geoPoint',
+                                              isEqualTo: FFAppState()
+                                                  .tapped
+                                                  ?.toGeoPoint(),
                                             ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            enableDrag: false,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child:
+                                                      SchoolInformationBottomWidget(
+                                                    school: _model.tap!,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
 
-                                      setState(() {});
-                                    },
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          );
-                        },
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ],
                   ),
