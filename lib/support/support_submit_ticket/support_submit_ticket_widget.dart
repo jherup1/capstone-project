@@ -457,59 +457,69 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                         onPressed: () async {
                                           // createTicket
 
-                                          await SupportTicketsRecord.collection
-                                              .doc()
+                                          var supportTicketsRecordReference =
+                                              SupportTicketsRecord.collection
+                                                  .doc();
+                                          await supportTicketsRecordReference
                                               .set(
                                                   createSupportTicketsRecordData(
-                                                owner: currentUserReference,
-                                                name: currentUserDisplayName,
-                                                description:
-                                                    _model.textController.text,
-                                                createdTime:
-                                                    getCurrentTimestamp,
-                                                priorityLevel:
-                                                    _model.choiceChipsValue,
-                                                status: 'open',
-                                                lastActive: getCurrentTimestamp,
-                                                ticketID:
-                                                    random_data.randomInteger(
-                                                        10000, 19999),
-                                                assignee: currentUserReference,
-                                              ));
-                                          // successMessage
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'You have successfully submitted a ticket.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                              ),
-                                              duration:
-                                                  const Duration(milliseconds: 4000),
-                                              backgroundColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
-                                            ),
-                                          );
-                                          context.safePop();
+                                            owner: currentUserReference,
+                                            name: currentUserDisplayName,
+                                            description:
+                                                _model.textController.text,
+                                            createdTime: getCurrentTimestamp,
+                                            priorityLevel:
+                                                _model.choiceChipsValue,
+                                            status: 'open',
+                                            lastActive: getCurrentTimestamp,
+                                            ticketID: random_data.randomInteger(
+                                                100000, 999999),
+                                            assignee: currentUserReference,
+                                          ));
+                                          _model.submit = SupportTicketsRecord
+                                              .getDocumentFromData(
+                                                  createSupportTicketsRecordData(
+                                                    owner: currentUserReference,
+                                                    name:
+                                                        currentUserDisplayName,
+                                                    description: _model
+                                                        .textController.text,
+                                                    createdTime:
+                                                        getCurrentTimestamp,
+                                                    priorityLevel:
+                                                        _model.choiceChipsValue,
+                                                    status: 'open',
+                                                    lastActive:
+                                                        getCurrentTimestamp,
+                                                    ticketID: random_data
+                                                        .randomInteger(
+                                                            100000, 999999),
+                                                    assignee:
+                                                        currentUserReference,
+                                                  ),
+                                                  supportTicketsRecordReference);
+                                          if (_model.submit?.ticketID != null) {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (alertDialogContext) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                      'Thank you for submitting your ticket!'),
+                                                  actions: [
+                                                    TextButton(
+                                                      onPressed: () =>
+                                                          Navigator.pop(
+                                                              alertDialogContext),
+                                                      child: const Text(
+                                                          'You\'re welcome'),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          setState(() {});
                                         },
                                         text: 'Submit Ticket',
                                         icon: const Icon(

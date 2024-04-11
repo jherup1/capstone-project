@@ -86,4 +86,10 @@ class FFAppState extends ChangeNotifier {
   set smile(int value) {
     _smile = value;
   }
+
+  bool _searchActive = false;
+  bool get searchActive => _searchActive;
+  set searchActive(bool value) {
+    _searchActive = value;
+  }
 }

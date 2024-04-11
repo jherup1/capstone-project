@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -7,6 +8,10 @@ import 'package:flutter/material.dart';
 
 class SupportSubmitTicketModel
     extends FlutterFlowModel<SupportSubmitTicketWidget> {
+  ///  Local state fields for this page.
+
+  bool submitSuccess = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -24,6 +29,8 @@ class SupportSubmitTicketModel
       choiceChipsValueController?.value?.firstOrNull;
   set choiceChipsValue(String? val) =>
       choiceChipsValueController?.value = val != null ? [val] : [];
+  // Stores action output result for [Backend Call - Create Document] action in Button widget.
+  SupportTicketsRecord? submit;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 

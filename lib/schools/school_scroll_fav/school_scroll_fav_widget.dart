@@ -142,13 +142,8 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                               child: Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: BoxDecoration(
-                                  color:
-                                      containerSchoolDataRecord
-                                                      .primaryPhoto !=
-                                                  ''
-                                          ? const Color(0x50000000)
-                                          : const Color(0x00000000),
+                                decoration: const BoxDecoration(
+                                  color: Color(0x50000000),
                                 ),
                                 child: Align(
                                   alignment: const AlignmentDirectional(-1.0, 1.0),
