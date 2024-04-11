@@ -258,14 +258,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   containerSchoolDataRecordList =
                                   snapshot.data!;
                               return ClipRRect(
-                                borderRadius: BorderRadius.circular(12.0),
+                                borderRadius: BorderRadius.circular(18.0),
                                 child: Container(
                                   width:
                                       MediaQuery.sizeOf(context).width * 0.85,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.85,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(18.0),
                                     border: Border.all(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,

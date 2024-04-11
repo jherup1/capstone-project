@@ -250,113 +250,118 @@ class _SideBarNavWidgetState extends State<SideBarNavWidget>
                           ),
                         ),
                       if (Theme.of(context).brightness == Brightness.dark)
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            setDarkModeSetting(context, ThemeMode.light);
-                            if (animationsMap[
-                                    'containerOnActionTriggerAnimation1'] !=
-                                null) {
-                              setState(() => hasContainerTriggered1 = true);
-                              SchedulerBinding.instance.addPostFrameCallback(
-                                  (_) async => await animationsMap[
-                                          'containerOnActionTriggerAnimation1']!
-                                      .controller
-                                      .forward(from: 0.0));
-                            }
-                          },
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              setDarkModeSetting(context, ThemeMode.light);
+                              if (animationsMap[
+                                      'containerOnActionTriggerAnimation1'] !=
+                                  null) {
+                                setState(() => hasContainerTriggered1 = true);
+                                SchedulerBinding.instance.addPostFrameCallback(
+                                    (_) async => await animationsMap[
+                                            'containerOnActionTriggerAnimation1']!
+                                        .controller
+                                        .forward(from: 0.0));
+                              }
+                            },
+                            child: Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                width: 1.0,
+                                borderRadius: BorderRadius.circular(12.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  width: 1.0,
+                                ),
                               ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 12.0, 24.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Flexible(
-                                    child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: 80.0,
-                                        height: 40.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .lineColor,
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                        child: Stack(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          children: [
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  -0.9, 0.0),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        8.0, 2.0, 0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.wb_sunny_rounded,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  size: 24.0,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 12.0, 24.0, 12.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        child: Container(
+                                          width: 80.0,
+                                          height: 40.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .lineColor,
+                                            borderRadius:
+                                                BorderRadius.circular(20.0),
+                                          ),
+                                          child: Stack(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    -0.9, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          8.0, 2.0, 0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.wb_sunny_rounded,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    size: 24.0,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.9, 0.0),
-                                              child: Container(
-                                                width: 36.0,
-                                                height: 36.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  boxShadow: const [
-                                                    BoxShadow(
-                                                      blurRadius: 4.0,
-                                                      color: Color(0x430B0D0F),
-                                                      offset: Offset(
-                                                        0.0,
-                                                        2.0,
-                                                      ),
-                                                    )
-                                                  ],
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          30.0),
-                                                  shape: BoxShape.rectangle,
-                                                ),
-                                              ).animateOnActionTrigger(
-                                                  animationsMap[
-                                                      'containerOnActionTriggerAnimation2']!,
-                                                  hasBeenTriggered:
-                                                      hasContainerTriggered2),
-                                            ),
-                                          ],
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.9, 0.0),
+                                                child: Container(
+                                                  width: 36.0,
+                                                  height: 36.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    boxShadow: const [
+                                                      BoxShadow(
+                                                        blurRadius: 4.0,
+                                                        color:
+                                                            Color(0x430B0D0F),
+                                                        offset: Offset(
+                                                          0.0,
+                                                          2.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30.0),
+                                                    shape: BoxShape.rectangle,
+                                                  ),
+                                                ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'containerOnActionTriggerAnimation2']!,
+                                                    hasBeenTriggered:
+                                                        hasContainerTriggered2),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
