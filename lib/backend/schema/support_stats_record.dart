@@ -16,11 +16,6 @@ class SupportStatsRecord extends FirestoreRecord {
     _initializeFields();
   }
 
-  // "uid" field.
-  DocumentReference? _uid;
-  DocumentReference? get uid => _uid;
-  bool hasUid() => _uid != null;
-
   // "numTickets" field.
   int? _numTickets;
   int get numTickets => _numTickets ?? 0;
@@ -31,16 +26,15 @@ class SupportStatsRecord extends FirestoreRecord {
   DateTime? get lastResolved => _lastResolved;
   bool hasLastResolved() => _lastResolved != null;
 
-  // "percentTotTickets" field.
-  double? _percentTotTickets;
-  double get percentTotTickets => _percentTotTickets ?? 0.0;
-  bool hasPercentTotTickets() => _percentTotTickets != null;
+  // "uid" field.
+  String? _uid;
+  String get uid => _uid ?? '';
+  bool hasUid() => _uid != null;
 
   void _initializeFields() {
-    _uid = snapshotData['uid'] as DocumentReference?;
     _numTickets = castToType<int>(snapshotData['numTickets']);
     _lastResolved = snapshotData['lastResolved'] as DateTime?;
-    _percentTotTickets = castToType<double>(snapshotData['percentTotTickets']);
+    _uid = snapshotData['uid'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -78,17 +72,15 @@ class SupportStatsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createSupportStatsRecordData({
-  DocumentReference? uid,
   int? numTickets,
   DateTime? lastResolved,
-  double? percentTotTickets,
+  String? uid,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'uid': uid,
       'numTickets': numTickets,
       'lastResolved': lastResolved,
-      'percentTotTickets': percentTotTickets,
+      'uid': uid,
     }.withoutNulls,
   );
 
@@ -101,15 +93,14 @@ class SupportStatsRecordDocumentEquality
 
   @override
   bool equals(SupportStatsRecord? e1, SupportStatsRecord? e2) {
-    return e1?.uid == e2?.uid &&
-        e1?.numTickets == e2?.numTickets &&
+    return e1?.numTickets == e2?.numTickets &&
         e1?.lastResolved == e2?.lastResolved &&
-        e1?.percentTotTickets == e2?.percentTotTickets;
+        e1?.uid == e2?.uid;
   }
 
   @override
-  int hash(SupportStatsRecord? e) => const ListEquality()
-      .hash([e?.uid, e?.numTickets, e?.lastResolved, e?.percentTotTickets]);
+  int hash(SupportStatsRecord? e) =>
+      const ListEquality().hash([e?.numTickets, e?.lastResolved, e?.uid]);
 
   @override
   bool isValidKey(Object? o) => o is SupportStatsRecord;
