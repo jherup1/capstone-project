@@ -1281,44 +1281,70 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                       topRight: Radius.circular(15.0),
                                     ),
                                   ),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Support Leaderboard',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 22.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Support Leaderboard',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMediumFamily,
+                                                fontSize: 22.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMediumFamily),
+                                              ),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Container(
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.12,
+                                            decoration: const BoxDecoration(),
+                                            child: Text(
+                                              'Name',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 0.0, 0.0, 0.0),
+                                            child: Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.12,
+                                                  0.1,
                                               decoration: const BoxDecoration(),
                                               child: Text(
-                                                'Name',
+                                                'Date of Last Resolved Ticket',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1337,261 +1363,262 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                         ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.1,
-                                                decoration: const BoxDecoration(),
-                                                child: Text(
-                                                  'Date of Last Resolved Ticket',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      50.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.1,
-                                                decoration: const BoxDecoration(),
-                                                child: Text(
-                                                  'Number of Tickets Resolved',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 0.0, 0.0, 0.0),
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.1,
-                                                decoration: const BoxDecoration(),
-                                                child: Text(
-                                                  '% of total tickets resolved',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                          ]
-                                              .addToStart(
-                                                  const SizedBox(width: 100.0))
-                                              .addToEnd(const SizedBox(width: 100.0)),
-                                        ),
-                                        PagedListView<
-                                            DocumentSnapshot<Object?>?,
-                                            SupportStatsRecord>(
-                                          pagingController:
-                                              _model.setListViewController1(
-                                            SupportStatsRecord.collection,
                                           ),
-                                          padding: EdgeInsets.zero,
-                                          shrinkWrap: true,
-                                          reverse: false,
-                                          scrollDirection: Axis.vertical,
-                                          builderDelegate:
-                                              PagedChildBuilderDelegate<
-                                                  SupportStatsRecord>(
-                                            // Customize what your widget looks like when it's loading the first page.
-                                            firstPageProgressIndicatorBuilder:
-                                                (_) => Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    50.0, 0.0, 0.0, 0.0),
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1,
+                                              decoration: const BoxDecoration(),
+                                              child: Text(
+                                                'Number of Tickets Resolved',
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            // Customize what your widget looks like when it's loading another page.
-                                            newPageProgressIndicatorBuilder:
-                                                (_) => Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-
-                                            itemBuilder:
-                                                (context, _, listViewIndex) {
-                                              final listViewSupportStatsRecord =
-                                                  _model
-                                                      .listViewPagingController1!
-                                                      .itemList![listViewIndex];
-                                              return StreamBuilder<
-                                                  List<UsersRecord>>(
-                                                stream: queryUsersRecord(
-                                                  queryBuilder: (usersRecord) =>
-                                                      usersRecord.where(
-                                                    'uid',
-                                                    isEqualTo:
-                                                        listViewSupportStatsRecord
-                                                            .uid,
-                                                  ),
-                                                  singleRecord: true,
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<UsersRecord>
-                                                      containerUsersRecordList =
-                                                      snapshot.data!;
-                                                  final containerUsersRecord =
-                                                      containerUsersRecordList
-                                                              .isNotEmpty
-                                                          ? containerUsersRecordList
-                                                              .first
-                                                          : null;
-                                                  return Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: FutureBuilder<int>(
-                                                      future:
-                                                          querySupportTicketsRecordCount(
-                                                        queryBuilder:
-                                                            (supportTicketsRecord) =>
-                                                                supportTicketsRecord
-                                                                    .where(
-                                                          'status',
-                                                          isEqualTo: 'closed',
-                                                        ),
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary,
-                                                                ),
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 0.0, 0.0, 0.0),
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.1,
+                                              decoration: const BoxDecoration(),
+                                              child: Text(
+                                                '% of total tickets resolved',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ]
+                                            .addToStart(const SizedBox(width: 100.0))
+                                            .addToEnd(const SizedBox(width: 100.0)),
+                                      ),
+                                      PagedListView<DocumentSnapshot<Object?>?,
+                                          SupportStatsRecord>(
+                                        pagingController:
+                                            _model.setListViewController1(
+                                          SupportStatsRecord.collection,
+                                        ),
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        reverse: false,
+                                        scrollDirection: Axis.vertical,
+                                        builderDelegate:
+                                            PagedChildBuilderDelegate<
+                                                SupportStatsRecord>(
+                                          // Customize what your widget looks like when it's loading the first page.
+                                          firstPageProgressIndicatorBuilder:
+                                              (_) => Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          // Customize what your widget looks like when it's loading another page.
+                                          newPageProgressIndicatorBuilder:
+                                              (_) => Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          itemBuilder:
+                                              (context, _, listViewIndex) {
+                                            final listViewSupportStatsRecord =
+                                                _model
+                                                    .listViewPagingController1!
+                                                    .itemList![listViewIndex];
+                                            return StreamBuilder<
+                                                List<UsersRecord>>(
+                                              stream: queryUsersRecord(
+                                                queryBuilder: (usersRecord) =>
+                                                    usersRecord.where(
+                                                  'uid',
+                                                  isEqualTo:
+                                                      listViewSupportStatsRecord
+                                                          .uid,
+                                                ),
+                                                singleRecord: true,
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                List<UsersRecord>
+                                                    containerUsersRecordList =
+                                                    snapshot.data!;
+                                                final containerUsersRecord =
+                                                    containerUsersRecordList
+                                                            .isNotEmpty
+                                                        ? containerUsersRecordList
+                                                            .first
+                                                        : null;
+                                                return Container(
+                                                  width: 100.0,
+                                                  height: 100.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                  ),
+                                                  child: FutureBuilder<int>(
+                                                    future:
+                                                        querySupportTicketsRecordCount(
+                                                      queryBuilder:
+                                                          (supportTicketsRecord) =>
+                                                              supportTicketsRecord
+                                                                  .where(
+                                                        'status',
+                                                        isEqualTo: 'closed',
+                                                      ),
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
                                                               ),
                                                             ),
-                                                          );
-                                                        }
-                                                        int rowCount =
-                                                            snapshot.data!;
-                                                        return Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Container(
+                                                          ),
+                                                        );
+                                                      }
+                                                      int rowCount =
+                                                          snapshot.data!;
+                                                      return Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.12,
+                                                            decoration:
+                                                                const BoxDecoration(),
+                                                            child: Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                containerUsersRecord
+                                                                    ?.displayName,
+                                                                'Jerry',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Container(
                                                               width: MediaQuery
                                                                           .sizeOf(
                                                                               context)
                                                                       .width *
-                                                                  0.12,
+                                                                  0.1,
                                                               decoration:
                                                                   const BoxDecoration(),
                                                               child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  containerUsersRecord
-                                                                      ?.displayName,
-                                                                  'Jerry',
-                                                                ),
+                                                                dateTimeFormat(
+                                                                    'relative',
+                                                                    listViewSupportStatsRecord
+                                                                        .lastResolved!),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -1608,127 +1635,100 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          30.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        50.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  0.1,
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                              child: Text(
+                                                                listViewSupportStatsRecord
+                                                                    .numTickets
+                                                                    .toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.1,
-                                                                decoration:
-                                                                    const BoxDecoration(),
-                                                                child: Text(
-                                                                  dateTimeFormat(
-                                                                      'relative',
-                                                                      listViewSupportStatsRecord
-                                                                          .lastResolved!),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
-                                                                ),
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          50.0,
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        30.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  0.1,
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                              child: Text(
+                                                                (listViewSupportStatsRecord
+                                                                            .numTickets /
+                                                                        rowCount *
+                                                                        100)
+                                                                    .toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.1,
-                                                                decoration:
-                                                                    const BoxDecoration(),
-                                                                child: Text(
-                                                                  listViewSupportStatsRecord
-                                                                      .numTickets
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
-                                                                ),
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          30.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.1,
-                                                                decoration:
-                                                                    const BoxDecoration(),
-                                                                child: Text(
-                                                                  (listViewSupportStatsRecord
-                                                                              .numTickets /
-                                                                          rowCount *
-                                                                          100)
-                                                                      .toString(),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ]
-                                                              .addToStart(
-                                                                  const SizedBox(
-                                                                      width:
-                                                                          100.0))
-                                                              .addToEnd(const SizedBox(
-                                                                  width:
-                                                                      100.0)),
-                                                        );
-                                                      },
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                            },
-                                          ),
+                                                          ),
+                                                        ]
+                                                            .addToStart(
+                                                                const SizedBox(
+                                                                    width:
+                                                                        100.0))
+                                                            .addToEnd(const SizedBox(
+                                                                width: 100.0)),
+                                                      );
+                                                    },
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          },
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

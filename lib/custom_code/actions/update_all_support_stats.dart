@@ -14,51 +14,76 @@ Future<bool> updateAllSupportStats(BuildContext context) async {
   CollectionReference statsRef = firestore.collection('supportStats');
 
   try {
-    // Fetch all tickets
+    // Fetch all tickets and aggregate counts
     QuerySnapshot ticketSnapshot = await ticketsRef.get();
     Map<String, int> ticketCounts = {};
     Map<String, Timestamp?> latestResolved = {};
 
-    // Process each ticket
     for (var doc in ticketSnapshot.docs) {
       var data = doc.data() as Map<String, dynamic>;
       DocumentReference assigneeRef = data['assignee'];
       String assigneeId = assigneeRef.id;
-      Timestamp resolvedTime =
-          data['lastActive']; // Assuming 'lastActive' is a Timestamp field
-
-      // Count tickets
+      Timestamp resolvedTime = data['lastActive'];
       ticketCounts[assigneeId] = (ticketCounts[assigneeId] ?? 0) + 1;
 
-      // Track the latest resolved time
       if (latestResolved[assigneeId] == null ||
-          (resolvedTime.compareTo(latestResolved[assigneeId] ?? resolvedTime) >
-              0)) {
+          (latestResolved[assigneeId] != null &&
+              resolvedTime.compareTo(latestResolved[assigneeId]!) > 0)) {
         latestResolved[assigneeId] = resolvedTime;
       }
     }
 
-    // Update support stats for each user
-    for (var userId in ticketCounts.keys) {
+    // Fetch all existing stats entries
+    QuerySnapshot statsSnapshot = await statsRef.get();
+    Set<String> statsUserIds = statsSnapshot.docs.map((doc) => doc.id).toSet();
+
+    // Write batch to update or initialize supportStats
+    WriteBatch batch = firestore.batch();
+    statsUserIds.forEach((userId) {
       DocumentReference statRef = statsRef.doc(userId);
+      int ticketCount = ticketCounts[userId] ?? 0;
       Timestamp? lastResolvedTime = latestResolved[userId];
 
-      // Handle null case explicitly
-      if (lastResolvedTime == null) {
-        statRef.set({
-          'uid': userId,
-          'numTickets': ticketCounts[userId],
-          'lastResolved': FieldValue.serverTimestamp(),
-        }, SetOptions(merge: true));
+      if (ticketCount == 0) {
+        // No tickets found for this user, set numTickets to zero
+        batch.set(
+            statRef,
+            {
+              'uid': userId,
+              'numTickets': 0,
+              'lastResolved': lastResolvedTime ?? FieldValue.serverTimestamp(),
+            },
+            SetOptions(merge: true));
       } else {
-        statRef.set({
-          'uid': userId,
-          'numTickets': ticketCounts[userId],
-          'lastResolved': lastResolvedTime,
-        }, SetOptions(merge: true));
+        // Update with the actual ticket count
+        batch.set(
+            statRef,
+            {
+              'uid': userId,
+              'numTickets': ticketCount,
+              'lastResolved': lastResolvedTime,
+            },
+            SetOptions(merge: true));
       }
-    }
+    });
 
+    // Also ensure any new users with tickets are added
+    ticketCounts.keys
+        .where((id) => !statsUserIds.contains(id))
+        .forEach((userId) {
+      DocumentReference statRef = statsRef.doc(userId);
+      batch.set(
+          statRef,
+          {
+            'uid': userId,
+            'numTickets': ticketCounts[userId],
+            'lastResolved': latestResolved[userId],
+          },
+          SetOptions(merge: true));
+    });
+
+    // Commit the batch
+    await batch.commit();
     print('Support stats updated successfully.');
     return true;
   } catch (e) {
