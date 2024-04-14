@@ -225,16 +225,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'DashboardKPI',
               path: 'dashboardKPI',
-              builder: (context, params) => DashboardKPIWidget(
-                pageTitle: params.getParam(
-                  'pageTitle',
-                  ParamType.String,
-                ),
-                pageDetails: params.getParam(
-                  'pageDetails',
-                  ParamType.String,
-                ),
-              ),
+              builder: (context, params) => const DashboardKPIWidget(),
             ),
             FFRoute(
               name: 'searchSchools',

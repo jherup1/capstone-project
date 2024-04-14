@@ -3,6 +3,7 @@ import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -14,14 +15,7 @@ import 'dashboard_k_p_i_model.dart';
 export 'dashboard_k_p_i_model.dart';
 
 class DashboardKPIWidget extends StatefulWidget {
-  const DashboardKPIWidget({
-    super.key,
-    this.pageTitle,
-    String? pageDetails,
-  }) : pageDetails = pageDetails ?? 'detailsxxx';
-
-  final String? pageTitle;
-  final String pageDetails;
+  const DashboardKPIWidget({super.key});
 
   @override
   State<DashboardKPIWidget> createState() => _DashboardKPIWidgetState();
@@ -648,6 +642,18 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           15.0),
+                                                ),
+                                                child: custom_widgets
+                                                    .CustomLineChart(
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.2,
+                                                  height:
+                                                      MediaQuery.sizeOf(context)
+                                                              .height *
+                                                          0.2,
+                                                  daysInThePast: 14,
                                                 ),
                                               ),
                                             ),
