@@ -656,13 +656,8 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                   child: FlutterFlowBarChart(
                                                     barData: [
                                                       FFBarChartData(
-                                                        yData: List.generate(
-                                                            random_data
-                                                                .randomInteger(
-                                                                    10, 10),
-                                                            (index) => random_data
-                                                                .randomInteger(
-                                                                    1, 8)),
+                                                        yData:
+                                                            containerUsersRecordList,
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -672,9 +667,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                     xLabels: List.generate(
                                                             random_data
                                                                 .randomInteger(
-                                                                    10, 10),
+                                                                    1, 2),
                                                             (index) => random_data
-                                                                .randomDate())
+                                                                .randomInteger(
+                                                                    0, 10))
                                                         .map(
                                                             (e) => e.toString())
                                                         .toList(),

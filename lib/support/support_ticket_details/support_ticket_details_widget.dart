@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/support/user_list/user_list_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -1270,6 +1271,14 @@ class _SupportTicketDetailsWidgetState
                                                                     lastActive:
                                                                         getCurrentTimestamp,
                                                                   ));
+                                                                  await actions
+                                                                      .getTicketNumbers(
+                                                                    context,
+                                                                    widget
+                                                                        .ticketRef!
+                                                                        .assignee!
+                                                                        .id,
+                                                                  );
                                                                 },
                                                                 text:
                                                                     'Update Ticket',
