@@ -12,12 +12,14 @@ Future<bool> updateSupportStats(
   BuildContext context,
   String uid,
   int? numTickets,
-  DateTime? lastResolved,
-  double? percentTotTickets,
+  int? numTotTickets,
 ) async {
   try {
     CollectionReference supportStats =
         FirebaseFirestore.instance.collection('supportStats');
+    double percentTotTickets =
+    ((numTickets / numTotTickets) * 100).roundToDouble();
+
     await supportStats.add({
       'uid': uid,
       'numTickets': numTickets,
