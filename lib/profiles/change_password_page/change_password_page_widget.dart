@@ -354,7 +354,6 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       keyboardType:
                                                           TextInputType
                                                               .emailAddress,
@@ -538,7 +537,6 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       validator: _model
                                                           .currentPasswordControllerValidator
                                                           .asValidator(context),
@@ -719,7 +717,6 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       validator: _model
                                                           .newPasswordControllerValidator
                                                           .asValidator(context),
@@ -900,7 +897,6 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       validator: _model
                                                           .confirmNewPasswordControllerValidator
                                                           .asValidator(context),

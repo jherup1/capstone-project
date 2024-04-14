@@ -239,7 +239,6 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget>
                                   FlutterFlowTheme.of(context)
                                       .bodyMediumFamily),
                             ),
-                        minLines: null,
                         keyboardType: TextInputType.phone,
                         validator: _model.emailAddressControllerValidator
                             .asValidator(context),

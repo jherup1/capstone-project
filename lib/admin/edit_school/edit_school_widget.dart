@@ -429,7 +429,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -529,7 +528,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -704,7 +702,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                             FlutterFlowTheme.of(context)
                                                 .bodyMediumFamily),
                                   ),
-                              minLines: null,
                               cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model.schoolWebsiteControllerValidator
                                   .asValidator(context),
@@ -804,7 +801,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -904,7 +900,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.regionControllerValidator
@@ -1003,7 +998,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.cityController1Validator
@@ -1103,7 +1097,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.zipControllerValidator
@@ -1207,7 +1200,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.addressControllerValidator
@@ -1307,7 +1299,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -1413,7 +1404,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.tutionControllerValidator
@@ -1513,7 +1503,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -1614,7 +1603,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -1715,7 +1703,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -1821,7 +1808,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -1922,7 +1908,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.actAvgController1Validator
@@ -2022,7 +2007,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.satAvgController1Validator
@@ -2128,7 +2112,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -2230,7 +2213,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.cityController2Validator
@@ -2335,7 +2317,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -2436,7 +2417,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.actAvgController2Validator
@@ -2535,7 +2515,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.satAvgController2Validator
@@ -2635,7 +2614,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model.satAvgController3Validator

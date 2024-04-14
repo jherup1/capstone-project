@@ -359,7 +359,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily),
                                                                 ),
-                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
@@ -528,7 +527,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                           FlutterFlowTheme.of(context)
                                                                               .bodyMediumFamily),
                                                                 ),
-                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
@@ -693,7 +691,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       keyboardType:
                                                           TextInputType
                                                               .emailAddress,
@@ -877,7 +874,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
-                                                      minLines: null,
                                                       validator: _model
                                                           .passwordControllerValidator
                                                           .asValidator(context),
