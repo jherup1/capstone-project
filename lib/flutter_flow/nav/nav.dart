@@ -130,6 +130,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'support_TicketList',
               path: 'supportTicketList',
               builder: (context, params) => const SupportTicketListWidget(),
+              builder: (context, params) => const SupportTicketListWidget(),
             ),
             FFRoute(
               name: 'support_SubmitTicket',
@@ -432,7 +433,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
+            appStateNotifier.setRedirectLocationIfUnset(state.location);
             return '/signIn';
           }
           return null;
