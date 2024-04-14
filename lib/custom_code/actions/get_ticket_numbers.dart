@@ -8,6 +8,26 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<bool> getTicketNumbers(BuildContext context) async {
-  // Add your function code here!
+Future<bool> getTicketNumbers(
+  BuildContext context,
+  String uid,
+) async {
+  try {
+    CollectionReference supportTicketsRef =
+        FirebaseFirestore.instance.collection('supportTickets');
+    QuerySnapshot numAssigneeTicketsQuery = await supportTicketsRef
+        .where('assignee', isEqualTo: uid)
+        .where('status', isEqualTo: 'Resolved')
+        .get();
+    int numAssigneeTickets = numAssigneeTicketsQuery.docs.length;
+
+    QuerySnapshot numTotTicketsQuery =
+        await supportTicketsRef.where('status', isEqualTo: 'Resolved').get();
+    int numTotTickets = numTotTicketsQuery.docs.length;
+
+    return await updateSupportStats(
+        context, uid, numAssigneeTickets, numTotTickets);
+  } catch (e) {
+    return false;
+  }
 }
