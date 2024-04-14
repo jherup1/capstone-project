@@ -300,7 +300,6 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                              minLines: null,
                                               validator: _model
                                                   .textControllerValidator
                                                   .asValidator(context),

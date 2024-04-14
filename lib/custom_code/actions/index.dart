@@ -8,3 +8,4 @@ export 'delete_fav_school.dart' show deleteFavSchool;
 export 'send_verification_email.dart' show sendVerificationEmail;
 export 'password_change.dart' show passwordChange;
 export 'add_feedback.dart' show addFeedback;
+export 'update_support_stats.dart' show updateSupportStats;

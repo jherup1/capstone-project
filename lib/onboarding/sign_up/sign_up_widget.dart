@@ -269,7 +269,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           keyboardType: TextInputType.name,
                                           validator: _model
                                               .firstNameControllerValidator
@@ -391,7 +390,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           keyboardType: TextInputType.name,
                                           validator: _model
                                               .lastNameControllerValidator
@@ -515,7 +513,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                               context)
                                                           .bodyMediumFamily),
                                             ),
-                                        minLines: null,
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         validator: _model
@@ -661,7 +658,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                               context)
                                                           .bodyMediumFamily),
                                             ),
-                                        minLines: null,
                                         validator: _model
                                             .passwordControllerValidator
                                             .asValidator(context),
@@ -810,7 +806,6 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                               context)
                                                           .bodyMediumFamily),
                                             ),
-                                        minLines: null,
                                         validator: _model
                                             .confirmPasswordControllerValidator
                                             .asValidator(context),

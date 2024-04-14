@@ -591,7 +591,6 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     .bodyMediumFamily),
                                       ),
                                   maxLines: 6,
-                                  minLines: null,
                                   maxLength: 350,
                                   maxLengthEnforcement:
                                       MaxLengthEnforcement.enforced,
