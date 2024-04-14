@@ -13,24 +13,21 @@ Future<bool> getTicketNumbers(
   String uid,
 ) async {
   try {
-    final CollectionReference supportTicketsRef =
+    final supportTicketsRef =
         FirebaseFirestore.instance.collection('supportTickets');
-    final DocumentReference userRef =
-        FirebaseFirestore.instance.collection('users').doc(uid);
-    print('userRef: $userRef');
-    final QuerySnapshot assigneeTicketsQuery = await supportTicketsRef
-        .where('assignee', isEqualTo: userRef)
-        .where('status', isEqualTo: 'closed')
+    final numAssigneeTickets = await supportTicketsRef
+        .where('assignee', isEqualTo: 'uid')
+        .where('status', isEqualTo: 'Resolved')
+        .count()
         .get();
-    final int numAssigneeTickets = assigneeTicketsQuery.size;
-    print('numAssigneeTickets: $numAssigneeTickets');
-    final QuerySnapshot totalTicketsQuery =
-        await supportTicketsRef.where('status', isEqualTo: 'closed').get();
-    final int numTotTickets = totalTicketsQuery.size;
-    print('numTotTickets: $numTotTickets');
-    await updateSupportStats(context, uid, numAssigneeTickets, numTotTickets);
+    final numTotTickets = await supportTicketsRef
+        .where('status', isEqualTo: 'Resolved')
+        .count()
+        .get();
+    await updateSupportStats(
+        context, uid, numAssigneeTickets as int, numTotTickets as int);
     return true;
-  } catch (e) {
+  } on FirebaseException catch (e) {
     return false;
   }
 }
