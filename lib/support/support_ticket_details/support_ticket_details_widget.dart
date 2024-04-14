@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/support/user_list/user_list_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -631,96 +630,85 @@ class _SupportTicketDetailsWidgetState
                                                               ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        decoration:
-                                                            const BoxDecoration(),
-                                                        child: Padding(
-                                                          padding:
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    8.0),
+                                                        child:
+                                                            FlutterFlowDropDown<
+                                                                String>(
+                                                          controller: _model
+                                                                  .dropDownValueController ??=
+                                                              FormFieldController<
+                                                                  String>(
+                                                            _model.dropDownValue ??=
+                                                                '',
+                                                          ),
+                                                          options: List<
+                                                              String>.from([
+                                                            'open',
+                                                            'closed'
+                                                          ]),
+                                                          optionLabels: const [
+                                                            'Open Ticket',
+                                                            'Resolved'
+                                                          ],
+                                                          onChanged: (val) =>
+                                                              setState(() =>
+                                                                  _model.dropDownValue =
+                                                                      val),
+                                                          width:
+                                                              double.infinity,
+                                                          height: 50.0,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                  ),
+                                                          hintText:
+                                                              'Please select...',
+                                                          icon: Icon(
+                                                            Icons
+                                                                .keyboard_arrow_down_rounded,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 24.0,
+                                                          ),
+                                                          fillColor: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          elevation: 2.0,
+                                                          borderColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .accent1,
+                                                          borderWidth: 2.0,
+                                                          borderRadius: 8.0,
+                                                          margin:
                                                               const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      8.0),
-                                                          child:
-                                                              FlutterFlowDropDown<
-                                                                  String>(
-                                                            controller: _model
-                                                                    .dropDownValueController ??=
-                                                                FormFieldController<
-                                                                    String>(
-                                                              _model.dropDownValue ??=
-                                                                  valueOrDefault<
-                                                                      String>(
-                                                                widget.ticketRef
-                                                                    ?.status,
-                                                                'open',
-                                                              ),
-                                                            ),
-                                                            options: List<
-                                                                String>.from([
-                                                              'open',
-                                                              'closed'
-                                                            ]),
-                                                            optionLabels: const [
-                                                              'Open Ticket',
-                                                              'Resolved'
-                                                            ],
-                                                            onChanged: (val) =>
-                                                                setState(() =>
-                                                                    _model.dropDownValue =
-                                                                        val),
-                                                            width:
-                                                                double.infinity,
-                                                            height: 50.0,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                            hintText:
-                                                                'Please select...',
-                                                            icon: Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down_rounded,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            elevation: 2.0,
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                            borderWidth: 2.0,
-                                                            borderRadius: 8.0,
-                                                            margin:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        4.0,
-                                                                        16.0,
-                                                                        4.0),
-                                                            hidesUnderline:
-                                                                true,
-                                                            isSearchable: false,
-                                                            isMultiSelect:
-                                                                false,
-                                                          ),
+                                                                      16.0,
+                                                                      4.0,
+                                                                      16.0,
+                                                                      4.0),
+                                                          hidesUnderline: true,
+                                                          isSearchable: false,
+                                                          isMultiSelect: false,
                                                         ),
                                                       ),
                                                       if ((widget.ticketRef
@@ -1187,8 +1175,7 @@ class _SupportTicketDetailsWidgetState
                                                                   setState(
                                                                       () {});
                                                                 },
-                                                                text:
-                                                                    'Assign Ticket To Support Staff',
+                                                                text: 'Assign',
                                                                 options:
                                                                     FFButtonOptions(
                                                                   height: 48.0,
@@ -1283,14 +1270,6 @@ class _SupportTicketDetailsWidgetState
                                                                     lastActive:
                                                                         getCurrentTimestamp,
                                                                   ));
-                                                                  await actions
-                                                                      .getTicketNumbers(
-                                                                    context,
-                                                                    widget
-                                                                        .ticketRef!
-                                                                        .assignee!
-                                                                        .id,
-                                                                  );
                                                                 },
                                                                 text:
                                                                     'Update Ticket',

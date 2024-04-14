@@ -49,7 +49,6 @@ dependencies:
   firebase_storage: 11.6.8
   firebase_storage_platform_interface: 5.1.11
   firebase_storage_web: 3.7.2
-  fl_chart: 0.55.0
   fluster:
   flutter_animate: 4.1.1+1
   flutter_blurhash: 0.8.2
@@ -95,6 +94,7 @@ dependencies:
   plugin_platform_interface: 2.1.8
   provider: 6.0.5
   rxdart: 0.27.7
+  share_plus: 7.2.1
   shared_preferences: 2.2.2
   shared_preferences_android: 2.2.1
   shared_preferences_foundation: 2.3.4
