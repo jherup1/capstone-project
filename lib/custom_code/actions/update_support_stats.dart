@@ -18,7 +18,7 @@ Future<bool> updateSupportStats(
 ) async {
   try {
     CollectionReference supportStats =
-        FirebaseFirestore.instance.collection('supportStats');
+        FirebaseFirestore.instance.collection('supportStats').doc(uid);
     double percentTotTickets =
         ((numTickets / numTotTickets) * 100).roundToDouble();
 
@@ -27,7 +27,7 @@ Future<bool> updateSupportStats(
       'numTickets': numTickets,
       'lastResolved': FieldValue.serverTimestamp(),
       'percentTotTickets': percentTotTickets,
-    });
+    }, setOptions(merge: true));
     return true;
   } on FirebaseException catch (e) {
     return false;
