@@ -646,7 +646,12 @@ class _SupportTicketDetailsWidgetState
                                                               FormFieldController<
                                                                   String>(
                                                             _model.dropDownValue ??=
-                                                                '',
+                                                                valueOrDefault<
+                                                                    String>(
+                                                              widget.ticketRef
+                                                                  ?.status,
+                                                              'open',
+                                                            ),
                                                           ),
                                                           options: List<
                                                               String>.from([

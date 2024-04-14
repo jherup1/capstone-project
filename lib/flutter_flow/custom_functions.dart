@@ -86,3 +86,15 @@ double averageRating(List<FeedbackRecord> feedbackList) {
 
   return average;
 }
+
+List<DateTime> daysInThePast(int numDaysToTrack) {
+  DateTime today = DateTime.now();
+  List<DateTime> daysTracked = [];
+
+  for (int i = numDaysToTrack; i > 0; i--) {
+    // Subtract `i` days from today and add to the list
+    daysTracked.add(today.subtract(Duration(days: i)));
+  }
+
+  return daysTracked;
+}

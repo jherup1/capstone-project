@@ -69,6 +69,7 @@ class DashboardKPIModel extends FlutterFlowModel<DashboardKPIWidget> {
     return controller
       ..addPageRequestListener(
         (nextPageMarker) => querySupportStatsRecordPage(
+          queryBuilder: (_) => listViewPagingQuery1 ??= query,
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions1,
           controller: controller,

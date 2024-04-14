@@ -1432,7 +1432,9 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                           SupportStatsRecord>(
                                         pagingController:
                                             _model.setListViewController1(
-                                          SupportStatsRecord.collection,
+                                          SupportStatsRecord.collection.orderBy(
+                                              'numTickets',
+                                              descending: true),
                                         ),
                                         padding: EdgeInsets.zero,
                                         shrinkWrap: true,
@@ -1690,11 +1692,15 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                               decoration:
                                                                   const BoxDecoration(),
                                                               child: Text(
-                                                                (listViewSupportStatsRecord
-                                                                            .numTickets /
-                                                                        rowCount *
-                                                                        100)
-                                                                    .toString(),
+                                                                formatNumber(
+                                                                  listViewSupportStatsRecord
+                                                                          .numTickets /
+                                                                      rowCount *
+                                                                      100,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .percent,
+                                                                ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
