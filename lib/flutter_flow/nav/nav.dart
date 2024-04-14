@@ -71,14 +71,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
+      errorBuilder: (context, state) => appStateNotifier.loggedIn
+          ? const HomePageWidget()
+          : const SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? const HomePageWidget()
+              : const SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
@@ -127,6 +129,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'support_TicketList',
               path: 'supportTicketList',
+              builder: (context, params) => const SupportTicketListWidget(),
               builder: (context, params) => const SupportTicketListWidget(),
             ),
             FFRoute(
@@ -330,10 +333,15 @@ extension GoRouterExtensions on GoRouter {
 extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
-  Map<String, dynamic> get allParams => <String, dynamic>{}
-    ..addAll(pathParameters)
-    ..addAll(queryParameters)
-    ..addAll(extraMap);
+
+  Map<String, dynamic> get allParams {
+    return <String, dynamic>{
+      ...pathParameters,
+      ...uri.queryParameters,
+      ...extraMap
+    };
+  }
+
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -489,7 +497,8 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() =>
+      const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {
@@ -500,7 +509,8 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location =
+        GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;
