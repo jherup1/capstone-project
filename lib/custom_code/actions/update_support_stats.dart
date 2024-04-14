@@ -8,17 +8,19 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'index.dart'; // Imports other custom actions
+
 Future<bool> updateSupportStats(
   BuildContext context,
   String uid,
-  int? numTickets,
-  int? numTotTickets,
+  int numTickets,
+  int numTotTickets,
 ) async {
   try {
     CollectionReference supportStats =
         FirebaseFirestore.instance.collection('supportStats');
     double percentTotTickets =
-    ((numTickets / numTotTickets) * 100).roundToDouble();
+        ((numTickets / numTotTickets) * 100).roundToDouble();
 
     await supportStats.add({
       'uid': uid,
