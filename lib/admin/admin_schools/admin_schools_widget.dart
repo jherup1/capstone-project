@@ -385,7 +385,6 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                                  minLines: null,
                                                   validator: _model
                                                       .textControllerValidator
                                                       .asValidator(context),

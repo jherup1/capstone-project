@@ -355,7 +355,6 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          minLines: null,
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),

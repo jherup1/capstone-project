@@ -247,7 +247,6 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
@@ -338,7 +337,6 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
@@ -434,7 +432,6 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.userEmailControllerValidator

@@ -1456,8 +1456,8 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                             .divide(const SizedBox(width: 100.0))
                                             .around(const SizedBox(width: 100.0)),
                                       ),
-                                      StreamBuilder<List<SupportTicketsRecord>>(
-                                        stream: querySupportTicketsRecord(),
+                                      StreamBuilder<List<SupportStatsRecord>>(
+                                        stream: querySupportStatsRecord(),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
                                           if (!snapshot.hasData) {
@@ -1477,20 +1477,20 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                               ),
                                             );
                                           }
-                                          List<SupportTicketsRecord>
-                                              listViewSupportTicketsRecordList =
+                                          List<SupportStatsRecord>
+                                              listViewSupportStatsRecordList =
                                               snapshot.data!;
                                           return ListView.builder(
                                             padding: EdgeInsets.zero,
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
                                             itemCount:
-                                                listViewSupportTicketsRecordList
+                                                listViewSupportStatsRecordList
                                                     .length,
                                             itemBuilder:
                                                 (context, listViewIndex) {
-                                              final listViewSupportTicketsRecord =
-                                                  listViewSupportTicketsRecordList[
+                                              final listViewSupportStatsRecord =
+                                                  listViewSupportStatsRecordList[
                                                       listViewIndex];
                                               return Container(
                                                 width: 100.0,
@@ -1505,8 +1505,11 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Text(
-                                                      listViewSupportTicketsRecord
-                                                          .name,
+                                                      valueOrDefault<String>(
+                                                        listViewSupportStatsRecord
+                                                            .uid?.id,
+                                                        'giveurballs',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1533,8 +1536,8 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        random_data
-                                                            .randomInteger(1, 5)
+                                                        listViewSupportStatsRecord
+                                                            .numTickets
                                                             .toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -1563,13 +1566,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        valueOrDefault<String>(
-                                                          dateTimeFormat(
-                                                              'd/M h:mm a',
-                                                              random_data
-                                                                  .randomDate()),
-                                                          '9/9 9:09 PM',
-                                                        ),
+                                                        dateTimeFormat(
+                                                            'd/M h:mm a',
+                                                            listViewSupportStatsRecord
+                                                                .lastResolved!),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1597,13 +1597,9 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        formatNumber(
-                                                          random_data
-                                                              .randomDouble(
-                                                                  0.0, 1.0),
-                                                          formatType: FormatType
-                                                              .percent,
-                                                        ),
+                                                        listViewSupportStatsRecord
+                                                            .percentTotTickets
+                                                            .toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

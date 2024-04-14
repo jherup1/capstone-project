@@ -421,7 +421,6 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .headlineMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
                                       .projectNameControllerValidator
                                       .asValidator(context),
@@ -518,7 +517,6 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                     .bodyLargeFamily),
                                       ),
                                   maxLines: 5,
-                                  minLines: null,
                                   validator: _model
                                       .descriptionControllerValidator
                                       .asValidator(context),
@@ -614,7 +612,6 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .bodyLargeFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
                                       .projectURLControllerValidator
                                       .asValidator(context),
@@ -710,7 +707,6 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .bodyLargeFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model
                                       .clonableURLControllerValidator
                                       .asValidator(context),
