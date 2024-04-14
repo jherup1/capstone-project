@@ -166,12 +166,9 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                                 minHeight: 0.0,
                                 maxHeight: 75.0,
                               ),
-                              decoration: BoxDecoration(
-                                color: listViewSchoolDataRecord.primaryPhoto !=
-                                            ''
-                                    ? const Color(0x50000000)
-                                    : Colors.transparent,
-                                borderRadius: const BorderRadius.only(
+                              decoration: const BoxDecoration(
+                                color: Color(0x50000000),
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
                                   topLeft: Radius.circular(16.0),

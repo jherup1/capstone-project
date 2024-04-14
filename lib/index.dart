@@ -23,4 +23,6 @@ export '/admin/admin_schools/admin_schools_widget.dart' show AdminSchoolsWidget;
 export '/profiles/change_password_page/change_password_page_widget.dart'
     show ChangePasswordPageWidget;
 export '/dashboard_k_p_i/dashboard_k_p_i_widget.dart' show DashboardKPIWidget;
-export '/schools/all_schools/all_schools_widget.dart' show AllSchoolsWidget;
+export '/schools/search_schools/search_schools_widget.dart'
+    show SearchSchoolsWidget;
+export '/all_schools/all_schools_widget.dart' show AllSchoolsWidget;

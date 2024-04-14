@@ -190,12 +190,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminTickets',
               path: 'adminTickets',
               requireAuth: true,
+              asyncParams: {
+                'user': getDoc(['users'], UsersRecord.fromSnapshot),
+              },
               builder: (context, params) => AdminTicketsWidget(
                 school: params.getParam(
                   'school',
                   ParamType.DocumentReference,
                   false,
                   ['schools'],
+                ),
+                user: params.getParam(
+                  'user',
+                  ParamType.Document,
                 ),
               ),
             ),
@@ -221,6 +228,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'DashboardKPI',
               path: 'dashboardKPI',
               builder: (context, params) => DashboardKPIWidget(
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'searchSchools',
+              path: 'searchSchools',
+              builder: (context, params) => SearchSchoolsWidget(
                 pageTitle: params.getParam(
                   'pageTitle',
                   ParamType.String,
