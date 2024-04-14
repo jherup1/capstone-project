@@ -13,21 +13,22 @@ Future<bool> getTicketNumbers(
   String uid,
 ) async {
   try {
-    final supportTicketsRef =
+    final CollectionReference supportTicketsRef =
         FirebaseFirestore.instance.collection('supportTickets');
-    final numAssigneeTickets = await supportTicketsRef
-        .where('assignee', isEqualTo: 'uid')
+    final DocumentReference userRef =
+        FirebaseFirestore.instance.collection('users').doc(uid);
+    final QuerySnapshot assigneeTicketsQuery = await supportTicketsRef
+        .where('assignee', isEqualTo: userRef)
         .where('status', isEqualTo: 'closed')
-        .count()
         .get();
-    final numTotTickets = await supportTicketsRef
-        .where('status', isEqualTo: 'closed')
-        .count()
-        .get();
-    await updateSupportStats(
-        context, uid, numAssigneeTickets as int, numTotTickets as int);
+    final int numAssigneeTickets = assigneeTicketsQuery.size;
+    final QuerySnapshot totalTicketsQuery =
+        await supportTicketsRef.where('status', isEqualTo: 'closed').get();
+    final int numTotTickets = totalTicketsQuery.size;
+
+    await updateSupportStats(context, uid, numAssigneeTickets, numTotTickets);
     return true;
-  } on FirebaseException catch (e) {
+  } catch (e) {
     return false;
   }
 }
