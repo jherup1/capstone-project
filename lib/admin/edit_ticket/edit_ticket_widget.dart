@@ -237,7 +237,6 @@ class _EditTicketWidgetState extends State<EditTicketWidget>
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          minLines: null,
                           cursorColor: FlutterFlowTheme.of(context).primary,
                           validator: _model.ticketNameControllerValidator
                               .asValidator(context),

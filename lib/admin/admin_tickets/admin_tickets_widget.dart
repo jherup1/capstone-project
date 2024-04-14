@@ -301,7 +301,6 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                                         context)
                                                                     .bodyMediumFamily),
                                                       ),
-                                              minLines: null,
                                               validator: _model
                                                   .textControllerValidator
                                                   .asValidator(context),

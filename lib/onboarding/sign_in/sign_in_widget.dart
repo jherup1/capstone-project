@@ -270,7 +270,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMediumFamily),
                                         ),
-                                    minLines: null,
                                     keyboardType: TextInputType.emailAddress,
                                     validator: _model
                                         .emailAddressControllerValidator
@@ -400,7 +399,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMediumFamily),
                                       ),
-                                  minLines: null,
                                   validator: _model.passwordControllerValidator
                                       .asValidator(context),
                                 ),

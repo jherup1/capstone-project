@@ -175,7 +175,6 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
-                      minLines: null,
                       validator: _model.searchBarControllerValidator
                           .asValidator(context),
                     ),

@@ -305,7 +305,6 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                                     .bodyMediumFamily),
                                                       ),
                                               maxLines: 12,
-                                              minLines: null,
                                               cursorColor:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,

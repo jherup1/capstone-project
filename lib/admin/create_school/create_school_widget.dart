@@ -460,7 +460,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.displayNameControllerValidator
@@ -550,7 +549,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.aliasNameControllerValidator
@@ -715,7 +713,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          minLines: null,
                           cursorColor: FlutterFlowTheme.of(context).primary,
                           validator: _model.schoolWebsiteControllerValidator
                               .asValidator(context),
@@ -806,7 +803,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.countryCodeControllerValidator
@@ -896,7 +892,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.regionControllerValidator
@@ -986,7 +981,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.cityController1Validator
@@ -1076,7 +1070,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.zipControllerValidator
@@ -1171,7 +1164,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.addressControllerValidator
@@ -1262,7 +1254,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.geoPointControllerValidator
@@ -1358,7 +1349,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.tutionControllerValidator
@@ -1449,7 +1439,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
@@ -1541,7 +1530,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.displayRankControllerValidator
@@ -1632,7 +1620,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.enrollmentControllerValidator
@@ -1728,7 +1715,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.hsGpaAvgController1Validator
@@ -1819,7 +1805,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.actAvgController1Validator
@@ -1910,7 +1895,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.satAvgController1Validator
@@ -2007,7 +1991,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.engRepScoreControllerValidator
@@ -2098,7 +2081,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.cityController2Validator
@@ -2194,7 +2176,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.hsGpaAvgController2Validator
@@ -2285,7 +2266,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.actAvgController2Validator
@@ -2375,7 +2355,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.satAvgController2Validator
@@ -2466,7 +2445,6 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                               FlutterFlowTheme.of(context)
                                                   .bodyMediumFamily),
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model.satAvgController3Validator
