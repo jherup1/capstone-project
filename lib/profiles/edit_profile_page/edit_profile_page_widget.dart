@@ -168,32 +168,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 0.0, 0.0),
-                                    child: AuthUserStreamWidget(
-                                      builder: (context) => Text(
-                                        'Email Verified:  ${currentUserEmailVerified.toString()}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 16.0, 0.0, 0.0),
                                     child: Text(
                                       'Account Details:',
                                       style: FlutterFlowTheme.of(context)
@@ -1155,6 +1129,35 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                 }
                                               },
                                             ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Note: Please ensure you enter your current password to update account information',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
@@ -1164,6 +1167,71 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.end,
                                                 children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                16.0, 0.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: () async {
+                                                        context.pushNamed(
+                                                            'changePasswordPage');
+                                                      },
+                                                      text: 'Change Password',
+                                                      options: FFButtonOptions(
+                                                        height: 50.0,
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    24.0,
+                                                                    0.0,
+                                                                    24.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily,
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily),
+                                                                ),
+                                                        elevation: 10.0,
+                                                        borderSide: const BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(50.0),
+                                                      ),
+                                                    ),
+                                                  ),
                                                   FFButtonWidget(
                                                     onPressed: ((_model.firstNameController
                                                                         .text ==
@@ -1255,76 +1323,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .accent3,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 24.0, 0.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  FFButtonWidget(
-                                                    onPressed: () async {
-                                                      context.pushNamed(
-                                                          'changePasswordPage');
-                                                    },
-                                                    text: 'Change Password',
-                                                    options: FFButtonOptions(
-                                                      height: 50.0,
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  24.0,
-                                                                  0.0,
-                                                                  24.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontSize: 20.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .titleSmallFamily),
-                                                              ),
-                                                      elevation: 10.0,
-                                                      borderSide: const BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50.0),
                                                     ),
                                                   ),
                                                 ],

@@ -35,13 +35,13 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   TextEditingController? cityController1;
   String? Function(BuildContext, String?)? cityController1Validator;
   // State field(s) for zip widget.
-  FocusNode? zipFocusNode1;
-  TextEditingController? zipController1;
-  String? Function(BuildContext, String?)? zipController1Validator;
+  FocusNode? zipFocusNode;
+  TextEditingController? zipController;
+  String? Function(BuildContext, String?)? zipControllerValidator;
   // State field(s) for address widget.
-  FocusNode? addressFocusNode1;
-  TextEditingController? addressController1;
-  String? Function(BuildContext, String?)? addressController1Validator;
+  FocusNode? addressFocusNode;
+  TextEditingController? addressController;
+  String? Function(BuildContext, String?)? addressControllerValidator;
   // State field(s) for geoPoint widget.
   FocusNode? geoPointFocusNode;
   TextEditingController? geoPointController;
@@ -63,29 +63,41 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   TextEditingController? enrollmentController;
   String? Function(BuildContext, String?)? enrollmentControllerValidator;
   // State field(s) for hsGpaAvg widget.
-  FocusNode? hsGpaAvgFocusNode;
-  TextEditingController? hsGpaAvgController;
-  String? Function(BuildContext, String?)? hsGpaAvgControllerValidator;
+  FocusNode? hsGpaAvgFocusNode1;
+  TextEditingController? hsGpaAvgController1;
+  String? Function(BuildContext, String?)? hsGpaAvgController1Validator;
   // State field(s) for actAvg widget.
-  FocusNode? actAvgFocusNode;
-  TextEditingController? actAvgController;
-  String? Function(BuildContext, String?)? actAvgControllerValidator;
+  FocusNode? actAvgFocusNode1;
+  TextEditingController? actAvgController1;
+  String? Function(BuildContext, String?)? actAvgController1Validator;
   // State field(s) for satAvg widget.
-  FocusNode? satAvgFocusNode;
-  TextEditingController? satAvgController;
-  String? Function(BuildContext, String?)? satAvgControllerValidator;
-  // State field(s) for address widget.
-  FocusNode? addressFocusNode2;
-  TextEditingController? addressController2;
-  String? Function(BuildContext, String?)? addressController2Validator;
+  FocusNode? satAvgFocusNode1;
+  TextEditingController? satAvgController1;
+  String? Function(BuildContext, String?)? satAvgController1Validator;
+  // State field(s) for engRepScore widget.
+  FocusNode? engRepScoreFocusNode;
+  TextEditingController? engRepScoreController;
+  String? Function(BuildContext, String?)? engRepScoreControllerValidator;
   // State field(s) for city widget.
   FocusNode? cityFocusNode2;
   TextEditingController? cityController2;
   String? Function(BuildContext, String?)? cityController2Validator;
-  // State field(s) for zip widget.
-  FocusNode? zipFocusNode2;
-  TextEditingController? zipController2;
-  String? Function(BuildContext, String?)? zipController2Validator;
+  // State field(s) for hsGpaAvg widget.
+  FocusNode? hsGpaAvgFocusNode2;
+  TextEditingController? hsGpaAvgController2;
+  String? Function(BuildContext, String?)? hsGpaAvgController2Validator;
+  // State field(s) for actAvg widget.
+  FocusNode? actAvgFocusNode2;
+  TextEditingController? actAvgController2;
+  String? Function(BuildContext, String?)? actAvgController2Validator;
+  // State field(s) for satAvg widget.
+  FocusNode? satAvgFocusNode2;
+  TextEditingController? satAvgController2;
+  String? Function(BuildContext, String?)? satAvgController2Validator;
+  // State field(s) for satAvg widget.
+  FocusNode? satAvgFocusNode3;
+  TextEditingController? satAvgController3;
+  String? Function(BuildContext, String?)? satAvgController3Validator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -116,11 +128,11 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
     cityFocusNode1?.dispose();
     cityController1?.dispose();
 
-    zipFocusNode1?.dispose();
-    zipController1?.dispose();
+    zipFocusNode?.dispose();
+    zipController?.dispose();
 
-    addressFocusNode1?.dispose();
-    addressController1?.dispose();
+    addressFocusNode?.dispose();
+    addressController?.dispose();
 
     geoPointFocusNode?.dispose();
     geoPointController?.dispose();
@@ -137,22 +149,31 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
     enrollmentFocusNode?.dispose();
     enrollmentController?.dispose();
 
-    hsGpaAvgFocusNode?.dispose();
-    hsGpaAvgController?.dispose();
+    hsGpaAvgFocusNode1?.dispose();
+    hsGpaAvgController1?.dispose();
 
-    actAvgFocusNode?.dispose();
-    actAvgController?.dispose();
+    actAvgFocusNode1?.dispose();
+    actAvgController1?.dispose();
 
-    satAvgFocusNode?.dispose();
-    satAvgController?.dispose();
+    satAvgFocusNode1?.dispose();
+    satAvgController1?.dispose();
 
-    addressFocusNode2?.dispose();
-    addressController2?.dispose();
+    engRepScoreFocusNode?.dispose();
+    engRepScoreController?.dispose();
 
     cityFocusNode2?.dispose();
     cityController2?.dispose();
 
-    zipFocusNode2?.dispose();
-    zipController2?.dispose();
+    hsGpaAvgFocusNode2?.dispose();
+    hsGpaAvgController2?.dispose();
+
+    actAvgFocusNode2?.dispose();
+    actAvgController2?.dispose();
+
+    satAvgFocusNode2?.dispose();
+    satAvgController2?.dispose();
+
+    satAvgFocusNode3?.dispose();
+    satAvgController3?.dispose();
   }
 }

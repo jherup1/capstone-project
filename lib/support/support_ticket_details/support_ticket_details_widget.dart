@@ -1170,28 +1170,6 @@ class _SupportTicketDetailsWidgetState
                                                                           .selectedUser
                                                                           ?.reference,
                                                                     ));
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
-                                                                        .showSnackBar(
-                                                                      SnackBar(
-                                                                        content:
-                                                                            Text(
-                                                                          'You have successfully assigned a user!',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                                color: FlutterFlowTheme.of(context).info,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                              ),
-                                                                        ),
-                                                                        duration:
-                                                                            const Duration(milliseconds: 4000),
-                                                                        backgroundColor:
-                                                                            FlutterFlowTheme.of(context).secondary,
-                                                                      ),
-                                                                    );
                                                                   }
 
                                                                   setState(
@@ -1257,6 +1235,31 @@ class _SupportTicketDetailsWidgetState
                                                                   FFButtonWidget(
                                                                 onPressed:
                                                                     () async {
+                                                                  var confirmDialogResponse =
+                                                                      await showDialog<
+                                                                              bool>(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return AlertDialog(
+                                                                                title: const Text('Update Ticket'),
+                                                                                content: const Text('Are you sure you\'d like to update the ticket?'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                    child: const Text('Cancel'),
+                                                                                  ),
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                    child: const Text('Confirm'),
+                                                                                  ),
+                                                                                ],
+                                                                              );
+                                                                            },
+                                                                          ) ??
+                                                                          false;
+
                                                                   await widget
                                                                       .ticketRef!
                                                                       .reference
@@ -1267,30 +1270,6 @@ class _SupportTicketDetailsWidgetState
                                                                     lastActive:
                                                                         getCurrentTimestamp,
                                                                   ));
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .showSnackBar(
-                                                                    SnackBar(
-                                                                      content:
-                                                                          Text(
-                                                                        'You have successfully updated the ticket!',
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .override(
-                                                                              fontFamily: FlutterFlowTheme.of(context).titleSmallFamily,
-                                                                              color: FlutterFlowTheme.of(context).primaryBtnText,
-                                                                              letterSpacing: 0.0,
-                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).titleSmallFamily),
-                                                                            ),
-                                                                      ),
-                                                                      duration: const Duration(
-                                                                          milliseconds:
-                                                                              4000),
-                                                                      backgroundColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                    ),
-                                                                  );
                                                                 },
                                                                 text:
                                                                     'Update Ticket',

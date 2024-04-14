@@ -6,14 +6,18 @@ import 'package:flutter/material.dart';
 class EditUserModel extends FlutterFlowModel<EditUserWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for yourName widget.
-  FocusNode? yourNameFocusNode1;
-  TextEditingController? yourNameController1;
-  String? Function(BuildContext, String?)? yourNameController1Validator;
-  // State field(s) for yourName widget.
-  FocusNode? yourNameFocusNode2;
-  TextEditingController? yourNameController2;
-  String? Function(BuildContext, String?)? yourNameController2Validator;
+  // State field(s) for userDisplayName widget.
+  FocusNode? userDisplayNameFocusNode;
+  TextEditingController? userDisplayNameController;
+  String? Function(BuildContext, String?)? userDisplayNameControllerValidator;
+  // State field(s) for userLastName widget.
+  FocusNode? userLastNameFocusNode;
+  TextEditingController? userLastNameController;
+  String? Function(BuildContext, String?)? userLastNameControllerValidator;
+  // State field(s) for userEmail widget.
+  FocusNode? userEmailFocusNode;
+  TextEditingController? userEmailController;
+  String? Function(BuildContext, String?)? userEmailControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -23,10 +27,13 @@ class EditUserModel extends FlutterFlowModel<EditUserWidget> {
 
   @override
   void dispose() {
-    yourNameFocusNode1?.dispose();
-    yourNameController1?.dispose();
+    userDisplayNameFocusNode?.dispose();
+    userDisplayNameController?.dispose();
 
-    yourNameFocusNode2?.dispose();
-    yourNameController2?.dispose();
+    userLastNameFocusNode?.dispose();
+    userLastNameController?.dispose();
+
+    userEmailFocusNode?.dispose();
+    userEmailController?.dispose();
   }
 }
