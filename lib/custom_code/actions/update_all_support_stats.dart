@@ -15,7 +15,8 @@ Future<bool> updateAllSupportStats(BuildContext context) async {
 
   try {
     // Fetch all tickets and aggregate counts
-    QuerySnapshot ticketSnapshot = await ticketsRef.get();
+    QuerySnapshot ticketSnapshot =
+        await ticketsRef.where('status', isEqualTo: 'closed').get();
     Map<String, int> ticketCounts = {};
     Map<String, Timestamp?> latestResolved = {};
 
@@ -37,37 +38,29 @@ Future<bool> updateAllSupportStats(BuildContext context) async {
     QuerySnapshot statsSnapshot = await statsRef.get();
     Set<String> statsUserIds = statsSnapshot.docs.map((doc) => doc.id).toSet();
 
-    // Write batch to update or initialize supportStats
+    // Write batch to update or delete supportStats
     WriteBatch batch = firestore.batch();
     statsUserIds.forEach((userId) {
       DocumentReference statRef = statsRef.doc(userId);
       int ticketCount = ticketCounts[userId] ?? 0;
-      Timestamp? lastResolvedTime = latestResolved[userId];
 
       if (ticketCount == 0) {
-        // No tickets found for this user, set numTickets to zero
-        batch.set(
-            statRef,
-            {
-              'uid': userId,
-              'numTickets': 0,
-              'lastResolved': lastResolvedTime ?? FieldValue.serverTimestamp(),
-            },
-            SetOptions(merge: true));
+        // No tickets found for this user, delete the document
+        batch.delete(statRef);
       } else {
-        // Update with the actual ticket count
+        // Update with the actual ticket count and latest resolved time
         batch.set(
             statRef,
             {
               'uid': userId,
               'numTickets': ticketCount,
-              'lastResolved': lastResolvedTime,
+              'lastResolved': latestResolved[userId],
             },
             SetOptions(merge: true));
       }
     });
 
-    // Also ensure any new users with tickets are added
+    // Ensure any new users with tickets are added
     ticketCounts.keys
         .where((id) => !statsUserIds.contains(id))
         .forEach((userId) {
@@ -84,10 +77,8 @@ Future<bool> updateAllSupportStats(BuildContext context) async {
 
     // Commit the batch
     await batch.commit();
-    print('Support stats updated successfully.');
     return true;
   } catch (e) {
-    print('Error updating support stats: $e');
     return false;
   }
 }
