@@ -109,10 +109,16 @@ class _UserListWidgetState extends State<UserListWidget> {
                     child: FutureBuilder<List<UsersRecord>>(
                       future: queryUsersRecordOnce(
                         queryBuilder: (usersRecord) => usersRecord
-                            .where(
-                              'role',
-                              isEqualTo: 'support' != '' ? 'support' : null,
-                            )
+                            .where(Filter.or(
+                              Filter(
+                                'role',
+                                isEqualTo: 'support' != '' ? 'support' : null,
+                              ),
+                              Filter(
+                                'role',
+                                isEqualTo: 'admin' != '' ? 'admin' : null,
+                              ),
+                            ))
                             .orderBy('created_time', descending: true),
                       ),
                       builder: (context, snapshot) {

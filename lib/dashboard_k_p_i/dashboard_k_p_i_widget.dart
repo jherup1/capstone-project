@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -653,34 +653,27 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                 child: SizedBox(
                                                   width: 370.0,
                                                   height: 230.0,
-                                                  child: FlutterFlowBarChart(
-                                                    barData: [
-                                                      FFBarChartData(
+                                                  child: FlutterFlowLineChart(
+                                                    data: [
+                                                      FFLineChartData(
+                                                        xData: functions
+                                                            .getPastDates(14),
                                                         yData:
                                                             containerUsersRecordList,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                        settings:
+                                                            LineChartBarData(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          barWidth: 2.0,
+                                                          isCurved: true,
+                                                          preventCurveOverShooting:
+                                                              true,
+                                                          dotData: FlDotData(
+                                                              show: false),
+                                                        ),
                                                       )
                                                     ],
-                                                    xLabels: List.generate(
-                                                            random_data
-                                                                .randomInteger(
-                                                                    1, 2),
-                                                            (index) => random_data
-                                                                .randomInteger(
-                                                                    0, 10))
-                                                        .map(
-                                                            (e) => e.toString())
-                                                        .toList(),
-                                                    barWidth: 16.0,
-                                                    barBorderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    groupSpace: 8.0,
-                                                    alignment: BarChartAlignment
-                                                        .spaceAround,
                                                     chartStylingInfo:
                                                         ChartStylingInfo(
                                                       enableTooltip: true,
@@ -702,14 +695,15 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                     axisBounds: const AxisBounds(),
                                                     xAxisLabelInfo:
                                                         const AxisLabelInfo(
-                                                      title: 'Dates',
+                                                      title:
+                                                          'Tickets resolved in last 7 days',
                                                       titleTextStyle: TextStyle(
                                                         fontSize: 14.0,
                                                       ),
                                                     ),
                                                     yAxisLabelInfo:
                                                         const AxisLabelInfo(
-                                                      title: 'Users Signed in',
+                                                      title: 'Open Tickets',
                                                       titleTextStyle: TextStyle(
                                                         fontSize: 14.0,
                                                       ),
@@ -1488,27 +1482,72 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                               final listViewSupportStatsRecord =
                                                   listViewSupportStatsRecordList[
                                                       listViewIndex];
-                                              return Container(
-                                                width: 100.0,
-                                                height: 100.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      valueOrDefault<String>(
+                                              return StreamBuilder<
+                                                  List<UsersRecord>>(
+                                                stream: queryUsersRecord(
+                                                  queryBuilder: (usersRecord) =>
+                                                      usersRecord.where(
+                                                    'uid',
+                                                    isEqualTo:
                                                         listViewSupportStatsRecord
                                                             .uid?.id,
-                                                        'giveurballs',
+                                                  ),
+                                                  singleRecord: true,
+                                                ),
+                                                builder: (context, snapshot) {
+                                                  // Customize what your widget looks like when it's loading.
+                                                  if (!snapshot.hasData) {
+                                                    return Center(
+                                                      child: SizedBox(
+                                                        width: 50.0,
+                                                        height: 50.0,
+                                                        child:
+                                                            CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                          ),
+                                                        ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                    );
+                                                  }
+                                                  List<UsersRecord>
+                                                      containerUsersRecordList =
+                                                      snapshot.data!;
+                                                  // Return an empty Container when the item does not exist.
+                                                  if (snapshot.data!.isEmpty) {
+                                                    return Container();
+                                                  }
+                                                  final containerUsersRecord =
+                                                      containerUsersRecordList
+                                                              .isNotEmpty
+                                                          ? containerUsersRecordList
+                                                              .first
+                                                          : null;
+                                                  return Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            containerUsersRecord
+                                                                ?.displayName,
+                                                            'test',
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
@@ -1522,104 +1561,76 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .bodyMediumFamily),
                                                               ),
+                                                        ),
+                                                        Text(
+                                                          listViewSupportStatsRecord
+                                                              .numTickets
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
+                                                        Text(
+                                                          dateTimeFormat(
+                                                              'd/M h:mm a',
+                                                              listViewSupportStatsRecord
+                                                                  .lastResolved!),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
+                                                        AutoSizeText(
+                                                          listViewSupportStatsRecord
+                                                              .percentTotTickets
+                                                              .toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                        ),
+                                                      ]
+                                                          .divide(const SizedBox(
+                                                              width: 100.0))
+                                                          .around(const SizedBox(
+                                                              width: 100.0)),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        listViewSupportStatsRecord
-                                                            .numTickets
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  190.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        dateTimeFormat(
-                                                            'd/M h:mm a',
-                                                            listViewSupportStatsRecord
-                                                                .lastResolved!),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  130.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        listViewSupportStatsRecord
-                                                            .percentTotTickets
-                                                            .toString(),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  ]
-                                                      .divide(const SizedBox(
-                                                          width: 100.0))
-                                                      .around(const SizedBox(
-                                                          width: 100.0)),
-                                                ),
+                                                  );
+                                                },
                                               );
                                             },
                                           );
