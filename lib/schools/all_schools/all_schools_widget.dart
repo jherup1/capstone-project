@@ -25,7 +25,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
     _model = createModel(context, () => AllSchoolsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'allSchools'});
-    _model.searchBarController ??= TextEditingController();
+    _model.searchBarTextController ??= TextEditingController();
     _model.searchBarFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -105,7 +105,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 8.0, 0.0),
                     child: TextFormField(
-                      controller: _model.searchBarController,
+                      controller: _model.searchBarTextController,
                       focusNode: _model.searchBarFocusNode,
                       textCapitalization: TextCapitalization.words,
                       obscureText: false,
@@ -175,7 +175,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).bodyMediumFamily),
                           ),
-                      validator: _model.searchBarControllerValidator
+                      validator: _model.searchBarTextControllerValidator
                           .asValidator(context),
                     ),
                   ),

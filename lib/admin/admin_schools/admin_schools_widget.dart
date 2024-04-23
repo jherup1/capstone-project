@@ -1,7 +1,7 @@
-import '/admin/create_school/create_school_widget.dart';
-import '/admin/edit_school/edit_school_widget.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/create_school/create_school_widget.dart';
+import '/components/edit_school/edit_school_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1146,8 +1146,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           BorderRadius.circular(
                                                               60.0),
                                                       child: Image.network(
-                                                        searchResultItem
-                                                            .primaryPhoto,
+                                                        valueOrDefault<String>(
+                                                          searchResultItem
+                                                              .primaryPhoto,
+                                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                                        ),
                                                         width: 60.0,
                                                         height: 60.0,
                                                         fit: BoxFit.cover,

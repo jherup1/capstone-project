@@ -8,8 +8,8 @@ class AllSchoolsModel extends FlutterFlowModel<AllSchoolsWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for searchBar widget.
   FocusNode? searchBarFocusNode;
-  TextEditingController? searchBarController;
-  String? Function(BuildContext, String?)? searchBarControllerValidator;
+  TextEditingController? searchBarTextController;
+  String? Function(BuildContext, String?)? searchBarTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -18,6 +18,6 @@ class AllSchoolsModel extends FlutterFlowModel<AllSchoolsWidget> {
   void dispose() {
     unfocusNode.dispose();
     searchBarFocusNode?.dispose();
-    searchBarController?.dispose();
+    searchBarTextController?.dispose();
   }
 }

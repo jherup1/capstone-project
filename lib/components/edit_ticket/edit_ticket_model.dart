@@ -8,12 +8,13 @@ class EditTicketModel extends FlutterFlowModel<EditTicketWidget> {
 
   // State field(s) for ticketName widget.
   FocusNode? ticketNameFocusNode;
-  TextEditingController? ticketNameController;
-  String? Function(BuildContext, String?)? ticketNameControllerValidator;
+  TextEditingController? ticketNameTextController;
+  String? Function(BuildContext, String?)? ticketNameTextControllerValidator;
   // State field(s) for ticketDescription widget.
   FocusNode? ticketDescriptionFocusNode;
-  TextEditingController? ticketDescriptionController;
-  String? Function(BuildContext, String?)? ticketDescriptionControllerValidator;
+  TextEditingController? ticketDescriptionTextController;
+  String? Function(BuildContext, String?)?
+      ticketDescriptionTextControllerValidator;
   // State field(s) for statusDropDown widget.
   String? statusDropDownValue;
   FormFieldController<String>? statusDropDownValueController;
@@ -27,9 +28,9 @@ class EditTicketModel extends FlutterFlowModel<EditTicketWidget> {
   @override
   void dispose() {
     ticketNameFocusNode?.dispose();
-    ticketNameController?.dispose();
+    ticketNameTextController?.dispose();
 
     ticketDescriptionFocusNode?.dispose();
-    ticketDescriptionController?.dispose();
+    ticketDescriptionTextController?.dispose();
   }
 }

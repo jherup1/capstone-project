@@ -1,7 +1,7 @@
-import '/admin/edit_user/edit_user_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/edit_user/edit_user_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -19,9 +19,11 @@ class AdminUsersWidget extends StatefulWidget {
   const AdminUsersWidget({
     super.key,
     this.school,
+    required this.user,
   });
 
   final DocumentReference? school;
+  final DocumentReference? user;
 
   @override
   State<AdminUsersWidget> createState() => _AdminUsersWidgetState();

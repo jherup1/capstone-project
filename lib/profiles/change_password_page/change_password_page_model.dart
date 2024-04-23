@@ -15,24 +15,25 @@ class ChangePasswordPageModel
   late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for emailAddress widget.
   FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressController;
-  String? Function(BuildContext, String?)? emailAddressControllerValidator;
+  TextEditingController? emailAddressTextController;
+  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
   // State field(s) for currentPassword widget.
   FocusNode? currentPasswordFocusNode;
-  TextEditingController? currentPasswordController;
+  TextEditingController? currentPasswordTextController;
   late bool currentPasswordVisibility;
-  String? Function(BuildContext, String?)? currentPasswordControllerValidator;
+  String? Function(BuildContext, String?)?
+      currentPasswordTextControllerValidator;
   // State field(s) for newPassword widget.
   FocusNode? newPasswordFocusNode;
-  TextEditingController? newPasswordController;
+  TextEditingController? newPasswordTextController;
   late bool newPasswordVisibility;
-  String? Function(BuildContext, String?)? newPasswordControllerValidator;
+  String? Function(BuildContext, String?)? newPasswordTextControllerValidator;
   // State field(s) for confirmNewPassword widget.
   FocusNode? confirmNewPasswordFocusNode;
-  TextEditingController? confirmNewPasswordController;
+  TextEditingController? confirmNewPasswordTextController;
   late bool confirmNewPasswordVisibility;
   String? Function(BuildContext, String?)?
-      confirmNewPasswordControllerValidator;
+      confirmNewPasswordTextControllerValidator;
   // Model for sideBarNav component.
   late SideBarNavModel sideBarNavModel2;
 
@@ -53,16 +54,16 @@ class ChangePasswordPageModel
     sideBarNavModel1.dispose();
     breadcrumbsHeaderModel.dispose();
     emailAddressFocusNode?.dispose();
-    emailAddressController?.dispose();
+    emailAddressTextController?.dispose();
 
     currentPasswordFocusNode?.dispose();
-    currentPasswordController?.dispose();
+    currentPasswordTextController?.dispose();
 
     newPasswordFocusNode?.dispose();
-    newPasswordController?.dispose();
+    newPasswordTextController?.dispose();
 
     confirmNewPasswordFocusNode?.dispose();
-    confirmNewPasswordController?.dispose();
+    confirmNewPasswordTextController?.dispose();
 
     sideBarNavModel2.dispose();
   }

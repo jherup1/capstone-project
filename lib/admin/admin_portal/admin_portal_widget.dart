@@ -312,7 +312,22 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                context.pushNamed('adminUsers');
+                                                context.pushNamed(
+                                                  'adminUsers',
+                                                  queryParameters: {
+                                                    'school': serializeParam(
+                                                      widget.school,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'user': serializeParam(
+                                                      containerUsersRecord
+                                                          .reference,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
                                               },
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,

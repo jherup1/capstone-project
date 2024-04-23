@@ -22,34 +22,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
     with TickerProviderStateMixin {
   late CreateSchoolOldModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 250.ms),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 250.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 70.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -62,18 +35,46 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
     super.initState();
     _model = createModel(context, () => CreateSchoolOldModel());
 
-    _model.projectNameController ??= TextEditingController();
+    _model.projectNameTextController ??= TextEditingController();
     _model.projectNameFocusNode ??= FocusNode();
 
-    _model.descriptionController ??= TextEditingController();
+    _model.descriptionTextController ??= TextEditingController();
     _model.descriptionFocusNode ??= FocusNode();
 
-    _model.projectURLController ??= TextEditingController();
+    _model.projectURLTextController ??= TextEditingController();
     _model.projectURLFocusNode ??= FocusNode();
 
-    _model.clonableURLController ??= TextEditingController();
+    _model.clonableURLTextController ??= TextEditingController();
     _model.clonableURLFocusNode ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 250.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 250.0.ms,
+            duration: 600.0.ms,
+            begin: const Offset(0.0, 70.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -341,7 +342,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.projectNameController,
+                                  controller: _model.projectNameTextController,
                                   focusNode: _model.projectNameFocusNode,
                                   autofocus: true,
                                   obscureText: false,
@@ -422,7 +423,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                     .headlineMediumFamily),
                                       ),
                                   validator: _model
-                                      .projectNameControllerValidator
+                                      .projectNameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -430,7 +431,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 12.0),
                                 child: TextFormField(
-                                  controller: _model.descriptionController,
+                                  controller: _model.descriptionTextController,
                                   focusNode: _model.descriptionFocusNode,
                                   autofocus: true,
                                   obscureText: false,
@@ -518,7 +519,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                       ),
                                   maxLines: 5,
                                   validator: _model
-                                      .descriptionControllerValidator
+                                      .descriptionTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -526,7 +527,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
-                                  controller: _model.projectURLController,
+                                  controller: _model.projectURLTextController,
                                   focusNode: _model.projectURLFocusNode,
                                   autofocus: true,
                                   obscureText: false,
@@ -613,7 +614,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                     .bodyLargeFamily),
                                       ),
                                   validator: _model
-                                      .projectURLControllerValidator
+                                      .projectURLTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -621,7 +622,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
-                                  controller: _model.clonableURLController,
+                                  controller: _model.clonableURLTextController,
                                   focusNode: _model.clonableURLFocusNode,
                                   autofocus: true,
                                   obscureText: false,
@@ -708,7 +709,7 @@ class _CreateSchoolOldWidgetState extends State<CreateSchoolOldWidget>
                                                     .bodyLargeFamily),
                                       ),
                                   validator: _model
-                                      .clonableURLControllerValidator
+                                      .clonableURLTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),

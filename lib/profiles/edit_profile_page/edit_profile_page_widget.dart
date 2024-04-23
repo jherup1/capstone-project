@@ -39,7 +39,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
 
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -219,7 +219,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                   0.0),
                                                       child: TextFormField(
                                                         controller: _model
-                                                                .firstNameController ??=
+                                                                .firstNameTextController ??=
                                                             TextEditingController(
                                                           text:
                                                               containerUsersRecord
@@ -230,7 +230,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         onChanged: (_) =>
                                                             EasyDebounce
                                                                 .debounce(
-                                                          '_model.firstNameController',
+                                                          '_model.firstNameTextController',
                                                           const Duration(
                                                               milliseconds:
                                                                   100),
@@ -362,7 +362,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
-                                                            .firstNameControllerValidator
+                                                            .firstNameTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -388,7 +388,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                   0.0),
                                                       child: TextFormField(
                                                         controller: _model
-                                                                .lastNameController ??=
+                                                                .lastNameTextController ??=
                                                             TextEditingController(
                                                           text:
                                                               containerUsersRecord
@@ -399,7 +399,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         onChanged: (_) =>
                                                             EasyDebounce
                                                                 .debounce(
-                                                          '_model.lastNameController',
+                                                          '_model.lastNameTextController',
                                                           const Duration(
                                                               milliseconds:
                                                                   100),
@@ -530,7 +530,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
-                                                            .lastNameControllerValidator
+                                                            .lastNameTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -551,7 +551,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                              .emailAddressController ??=
+                                                              .emailAddressTextController ??=
                                                           TextEditingController(
                                                         text:
                                                             containerUsersRecord
@@ -561,7 +561,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           .emailAddressFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.emailAddressController',
+                                                        '_model.emailAddressTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -695,7 +695,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           TextInputType
                                                               .emailAddress,
                                                       validator: _model
-                                                          .emailAddressControllerValidator
+                                                          .emailAddressTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -714,12 +714,12 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .passwordController,
+                                                          .passwordTextController,
                                                       focusNode: _model
                                                           .passwordFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.passwordController',
+                                                        '_model.passwordTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -875,7 +875,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                             .bodyMediumFamily),
                                                               ),
                                                       validator: _model
-                                                          .passwordControllerValidator
+                                                          .passwordTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -1229,13 +1229,13 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     ),
                                                   ),
                                                   FFButtonWidget(
-                                                    onPressed: ((_model.firstNameController
+                                                    onPressed: ((_model.firstNameTextController
                                                                         .text ==
                                                                     '') ||
-                                                            (_model.emailAddressController
+                                                            (_model.emailAddressTextController
                                                                         .text ==
                                                                     '') ||
-                                                            (_model.passwordController
+                                                            (_model.passwordTextController
                                                                         .text ==
                                                                     ''))
                                                         ? null
@@ -1244,18 +1244,18 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                 .updateAccount(
                                                               context,
                                                               _model
-                                                                  .emailAddressController
+                                                                  .emailAddressTextController
                                                                   .text,
                                                               _model
-                                                                  .firstNameController
+                                                                  .firstNameTextController
                                                                   .text,
                                                               _model
-                                                                  .lastNameController
+                                                                  .lastNameTextController
                                                                   .text,
                                                               containerUsersRecord
                                                                   .uid,
                                                               _model
-                                                                  .passwordController
+                                                                  .passwordTextController
                                                                   .text,
                                                             );
                                                           },

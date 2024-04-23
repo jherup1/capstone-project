@@ -8,20 +8,20 @@ class CreateSchoolOldModel extends FlutterFlowModel<CreateSchoolOldWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for projectName widget.
   FocusNode? projectNameFocusNode;
-  TextEditingController? projectNameController;
-  String? Function(BuildContext, String?)? projectNameControllerValidator;
+  TextEditingController? projectNameTextController;
+  String? Function(BuildContext, String?)? projectNameTextControllerValidator;
   // State field(s) for description widget.
   FocusNode? descriptionFocusNode;
-  TextEditingController? descriptionController;
-  String? Function(BuildContext, String?)? descriptionControllerValidator;
+  TextEditingController? descriptionTextController;
+  String? Function(BuildContext, String?)? descriptionTextControllerValidator;
   // State field(s) for projectURL widget.
   FocusNode? projectURLFocusNode;
-  TextEditingController? projectURLController;
-  String? Function(BuildContext, String?)? projectURLControllerValidator;
+  TextEditingController? projectURLTextController;
+  String? Function(BuildContext, String?)? projectURLTextControllerValidator;
   // State field(s) for clonableURL widget.
   FocusNode? clonableURLFocusNode;
-  TextEditingController? clonableURLController;
-  String? Function(BuildContext, String?)? clonableURLControllerValidator;
+  TextEditingController? clonableURLTextController;
+  String? Function(BuildContext, String?)? clonableURLTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -29,15 +29,15 @@ class CreateSchoolOldModel extends FlutterFlowModel<CreateSchoolOldWidget> {
   @override
   void dispose() {
     projectNameFocusNode?.dispose();
-    projectNameController?.dispose();
+    projectNameTextController?.dispose();
 
     descriptionFocusNode?.dispose();
-    descriptionController?.dispose();
+    descriptionTextController?.dispose();
 
     projectURLFocusNode?.dispose();
-    projectURLController?.dispose();
+    projectURLTextController?.dispose();
 
     clonableURLFocusNode?.dispose();
-    clonableURLController?.dispose();
+    clonableURLTextController?.dispose();
   }
 }

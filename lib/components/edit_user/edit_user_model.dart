@@ -8,16 +8,17 @@ class EditUserModel extends FlutterFlowModel<EditUserWidget> {
 
   // State field(s) for userDisplayName widget.
   FocusNode? userDisplayNameFocusNode;
-  TextEditingController? userDisplayNameController;
-  String? Function(BuildContext, String?)? userDisplayNameControllerValidator;
+  TextEditingController? userDisplayNameTextController;
+  String? Function(BuildContext, String?)?
+      userDisplayNameTextControllerValidator;
   // State field(s) for userLastName widget.
   FocusNode? userLastNameFocusNode;
-  TextEditingController? userLastNameController;
-  String? Function(BuildContext, String?)? userLastNameControllerValidator;
+  TextEditingController? userLastNameTextController;
+  String? Function(BuildContext, String?)? userLastNameTextControllerValidator;
   // State field(s) for userEmail widget.
   FocusNode? userEmailFocusNode;
-  TextEditingController? userEmailController;
-  String? Function(BuildContext, String?)? userEmailControllerValidator;
+  TextEditingController? userEmailTextController;
+  String? Function(BuildContext, String?)? userEmailTextControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -28,12 +29,12 @@ class EditUserModel extends FlutterFlowModel<EditUserWidget> {
   @override
   void dispose() {
     userDisplayNameFocusNode?.dispose();
-    userDisplayNameController?.dispose();
+    userDisplayNameTextController?.dispose();
 
     userLastNameFocusNode?.dispose();
-    userLastNameController?.dispose();
+    userLastNameTextController?.dispose();
 
     userEmailFocusNode?.dispose();
-    userEmailController?.dispose();
+    userEmailTextController?.dispose();
   }
 }

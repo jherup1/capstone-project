@@ -149,7 +149,10 @@ class _SchoolScrollWidgetState extends State<SchoolScrollWidget> {
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: Image.network(
-                                  listViewSchoolDataRecord.primaryPhoto,
+                                  valueOrDefault<String>(
+                                    listViewSchoolDataRecord.primaryPhoto,
+                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                  ),
                                 ).image,
                               ),
                               borderRadius: const BorderRadius.only(

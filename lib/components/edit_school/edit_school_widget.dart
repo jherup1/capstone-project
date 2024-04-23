@@ -1,10 +1,12 @@
 import '/backend/backend.dart';
+import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -28,28 +30,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
     with TickerProviderStateMixin {
   late EditSchoolModel _model;
 
-  final animationsMap = {
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 300.ms),
-        MoveEffect(
-          curve: Curves.bounceOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 100.0),
-          end: const Offset(0.0, 0.0),
-        ),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 400.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -62,98 +43,120 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
     super.initState();
     _model = createModel(context, () => EditSchoolModel());
 
-    _model.displayNameController ??=
+    _model.displayNameTextController ??=
         TextEditingController(text: widget.schoolDoc?.displayName);
     _model.displayNameFocusNode ??= FocusNode();
 
-    _model.aliasNameController ??=
+    _model.aliasNameTextController ??=
         TextEditingController(text: widget.schoolDoc?.aliasNames);
     _model.aliasNameFocusNode ??= FocusNode();
 
-    _model.schoolDescriptionController ??=
+    _model.schoolDescriptionTextController ??=
         TextEditingController(text: widget.schoolDoc?.description);
     _model.schoolDescriptionFocusNode ??= FocusNode();
 
-    _model.schoolWebsiteController ??=
+    _model.schoolWebsiteTextController ??=
         TextEditingController(text: widget.schoolDoc?.schoolWebsite);
     _model.schoolWebsiteFocusNode ??= FocusNode();
 
-    _model.countryCodeController ??=
+    _model.countryCodeTextController ??=
         TextEditingController(text: widget.schoolDoc?.countryCode);
     _model.countryCodeFocusNode ??= FocusNode();
 
-    _model.regionController ??=
+    _model.regionTextController ??=
         TextEditingController(text: widget.schoolDoc?.region);
     _model.regionFocusNode ??= FocusNode();
 
-    _model.cityController1 ??=
+    _model.cityTextController1 ??=
         TextEditingController(text: widget.schoolDoc?.city);
     _model.cityFocusNode1 ??= FocusNode();
 
-    _model.zipController ??=
+    _model.zipTextController ??=
         TextEditingController(text: widget.schoolDoc?.zip.toString());
     _model.zipFocusNode ??= FocusNode();
 
-    _model.addressController ??=
+    _model.addressTextController ??=
         TextEditingController(text: widget.schoolDoc?.address);
     _model.addressFocusNode ??= FocusNode();
 
-    _model.geoPointController ??=
+    _model.geoPointTextController ??=
         TextEditingController(text: widget.schoolDoc?.geoPoint?.toString());
     _model.geoPointFocusNode ??= FocusNode();
 
-    _model.tutionController ??=
+    _model.tutionTextController ??=
         TextEditingController(text: widget.schoolDoc?.tuition.toString());
     _model.tutionFocusNode ??= FocusNode();
 
-    _model.acceptanceRateController ??= TextEditingController(
+    _model.acceptanceRateTextController ??= TextEditingController(
         text: widget.schoolDoc?.acceptanceRate.toString());
     _model.acceptanceRateFocusNode ??= FocusNode();
 
-    _model.displayRankController ??=
+    _model.displayRankTextController ??=
         TextEditingController(text: widget.schoolDoc?.rankingDisplayRank);
     _model.displayRankFocusNode ??= FocusNode();
 
-    _model.enrollmentController ??=
+    _model.enrollmentTextController ??=
         TextEditingController(text: widget.schoolDoc?.enrollment.toString());
     _model.enrollmentFocusNode ??= FocusNode();
 
-    _model.hsGpaAvgController1 ??=
+    _model.hsGpaAvgTextController1 ??=
         TextEditingController(text: widget.schoolDoc?.hsGpaAvg.toString());
     _model.hsGpaAvgFocusNode1 ??= FocusNode();
 
-    _model.actAvgController1 ??=
+    _model.actAvgTextController1 ??=
         TextEditingController(text: widget.schoolDoc?.actAvg.toString());
     _model.actAvgFocusNode1 ??= FocusNode();
 
-    _model.satAvgController1 ??=
+    _model.satAvgTextController1 ??=
         TextEditingController(text: widget.schoolDoc?.satAvg.toString());
     _model.satAvgFocusNode1 ??= FocusNode();
 
-    _model.engRepScoreController ??= TextEditingController(
+    _model.engRepScoreTextController ??= TextEditingController(
         text: widget.schoolDoc?.engineeringRepScore.toString());
     _model.engRepScoreFocusNode ??= FocusNode();
 
-    _model.cityController2 ??= TextEditingController(
+    _model.cityTextController2 ??= TextEditingController(
         text: widget.schoolDoc?.businessRepScore.toString());
     _model.cityFocusNode2 ??= FocusNode();
 
-    _model.hsGpaAvgController2 ??=
+    _model.hsGpaAvgTextController2 ??=
         TextEditingController(text: widget.schoolDoc?.institutionalControl);
     _model.hsGpaAvgFocusNode2 ??= FocusNode();
 
-    _model.actAvgController2 ??=
+    _model.actAvgTextController2 ??=
         TextEditingController(text: widget.schoolDoc?.religiousAffiliation);
     _model.actAvgFocusNode2 ??= FocusNode();
 
-    _model.satAvgController2 ??=
+    _model.satAvgTextController2 ??=
         TextEditingController(text: widget.schoolDoc?.schoolType);
     _model.satAvgFocusNode2 ??= FocusNode();
 
-    _model.satAvgController3 ??= TextEditingController(
+    _model.satAvgTextController3 ??= TextEditingController(
         text: widget.schoolDoc?.schoolTypeNationalUniversities);
     _model.satAvgFocusNode3 ??= FocusNode();
 
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 300.ms),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 100.0),
+            end: const Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -282,16 +285,72 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                             const Duration(milliseconds: 500),
                                         fadeOutDuration:
                                             const Duration(milliseconds: 500),
-                                        imageUrl:
-                                            widget.schoolDoc!.primaryPhoto,
+                                        imageUrl: valueOrDefault<String>(
+                                          widget.schoolDoc?.primaryPhoto,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                        ),
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
                                   ),
                                 ),
                                 FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    final selectedMedia =
+                                        await selectMediaWithSourceBottomSheet(
+                                      context: context,
+                                      allowPhoto: true,
+                                    );
+                                    if (selectedMedia != null &&
+                                        selectedMedia.every((m) =>
+                                            validateFileFormat(
+                                                m.storagePath, context))) {
+                                      setState(
+                                          () => _model.isDataUploading = true);
+                                      var selectedUploadedFiles =
+                                          <FFUploadedFile>[];
+
+                                      var downloadUrls = <String>[];
+                                      try {
+                                        selectedUploadedFiles = selectedMedia
+                                            .map((m) => FFUploadedFile(
+                                                  name: m.storagePath
+                                                      .split('/')
+                                                      .last,
+                                                  bytes: m.bytes,
+                                                  height: m.dimensions?.height,
+                                                  width: m.dimensions?.width,
+                                                  blurHash: m.blurHash,
+                                                ))
+                                            .toList();
+
+                                        downloadUrls = (await Future.wait(
+                                          selectedMedia.map(
+                                            (m) async => await uploadData(
+                                                m.storagePath, m.bytes),
+                                          ),
+                                        ))
+                                            .where((u) => u != null)
+                                            .map((u) => u!)
+                                            .toList();
+                                      } finally {
+                                        _model.isDataUploading = false;
+                                      }
+                                      if (selectedUploadedFiles.length ==
+                                              selectedMedia.length &&
+                                          downloadUrls.length ==
+                                              selectedMedia.length) {
+                                        setState(() {
+                                          _model.uploadedLocalFile =
+                                              selectedUploadedFiles.first;
+                                          _model.uploadedFileUrl =
+                                              downloadUrls.first;
+                                        });
+                                      } else {
+                                        setState(() {});
+                                        return;
+                                      }
+                                    }
                                   },
                                   text: 'Change Photo',
                                   options: FFButtonOptions(
@@ -344,7 +403,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.displayNameController,
+                                    controller:
+                                        _model.displayNameTextController,
                                     focusNode: _model.displayNameFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -432,7 +492,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .displayNameControllerValidator
+                                        .displayNameTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -442,7 +502,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.aliasNameController,
+                                    controller: _model.aliasNameTextController,
                                     focusNode: _model.aliasNameFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -531,7 +591,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .aliasNameControllerValidator
+                                        .aliasNameTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -542,7 +602,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
-                              controller: _model.schoolDescriptionController,
+                              controller:
+                                  _model.schoolDescriptionTextController,
                               focusNode: _model.schoolDescriptionFocusNode,
                               autofocus: true,
                               obscureText: false,
@@ -620,7 +681,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                               minLines: 3,
                               cursorColor: FlutterFlowTheme.of(context).primary,
                               validator: _model
-                                  .schoolDescriptionControllerValidator
+                                  .schoolDescriptionTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -628,7 +689,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
-                              controller: _model.schoolWebsiteController,
+                              controller: _model.schoolWebsiteTextController,
                               focusNode: _model.schoolWebsiteFocusNode,
                               autofocus: true,
                               obscureText: false,
@@ -703,7 +764,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                 .bodyMediumFamily),
                                   ),
                               cursorColor: FlutterFlowTheme.of(context).primary,
-                              validator: _model.schoolWebsiteControllerValidator
+                              validator: _model
+                                  .schoolWebsiteTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -715,7 +777,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.countryCodeController,
+                                    controller:
+                                        _model.countryCodeTextController,
                                     focusNode: _model.countryCodeFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -804,7 +867,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .countryCodeControllerValidator
+                                        .countryCodeTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -814,7 +877,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.regionController,
+                                    controller: _model.regionTextController,
                                     focusNode: _model.regionFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -902,7 +965,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.regionControllerValidator
+                                    validator: _model
+                                        .regionTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -912,7 +976,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.cityController1,
+                                    controller: _model.cityTextController1,
                                     focusNode: _model.cityFocusNode1,
                                     autofocus: true,
                                     obscureText: false,
@@ -1000,7 +1064,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.cityController1Validator
+                                    validator: _model
+                                        .cityTextController1Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1010,7 +1075,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.zipController,
+                                    controller: _model.zipTextController,
                                     focusNode: _model.zipFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1099,7 +1164,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.zipControllerValidator
+                                    validator: _model.zipTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1114,7 +1179,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.addressController,
+                                    controller: _model.addressTextController,
                                     focusNode: _model.addressFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1202,7 +1267,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.addressControllerValidator
+                                    validator: _model
+                                        .addressTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1212,12 +1278,13 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.geoPointController,
+                                    controller: _model.geoPointTextController,
                                     focusNode: _model.geoPointFocusNode,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Geo Point',
+                                      labelText:
+                                          'GeoPoint (in the form \"LatLng(lat: LATITUDE, lng: LONGITUDE)',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1302,7 +1369,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .geoPointControllerValidator
+                                        .geoPointTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1317,7 +1384,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.tutionController,
+                                    controller: _model.tutionTextController,
                                     focusNode: _model.tutionFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1406,7 +1473,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.tutionControllerValidator
+                                    validator: _model
+                                        .tutionTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1416,7 +1484,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.acceptanceRateController,
+                                    controller:
+                                        _model.acceptanceRateTextController,
                                     focusNode: _model.acceptanceRateFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1506,7 +1575,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .acceptanceRateControllerValidator
+                                        .acceptanceRateTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1516,7 +1585,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.displayRankController,
+                                    controller:
+                                        _model.displayRankTextController,
                                     focusNode: _model.displayRankFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1606,7 +1676,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .displayRankControllerValidator
+                                        .displayRankTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1616,7 +1686,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.enrollmentController,
+                                    controller: _model.enrollmentTextController,
                                     focusNode: _model.enrollmentFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -1706,7 +1776,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .enrollmentControllerValidator
+                                        .enrollmentTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1721,7 +1791,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.hsGpaAvgController1,
+                                    controller: _model.hsGpaAvgTextController1,
                                     focusNode: _model.hsGpaAvgFocusNode1,
                                     autofocus: true,
                                     obscureText: false,
@@ -1811,7 +1881,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .hsGpaAvgController1Validator
+                                        .hsGpaAvgTextController1Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1821,7 +1891,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.actAvgController1,
+                                    controller: _model.actAvgTextController1,
                                     focusNode: _model.actAvgFocusNode1,
                                     autofocus: true,
                                     obscureText: false,
@@ -1910,7 +1980,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.actAvgController1Validator
+                                    validator: _model
+                                        .actAvgTextController1Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1920,7 +1991,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.satAvgController1,
+                                    controller: _model.satAvgTextController1,
                                     focusNode: _model.satAvgFocusNode1,
                                     autofocus: true,
                                     obscureText: false,
@@ -2009,7 +2080,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.satAvgController1Validator
+                                    validator: _model
+                                        .satAvgTextController1Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2024,7 +2096,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.engRepScoreController,
+                                    controller:
+                                        _model.engRepScoreTextController,
                                     focusNode: _model.engRepScoreFocusNode,
                                     autofocus: true,
                                     obscureText: false,
@@ -2115,7 +2188,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .engRepScoreControllerValidator
+                                        .engRepScoreTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2125,7 +2198,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.cityController2,
+                                    controller: _model.cityTextController2,
                                     focusNode: _model.cityFocusNode2,
                                     autofocus: true,
                                     obscureText: false,
@@ -2215,7 +2288,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.cityController2Validator
+                                    validator: _model
+                                        .cityTextController2Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2230,7 +2304,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.hsGpaAvgController2,
+                                    controller: _model.hsGpaAvgTextController2,
                                     focusNode: _model.hsGpaAvgFocusNode2,
                                     autofocus: true,
                                     obscureText: false,
@@ -2320,7 +2394,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
-                                        .hsGpaAvgController2Validator
+                                        .hsGpaAvgTextController2Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2330,7 +2404,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.actAvgController2,
+                                    controller: _model.actAvgTextController2,
                                     focusNode: _model.actAvgFocusNode2,
                                     autofocus: true,
                                     obscureText: false,
@@ -2419,7 +2493,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.actAvgController2Validator
+                                    validator: _model
+                                        .actAvgTextController2Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2429,7 +2504,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.satAvgController2,
+                                    controller: _model.satAvgTextController2,
                                     focusNode: _model.satAvgFocusNode2,
                                     autofocus: true,
                                     obscureText: false,
@@ -2517,7 +2592,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.satAvgController2Validator
+                                    validator: _model
+                                        .satAvgTextController2Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2527,7 +2603,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.satAvgController3,
+                                    controller: _model.satAvgTextController3,
                                     focusNode: _model.satAvgFocusNode3,
                                     autofocus: true,
                                     obscureText: false,
@@ -2616,7 +2692,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ),
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
-                                    validator: _model.satAvgController3Validator
+                                    validator: _model
+                                        .satAvgTextController3Validator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -2878,51 +2955,56 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     await widget.schoolDoc!.reference
                                         .update(createSchoolDataRecordData(
                                       displayName:
-                                          _model.displayNameController.text,
+                                          _model.displayNameTextController.text,
                                       aliasNames:
-                                          _model.aliasNameController.text,
+                                          _model.aliasNameTextController.text,
                                       description: _model
-                                          .schoolDescriptionController.text,
-                                      schoolWebsite:
-                                          _model.schoolWebsiteController.text,
+                                          .schoolDescriptionTextController.text,
+                                      schoolWebsite: _model
+                                          .schoolWebsiteTextController.text,
                                       countryCode:
-                                          _model.countryCodeController.text,
-                                      region: _model.regionController.text,
-                                      city: _model.cityController1.text,
+                                          _model.countryCodeTextController.text,
+                                      region: _model.regionTextController.text,
+                                      city: _model.cityTextController1.text,
                                       zip: int.tryParse(
-                                          _model.zipController.text),
-                                      address: _model.addressController.text,
+                                          _model.zipTextController.text),
+                                      address:
+                                          _model.addressTextController.text,
                                       tuition: int.tryParse(
-                                          _model.tutionController.text),
-                                      acceptanceRate: double.tryParse(
-                                          _model.acceptanceRateController.text),
+                                          _model.tutionTextController.text),
+                                      acceptanceRate: double.tryParse(_model
+                                          .acceptanceRateTextController.text),
                                       rankingDisplayRank:
-                                          _model.displayRankController.text,
+                                          _model.displayRankTextController.text,
                                       enrollment: int.tryParse(
-                                          _model.enrollmentController.text),
+                                          _model.enrollmentTextController.text),
                                       hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgController1.text),
+                                          _model.hsGpaAvgTextController1.text),
                                       actAvg: int.tryParse(
-                                          _model.actAvgController1.text),
+                                          _model.actAvgTextController1.text),
                                       satAvg: int.tryParse(
-                                          _model.satAvgController1.text),
+                                          _model.satAvgTextController1.text),
                                       engineeringRepScore: double.tryParse(
-                                          _model.engRepScoreController.text),
+                                          _model
+                                              .engRepScoreTextController.text),
                                       businessRepScore: double.tryParse(
-                                          _model.cityController2.text),
+                                          _model.cityTextController2.text),
                                       institutionalControl:
-                                          _model.hsGpaAvgController2.text,
+                                          _model.hsGpaAvgTextController2.text,
                                       religiousAffiliation:
-                                          _model.actAvgController2.text,
-                                      schoolType: _model.satAvgController2.text,
+                                          _model.actAvgTextController2.text,
+                                      schoolType:
+                                          _model.satAvgTextController2.text,
                                       schoolTypeNationalUniversities:
-                                          _model.satAvgController3.text,
+                                          _model.satAvgTextController3.text,
+                                      academicCalendar: '',
+                                      primaryPhoto: _model.uploadedFileUrl,
                                     ));
                                     context.pop();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          'Successfully updated user profile.',
+                                          'Successfully updated school profile.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(

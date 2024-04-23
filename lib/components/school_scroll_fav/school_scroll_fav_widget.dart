@@ -129,7 +129,10 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
                                   image: Image.network(
-                                    containerSchoolDataRecord.primaryPhoto,
+                                    valueOrDefault<String>(
+                                      containerSchoolDataRecord.primaryPhoto,
+                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                    ),
                                   ).image,
                                 ),
                                 borderRadius: const BorderRadius.only(
