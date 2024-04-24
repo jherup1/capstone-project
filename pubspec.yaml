@@ -25,6 +25,79 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  animated_stack_widget: any
+  auto_size_text: any
+  cached_network_image: any
+  cloud_firestore: any
+  cloud_firestore_platform_interface: any
+  cloud_firestore_web: any
+  collection: any
+  dropdown_button2: any
+  easy_debounce: any
+  file_picker: any
+  firebase_auth: any
+  firebase_auth_platform_interface: any
+  firebase_auth_web: any
+  firebase_core: any
+  firebase_core_platform_interface: any
+  firebase_core_web: any
+  firebase_performance: any
+  firebase_performance_platform_interface: any
+  firebase_performance_web: any
+  firebase_storage: any
+  firebase_storage_platform_interface: any
+  firebase_storage_web: any
+  flutter_animate: any
+  flutter_cache_manager: any
+  flutter_plugin_android_lifecycle: any
+  font_awesome_flutter: any
+  from_css_color: any
+  go_router: any
+  google_fonts: any
+  google_maps_flutter: any
+  google_sign_in: any
+  google_sign_in_android: any
+  google_sign_in_ios: any
+  google_sign_in_platform_interface: any
+  google_sign_in_web: any
+  image_picker: any
+  image_picker_android: any
+  image_picker_for_web: any
+  image_picker_ios: any
+  image_picker_platform_interface: any
+  intl: any
+  json_path: any
+  mime_type: any
+  page_transition: any
+  path_provider: any
+  path_provider_android: any
+  path_provider_foundation: any
+  path_provider_platform_interface: any
+  photo_view: any
+  plugin_platform_interface: any
+  provider: any
+  rxdart: any
+  shared_preferences: any
+  shared_preferences_android: any
+  shared_preferences_foundation: any
+  shared_preferences_platform_interface: any
+  shared_preferences_web: any
+  sign_in_with_apple: any
+  sign_in_with_apple_platform_interface: any
+  sign_in_with_apple_web: any
+  sqflite: any
+  stream_transform: any
+  timeago: any
+  url_launcher: any
+  url_launcher_android: any
+  url_launcher_ios: any
+  url_launcher_platform_interface: any
+  video_player: any
+  video_player_android: any
+  video_player_avfoundation: any
+  video_player_platform_interface: any
+  video_player_web: any
+
   auto_size_text: 3.0.0
   cached_network_image: 3.3.1
   cloud_firestore: 4.15.7
@@ -124,7 +197,24 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  cupertino_icons: any
+  fluster: any
+  image: any
+  async: any
+  http: any
+  typed_data: any
+  latlng: any
+  geolocator_web: any
+  infinite_scroll_pagination: any
+  mask_text_input_formatter: any
+  fake_cloud_firestore: ^2.4.8
+  share_plus: ^7.2.2
+  text_search: ^1.0.1
+  fl_chart: ^0.67.0
+  geolocator: ^11.0.0
+  substring_highlight: ^1.0.33
+  flutter_rating_bar: ^4.0.1
+  percent_indicator: ^4.2.3
 
 dependency_overrides:
   http: 1.2.0
@@ -132,12 +222,13 @@ dependency_overrides:
   uuid: ^4.0.0
 
 dev_dependencies:
-  flutter_launcher_icons: 0.13.1
-  flutter_lints: 3.0.0
-  lints: 3.0.0
+  flutter_launcher_icons: any
+  flutter_lints: any
+  lints: any
 
   flutter_test:
     sdk: flutter
+  test: any
 
 
 flutter_launcher_icons:
