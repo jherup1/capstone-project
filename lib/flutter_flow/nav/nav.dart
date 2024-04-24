@@ -157,14 +157,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminPortal',
               path: 'adminPortal',
               requireAuth: true,
-              builder: (context, params) => AdminPortalWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
-              ),
+              builder: (context, params) => const AdminPortalWidget(),
             ),
             FFRoute(
               name: 'editProfilePage',
@@ -176,12 +169,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'adminUsers',
               requireAuth: true,
               builder: (context, params) => AdminUsersWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
                 user: params.getParam(
                   'user',
                   ParamType.DocumentReference,
@@ -198,12 +185,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'user': getDoc(['users'], UsersRecord.fromSnapshot),
               },
               builder: (context, params) => AdminTicketsWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
                 user: params.getParam(
                   'user',
                   ParamType.Document,
@@ -214,14 +195,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminSchools',
               path: 'adminSchools',
               requireAuth: true,
-              builder: (context, params) => AdminSchoolsWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
-              ),
+              builder: (context, params) => const AdminSchoolsWidget(),
             ),
             FFRoute(
               name: 'changePasswordPage',
@@ -251,6 +225,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'allSchools',
               path: 'allSchools',
               builder: (context, params) => const AllSchoolsWidget(),
+            ),
+            FFRoute(
+              name: 'adminPrograms',
+              path: 'adminPrograms',
+              requireAuth: true,
+              builder: (context, params) => const AdminProgramsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

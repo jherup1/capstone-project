@@ -11,28 +11,28 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:text_search/text_search.dart';
-import 'admin_schools_model.dart';
-export 'admin_schools_model.dart';
+import 'admin_programs_model.dart';
+export 'admin_programs_model.dart';
 
-class AdminSchoolsWidget extends StatefulWidget {
-  const AdminSchoolsWidget({super.key});
+class AdminProgramsWidget extends StatefulWidget {
+  const AdminProgramsWidget({super.key});
 
   @override
-  State<AdminSchoolsWidget> createState() => _AdminSchoolsWidgetState();
+  State<AdminProgramsWidget> createState() => _AdminProgramsWidgetState();
 }
 
-class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
-  late AdminSchoolsModel _model;
+class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
+  late AdminProgramsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminSchoolsModel());
+    _model = createModel(context, () => AdminProgramsModel());
 
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'adminSchools'});
+        parameters: {'screen_name': 'adminPrograms'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 

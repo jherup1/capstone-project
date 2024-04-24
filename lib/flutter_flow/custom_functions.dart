@@ -67,6 +67,7 @@ bool addUserDoc(
     'role': role,
     'last_name': lastName,
     'schools': [],
+    'programs': [],
     'location': GeoPoint(39.530895, -119.814972),
   });
   return true;

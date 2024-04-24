@@ -27,3 +27,5 @@ export '/admin/dashboard_k_p_i/dashboard_k_p_i_widget.dart'
 export '/schools/search_schools/search_schools_widget.dart'
     show SearchSchoolsWidget;
 export '/schools/all_schools/all_schools_widget.dart' show AllSchoolsWidget;
+export '/admin/admin_programs/admin_programs_widget.dart'
+    show AdminProgramsWidget;

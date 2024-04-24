@@ -2,10 +2,10 @@ import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'admin_schools_widget.dart' show AdminSchoolsWidget;
+import 'admin_programs_widget.dart' show AdminProgramsWidget;
 import 'package:flutter/material.dart';
 
-class AdminSchoolsModel extends FlutterFlowModel<AdminSchoolsWidget> {
+class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
   ///  Local state fields for this page.
 
   bool isShowFullList = true;

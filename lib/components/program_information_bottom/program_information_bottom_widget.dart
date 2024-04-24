@@ -8,25 +8,25 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'school_information_bottom_model.dart';
-export 'school_information_bottom_model.dart';
+import 'program_information_bottom_model.dart';
+export 'program_information_bottom_model.dart';
 
-class SchoolInformationBottomWidget extends StatefulWidget {
-  const SchoolInformationBottomWidget({
+class ProgramInformationBottomWidget extends StatefulWidget {
+  const ProgramInformationBottomWidget({
     super.key,
-    required this.school,
+    required this.program,
   });
 
-  final SchoolDataRecord? school;
+  final ProgramDataRecord? program;
 
   @override
-  State<SchoolInformationBottomWidget> createState() =>
-      _SchoolInformationBottomWidgetState();
+  State<ProgramInformationBottomWidget> createState() =>
+      _ProgramInformationBottomWidgetState();
 }
 
-class _SchoolInformationBottomWidgetState
-    extends State<SchoolInformationBottomWidget> {
-  late SchoolInformationBottomModel _model;
+class _ProgramInformationBottomWidgetState
+    extends State<ProgramInformationBottomWidget> {
+  late ProgramInformationBottomModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -37,7 +37,7 @@ class _SchoolInformationBottomWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SchoolInformationBottomModel());
+    _model = createModel(context, () => ProgramInformationBottomModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -139,8 +139,8 @@ class _SchoolInformationBottomWidgetState
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.network(
                                         valueOrDefault<String>(
-                                          widget.school?.primaryPhoto,
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                          widget.program?.programImage,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/ves2yc3kcwjd/psysearch_logo_no_text.png',
                                         ),
                                         width: 250.0,
                                         height: 150.0,
@@ -170,8 +170,8 @@ class _SchoolInformationBottomWidgetState
                                                   child: Text(
                                                     valueOrDefault<String>(
                                                       widget
-                                                          .school?.displayName,
-                                                      'School name not available',
+                                                          .program?.programName,
+                                                      'Program name not available',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -234,8 +234,8 @@ class _SchoolInformationBottomWidgetState
                                                                 0.0, 0.0),
                                                     child: Text(
                                                       valueOrDefault<String>(
-                                                        widget.school
-                                                            ?.description,
+                                                        widget.program
+                                                            ?.programDescription,
                                                         'Description not available',
                                                       ),
                                                       style:
@@ -326,10 +326,10 @@ class _SchoolInformationBottomWidgetState
                                         ),
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            await actions.addFavSchool(
+                                            await actions.addFavProgram(
                                               context,
                                               currentUserUid,
-                                              widget.school!.reference,
+                                              widget.program!.reference,
                                             );
                                           },
                                           text: 'Add Favorite',

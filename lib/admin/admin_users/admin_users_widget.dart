@@ -18,11 +18,9 @@ export 'admin_users_model.dart';
 class AdminUsersWidget extends StatefulWidget {
   const AdminUsersWidget({
     super.key,
-    this.school,
     required this.user,
   });
 
-  final DocumentReference? school;
   final DocumentReference? user;
 
   @override

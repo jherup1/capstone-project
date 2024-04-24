@@ -11,12 +11,7 @@ import 'admin_portal_model.dart';
 export 'admin_portal_model.dart';
 
 class AdminPortalWidget extends StatefulWidget {
-  const AdminPortalWidget({
-    super.key,
-    this.school,
-  });
-
-  final DocumentReference? school;
+  const AdminPortalWidget({super.key});
 
   @override
   State<AdminPortalWidget> createState() => _AdminPortalWidgetState();
@@ -277,58 +272,52 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 60.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                blurRadius: 5.0,
-                                                color: Color(0x3416202A),
-                                                offset: Offset(
-                                                  0.0,
-                                                  2.0,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'adminUsers',
+                                              queryParameters: {
+                                                'user': serializeParam(
+                                                  containerUsersRecord
+                                                      .reference,
+                                                  ParamType.DocumentReference,
                                                 ),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                            shape: BoxShape.rectangle,
-                                            border: Border.all(
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            width: double.infinity,
+                                            height: 60.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .lineColor,
-                                              width: 1.0,
+                                                      .secondaryBackground,
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  blurRadius: 5.0,
+                                                  color: Color(0x3416202A),
+                                                  offset: Offset(
+                                                    0.0,
+                                                    2.0,
+                                                  ),
+                                                )
+                                              ],
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                              shape: BoxShape.rectangle,
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .lineColor,
+                                                width: 1.0,
+                                              ),
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'adminUsers',
-                                                  queryParameters: {
-                                                    'school': serializeParam(
-                                                      widget.school,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                    'user': serializeParam(
-                                                      containerUsersRecord
-                                                          .reference,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [

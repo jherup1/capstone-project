@@ -15,7 +15,7 @@ export 'edit_user_model.dart';
 class EditUserWidget extends StatefulWidget {
   const EditUserWidget({
     super.key,
-    required this.userDoc,
+    this.userDoc,
   });
 
   final UsersRecord? userDoc;

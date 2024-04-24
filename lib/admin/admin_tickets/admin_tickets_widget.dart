@@ -16,11 +16,9 @@ export 'admin_tickets_model.dart';
 class AdminTicketsWidget extends StatefulWidget {
   const AdminTicketsWidget({
     super.key,
-    this.school,
     this.user,
   });
 
-  final DocumentReference? school;
   final UsersRecord? user;
 
   @override
