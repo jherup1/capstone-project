@@ -120,6 +120,7 @@ dependencies:
   substring_highlight: ^1.0.33
   flutter_rating_bar: ^4.0.1
   percent_indicator: ^4.2.3
+  firebase_analytics: ^10.8.9
 
 dependency_overrides:
   http: 1.2.0
