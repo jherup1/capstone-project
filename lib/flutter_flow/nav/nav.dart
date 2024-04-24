@@ -309,10 +309,13 @@ extension GoRouterExtensions on GoRouter {
 extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
-  Map<String, dynamic> get allParams => <String, dynamic>{}
-    ..addAll(pathParameters)
-    ..addAll(uri.queryParameters)
-    ..addAll(extraMap);
+  Map<String, dynamic> get allParams {
+    return <String, dynamic>{
+      ...pathParameters,
+      ...queryParameters,
+      ...extraMap
+    };
+  }
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -404,7 +407,8 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
+
+            appStateNotifier.setRedirectLocationIfUnset(state.location);
             return '/signIn';
           }
           return null;
@@ -480,7 +484,8 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouterState.of(context).uri.toString();
+    final location =
+        GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

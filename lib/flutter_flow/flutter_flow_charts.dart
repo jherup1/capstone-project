@@ -32,7 +32,7 @@ class FlutterFlowLineChart extends StatelessWidget {
           lineTouchData: LineTouchData(
             handleBuiltInTouches: chartStylingInfo.enableTooltip,
             touchTooltipData: LineTouchTooltipData(
-              tooltipBgColor: chartStylingInfo.tooltipBackgroundColor,
+              tooltipBgColor: chartStylingInfo.tooltipBackgroundColor ?? Colors.transparent,
             ),
           ),
           gridData: FlGridData(show: chartStylingInfo.showGrid),
@@ -497,8 +497,8 @@ FlTitlesData getTitlesData(
                 style: xAxisLabelInfo.titleTextStyle,
               ),
         axisNameSize: xAxisLabelInfo.titleTextStyle?.fontSize != null
-            ? xAxisLabelInfo.titleTextStyle!.fontSize! + 12
-            : null,
+          ? (xAxisLabelInfo.titleTextStyle!.fontSize! + 12)
+          : 0.0,
         sideTitles: SideTitles(
           getTitlesWidget: (val, _) => getXTitlesWidget != null
               ? getXTitlesWidget(val, _)
@@ -520,8 +520,8 @@ FlTitlesData getTitlesData(
                 style: yAxisLabelInfo.titleTextStyle,
               ),
         axisNameSize: yAxisLabelInfo.titleTextStyle?.fontSize != null
-            ? yAxisLabelInfo.titleTextStyle!.fontSize! + 12
-            : null,
+          ? yAxisLabelInfo.titleTextStyle!.fontSize! + 12
+          : 0.0,
         sideTitles: SideTitles(
           getTitlesWidget: (val, _) => Text(
             formatLabel(yAxisLabelInfo.labelFormatter, val),
