@@ -591,7 +591,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     .bodyMediumFamily),
                                       ),
                                   maxLines: 6,
-                                  maxLength: 350,
+                                  maxLength: 100,
                                   maxLengthEnforcement:
                                       MaxLengthEnforcement.enforced,
                                   keyboardType: TextInputType.name,
