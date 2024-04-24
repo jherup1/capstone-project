@@ -3788,6 +3788,31 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                           .text,
                                       isPublic: _model.isPublicValue != null &&
                                           _model.isPublicValue != '',
+                                      academicCalendar: _model
+                                          .academicCalendarTextController.text,
+                                      costAfterAid: double.tryParse(_model
+                                          .costAfterAidTextController.text),
+                                      endowment2018: _model
+                                          .endowment2018TextController.text,
+                                      percentReceivingAId: double.tryParse(
+                                          _model
+                                              .percentRecievingAidTextController
+                                              .text),
+                                      rankingIsTied:
+                                          _model.rankIsTiedValue != null &&
+                                              _model.rankIsTiedValue != '',
+                                      rankingSortRank: int.tryParse(_model
+                                          .rankSortRankTextController.text),
+                                      satActRangeACT: _model
+                                          .satActRangeACTTextController.text,
+                                      satActRangeSAT: _model
+                                          .satActRangeSATTextController.text,
+                                      setting:
+                                          _model.settingTextController.text,
+                                      state: _model.stateTextController.text,
+                                      yearFounded: int.tryParse(_model
+                                          .yearFoundedTextController.text),
+                                      primaryPhoto: _model.uploadedFileUrl,
                                     ));
                                 context.pop();
                                 ScaffoldMessenger.of(context).showSnackBar(
