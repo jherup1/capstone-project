@@ -231,6 +231,34 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'adminPrograms',
               requireAuth: true,
               builder: (context, params) => const AdminProgramsWidget(),
+            ),
+            FFRoute(
+              name: 'programs',
+              path: 'programs',
+              builder: (context, params) => ProgramsWidget(
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'searchPrograms',
+              path: 'searchPrograms',
+              builder: (context, params) => SearchProgramsWidget(
+                pageTitle: params.getParam(
+                  'pageTitle',
+                  ParamType.String,
+                ),
+                pageDetails: params.getParam(
+                  'pageDetails',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

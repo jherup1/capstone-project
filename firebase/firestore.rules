@@ -8,6 +8,13 @@ service cloud.firestore {
       allow delete: if request.auth.uid == document;
     }
 
+    match /schools/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if true;
+      allow delete: if true;
+    }
+
     match /supportTickets/{document} {
       allow create: if true;
       allow read: if true;

@@ -1,17 +1,17 @@
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/components/school_scroll/school_scroll_widget.dart';
-import '/components/school_scroll_fav/school_scroll_fav_widget.dart';
+import '/components/program_scroll/program_scroll_widget.dart';
+import '/components/program_scroll_fav/program_scroll_fav_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'schools_model.dart';
-export 'schools_model.dart';
+import 'programs_model.dart';
+export 'programs_model.dart';
 
-class SchoolsWidget extends StatefulWidget {
-  const SchoolsWidget({
+class ProgramsWidget extends StatefulWidget {
+  const ProgramsWidget({
     super.key,
     this.pageTitle,
     String? pageDetails,
@@ -21,20 +21,20 @@ class SchoolsWidget extends StatefulWidget {
   final String pageDetails;
 
   @override
-  State<SchoolsWidget> createState() => _SchoolsWidgetState();
+  State<ProgramsWidget> createState() => _ProgramsWidgetState();
 }
 
-class _SchoolsWidgetState extends State<SchoolsWidget> {
-  late SchoolsModel _model;
+class _ProgramsWidgetState extends State<ProgramsWidget> {
+  late ProgramsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SchoolsModel());
+    _model = createModel(context, () => ProgramsModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'schools'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'programs'});
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -94,8 +94,8 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                           updateCallback: () => setState(() {}),
                           child: const BreadcrumbsHeaderWidget(
                             pageDetails:
-                                'Find a school that fits you, and add it to your favorites by clicking the star!',
-                            pageTitle: 'Schools',
+                                'Find a program that fits you, and add it to your favorites by clicking the star!',
+                            pageTitle: 'Programs',
                           ),
                         ),
                         Align(
@@ -130,9 +130,9 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                         0.0, 16.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        context.pushNamed('searchSchools');
+                                        context.pushNamed('searchPrograms');
                                       },
-                                      text: 'Search Schools',
+                                      text: 'Search Programs',
                                       options: FFButtonOptions(
                                         height: 40.0,
                                         padding: const EdgeInsetsDirectional.fromSTEB(
@@ -238,7 +238,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'Your Schools',
+                                                              'Your Programs',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .headlineSmall
@@ -263,7 +263,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Below you will find a summary of your favorited schools.',
+                                                                'Below you will find a summary of your favorited programs.',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodySmall
@@ -294,7 +294,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
-                                              'Your favorite schools',
+                                              'Your favorite programs',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -314,10 +314,10 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                             ),
                                           ),
                                           wrapWithModel(
-                                            model: _model.schoolScrollFavModel,
+                                            model: _model.programScrollFavModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: const SchoolScrollFavWidget(),
+                                            child: const ProgramScrollFavWidget(),
                                           ),
                                         ],
                                       ),
@@ -394,7 +394,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                                   .start,
                                                           children: [
                                                             Text(
-                                                              'All Schools',
+                                                              'All Programs',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .headlineSmall
@@ -419,7 +419,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                                           0.0,
                                                                           0.0),
                                                               child: Text(
-                                                                'Below you will find all schools.',
+                                                                'Below you will find all programs.',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodySmall
@@ -450,7 +450,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
-                                              'All schools',
+                                              'All programs',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -470,10 +470,10 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                             ),
                                           ),
                                           wrapWithModel(
-                                            model: _model.schoolScrollModel,
+                                            model: _model.programScrollModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: const SchoolScrollWidget(),
+                                            child: const ProgramScrollWidget(),
                                           ),
                                         ],
                                       ),

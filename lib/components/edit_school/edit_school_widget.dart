@@ -285,10 +285,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                             const Duration(milliseconds: 500),
                                         fadeOutDuration:
                                             const Duration(milliseconds: 500),
-                                        imageUrl: valueOrDefault<String>(
-                                          widget.schoolDoc?.primaryPhoto,
-                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
-                                        ),
+                                        imageUrl:
+                                            widget.schoolDoc!.primaryPhoto,
                                         fit: BoxFit.fitWidth,
                                       ),
                                     ),
