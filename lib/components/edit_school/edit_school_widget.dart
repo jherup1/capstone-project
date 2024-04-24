@@ -1282,7 +1282,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
-                                          'GeoPoint (in the form \"LatLng(lat: LATITUDE, lng: LONGITUDE)',
+                                          'GeoPoint [in the form \"LatLng(lat: LAT, lng: LNG)\"]',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
