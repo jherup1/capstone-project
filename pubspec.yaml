@@ -49,14 +49,13 @@ dependencies:
   firebase_storage: 11.6.8
   firebase_storage_platform_interface: 5.1.11
   firebase_storage_web: 3.7.2
-  fl_chart: 0.55.0
+  fl_chart:
   fluster:
   flutter_animate: 4.1.1+1
   flutter_blurhash: 0.8.2
   flutter_cache_manager: 3.3.1
   flutter_map:
   flutter_map_marker_cluster:
-  flutter_map_supercluster:
   flutter_native_splash: 2.3.1
   flutter_plugin_android_lifecycle: 2.0.17
   flutter_rating_bar: 4.0.1

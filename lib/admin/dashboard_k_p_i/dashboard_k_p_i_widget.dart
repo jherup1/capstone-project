@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
-import '/flutter_flow/flutter_flow_charts.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -63,86 +62,85 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
             ),
           ),
         ),
-        body: SafeArea(
-          top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-                tablet: false,
-              ))
-                wrapWithModel(
-                  model: _model.sideBarNavModel1,
-                  updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
-                ),
-              Flexible(
-                child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
-                  child: StreamBuilder<List<FeedbackRecord>>(
-                    stream: queryFeedbackRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).tertiary,
-                              ),
+        body: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            if (responsiveVisibility(
+              context: context,
+              phone: false,
+              tablet: false,
+            ))
+              wrapWithModel(
+                model: _model.sideBarNavModel1,
+                updateCallback: () => setState(() {}),
+                child: const SideBarNavWidget(),
+              ),
+            Flexible(
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, -1.0),
+                child: StreamBuilder<List<FeedbackRecord>>(
+                  stream: queryFeedbackRecord(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).tertiary,
                             ),
                           ),
-                        );
-                      }
-                      List<FeedbackRecord> containerFeedbackRecordList =
-                          snapshot.data!;
-                      return Container(
-                        decoration: const BoxDecoration(),
-                        child: FutureBuilder<List<UsersRecord>>(
-                          future: queryUsersRecordOnce(),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).tertiary,
-                                    ),
+                        ),
+                      );
+                    }
+                    List<FeedbackRecord> containerFeedbackRecordList =
+                        snapshot.data!;
+                    return Container(
+                      decoration: const BoxDecoration(),
+                      child: FutureBuilder<List<UsersRecord>>(
+                        future: queryUsersRecordOnce(),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).tertiary,
                                   ),
                                 ),
-                              );
-                            }
-                            List<UsersRecord> containerUsersRecordList =
-                                snapshot.data!;
-                            return Container(
-                              decoration: const BoxDecoration(),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.breadcrumbsHeaderModel,
-                                      updateCallback: () => setState(() {}),
-                                      child: const BreadcrumbsHeaderWidget(
-                                        pageDetails: 'Usage Satistics ',
-                                        pageTitle: 'KPI Dashboard',
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
+                              ),
+                            );
+                          }
+                          List<UsersRecord> containerUsersRecordList =
+                              snapshot.data!;
+                          return Container(
+                            decoration: const BoxDecoration(),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                wrapWithModel(
+                                  model: _model.breadcrumbsHeaderModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: const BreadcrumbsHeaderWidget(
+                                    pageDetails: 'Usage Satistics ',
+                                    pageTitle: 'KPI Dashboard',
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Flexible(
+                                        child: Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
@@ -153,7 +151,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                   0.6,
                                               height: MediaQuery.sizeOf(context)
                                                       .height *
-                                                  0.5,
+                                                  1.0,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -170,6 +168,8 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                               ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     mainAxisSize:
@@ -580,1177 +580,437 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                       ),
                                                     ],
                                                   ),
-                                                  Flexible(
-                                                    child: Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              0.0, 1.0),
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 1.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: Container(
-                                                        width: double.infinity,
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.6,
                                                         height:
                                                             MediaQuery.sizeOf(
                                                                         context)
                                                                     .height *
-                                                                0.35,
+                                                                0.76,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      15.0),
-                                                        ),
-                                                        child: SizedBox(
-                                                          width: 370.0,
-                                                          height: 230.0,
-                                                          child:
-                                                              FlutterFlowBarChart(
-                                                            barData: [
-                                                              FFBarChartData(
-                                                                yData: containerUsersRecordList
-                                                                    .map((d) =>
-                                                                        d.lastActiveTime)
-                                                                    .toList(),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                              )
-                                                            ],
-                                                            xLabels:
-                                                                containerUsersRecordList
-                                                                    .map((d) =>
-                                                                        d.role)
-                                                                    .toList(),
-                                                            barWidth: 16.0,
-                                                            barBorderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            groupSpace: 8.0,
-                                                            alignment:
-                                                                BarChartAlignment
-                                                                    .spaceAround,
-                                                            chartStylingInfo:
-                                                                ChartStylingInfo(
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              showBorder: false,
-                                                            ),
-                                                            axisBounds:
-                                                                const AxisBounds(),
-                                                            xAxisLabelInfo:
-                                                                const AxisLabelInfo(
-                                                              title: 'Role',
-                                                              titleTextStyle:
-                                                                  TextStyle(
-                                                                fontSize: 14.0,
-                                                              ),
-                                                              showLabels: true,
-                                                              labelInterval:
-                                                                  10.0,
-                                                            ),
-                                                            yAxisLabelInfo:
-                                                                const AxisLabelInfo(
-                                                              title:
-                                                                  'Last Active Time',
-                                                              titleTextStyle:
-                                                                  TextStyle(
-                                                                fontSize: 14.0,
-                                                              ),
-                                                              showLabels: true,
-                                                              labelInterval:
-                                                                  10.0,
-                                                            ),
+                                                              const BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    15.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    15.0),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 10.0, 0.0),
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.26,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.5,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(15.0),
-                                                bottomRight:
-                                                    Radius.circular(15.0),
-                                                topLeft: Radius.circular(15.0),
-                                                topRight: Radius.circular(0.0),
-                                              ),
-                                              shape: BoxShape.rectangle,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 20.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Feedback',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMediumFamily,
-                                                          fontSize: 21.0,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily),
-                                                        ),
-                                                  ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Flexible(
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Text(
-                                                          'Average Rating: ',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Support Leaderboard',
+                                                                style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodyMediumFamily,
-                                                                fontSize: 21.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily,
+                                                                      fontSize:
+                                                                          22.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
                                                               ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Flexible(
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            formatNumber(
-                                                              functions.averageRating(
-                                                                  containerFeedbackRecordList
-                                                                      .toList()),
-                                                              formatType:
-                                                                  FormatType
-                                                                      .decimal,
-                                                              decimalType:
-                                                                  DecimalType
-                                                                      .automatic,
                                                             ),
-                                                            '4.1',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                fontSize: 21.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ]
-                                                      .addToStart(
-                                                          const SizedBox(width: 50.0))
-                                                      .addToEnd(const SizedBox(
-                                                          width: 50.0)),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 10.0, 0.0, 10.0),
-                                                  child: RatingBarIndicator(
-                                                    itemBuilder:
-                                                        (context, index) =>
-                                                            const Icon(
-                                                      Icons.star_rounded,
-                                                      color: Color(0xFF4E48EE),
-                                                    ),
-                                                    direction: Axis.horizontal,
-                                                    rating:
-                                                        valueOrDefault<double>(
-                                                      functions.averageRating(
-                                                          containerFeedbackRecordList
-                                                              .toList()),
-                                                      3.0,
-                                                    ),
-                                                    unratedColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent3,
-                                                    itemCount: 5,
-                                                    itemSize: 70.0,
-                                                  ),
-                                                ),
-                                                Flexible(
-                                                  child: Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, -1.0),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      decoration:
-                                                          const BoxDecoration(),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        40.0,
-                                                                        0.0,
-                                                                        20.0,
-                                                                        0.0),
-                                                            child: Column(
+                                                            Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
-                                                                      .min,
+                                                                      .max,
                                                               children: [
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/Heart_Eyes_Emoji.png',
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/Slightly_Smiling_Emoji.png',
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/Neutral_Emoji_.png',
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/Confused_Emoji.png',
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                                ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'assets/images/Crying_Emoji.png',
-                                                                    width: 30.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                ),
-                                                              ].divide(const SizedBox(
-                                                                  height:
-                                                                      20.0)),
-                                                            ),
-                                                          ),
-                                                          Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .end,
-                                                            children: [
-                                                              Flexible(
-                                                                child:
-                                                                    LinearPercentIndicator(
-                                                                  percent: containerFeedbackRecordList
-                                                                          .where((e) =>
-                                                                              e.reviewNumber ==
-                                                                              5)
-                                                                          .toList()
-                                                                          .length
-                                                                          .toDouble() /
-                                                                      containerFeedbackRecordList
-                                                                          .length,
+                                                                Container(
                                                                   width: MediaQuery.sizeOf(
                                                                               context)
                                                                           .width *
-                                                                      0.19,
-                                                                  lineHeight:
-                                                                      30.0,
-                                                                  animation:
-                                                                      true,
-                                                                  animateFromLastPercent:
-                                                                      true,
-                                                                  progressColor:
-                                                                      const Color(
-                                                                          0xFF4E48EE),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent4,
-                                                                  center: Text(
-                                                                    formatNumber(
-                                                                      containerFeedbackRecordList
-                                                                              .where((e) =>
-                                                                                  e.reviewNumber ==
-                                                                                  5)
-                                                                              .toList()
-                                                                              .length
-                                                                              .toDouble() /
-                                                                          containerFeedbackRecordList
-                                                                              .length
-                                                                              .toDouble(),
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .percent,
-                                                                    ),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
+                                                                      0.12,
+                                                                  decoration:
+                                                                      const BoxDecoration(),
+                                                                  child: Text(
+                                                                    'Name',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .headlineSmall
+                                                                        .bodyMedium
                                                                         .override(
                                                                           fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                         ),
                                                                   ),
-                                                                  barRadius: const Radius
-                                                                      .circular(
-                                                                          5.0),
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
                                                                 ),
-                                                              ),
-                                                              Flexible(
-                                                                child:
-                                                                    LinearPercentIndicator(
-                                                                  percent: containerFeedbackRecordList
-                                                                          .where((e) =>
-                                                                              e.reviewNumber ==
-                                                                              4)
-                                                                          .toList()
-                                                                          .length
-                                                                          .toDouble() /
-                                                                      containerFeedbackRecordList
-                                                                          .length,
-                                                                  width: MediaQuery.sizeOf(
-                                                                              context)
-                                                                          .width *
-                                                                      0.19,
-                                                                  lineHeight:
-                                                                      30.0,
-                                                                  animation:
-                                                                      true,
-                                                                  animateFromLastPercent:
-                                                                      true,
-                                                                  progressColor:
-                                                                      const Color(
-                                                                          0xFF00FF2E),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent4,
-                                                                  center: Text(
-                                                                    formatNumber(
-                                                                      containerFeedbackRecordList
-                                                                              .where((e) => e.reviewNumber == 4)
-                                                                              .toList()
-                                                                              .length
-                                                                              .toDouble() /
-                                                                          containerFeedbackRecordList.length,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .percent,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                        ),
-                                                                  ),
-                                                                  barRadius: const Radius
-                                                                      .circular(
-                                                                          5.0),
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child:
-                                                                    LinearPercentIndicator(
-                                                                  percent: containerFeedbackRecordList
-                                                                          .where((e) =>
-                                                                              e.reviewNumber ==
-                                                                              3)
-                                                                          .toList()
-                                                                          .length
-                                                                          .toDouble() /
-                                                                      containerFeedbackRecordList
-                                                                          .length,
-                                                                  width: MediaQuery.sizeOf(
-                                                                              context)
-                                                                          .width *
-                                                                      0.19,
-                                                                  lineHeight:
-                                                                      30.0,
-                                                                  animation:
-                                                                      true,
-                                                                  animateFromLastPercent:
-                                                                      true,
-                                                                  progressColor:
-                                                                      const Color(
-                                                                          0xFFF7FD09),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent4,
-                                                                  center: Text(
-                                                                    formatNumber(
-                                                                      containerFeedbackRecordList
-                                                                              .where((e) => e.reviewNumber == 3)
-                                                                              .toList()
-                                                                              .length
-                                                                              .toDouble() /
-                                                                          containerFeedbackRecordList.length,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .percent,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                        ),
-                                                                  ),
-                                                                  barRadius: const Radius
-                                                                      .circular(
-                                                                          5.0),
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child:
-                                                                    LinearPercentIndicator(
-                                                                  percent: containerFeedbackRecordList
-                                                                          .where((e) =>
-                                                                              e.reviewNumber ==
-                                                                              2)
-                                                                          .toList()
-                                                                          .length
-                                                                          .toDouble() /
-                                                                      containerFeedbackRecordList
-                                                                          .length,
-                                                                  width: MediaQuery.sizeOf(
-                                                                              context)
-                                                                          .width *
-                                                                      0.19,
-                                                                  lineHeight:
-                                                                      30.0,
-                                                                  animation:
-                                                                      true,
-                                                                  animateFromLastPercent:
-                                                                      true,
-                                                                  progressColor:
-                                                                      const Color(
-                                                                          0xFFFF6900),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent4,
-                                                                  center: Text(
-                                                                    formatNumber(
-                                                                      containerFeedbackRecordList
-                                                                              .where((e) => e.reviewNumber == 2)
-                                                                              .toList()
-                                                                              .length
-                                                                              .toDouble() /
-                                                                          containerFeedbackRecordList.length,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .percent,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                        ),
-                                                                  ),
-                                                                  barRadius: const Radius
-                                                                      .circular(
-                                                                          5.0),
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                ),
-                                                              ),
-                                                              Flexible(
-                                                                child:
-                                                                    LinearPercentIndicator(
-                                                                  percent: containerFeedbackRecordList
-                                                                          .where((e) =>
-                                                                              e.reviewNumber ==
-                                                                              1)
-                                                                          .toList()
-                                                                          .length
-                                                                          .toDouble() /
-                                                                      containerFeedbackRecordList
-                                                                          .length,
-                                                                  width: MediaQuery.sizeOf(
-                                                                              context)
-                                                                          .width *
-                                                                      0.19,
-                                                                  lineHeight:
-                                                                      30.0,
-                                                                  animation:
-                                                                      true,
-                                                                  animateFromLastPercent:
-                                                                      true,
-                                                                  progressColor:
-                                                                      const Color(
-                                                                          0xFFF61616),
-                                                                  backgroundColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .accent4,
-                                                                  center: Text(
-                                                                    formatNumber(
-                                                                      containerFeedbackRecordList
-                                                                              .where((e) => e.reviewNumber == 1)
-                                                                              .toList()
-                                                                              .length
-                                                                              .toDouble() /
-                                                                          containerFeedbackRecordList.length,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .percent,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              FlutterFlowTheme.of(context).headlineSmallFamily,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          useGoogleFonts:
-                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                        ),
-                                                                  ),
-                                                                  barRadius: const Radius
-                                                                      .circular(
-                                                                          5.0),
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                ),
-                                                              ),
-                                                            ].divide(const SizedBox(
-                                                                height: 20.0)),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.6,
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.4,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius: const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0.0),
-                                                  bottomRight:
-                                                      Radius.circular(15.0),
-                                                  topLeft:
-                                                      Radius.circular(15.0),
-                                                  topRight:
-                                                      Radius.circular(15.0),
-                                                ),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Support Leaderboard',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                fontSize: 22.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Container(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                0.12,
-                                                        decoration:
-                                                            const BoxDecoration(),
-                                                        child: Text(
-                                                          'Name',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    30.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.1,
-                                                          decoration:
-                                                              const BoxDecoration(),
-                                                          child: Text(
-                                                            'Date of Last Resolved Ticket',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    50.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.1,
-                                                          decoration:
-                                                              const BoxDecoration(),
-                                                          child: Text(
-                                                            'Number of Tickets Resolved',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    30.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.1,
-                                                          decoration:
-                                                              const BoxDecoration(),
-                                                          child: Text(
-                                                            '% of total tickets resolved',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ]
-                                                        .addToStart(const SizedBox(
-                                                            width: 100.0))
-                                                        .addToEnd(const SizedBox(
-                                                            width: 100.0)),
-                                                  ),
-                                                  PagedListView<
-                                                      DocumentSnapshot<
-                                                          Object?>?,
-                                                      SupportStatsRecord>(
-                                                    pagingController: _model
-                                                        .setListViewController1(
-                                                      SupportStatsRecord
-                                                          .collection
-                                                          .orderBy('numTickets',
-                                                              descending: true),
-                                                    ),
-                                                    padding: EdgeInsets.zero,
-                                                    shrinkWrap: true,
-                                                    reverse: false,
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    builderDelegate:
-                                                        PagedChildBuilderDelegate<
-                                                            SupportStatsRecord>(
-                                                      // Customize what your widget looks like when it's loading the first page.
-                                                      firstPageProgressIndicatorBuilder:
-                                                          (_) => Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .tertiary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      // Customize what your widget looks like when it's loading another page.
-                                                      newPageProgressIndicatorBuilder:
-                                                          (_) => Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .tertiary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-
-                                                      itemBuilder: (context, _,
-                                                          listViewIndex) {
-                                                        final listViewSupportStatsRecord =
-                                                            _model.listViewPagingController1!
-                                                                    .itemList![
-                                                                listViewIndex];
-                                                        return StreamBuilder<
-                                                            List<UsersRecord>>(
-                                                          stream:
-                                                              queryUsersRecord(
-                                                            queryBuilder:
-                                                                (usersRecord) =>
-                                                                    usersRecord
-                                                                        .where(
-                                                              'uid',
-                                                              isEqualTo:
-                                                                  listViewSupportStatsRecord
-                                                                      .uid,
-                                                            ),
-                                                            singleRecord: true,
-                                                          ),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          30.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
+                                                                      Container(
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.1,
+                                                                    decoration:
+                                                                        const BoxDecoration(),
+                                                                    child: Text(
+                                                                      'Date of Last Resolved Ticket',
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .tertiary,
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              );
-                                                            }
-                                                            List<UsersRecord>
-                                                                containerUsersRecordList =
-                                                                snapshot.data!;
-                                                            final containerUsersRecord =
-                                                                containerUsersRecordList
-                                                                        .isNotEmpty
-                                                                    ? containerUsersRecordList
-                                                                        .first
-                                                                    : null;
-                                                            return Container(
-                                                              width: 100.0,
-                                                              height: 100.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                              ),
-                                                              child:
-                                                                  FutureBuilder<
-                                                                      int>(
-                                                                future:
-                                                                    querySupportTicketsRecordCount(
-                                                                  queryBuilder:
-                                                                      (supportTicketsRecord) =>
-                                                                          supportTicketsRecord
-                                                                              .where(
-                                                                    'status',
-                                                                    isEqualTo:
-                                                                        'closed',
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          50.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.1,
+                                                                    decoration:
+                                                                        const BoxDecoration(),
+                                                                    child: Text(
+                                                                      'Number of Tickets Resolved',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  // Customize what your widget looks like when it's loading.
-                                                                  if (!snapshot
-                                                                      .hasData) {
-                                                                    return Center(
-                                                                      child:
-                                                                          SizedBox(
-                                                                        width:
-                                                                            50.0,
-                                                                        height:
-                                                                            50.0,
-                                                                        child:
-                                                                            CircularProgressIndicator(
-                                                                          valueColor:
-                                                                              AlwaysStoppedAnimation<Color>(
-                                                                            FlutterFlowTheme.of(context).tertiary,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  }
-                                                                  int rowCount =
-                                                                      snapshot
-                                                                          .data!;
-                                                                  return Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
+                                                                Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          30.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
                                                                       Container(
-                                                                        width: MediaQuery.sizeOf(context).width *
-                                                                            0.12,
-                                                                        decoration:
-                                                                            const BoxDecoration(),
-                                                                        child:
-                                                                            Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            containerUsersRecord?.displayName,
-                                                                            'Jerry',
+                                                                    width: MediaQuery.sizeOf(context)
+                                                                            .width *
+                                                                        0.1,
+                                                                    decoration:
+                                                                        const BoxDecoration(),
+                                                                    child: Text(
+                                                                      '% of total tickets resolved',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
                                                                           ),
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ]
+                                                                  .addToStart(
+                                                                      const SizedBox(
+                                                                          width:
+                                                                              100.0))
+                                                                  .addToEnd(
+                                                                      const SizedBox(
+                                                                          width:
+                                                                              100.0)),
+                                                            ),
+                                                            Flexible(
+                                                              child: PagedListView<
+                                                                  DocumentSnapshot<
+                                                                      Object?>?,
+                                                                  SupportStatsRecord>(
+                                                                pagingController:
+                                                                    _model
+                                                                        .setListViewController1(
+                                                                  SupportStatsRecord
+                                                                      .collection
+                                                                      .orderBy(
+                                                                          'numTickets',
+                                                                          descending:
+                                                                              true),
+                                                                ),
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                reverse: false,
+                                                                scrollDirection:
+                                                                    Axis.vertical,
+                                                                builderDelegate:
+                                                                    PagedChildBuilderDelegate<
+                                                                        SupportStatsRecord>(
+                                                                  // Customize what your widget looks like when it's loading the first page.
+                                                                  firstPageProgressIndicatorBuilder:
+                                                                      (_) =>
+                                                                          Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width:
+                                                                          50.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        valueColor:
+                                                                            AlwaysStoppedAnimation<Color>(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .tertiary,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  // Customize what your widget looks like when it's loading another page.
+                                                                  newPageProgressIndicatorBuilder:
+                                                                      (_) =>
+                                                                          Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width:
+                                                                          50.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        valueColor:
+                                                                            AlwaysStoppedAnimation<Color>(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .tertiary,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          _,
+                                                                          listViewIndex) {
+                                                                    final listViewSupportStatsRecord = _model
+                                                                        .listViewPagingController1!
+                                                                        .itemList![listViewIndex];
+                                                                    return StreamBuilder<
+                                                                        List<
+                                                                            UsersRecord>>(
+                                                                      stream:
+                                                                          queryUsersRecord(
+                                                                        queryBuilder:
+                                                                            (usersRecord) =>
+                                                                                usersRecord.where(
+                                                                          'uid',
+                                                                          isEqualTo:
+                                                                              listViewSupportStatsRecord.uid,
+                                                                        ),
+                                                                        singleRecord:
+                                                                            true,
+                                                                      ),
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 50.0,
+                                                                              height: 50.0,
+                                                                              child: CircularProgressIndicator(
+                                                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                  FlutterFlowTheme.of(context).tertiary,
+                                                                                ),
                                                                               ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            30.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              MediaQuery.sizeOf(context).width * 0.1,
-                                                                          decoration:
-                                                                              const BoxDecoration(),
-                                                                          child:
-                                                                              Text(
-                                                                            dateTimeFormat('relative',
-                                                                                listViewSupportStatsRecord.lastResolved!),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            50.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              MediaQuery.sizeOf(context).width * 0.1,
-                                                                          decoration:
-                                                                              const BoxDecoration(),
-                                                                          child:
-                                                                              Text(
-                                                                            listViewSupportStatsRecord.numTickets.toString(),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            30.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Container(
-                                                                          width:
-                                                                              MediaQuery.sizeOf(context).width * 0.1,
-                                                                          decoration:
-                                                                              const BoxDecoration(),
-                                                                          child:
-                                                                              Text(
-                                                                            formatNumber(
-                                                                              listViewSupportStatsRecord.numTickets / rowCount,
-                                                                              formatType: FormatType.percent,
                                                                             ),
-                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                  fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                  letterSpacing: 0.0,
-                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                                ),
+                                                                          );
+                                                                        }
+                                                                        List<UsersRecord>
+                                                                            containerUsersRecordList =
+                                                                            snapshot.data!;
+                                                                        final containerUsersRecord = containerUsersRecordList.isNotEmpty
+                                                                            ? containerUsersRecordList.first
+                                                                            : null;
+                                                                        return Container(
+                                                                          width:
+                                                                              100.0,
+                                                                          height:
+                                                                              100.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryBackground,
                                                                           ),
-                                                                        ),
-                                                                      ),
-                                                                    ]
-                                                                        .addToStart(const SizedBox(
-                                                                            width:
-                                                                                100.0))
-                                                                        .addToEnd(const SizedBox(
-                                                                            width:
-                                                                                100.0)),
-                                                                  );
-                                                                },
+                                                                          child:
+                                                                              FutureBuilder<int>(
+                                                                            future:
+                                                                                querySupportTicketsRecordCount(
+                                                                              queryBuilder: (supportTicketsRecord) => supportTicketsRecord.where(
+                                                                                'status',
+                                                                                isEqualTo: 'closed',
+                                                                              ),
+                                                                            ),
+                                                                            builder:
+                                                                                (context, snapshot) {
+                                                                              // Customize what your widget looks like when it's loading.
+                                                                              if (!snapshot.hasData) {
+                                                                                return Center(
+                                                                                  child: SizedBox(
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    child: CircularProgressIndicator(
+                                                                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                        FlutterFlowTheme.of(context).tertiary,
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              }
+                                                                              int rowCount = snapshot.data!;
+                                                                              return Row(
+                                                                                mainAxisSize: MainAxisSize.max,
+                                                                                children: [
+                                                                                  Container(
+                                                                                    width: MediaQuery.sizeOf(context).width * 0.12,
+                                                                                    decoration: const BoxDecoration(),
+                                                                                    child: Text(
+                                                                                      valueOrDefault<String>(
+                                                                                        containerUsersRecord?.displayName,
+                                                                                        'Jerry',
+                                                                                      ),
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                            letterSpacing: 0.0,
+                                                                                            useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                          ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                    child: Container(
+                                                                                      width: MediaQuery.sizeOf(context).width * 0.1,
+                                                                                      decoration: const BoxDecoration(),
+                                                                                      child: Text(
+                                                                                        dateTimeFormat('relative', listViewSupportStatsRecord.lastResolved!),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 0.0, 0.0),
+                                                                                    child: Container(
+                                                                                      width: MediaQuery.sizeOf(context).width * 0.1,
+                                                                                      decoration: const BoxDecoration(),
+                                                                                      child: Text(
+                                                                                        listViewSupportStatsRecord.numTickets.toString(),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                    child: Container(
+                                                                                      width: MediaQuery.sizeOf(context).width * 0.1,
+                                                                                      decoration: const BoxDecoration(),
+                                                                                      child: Text(
+                                                                                        formatNumber(
+                                                                                          listViewSupportStatsRecord.numTickets / rowCount,
+                                                                                          formatType: FormatType.percent,
+                                                                                        ),
+                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                              fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                              letterSpacing: 0.0,
+                                                                                              useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                            ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ].addToStart(const SizedBox(width: 100.0)).addToEnd(const SizedBox(width: 100.0)),
+                                                                              );
+                                                                            },
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                  },
+                                                                ),
                                                               ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -1758,40 +1018,23 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                             ),
                                           ),
                                         ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 10.0, 1.0),
-                                            child: StreamBuilder<
-                                                List<UsersRecord>>(
-                                              stream: queryUsersRecord(),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                                List<UsersRecord>
-                                                    containerUsersRecordList =
-                                                    snapshot.data!;
-                                                return Container(
+                                      ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, -1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 0.0),
+                                                child: Container(
                                                   width:
                                                       MediaQuery.sizeOf(context)
                                                               .width *
@@ -1799,7 +1042,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                   height:
                                                       MediaQuery.sizeOf(context)
                                                               .height *
-                                                          0.4,
+                                                          0.5,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -1809,103 +1052,74 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                       bottomLeft:
                                                           Radius.circular(15.0),
                                                       bottomRight:
-                                                          Radius.circular(0.0),
+                                                          Radius.circular(15.0),
                                                       topLeft:
                                                           Radius.circular(15.0),
                                                       topRight:
-                                                          Radius.circular(15.0),
+                                                          Radius.circular(0.0),
                                                     ),
                                                     shape: BoxShape.rectangle,
                                                   ),
-                                                  child: Stack(
-                                                    children: [
-                                                      Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Align(
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, -1.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Rating',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
+                                                  child: Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, -1.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      20.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Feedback',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  fontSize:
+                                                                      21.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
                                                                           FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ),
+                                                                              .bodyMediumFamily),
+                                                                ),
                                                           ),
-                                                          Align(
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, -1.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          20.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'User',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Flexible(
-                                                            child: Align(
-                                                              alignment:
-                                                                  const AlignmentDirectional(
-                                                                      -1.0,
-                                                                      -1.0),
-                                                              child: Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        20.0,
-                                                                        10.0,
+                                                        ),
+                                                        Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Flexible(
+                                                              child: Align(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  'Rating Description',
+                                                                  'Average Rating: ',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        fontSize:
+                                                                            21.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         useGoogleFonts:
@@ -1914,171 +1128,687 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 ),
                                                               ),
                                                             ),
+                                                            Flexible(
+                                                              child: Align(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child: Text(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    formatNumber(
+                                                                      functions.averageRating(
+                                                                          containerFeedbackRecordList
+                                                                              .toList()),
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .decimal,
+                                                                      decimalType:
+                                                                          DecimalType
+                                                                              .automatic,
+                                                                    ),
+                                                                    '4.1',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                        fontSize:
+                                                                            21.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ]
+                                                              .addToStart(
+                                                                  const SizedBox(
+                                                                      width:
+                                                                          50.0))
+                                                              .addToEnd(const SizedBox(
+                                                                  width: 50.0)),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child:
+                                                              RatingBarIndicator(
+                                                            itemBuilder:
+                                                                (context,
+                                                                        index) =>
+                                                                    const Icon(
+                                                              Icons
+                                                                  .star_rounded,
+                                                              color: Color(
+                                                                  0xFF4E48EE),
+                                                            ),
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            rating:
+                                                                valueOrDefault<
+                                                                    double>(
+                                                              functions.averageRating(
+                                                                  containerFeedbackRecordList
+                                                                      .toList()),
+                                                              3.0,
+                                                            ),
+                                                            unratedColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                            itemCount: 5,
+                                                            itemSize: 70.0,
                                                           ),
-                                                        ],
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    35.0,
-                                                                    15.0,
-                                                                    15.0),
-                                                        child: StreamBuilder<
-                                                            List<
-                                                                FeedbackRecord>>(
-                                                          stream:
-                                                              queryFeedbackRecord(
-                                                            queryBuilder: (feedbackRecord) =>
-                                                                feedbackRecord.orderBy(
-                                                                    'submissionDate',
-                                                                    descending:
-                                                                        true),
-                                                          ),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
+                                                        ),
+                                                        Flexible(
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, -1.0),
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              decoration:
+                                                                  const BoxDecoration(),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            40.0,
+                                                                            0.0,
+                                                                            20.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      children:
+                                                                          [
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/Heart_Eyes_Emoji.png',
+                                                                            width:
+                                                                                30.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/Slightly_Smiling_Emoji.png',
+                                                                            width:
+                                                                                30.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/Neutral_Emoji_.png',
+                                                                            width:
+                                                                                30.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/Confused_Emoji.png',
+                                                                            width:
+                                                                                30.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                        ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.asset(
+                                                                            'assets/images/Crying_Emoji.png',
+                                                                            width:
+                                                                                30.0,
+                                                                            height:
+                                                                                30.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ].divide(const SizedBox(
+                                                                              height: 20.0)),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            List<FeedbackRecord>
-                                                                listViewFeedbackRecordList =
-                                                                snapshot.data!;
-                                                            return ListView
-                                                                .builder(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              scrollDirection:
-                                                                  Axis.vertical,
-                                                              itemCount:
-                                                                  listViewFeedbackRecordList
-                                                                      .length,
-                                                              itemBuilder: (context,
-                                                                  listViewIndex) {
-                                                                final listViewFeedbackRecord =
-                                                                    listViewFeedbackRecordList[
-                                                                        listViewIndex];
-                                                                return Container(
-                                                                  width: 100.0,
-                                                                  height: 100.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
-                                                                  child: Row(
+                                                                  Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize
-                                                                            .max,
+                                                                            .min,
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .end,
                                                                     children: [
-                                                                      Stack(
-                                                                        children: [
-                                                                          if (listViewFeedbackRecord.reviewNumber ==
-                                                                              5)
-                                                                            ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: Image.asset(
-                                                                                'assets/images/Heart_Eyes_Emoji.png',
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          if (listViewFeedbackRecord.reviewNumber ==
-                                                                              4)
-                                                                            ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: Image.asset(
-                                                                                'assets/images/Slightly_Smiling_Emoji.png',
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          if (listViewFeedbackRecord.reviewNumber ==
-                                                                              3)
-                                                                            ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: Image.asset(
-                                                                                'assets/images/Neutral_Emoji_.png',
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          if (listViewFeedbackRecord.reviewNumber ==
-                                                                              2)
-                                                                            ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: Image.asset(
-                                                                                'assets/images/Confused_Emoji.png',
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          if (listViewFeedbackRecord.reviewNumber ==
-                                                                              1)
-                                                                            ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: Image.asset(
-                                                                                'assets/images/Crying_Emoji.png',
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                        ],
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            20.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
+                                                                      Flexible(
                                                                         child:
-                                                                            Text(
-                                                                          containerUsersRecordList
-                                                                              .where((e) => e.uid == listViewFeedbackRecord.uid)
-                                                                              .toList()
-                                                                              .first
-                                                                              .displayName,
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
-                                                                                letterSpacing: 0.0,
-                                                                                useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
-                                                                              ),
+                                                                            LinearPercentIndicator(
+                                                                          percent:
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 5).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 0.19,
+                                                                          lineHeight:
+                                                                              30.0,
+                                                                          animation:
+                                                                              true,
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              const Color(0xFF4E48EE),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).accent4,
+                                                                          center:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 5).toList().length.toDouble() / containerFeedbackRecordList.length.toDouble(),
+                                                                              formatType: FormatType.percent,
+                                                                            ),
+                                                                            textAlign:
+                                                                                TextAlign.center,
+                                                                            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                ),
+                                                                          ),
+                                                                          barRadius:
+                                                                              const Radius.circular(5.0),
+                                                                          padding:
+                                                                              EdgeInsets.zero,
                                                                         ),
                                                                       ),
                                                                       Flexible(
                                                                         child:
-                                                                            Align(
-                                                                          alignment: const AlignmentDirectional(
-                                                                              -1.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Padding(
+                                                                            LinearPercentIndicator(
+                                                                          percent:
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 4).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 0.19,
+                                                                          lineHeight:
+                                                                              30.0,
+                                                                          animation:
+                                                                              true,
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              const Color(0xFF00FF2E),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).accent4,
+                                                                          center:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 4).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                              formatType: FormatType.percent,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                ),
+                                                                          ),
+                                                                          barRadius:
+                                                                              const Radius.circular(5.0),
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                        ),
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            LinearPercentIndicator(
+                                                                          percent:
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 3).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 0.19,
+                                                                          lineHeight:
+                                                                              30.0,
+                                                                          animation:
+                                                                              true,
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              const Color(0xFFF7FD09),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).accent4,
+                                                                          center:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 3).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                              formatType: FormatType.percent,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                ),
+                                                                          ),
+                                                                          barRadius:
+                                                                              const Radius.circular(5.0),
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                        ),
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            LinearPercentIndicator(
+                                                                          percent:
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 2).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 0.19,
+                                                                          lineHeight:
+                                                                              30.0,
+                                                                          animation:
+                                                                              true,
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              const Color(0xFFFF6900),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).accent4,
+                                                                          center:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 2).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                              formatType: FormatType.percent,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                ),
+                                                                          ),
+                                                                          barRadius:
+                                                                              const Radius.circular(5.0),
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                        ),
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            LinearPercentIndicator(
+                                                                          percent:
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 1).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                          width:
+                                                                              MediaQuery.sizeOf(context).width * 0.19,
+                                                                          lineHeight:
+                                                                              30.0,
+                                                                          animation:
+                                                                              true,
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              const Color(0xFFF61616),
+                                                                          backgroundColor:
+                                                                              FlutterFlowTheme.of(context).accent4,
+                                                                          center:
+                                                                              Text(
+                                                                            formatNumber(
+                                                                              containerFeedbackRecordList.where((e) => e.reviewNumber == 1).toList().length.toDouble() / containerFeedbackRecordList.length,
+                                                                              formatType: FormatType.percent,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).headlineSmall.override(
+                                                                                  fontFamily: FlutterFlowTheme.of(context).headlineSmallFamily,
+                                                                                  letterSpacing: 0.0,
+                                                                                  useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).headlineSmallFamily),
+                                                                                ),
+                                                                          ),
+                                                                          barRadius:
+                                                                              const Radius.circular(5.0),
+                                                                          padding:
+                                                                              EdgeInsets.zero,
+                                                                        ),
+                                                                      ),
+                                                                    ].divide(const SizedBox(
+                                                                        height:
+                                                                            20.0)),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 10.0, 10.0, 1.0),
+                                                child: StreamBuilder<
+                                                    List<UsersRecord>>(
+                                                  stream: queryUsersRecord(),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .tertiary,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    List<UsersRecord>
+                                                        containerUsersRecordList =
+                                                        snapshot.data!;
+                                                    return Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          0.26,
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.4,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            const BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  15.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  15.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  15.0),
+                                                        ),
+                                                        shape:
+                                                            BoxShape.rectangle,
+                                                      ),
+                                                      child: Stack(
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0),
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    'Rating',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0),
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          20.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    'User',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          useGoogleFonts:
+                                                                              GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Flexible(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      const AlignmentDirectional(
+                                                                          -1.0,
+                                                                          -1.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            20.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Rating Description',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            useGoogleFonts:
+                                                                                GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        35.0,
+                                                                        15.0,
+                                                                        15.0),
+                                                            child: StreamBuilder<
+                                                                List<
+                                                                    FeedbackRecord>>(
+                                                              stream:
+                                                                  queryFeedbackRecord(
+                                                                queryBuilder: (feedbackRecord) =>
+                                                                    feedbackRecord.orderBy(
+                                                                        'submissionDate',
+                                                                        descending:
+                                                                            true),
+                                                              ),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                // Customize what your widget looks like when it's loading.
+                                                                if (!snapshot
+                                                                    .hasData) {
+                                                                  return Center(
+                                                                    child:
+                                                                        SizedBox(
+                                                                      width:
+                                                                          50.0,
+                                                                      height:
+                                                                          50.0,
+                                                                      child:
+                                                                          CircularProgressIndicator(
+                                                                        valueColor:
+                                                                            AlwaysStoppedAnimation<Color>(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .tertiary,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                }
+                                                                List<FeedbackRecord>
+                                                                    listViewFeedbackRecordList =
+                                                                    snapshot
+                                                                        .data!;
+                                                                return ListView
+                                                                    .builder(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  scrollDirection:
+                                                                      Axis.vertical,
+                                                                  itemCount:
+                                                                      listViewFeedbackRecordList
+                                                                          .length,
+                                                                  itemBuilder:
+                                                                      (context,
+                                                                          listViewIndex) {
+                                                                    final listViewFeedbackRecord =
+                                                                        listViewFeedbackRecordList[
+                                                                            listViewIndex];
+                                                                    return Container(
+                                                                      width:
+                                                                          100.0,
+                                                                      height:
+                                                                          100.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                      ),
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        children: [
+                                                                          Stack(
+                                                                            children: [
+                                                                              if (listViewFeedbackRecord.reviewNumber == 5)
+                                                                                ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.asset(
+                                                                                    'assets/images/Heart_Eyes_Emoji.png',
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              if (listViewFeedbackRecord.reviewNumber == 4)
+                                                                                ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.asset(
+                                                                                    'assets/images/Slightly_Smiling_Emoji.png',
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              if (listViewFeedbackRecord.reviewNumber == 3)
+                                                                                ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.asset(
+                                                                                    'assets/images/Neutral_Emoji_.png',
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              if (listViewFeedbackRecord.reviewNumber == 2)
+                                                                                ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.asset(
+                                                                                    'assets/images/Confused_Emoji.png',
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                              if (listViewFeedbackRecord.reviewNumber == 1)
+                                                                                ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.asset(
+                                                                                    'assets/images/Crying_Emoji.png',
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    fit: BoxFit.cover,
+                                                                                  ),
+                                                                                ),
+                                                                            ],
+                                                                          ),
+                                                                          Padding(
                                                                             padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 0.0,
@@ -2086,7 +1816,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                 0.0),
                                                                             child:
                                                                                 Text(
-                                                                              listViewFeedbackRecord.reviewDescription,
+                                                                              containerUsersRecordList.where((e) => e.uid == listViewFeedbackRecord.uid).toList().first.displayName,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
                                                                                     letterSpacing: 0.0,
@@ -2094,38 +1824,55 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                        ),
+                                                                          Flexible(
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                child: Text(
+                                                                                  listViewFeedbackRecord.reviewDescription,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: FlutterFlowTheme.of(context).bodyMediumFamily,
+                                                                                        letterSpacing: 0.0,
+                                                                                        useGoogleFonts: GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodyMediumFamily),
+                                                                                      ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
                                                                       ),
-                                                                    ],
-                                                                  ),
+                                                                    );
+                                                                  },
                                                                 );
                                                               },
-                                                            );
-                                                          },
-                                                        ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
-                                                );
-                                              },
+                                                    );
+                                                  },
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
