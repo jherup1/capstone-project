@@ -35,11 +35,17 @@ class ProgramDataRecord extends FirestoreRecord {
   List<String> get programJobs => _programJobs ?? const [];
   bool hasProgramJobs() => _programJobs != null;
 
+  // "programWebsite" field.
+  String? _programWebsite;
+  String get programWebsite => _programWebsite ?? '';
+  bool hasProgramWebsite() => _programWebsite != null;
+
   void _initializeFields() {
     _programName = snapshotData['programName'] as String?;
     _programDescription = snapshotData['programDescription'] as String?;
     _programImage = snapshotData['programImage'] as String?;
     _programJobs = getDataList(snapshotData['programJobs']);
+    _programWebsite = snapshotData['programWebsite'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -80,12 +86,14 @@ Map<String, dynamic> createProgramDataRecordData({
   String? programName,
   String? programDescription,
   String? programImage,
+  String? programWebsite,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'programName': programName,
       'programDescription': programDescription,
       'programImage': programImage,
+      'programWebsite': programWebsite,
     }.withoutNulls,
   );
 
@@ -101,12 +109,18 @@ class ProgramDataRecordDocumentEquality implements Equality<ProgramDataRecord> {
     return e1?.programName == e2?.programName &&
         e1?.programDescription == e2?.programDescription &&
         e1?.programImage == e2?.programImage &&
-        listEquality.equals(e1?.programJobs, e2?.programJobs);
+        listEquality.equals(e1?.programJobs, e2?.programJobs) &&
+        e1?.programWebsite == e2?.programWebsite;
   }
 
   @override
-  int hash(ProgramDataRecord? e) => const ListEquality().hash(
-      [e?.programName, e?.programDescription, e?.programImage, e?.programJobs]);
+  int hash(ProgramDataRecord? e) => const ListEquality().hash([
+        e?.programName,
+        e?.programDescription,
+        e?.programImage,
+        e?.programJobs,
+        e?.programWebsite
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is ProgramDataRecord;

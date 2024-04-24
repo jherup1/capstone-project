@@ -79,7 +79,7 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
             width: widget.width ?? MediaQuery.of(context).size.width,
             height: widget.height ?? MediaQuery.of(context).size.height,
             child: FlutterMap(
-              mapController: _mapController, // Use the MapController here
+              mapController: _mapController,
               options: MapOptions(
                 center: latlong2InitialCenter,
                 zoom: widget.zoom?.toDouble() ?? 13,
@@ -99,9 +99,6 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
                     circleSpiralSwitchover: 12,
                     maxClusterRadius: 120,
                     size: Size(40, 40),
-                    fitBoundsOptions: FitBoundsOptions(
-                      padding: EdgeInsets.all(50),
-                    ),
                     markers: _markers,
                     polygonOptions: PolygonOptions(
                       borderColor: Colors.blueAccent,

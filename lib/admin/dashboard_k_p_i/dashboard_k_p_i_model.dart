@@ -73,7 +73,7 @@ class DashboardKPIModel extends FlutterFlowModel<DashboardKPIWidget> {
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions1,
           controller: controller,
-          pageSize: 25,
+          pageSize: 50,
           isStream: true,
         ),
       );

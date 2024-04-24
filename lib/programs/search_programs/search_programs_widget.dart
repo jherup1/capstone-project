@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/components/school_information_bottom/school_information_bottom_widget.dart';
+import '/components/program_information_bottom/program_information_bottom_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -11,11 +11,11 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
-import 'search_schools_model.dart';
-export 'search_schools_model.dart';
+import 'search_programs_model.dart';
+export 'search_programs_model.dart';
 
-class SearchSchoolsWidget extends StatefulWidget {
-  const SearchSchoolsWidget({
+class SearchProgramsWidget extends StatefulWidget {
+  const SearchProgramsWidget({
     super.key,
     this.pageTitle,
     String? pageDetails,
@@ -25,21 +25,21 @@ class SearchSchoolsWidget extends StatefulWidget {
   final String pageDetails;
 
   @override
-  State<SearchSchoolsWidget> createState() => _SearchSchoolsWidgetState();
+  State<SearchProgramsWidget> createState() => _SearchProgramsWidgetState();
 }
 
-class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
-  late SearchSchoolsModel _model;
+class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
+  late SearchProgramsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SearchSchoolsModel());
+    _model = createModel(context, () => SearchProgramsModel());
 
     logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'searchSchools'});
+        parameters: {'screen_name': 'searchPrograms'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
@@ -63,10 +63,10 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<SchoolDataRecord>>(
-      stream: querySchoolDataRecord(
-        queryBuilder: (schoolDataRecord) =>
-            schoolDataRecord.orderBy('displayName'),
+    return StreamBuilder<List<ProgramDataRecord>>(
+      stream: queryProgramDataRecord(
+        queryBuilder: (programDataRecord) =>
+            programDataRecord.orderBy('programName'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -86,7 +86,7 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
             ),
           );
         }
-        List<SchoolDataRecord> searchSchoolsSchoolDataRecordList =
+        List<ProgramDataRecord> searchProgramsProgramDataRecordList =
             snapshot.data!;
         return GestureDetector(
           onTap: () => _model.unfocusNode.canRequestFocus
@@ -134,8 +134,8 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                               model: _model.breadcrumbsHeaderModel,
                               updateCallback: () => setState(() {}),
                               child: const BreadcrumbsHeaderWidget(
-                                pageDetails: 'Search for schools!',
-                                pageTitle: 'Search Schools',
+                                pageDetails: 'Search for programs!',
+                                pageTitle: 'Search Programs',
                               ),
                             ),
                             Padding(
@@ -151,8 +151,8 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                         if (textEditingValue.text == '') {
                                           return const Iterable<String>.empty();
                                         }
-                                        return searchSchoolsSchoolDataRecordList
-                                            .map((e) => e.displayName)
+                                        return searchProgramsProgramDataRecordList
+                                            .map((e) => e.programName)
                                             .toList()
                                             .where((option) {
                                           final lowercaseOption =
@@ -225,13 +225,13 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                               safeSetState(() {
                                                 _model.simpleSearchResults =
                                                     TextSearch(
-                                                  searchSchoolsSchoolDataRecordList
+                                                  searchProgramsProgramDataRecordList
                                                       .map(
                                                         (record) =>
                                                             TextSearchItem
                                                                 .fromTerms(
                                                                     record, [
-                                                          record.displayName
+                                                          record.programName
                                                         ]),
                                                       )
                                                       .toList(),
@@ -244,7 +244,7 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                               });
                                               setState(() {
                                                 FFAppState()
-                                                    .schoolSearchActive = true;
+                                                    .programSearchActive = true;
                                               });
                                             },
                                           ),
@@ -252,7 +252,7 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                               TextCapitalization.words,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Search schools...',
+                                            labelText: 'Search programs...',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -385,11 +385,11 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                 ],
                               ),
                             ),
-                            if (!FFAppState().schoolSearchActive)
+                            if (!FFAppState().programSearchActive)
                               Builder(
                                 builder: (context) {
-                                  final schoolNoSearch =
-                                      searchSchoolsSchoolDataRecordList
+                                  final programNoSearch =
+                                      searchProgramsProgramDataRecordList
                                           .toList()
                                           .take(20)
                                           .toList();
@@ -397,11 +397,11 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: schoolNoSearch.length,
+                                    itemCount: programNoSearch.length,
                                     itemBuilder:
-                                        (context, schoolNoSearchIndex) {
-                                      final schoolNoSearchItem =
-                                          schoolNoSearch[schoolNoSearchIndex];
+                                        (context, programNoSearchIndex) {
+                                      final programNoSearchItem =
+                                          programNoSearch[programNoSearchIndex];
                                       return Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
@@ -447,9 +447,9 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            SchoolInformationBottomWidget(
-                                                          school:
-                                                              schoolNoSearchItem,
+                                                            ProgramInformationBottomWidget(
+                                                          program:
+                                                              programNoSearchItem,
                                                         ),
                                                       ),
                                                     );
@@ -468,9 +468,9 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             8.0),
                                                     child: Image.network(
                                                       valueOrDefault<String>(
-                                                        schoolNoSearchItem
-                                                            .primaryPhoto,
-                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                                        programNoSearchItem
+                                                            .programImage,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/ves2yc3kcwjd/psysearch_logo_no_text.png',
                                                       ),
                                                       width: 70.0,
                                                       height: 70.0,
@@ -483,8 +483,8 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      schoolNoSearchItem
-                                                          .displayName,
+                                                      programNoSearchItem
+                                                          .programName,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -513,10 +513,10 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                   );
                                 },
                               ),
-                            if (FFAppState().schoolSearchActive)
+                            if (FFAppState().programSearchActive)
                               Builder(
                                 builder: (context) {
-                                  final schoolSearch = _model
+                                  final programSearch = _model
                                       .simpleSearchResults
                                       .toList()
                                       .take(20)
@@ -525,10 +525,10 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                     padding: EdgeInsets.zero,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: schoolSearch.length,
-                                    itemBuilder: (context, schoolSearchIndex) {
-                                      final schoolSearchItem =
-                                          schoolSearch[schoolSearchIndex];
+                                    itemCount: programSearch.length,
+                                    itemBuilder: (context, programSearchIndex) {
+                                      final programSearchItem =
+                                          programSearch[programSearchIndex];
                                       return Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
@@ -574,9 +574,9 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             .viewInsetsOf(
                                                                 context),
                                                         child:
-                                                            SchoolInformationBottomWidget(
-                                                          school:
-                                                              schoolSearchItem,
+                                                            ProgramInformationBottomWidget(
+                                                          program:
+                                                              programSearchItem,
                                                         ),
                                                       ),
                                                     );
@@ -595,9 +595,9 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             8.0),
                                                     child: Image.network(
                                                       valueOrDefault<String>(
-                                                        schoolSearchItem
-                                                            .primaryPhoto,
-                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                                        programSearchItem
+                                                            .programImage,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/ves2yc3kcwjd/psysearch_logo_no_text.png',
                                                       ),
                                                       width: 70.0,
                                                       height: 70.0,
@@ -610,8 +610,8 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                             .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      schoolSearchItem
-                                                          .displayName,
+                                                      programSearchItem
+                                                          .programName,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)

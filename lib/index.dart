@@ -29,3 +29,6 @@ export '/schools/search_schools/search_schools_widget.dart'
 export '/schools/all_schools/all_schools_widget.dart' show AllSchoolsWidget;
 export '/admin/admin_programs/admin_programs_widget.dart'
     show AdminProgramsWidget;
+export '/programs/programs/programs_widget.dart' show ProgramsWidget;
+export '/programs/search_programs/search_programs_widget.dart'
+    show SearchProgramsWidget;

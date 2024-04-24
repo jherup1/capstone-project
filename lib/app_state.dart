@@ -87,9 +87,15 @@ class FFAppState extends ChangeNotifier {
     _smile = value;
   }
 
-  bool _searchActive = false;
-  bool get searchActive => _searchActive;
-  set searchActive(bool value) {
-    _searchActive = value;
+  bool _schoolSearchActive = false;
+  bool get schoolSearchActive => _schoolSearchActive;
+  set schoolSearchActive(bool value) {
+    _schoolSearchActive = value;
+  }
+
+  bool _programSearchActive = false;
+  bool get programSearchActive => _programSearchActive;
+  set programSearchActive(bool value) {
+    _programSearchActive = value;
   }
 }
