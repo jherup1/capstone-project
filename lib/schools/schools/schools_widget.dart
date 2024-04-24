@@ -1,10 +1,10 @@
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/school_scroll/school_scroll_widget.dart';
+import '/components/school_scroll_fav/school_scroll_fav_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/schools/school_scroll/school_scroll_widget.dart';
-import '/schools/school_scroll_fav/school_scroll_fav_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'schools_model.dart';

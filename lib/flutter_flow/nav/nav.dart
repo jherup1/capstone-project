@@ -159,14 +159,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminPortal',
               path: 'adminPortal',
               requireAuth: true,
-              builder: (context, params) => AdminPortalWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
-              ),
+              builder: (context, params) => const AdminPortalWidget(),
             ),
             FFRoute(
               name: 'editProfilePage',
@@ -178,11 +171,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'adminUsers',
               requireAuth: true,
               builder: (context, params) => AdminUsersWidget(
-                school: params.getParam(
-                  'school',
+                user: params.getParam(
+                  'user',
                   ParamType.DocumentReference,
                   false,
-                  ['schools'],
+                  ['users'],
                 ),
               ),
             ),
@@ -194,12 +187,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 'user': getDoc(['users'], UsersRecord.fromSnapshot),
               },
               builder: (context, params) => AdminTicketsWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
                 user: params.getParam(
                   'user',
                   ParamType.Document,
@@ -210,14 +197,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminSchools',
               path: 'adminSchools',
               requireAuth: true,
-              builder: (context, params) => AdminSchoolsWidget(
-                school: params.getParam(
-                  'school',
-                  ParamType.DocumentReference,
-                  false,
-                  ['schools'],
-                ),
-              ),
+              builder: (context, params) => const AdminSchoolsWidget(),
             ),
             FFRoute(
               name: 'changePasswordPage',
@@ -227,16 +207,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'DashboardKPI',
               path: 'dashboardKPI',
-              builder: (context, params) => DashboardKPIWidget(
-                pageTitle: params.getParam(
-                  'pageTitle',
-                  ParamType.String,
-                ),
-                pageDetails: params.getParam(
-                  'pageDetails',
-                  ParamType.String,
-                ),
-              ),
+              builder: (context, params) => const DashboardKPIWidget(),
             ),
             FFRoute(
               name: 'searchSchools',
@@ -256,6 +227,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'allSchools',
               path: 'allSchools',
               builder: (context, params) => const AllSchoolsWidget(),
+            ),
+            FFRoute(
+              name: 'adminPrograms',
+              path: 'adminPrograms',
+              requireAuth: true,
+              builder: (context, params) => const AdminProgramsWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -332,15 +309,10 @@ extension GoRouterExtensions on GoRouter {
 extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
-
-  Map<String, dynamic> get allParams {
-    return <String, dynamic>{
-      ...pathParameters,
-      ...uri.queryParameters,
-      ...extraMap
-    };
-  }
-
+  Map<String, dynamic> get allParams => <String, dynamic>{}
+    ..addAll(pathParameters)
+    ..addAll(uri.queryParameters)
+    ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -432,7 +404,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/signIn';
           }
           return null;
@@ -508,8 +480,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location =
-        GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
+    final location = GoRouterState.of(context).uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

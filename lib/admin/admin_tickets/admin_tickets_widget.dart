@@ -1,7 +1,7 @@
-import '/admin/edit_ticket/edit_ticket_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/edit_ticket/edit_ticket_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -16,11 +16,9 @@ export 'admin_tickets_model.dart';
 class AdminTicketsWidget extends StatefulWidget {
   const AdminTicketsWidget({
     super.key,
-    this.school,
     this.user,
   });
 
-  final DocumentReference? school;
   final UsersRecord? user;
 
   @override

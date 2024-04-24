@@ -36,13 +36,13 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
 
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.currentPasswordController ??= TextEditingController();
+    _model.currentPasswordTextController ??= TextEditingController();
     _model.currentPasswordFocusNode ??= FocusNode();
 
-    _model.newPasswordController ??= TextEditingController();
+    _model.newPasswordTextController ??= TextEditingController();
     _model.newPasswordFocusNode ??= FocusNode();
 
-    _model.confirmNewPasswordController ??= TextEditingController();
+    _model.confirmNewPasswordTextController ??= TextEditingController();
     _model.confirmNewPasswordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -214,7 +214,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                              .emailAddressController ??=
+                                                              .emailAddressTextController ??=
                                                           TextEditingController(
                                                         text:
                                                             containerUsersRecord
@@ -224,7 +224,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           .emailAddressFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.emailAddressController',
+                                                        '_model.emailAddressTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -358,7 +358,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                           TextInputType
                                                               .emailAddress,
                                                       validator: _model
-                                                          .emailAddressControllerValidator
+                                                          .emailAddressTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -377,12 +377,12 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .currentPasswordController,
+                                                          .currentPasswordTextController,
                                                       focusNode: _model
                                                           .currentPasswordFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.currentPasswordController',
+                                                        '_model.currentPasswordTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -538,7 +538,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                             .bodyMediumFamily),
                                                               ),
                                                       validator: _model
-                                                          .currentPasswordControllerValidator
+                                                          .currentPasswordTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -557,12 +557,12 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .newPasswordController,
+                                                          .newPasswordTextController,
                                                       focusNode: _model
                                                           .newPasswordFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.newPasswordController',
+                                                        '_model.newPasswordTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -718,7 +718,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                             .bodyMediumFamily),
                                                               ),
                                                       validator: _model
-                                                          .newPasswordControllerValidator
+                                                          .newPasswordTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -737,12 +737,12 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                   Expanded(
                                                     child: TextFormField(
                                                       controller: _model
-                                                          .confirmNewPasswordController,
+                                                          .confirmNewPasswordTextController,
                                                       focusNode: _model
                                                           .confirmNewPasswordFocusNode,
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
-                                                        '_model.confirmNewPasswordController',
+                                                        '_model.confirmNewPasswordTextController',
                                                         const Duration(
                                                             milliseconds: 100),
                                                         () async {
@@ -898,7 +898,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                             .bodyMediumFamily),
                                                               ),
                                                       validator: _model
-                                                          .confirmNewPasswordControllerValidator
+                                                          .confirmNewPasswordTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -1099,21 +1099,21 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                 children: [
                                                   FFButtonWidget(
                                                     onPressed: ((_model
-                                                                        .emailAddressController.text ==
+                                                                        .emailAddressTextController.text ==
                                                                     '') ||
-                                                            (_model.currentPasswordController
+                                                            (_model.currentPasswordTextController
                                                                         .text ==
                                                                     '') ||
-                                                            (_model.newPasswordController
+                                                            (_model.newPasswordTextController
                                                                         .text ==
                                                                     '') ||
-                                                            (_model.confirmNewPasswordController
+                                                            (_model.confirmNewPasswordTextController
                                                                         .text ==
                                                                     '') ||
-                                                            (_model.newPasswordController
+                                                            (_model.newPasswordTextController
                                                                     .text !=
                                                                 _model
-                                                                    .confirmNewPasswordController
+                                                                    .confirmNewPasswordTextController
                                                                     .text))
                                                         ? null
                                                         : () async {
@@ -1121,16 +1121,16 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                 .passwordChange(
                                                               context,
                                                               _model
-                                                                  .emailAddressController
+                                                                  .emailAddressTextController
                                                                   .text,
                                                               _model
-                                                                  .currentPasswordController
+                                                                  .currentPasswordTextController
                                                                   .text,
                                                               _model
-                                                                  .newPasswordController
+                                                                  .newPasswordTextController
                                                                   .text,
                                                               _model
-                                                                  .confirmNewPasswordController
+                                                                  .confirmNewPasswordTextController
                                                                   .text,
                                                             );
                                                           },

@@ -467,8 +467,11 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      schoolNoSearchItem
-                                                          .primaryPhoto,
+                                                      valueOrDefault<String>(
+                                                        schoolNoSearchItem
+                                                            .primaryPhoto,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                                      ),
                                                       width: 70.0,
                                                       height: 70.0,
                                                       fit: BoxFit.cover,
@@ -591,8 +594,11 @@ class _SearchSchoolsWidgetState extends State<SearchSchoolsWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.network(
-                                                      schoolSearchItem
-                                                          .primaryPhoto,
+                                                      valueOrDefault<String>(
+                                                        schoolSearchItem
+                                                            .primaryPhoto,
+                                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                                      ),
                                                       width: 70.0,
                                                       height: 70.0,
                                                       fit: BoxFit.cover,

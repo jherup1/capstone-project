@@ -28,10 +28,10 @@ class _SignInWidgetState extends State<SignInWidget> {
     _model = createModel(context, () => SignInModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'signIn'});
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -147,10 +147,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: TextFormField(
-                                    controller: _model.emailAddressController,
+                                    controller:
+                                        _model.emailAddressTextController,
                                     focusNode: _model.emailAddressFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.emailAddressController',
+                                      '_model.emailAddressTextController',
                                       const Duration(milliseconds: 100),
                                       () async {
                                         if (FFAppState().loginAttempt ==
@@ -233,11 +234,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       contentPadding:
                                           const EdgeInsetsDirectional.fromSTEB(
                                               16.0, 24.0, 0.0, 24.0),
-                                      suffixIcon: _model.emailAddressController!
-                                              .text.isNotEmpty
+                                      suffixIcon: _model
+                                              .emailAddressTextController!
+                                              .text
+                                              .isNotEmpty
                                           ? InkWell(
                                               onTap: () async {
-                                                _model.emailAddressController
+                                                _model
+                                                    .emailAddressTextController
                                                     ?.clear();
                                                 if (FFAppState().loginAttempt ==
                                                     'email-not-verified') {
@@ -272,7 +276,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         ),
                                     keyboardType: TextInputType.emailAddress,
                                     validator: _model
-                                        .emailAddressControllerValidator
+                                        .emailAddressTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -289,10 +293,10 @@ class _SignInWidgetState extends State<SignInWidget> {
                             children: [
                               Expanded(
                                 child: TextFormField(
-                                  controller: _model.passwordController,
+                                  controller: _model.passwordTextController,
                                   focusNode: _model.passwordFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
-                                    '_model.passwordController',
+                                    '_model.passwordTextController',
                                     const Duration(milliseconds: 100),
                                     () async {
                                       if (FFAppState().loginAttempt ==
@@ -399,7 +403,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMediumFamily),
                                       ),
-                                  validator: _model.passwordControllerValidator
+                                  validator: _model
+                                      .passwordTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -545,8 +550,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                             children: [
                               FFButtonWidget(
                                 onPressed: () async {
-                                  if (_model
-                                      .emailAddressController.text.isEmpty) {
+                                  if (_model.emailAddressTextController.text
+                                      .isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
@@ -557,7 +562,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     return;
                                   }
                                   await authManager.resetPassword(
-                                    email: _model.emailAddressController.text,
+                                    email:
+                                        _model.emailAddressTextController.text,
                                     context: context,
                                   );
                                 },
@@ -589,17 +595,19 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ),
                               ),
                               FFButtonWidget(
-                                onPressed: ((_model.emailAddressController
+                                onPressed: ((_model.emailAddressTextController
                                                     .text ==
                                                 '') ||
-                                        (_model.passwordController.text ==
+                                        (_model.passwordTextController
+                                                    .text ==
                                                 ''))
                                     ? null
                                     : () async {
                                         await actions.signIn(
                                           context,
-                                          _model.emailAddressController.text,
-                                          _model.passwordController.text,
+                                          _model
+                                              .emailAddressTextController.text,
+                                          _model.passwordTextController.text,
                                         );
                                       },
                                 text: 'Sign In',
@@ -644,8 +652,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                             onPressed: () async {
                               await actions.sendVerificationEmail(
                                 context,
-                                _model.emailAddressController.text,
-                                _model.passwordController.text,
+                                _model.emailAddressTextController.text,
+                                _model.passwordTextController.text,
                               );
                             },
                             text: 'Resend Verification Email',

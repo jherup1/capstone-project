@@ -27,19 +27,19 @@ class _SignUpWidgetState extends State<SignUpWidget> {
     _model = createModel(context, () => SignUpModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'signUp'});
-    _model.firstNameController ??= TextEditingController();
+    _model.firstNameTextController ??= TextEditingController();
     _model.firstNameFocusNode ??= FocusNode();
 
-    _model.lastNameController ??= TextEditingController();
+    _model.lastNameTextController ??= TextEditingController();
     _model.lastNameFocusNode ??= FocusNode();
 
-    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordController ??= TextEditingController();
+    _model.passwordTextController ??= TextEditingController();
     _model.passwordFocusNode ??= FocusNode();
 
-    _model.confirmPasswordController ??= TextEditingController();
+    _model.confirmPasswordTextController ??= TextEditingController();
     _model.confirmPasswordFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -163,11 +163,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                             0.0, 16.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller:
-                                              _model.firstNameController,
+                                              _model.firstNameTextController,
                                           focusNode: _model.firstNameFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.firstNameController',
+                                            '_model.firstNameTextController',
                                             const Duration(milliseconds: 100),
                                             () async {
                                               setState(() {
@@ -271,7 +271,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                               ),
                                           keyboardType: TextInputType.name,
                                           validator: _model
-                                              .firstNameControllerValidator
+                                              .firstNameTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -289,11 +289,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 16.0, 0.0, 0.0),
                                         child: TextFormField(
-                                          controller: _model.lastNameController,
+                                          controller:
+                                              _model.lastNameTextController,
                                           focusNode: _model.lastNameFocusNode,
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
-                                            '_model.lastNameController',
+                                            '_model.lastNameTextController',
                                             const Duration(milliseconds: 100),
                                             () => setState(() {}),
                                           ),
@@ -392,7 +393,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                               ),
                                           keyboardType: TextInputType.name,
                                           validator: _model
-                                              .lastNameControllerValidator
+                                              .lastNameTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -410,10 +411,10 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                     Expanded(
                                       child: TextFormField(
                                         controller:
-                                            _model.emailAddressController,
+                                            _model.emailAddressTextController,
                                         focusNode: _model.emailAddressFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.emailAddressController',
+                                          '_model.emailAddressTextController',
                                           const Duration(milliseconds: 100),
                                           () async {
                                             setState(() {
@@ -516,7 +517,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                         keyboardType:
                                             TextInputType.emailAddress,
                                         validator: _model
-                                            .emailAddressControllerValidator
+                                            .emailAddressTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -532,10 +533,11 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   children: [
                                     Expanded(
                                       child: TextFormField(
-                                        controller: _model.passwordController,
+                                        controller:
+                                            _model.passwordTextController,
                                         focusNode: _model.passwordFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.passwordController',
+                                          '_model.passwordTextController',
                                           const Duration(milliseconds: 100),
                                           () async {
                                             setState(() {
@@ -659,7 +661,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                           .bodyMediumFamily),
                                             ),
                                         validator: _model
-                                            .passwordControllerValidator
+                                            .passwordTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -675,12 +677,12 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   children: [
                                     Expanded(
                                       child: TextFormField(
-                                        controller:
-                                            _model.confirmPasswordController,
+                                        controller: _model
+                                            .confirmPasswordTextController,
                                         focusNode:
                                             _model.confirmPasswordFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.confirmPasswordController',
+                                          '_model.confirmPasswordTextController',
                                           const Duration(milliseconds: 100),
                                           () async {
                                             setState(() {
@@ -807,7 +809,7 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                                           .bodyMediumFamily),
                                             ),
                                         validator: _model
-                                            .confirmPasswordControllerValidator
+                                            .confirmPasswordTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -1039,36 +1041,45 @@ class _SignUpWidgetState extends State<SignUpWidget> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
                                     FFButtonWidget(
-                                      onPressed: ((_model.firstNameController
+                                      onPressed: ((_model
+                                                          .firstNameTextController.text ==
+                                                      '') ||
+                                              (_model
+                                                          .passwordTextController
                                                           .text ==
                                                       '') ||
-                                              (_model.passwordController.text ==
-                                                      '') ||
-                                              (_model.confirmPasswordController
+                                              (_model.confirmPasswordTextController
                                                           .text ==
                                                       '') ||
-                                              (_model.emailAddressController
+                                              (_model.emailAddressTextController
                                                           .text ==
                                                       ''))
                                           ? null
                                           : () async {
                                               await actions.signUp(
                                                 context,
-                                                _model.emailAddressController
+                                                _model
+                                                    .emailAddressTextController
                                                     .text,
-                                                _model.passwordController.text,
-                                                _model.confirmPasswordController
+                                                _model.passwordTextController
                                                     .text,
-                                                _model.firstNameController.text,
-                                                _model.lastNameController.text,
+                                                _model
+                                                    .confirmPasswordTextController
+                                                    .text,
+                                                _model.firstNameTextController
+                                                    .text,
+                                                _model.lastNameTextController
+                                                    .text,
                                                 null,
                                               );
                                               await actions
                                                   .sendVerificationEmail(
                                                 context,
-                                                _model.emailAddressController
+                                                _model
+                                                    .emailAddressTextController
                                                     .text,
-                                                _model.passwordController.text,
+                                                _model.passwordTextController
+                                                    .text,
                                               );
                                             },
                                       text: 'Sign Up',

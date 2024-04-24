@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 class AdminSchoolsModel extends FlutterFlowModel<AdminSchoolsWidget> {
   ///  Local state fields for this page.
 
-  SchoolsRecord? school;
-
   bool isShowFullList = true;
 
   ///  State fields for stateful widgets in this page.
