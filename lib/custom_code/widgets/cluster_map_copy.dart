@@ -9,8 +9,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart' as latlong2;
@@ -55,7 +53,7 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
         width: 80.0,
         height: 80.0,
         point: latlong2Location,
-        child: GestureDetector(
+        builder: (ctx) => GestureDetector(
           onTap: () async {
             // Update the FFAppState().tapped with the marker's LatLng for bottom sheet
             FFAppState().tapped =
@@ -81,7 +79,7 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
             width: widget.width ?? MediaQuery.of(context).size.width,
             height: widget.height ?? MediaQuery.of(context).size.height,
             child: FlutterMap(
-              mapController: _mapController, // Use the MapController here
+              mapController: _mapController,
               options: MapOptions(
                 center: latlong2InitialCenter,
                 zoom: widget.zoom?.toDouble() ?? 13,
@@ -101,7 +99,6 @@ class _ClusterMapCopyState extends State<ClusterMapCopy> {
                     circleSpiralSwitchover: 12,
                     maxClusterRadius: 120,
                     size: Size(40, 40),
-                    padding: EdgeInsets.all(50),
                     markers: _markers,
                     polygonOptions: PolygonOptions(
                       borderColor: Colors.blueAccent,
