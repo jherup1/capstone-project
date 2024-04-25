@@ -128,102 +128,44 @@ class _SchoolInformationBottomWidgetState
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 20.0, 12.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            valueOrDefault<String>(
-                                              widget.school?.primaryPhoto,
-                                              'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
-                                            ),
-                                            width: 250.0,
-                                            height: 150.0,
-                                            fit: BoxFit.cover,
-                                          ),
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 500.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 20.0, 12.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        width: 250.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                         ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              'About:',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Expanded(
-                                      child: Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 0.0, 0.0, 0.0),
+                                        child: SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    -1.0, 0.0),
-                                                child: Text(
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.network(
                                                   valueOrDefault<String>(
-                                                    widget.school?.displayName,
-                                                    'School name not available',
+                                                    widget.school?.primaryPhoto,
+                                                    'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineLarge
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineLargeFamily,
-                                                        fontSize: 48.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLargeFamily),
-                                                      ),
+                                                  width: 250.0,
+                                                  height: 150.0,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                               Align(
@@ -232,9 +174,9 @@ class _SchoolInformationBottomWidgetState
                                                 child: Padding(
                                                   padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 4.0, 0.0, 0.0),
+                                                          0.0, 4.0, 0.0, 4.0),
                                                   child: Text(
-                                                    'Description:',
+                                                    'About:',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -255,58 +197,853 @@ class _SchoolInformationBottomWidgetState
                                                   ),
                                                 ),
                                               ),
-                                              SingleChildScrollView(
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                              -1.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            widget.school
-                                                                ?.description,
-                                                            'Description not available',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
+                                              if ((widget.school
+                                                              ?.schoolWebsite !=
+                                                          null &&
+                                                      widget.school
+                                                              ?.schoolWebsite !=
+                                                          '') &&
+                                                  (widget.school
+                                                          ?.schoolWebsite !=
+                                                      ''))
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Website: ${widget.school?.schoolWebsite}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
                                                               .override(
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .labelLargeFamily,
-                                                                fontSize: 22.0,
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if ((widget.school?.address !=
+                                                          null &&
+                                                      widget.school?.address !=
+                                                          '') &&
+                                                  (widget.school?.address !=
+                                                      ''))
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Address: ${widget.school?.address}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget
+                                                      .school?.acceptanceRate !=
+                                                  null)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Acceptance Rate: ${widget.school?.acceptanceRate.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.school?.costAfterAid !=
+                                                  null)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Cost After Aid: ${widget.school?.costAfterAid.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.school?.satAvg != null)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Average SAT: ${widget.school?.satAvg.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.school?.actAvg != null)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Average ACT: ${widget.school?.actAvg.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (widget.school?.hsGpaAvg !=
+                                                  null)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 4.0),
+                                                    child: Text(
+                                                      'Average HS GPA: ${widget.school?.hsGpaAvg.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 16.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0.0, 0.0, 0.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      widget
+                                                          .school?.displayName,
+                                                      'School name not available',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineLarge
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .headlineLargeFamily,
+                                                          fontSize: 48.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineLargeFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Tags:',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
                                                                         FlutterFlowTheme.of(context)
-                                                                            .labelLargeFamily),
+                                                                            .labelMediumFamily),
                                                               ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      if ((widget.school?.religiousAffiliation !=
+                                                                  null &&
+                                                              widget.school
+                                                                      ?.religiousAffiliation !=
+                                                                  '') &&
+                                                          (widget.school
+                                                                  ?.religiousAffiliation !=
+                                                              'none') &&
+                                                          (widget.school
+                                                                  ?.religiousAffiliation !=
+                                                              'None') &&
+                                                          (widget.school
+                                                                  ?.religiousAffiliation !=
+                                                              ''))
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget.school!
+                                                              .religiousAffiliation,
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                      if ((widget.school
+                                                                      ?.schoolType !=
+                                                                  null &&
+                                                              widget.school
+                                                                      ?.schoolType !=
+                                                                  '') &&
+                                                          (widget.school
+                                                                  ?.schoolType !=
+                                                              ''))
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget.school!
+                                                              .schoolType,
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                      if ((widget.school
+                                                                      ?.region !=
+                                                                  null &&
+                                                              widget.school
+                                                                      ?.region !=
+                                                                  '') &&
+                                                          (widget.school
+                                                                  ?.region !=
+                                                              ''))
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget
+                                                              .school!.region,
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                      if ((widget.school
+                                                                      ?.setting !=
+                                                                  null &&
+                                                              widget.school
+                                                                      ?.setting !=
+                                                                  '') &&
+                                                          (widget.school
+                                                                  ?.setting !=
+                                                              ''))
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget
+                                                              .school!.setting,
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                      if (widget.school
+                                                              ?.isPublic !=
+                                                          null)
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget.school!
+                                                                  .isPublic
+                                                              ? 'Public'
+                                                              : 'Private',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                      if ((widget.school
+                                                                      ?.academicCalendar !=
+                                                                  null &&
+                                                              widget.school
+                                                                      ?.academicCalendar !=
+                                                                  '') &&
+                                                          (widget.school
+                                                                  ?.academicCalendar !=
+                                                              ''))
+                                                        FFButtonWidget(
+                                                          onPressed: true
+                                                              ? null
+                                                              : () {
+                                                                  print(
+                                                                      'Button pressed ...');
+                                                                },
+                                                          text: widget.school!
+                                                              .academicCalendar,
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .titleSmallFamily,
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              FlutterFlowTheme.of(context).titleSmallFamily),
+                                                                    ),
+                                                            elevation: 3.0,
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
+                                                        ),
+                                                    ].divide(
+                                                        const SizedBox(width: 5.0)),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          -1.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Description:',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMediumFamily,
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                SingleChildScrollView(
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Align(
+                                                        alignment:
+                                                            const AlignmentDirectional(
+                                                                -1.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              widget.school
+                                                                  ?.description,
+                                                              'Description not available',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelLarge
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLargeFamily,
+                                                                  fontSize:
+                                                                      22.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .labelLargeFamily),
+                                                                ),
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                               Flexible(

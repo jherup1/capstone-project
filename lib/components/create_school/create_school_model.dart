@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'create_school_widget.dart' show CreateSchoolWidget;
@@ -5,11 +6,6 @@ import 'package:flutter/material.dart';
 
 class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   ///  State fields for stateful widgets in this component.
-
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
 
   // State field(s) for displayName widget.
   FocusNode? displayNameFocusNode;
@@ -28,6 +24,11 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   FocusNode? schoolWebsiteFocusNode;
   TextEditingController? schoolWebsiteTextController;
   String? Function(BuildContext, String?)? schoolWebsiteTextControllerValidator;
+  // State field(s) for schoolImageLink widget.
+  FocusNode? schoolImageLinkFocusNode;
+  TextEditingController? schoolImageLinkTextController;
+  String? Function(BuildContext, String?)?
+      schoolImageLinkTextControllerValidator;
   // State field(s) for countryCode widget.
   FocusNode? countryCodeFocusNode;
   TextEditingController? countryCodeTextController;
@@ -52,10 +53,14 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   FocusNode? addressFocusNode;
   TextEditingController? addressTextController;
   String? Function(BuildContext, String?)? addressTextControllerValidator;
-  // State field(s) for geoPoint widget.
-  FocusNode? geoPointFocusNode;
-  TextEditingController? geoPointTextController;
-  String? Function(BuildContext, String?)? geoPointTextControllerValidator;
+  // State field(s) for latitude widget.
+  FocusNode? latitudeFocusNode;
+  TextEditingController? latitudeTextController;
+  String? Function(BuildContext, String?)? latitudeTextControllerValidator;
+  // State field(s) for longitude widget.
+  FocusNode? longitudeFocusNode;
+  TextEditingController? longitudeTextController;
+  String? Function(BuildContext, String?)? longitudeTextControllerValidator;
   // State field(s) for tution widget.
   FocusNode? tutionFocusNode;
   TextEditingController? tutionTextController;
@@ -158,6 +163,8 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   TextEditingController? academicCalendarTextController;
   String? Function(BuildContext, String?)?
       academicCalendarTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  SchoolDataRecord? querySchool;
 
   @override
   void initState(BuildContext context) {}
@@ -175,6 +182,9 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
 
     schoolWebsiteFocusNode?.dispose();
     schoolWebsiteTextController?.dispose();
+
+    schoolImageLinkFocusNode?.dispose();
+    schoolImageLinkTextController?.dispose();
 
     countryCodeFocusNode?.dispose();
     countryCodeTextController?.dispose();
@@ -194,8 +204,11 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
     addressFocusNode?.dispose();
     addressTextController?.dispose();
 
-    geoPointFocusNode?.dispose();
-    geoPointTextController?.dispose();
+    latitudeFocusNode?.dispose();
+    latitudeTextController?.dispose();
+
+    longitudeFocusNode?.dispose();
+    longitudeTextController?.dispose();
 
     tutionFocusNode?.dispose();
     tutionTextController?.dispose();

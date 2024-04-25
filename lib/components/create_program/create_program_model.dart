@@ -1,14 +1,14 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'edit_program_widget.dart' show EditProgramWidget;
+import 'create_program_widget.dart' show CreateProgramWidget;
 import 'package:flutter/material.dart';
 
-class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
+class CreateProgramModel extends FlutterFlowModel<CreateProgramWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // State field(s) for programName widget.
-  FocusNode? programNameFocusNode;
-  TextEditingController? programNameTextController;
-  String? Function(BuildContext, String?)? programNameTextControllerValidator;
+  // State field(s) for displayName widget.
+  FocusNode? displayNameFocusNode;
+  TextEditingController? displayNameTextController;
+  String? Function(BuildContext, String?)? displayNameTextControllerValidator;
   // State field(s) for programDescription widget.
   FocusNode? programDescriptionFocusNode;
   TextEditingController? programDescriptionTextController;
@@ -19,11 +19,11 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
   TextEditingController? programWebsiteTextController;
   String? Function(BuildContext, String?)?
       programWebsiteTextControllerValidator;
-  // State field(s) for programPicLink widget.
-  FocusNode? programPicLinkFocusNode;
-  TextEditingController? programPicLinkTextController;
+  // State field(s) for programPhotoLink widget.
+  FocusNode? programPhotoLinkFocusNode;
+  TextEditingController? programPhotoLinkTextController;
   String? Function(BuildContext, String?)?
-      programPicLinkTextControllerValidator;
+      programPhotoLinkTextControllerValidator;
   // State field(s) for programJobs widget.
   FocusNode? programJobsFocusNode;
   TextEditingController? programJobsTextController;
@@ -34,8 +34,8 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
 
   @override
   void dispose() {
-    programNameFocusNode?.dispose();
-    programNameTextController?.dispose();
+    displayNameFocusNode?.dispose();
+    displayNameTextController?.dispose();
 
     programDescriptionFocusNode?.dispose();
     programDescriptionTextController?.dispose();
@@ -43,8 +43,8 @@ class EditProgramModel extends FlutterFlowModel<EditProgramWidget> {
     programWebsiteFocusNode?.dispose();
     programWebsiteTextController?.dispose();
 
-    programPicLinkFocusNode?.dispose();
-    programPicLinkTextController?.dispose();
+    programPhotoLinkFocusNode?.dispose();
+    programPhotoLinkTextController?.dispose();
 
     programJobsFocusNode?.dispose();
     programJobsTextController?.dispose();

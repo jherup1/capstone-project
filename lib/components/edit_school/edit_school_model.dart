@@ -6,11 +6,10 @@ import 'package:flutter/material.dart';
 class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   ///  State fields for stateful widgets in this component.
 
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl = '';
-
+  // Stores action output result for [Custom Action - convertGeopointLat] action in editSchool widget.
+  double? lat;
+  // Stores action output result for [Custom Action - convertGeopointLng] action in editSchool widget.
+  double? lng;
   // State field(s) for displayName widget.
   FocusNode? displayNameFocusNode;
   TextEditingController? displayNameTextController;
@@ -28,34 +27,59 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   FocusNode? schoolWebsiteFocusNode;
   TextEditingController? schoolWebsiteTextController;
   String? Function(BuildContext, String?)? schoolWebsiteTextControllerValidator;
+  // State field(s) for schoolPicLink widget.
+  FocusNode? schoolPicLinkFocusNode;
+  TextEditingController? schoolPicLinkTextController;
+  String? Function(BuildContext, String?)? schoolPicLinkTextControllerValidator;
   // State field(s) for countryCode widget.
   FocusNode? countryCodeFocusNode;
   TextEditingController? countryCodeTextController;
   String? Function(BuildContext, String?)? countryCodeTextControllerValidator;
-  // State field(s) for region widget.
-  FocusNode? regionFocusNode;
-  TextEditingController? regionTextController;
-  String? Function(BuildContext, String?)? regionTextControllerValidator;
+  // State field(s) for state widget.
+  FocusNode? stateFocusNode;
+  TextEditingController? stateTextController;
+  String? Function(BuildContext, String?)? stateTextControllerValidator;
   // State field(s) for city widget.
-  FocusNode? cityFocusNode1;
-  TextEditingController? cityTextController1;
-  String? Function(BuildContext, String?)? cityTextController1Validator;
+  FocusNode? cityFocusNode;
+  TextEditingController? cityTextController;
+  String? Function(BuildContext, String?)? cityTextControllerValidator;
   // State field(s) for zip widget.
   FocusNode? zipFocusNode;
   TextEditingController? zipTextController;
   String? Function(BuildContext, String?)? zipTextControllerValidator;
+  // State field(s) for region widget.
+  FocusNode? regionFocusNode;
+  TextEditingController? regionTextController;
+  String? Function(BuildContext, String?)? regionTextControllerValidator;
   // State field(s) for address widget.
   FocusNode? addressFocusNode;
   TextEditingController? addressTextController;
   String? Function(BuildContext, String?)? addressTextControllerValidator;
-  // State field(s) for geoPoint widget.
-  FocusNode? geoPointFocusNode;
-  TextEditingController? geoPointTextController;
-  String? Function(BuildContext, String?)? geoPointTextControllerValidator;
+  // State field(s) for latitude widget.
+  FocusNode? latitudeFocusNode;
+  TextEditingController? latitudeTextController;
+  String? Function(BuildContext, String?)? latitudeTextControllerValidator;
+  // State field(s) for longitude widget.
+  FocusNode? longitudeFocusNode;
+  TextEditingController? longitudeTextController;
+  String? Function(BuildContext, String?)? longitudeTextControllerValidator;
   // State field(s) for tution widget.
   FocusNode? tutionFocusNode;
   TextEditingController? tutionTextController;
   String? Function(BuildContext, String?)? tutionTextControllerValidator;
+  // State field(s) for costAfterAid widget.
+  FocusNode? costAfterAidFocusNode;
+  TextEditingController? costAfterAidTextController;
+  String? Function(BuildContext, String?)? costAfterAidTextControllerValidator;
+  // State field(s) for percentRecievingAid widget.
+  FocusNode? percentRecievingAidFocusNode;
+  TextEditingController? percentRecievingAidTextController;
+  String? Function(BuildContext, String?)?
+      percentRecievingAidTextControllerValidator;
+  // State field(s) for enrollment widget.
+  FocusNode? enrollmentFocusNode;
+  TextEditingController? enrollmentTextController;
+  String? Function(BuildContext, String?)? enrollmentTextControllerValidator;
   // State field(s) for acceptanceRate widget.
   FocusNode? acceptanceRateFocusNode;
   TextEditingController? acceptanceRateTextController;
@@ -65,49 +89,82 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   FocusNode? displayRankFocusNode;
   TextEditingController? displayRankTextController;
   String? Function(BuildContext, String?)? displayRankTextControllerValidator;
-  // State field(s) for enrollment widget.
-  FocusNode? enrollmentFocusNode;
-  TextEditingController? enrollmentTextController;
-  String? Function(BuildContext, String?)? enrollmentTextControllerValidator;
-  // State field(s) for hsGpaAvg widget.
-  FocusNode? hsGpaAvgFocusNode1;
-  TextEditingController? hsGpaAvgTextController1;
-  String? Function(BuildContext, String?)? hsGpaAvgTextController1Validator;
+  // State field(s) for rankSortRank widget.
+  FocusNode? rankSortRankFocusNode;
+  TextEditingController? rankSortRankTextController;
+  String? Function(BuildContext, String?)? rankSortRankTextControllerValidator;
+  // State field(s) for rankIsTied widget.
+  String? rankIsTiedValue;
+  FormFieldController<String>? rankIsTiedValueController;
   // State field(s) for actAvg widget.
-  FocusNode? actAvgFocusNode1;
-  TextEditingController? actAvgTextController1;
-  String? Function(BuildContext, String?)? actAvgTextController1Validator;
+  FocusNode? actAvgFocusNode;
+  TextEditingController? actAvgTextController;
+  String? Function(BuildContext, String?)? actAvgTextControllerValidator;
+  // State field(s) for satActRangeACT widget.
+  FocusNode? satActRangeACTFocusNode;
+  TextEditingController? satActRangeACTTextController;
+  String? Function(BuildContext, String?)?
+      satActRangeACTTextControllerValidator;
   // State field(s) for satAvg widget.
-  FocusNode? satAvgFocusNode1;
-  TextEditingController? satAvgTextController1;
-  String? Function(BuildContext, String?)? satAvgTextController1Validator;
+  FocusNode? satAvgFocusNode;
+  TextEditingController? satAvgTextController;
+  String? Function(BuildContext, String?)? satAvgTextControllerValidator;
+  // State field(s) for satActRangeSAT widget.
+  FocusNode? satActRangeSATFocusNode;
+  TextEditingController? satActRangeSATTextController;
+  String? Function(BuildContext, String?)?
+      satActRangeSATTextControllerValidator;
+  // State field(s) for hsGpaAvg widget.
+  FocusNode? hsGpaAvgFocusNode;
+  TextEditingController? hsGpaAvgTextController;
+  String? Function(BuildContext, String?)? hsGpaAvgTextControllerValidator;
   // State field(s) for engRepScore widget.
   FocusNode? engRepScoreFocusNode;
   TextEditingController? engRepScoreTextController;
   String? Function(BuildContext, String?)? engRepScoreTextControllerValidator;
-  // State field(s) for city widget.
-  FocusNode? cityFocusNode2;
-  TextEditingController? cityTextController2;
-  String? Function(BuildContext, String?)? cityTextController2Validator;
-  // State field(s) for hsGpaAvg widget.
-  FocusNode? hsGpaAvgFocusNode2;
-  TextEditingController? hsGpaAvgTextController2;
-  String? Function(BuildContext, String?)? hsGpaAvgTextController2Validator;
-  // State field(s) for actAvg widget.
-  FocusNode? actAvgFocusNode2;
-  TextEditingController? actAvgTextController2;
-  String? Function(BuildContext, String?)? actAvgTextController2Validator;
-  // State field(s) for satAvg widget.
-  FocusNode? satAvgFocusNode2;
-  TextEditingController? satAvgTextController2;
-  String? Function(BuildContext, String?)? satAvgTextController2Validator;
-  // State field(s) for satAvg widget.
-  FocusNode? satAvgFocusNode3;
-  TextEditingController? satAvgTextController3;
-  String? Function(BuildContext, String?)? satAvgTextController3Validator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
+  // State field(s) for busRepScore widget.
+  FocusNode? busRepScoreFocusNode;
+  TextEditingController? busRepScoreTextController;
+  String? Function(BuildContext, String?)? busRepScoreTextControllerValidator;
+  // State field(s) for instituationalControl widget.
+  FocusNode? instituationalControlFocusNode;
+  TextEditingController? instituationalControlTextController;
+  String? Function(BuildContext, String?)?
+      instituationalControlTextControllerValidator;
+  // State field(s) for religiousAffiliation widget.
+  FocusNode? religiousAffiliationFocusNode;
+  TextEditingController? religiousAffiliationTextController;
+  String? Function(BuildContext, String?)?
+      religiousAffiliationTextControllerValidator;
+  // State field(s) for schoolType widget.
+  FocusNode? schoolTypeFocusNode;
+  TextEditingController? schoolTypeTextController;
+  String? Function(BuildContext, String?)? schoolTypeTextControllerValidator;
+  // State field(s) for schoolTypeNational widget.
+  FocusNode? schoolTypeNationalFocusNode;
+  TextEditingController? schoolTypeNationalTextController;
+  String? Function(BuildContext, String?)?
+      schoolTypeNationalTextControllerValidator;
+  // State field(s) for isPublic widget.
+  String? isPublicValue;
+  FormFieldController<String>? isPublicValueController;
+  // State field(s) for yearFounded widget.
+  FocusNode? yearFoundedFocusNode;
+  TextEditingController? yearFoundedTextController;
+  String? Function(BuildContext, String?)? yearFoundedTextControllerValidator;
+  // State field(s) for setting widget.
+  FocusNode? settingFocusNode;
+  TextEditingController? settingTextController;
+  String? Function(BuildContext, String?)? settingTextControllerValidator;
+  // State field(s) for endowment2018 widget.
+  FocusNode? endowment2018FocusNode;
+  TextEditingController? endowment2018TextController;
+  String? Function(BuildContext, String?)? endowment2018TextControllerValidator;
+  // State field(s) for academicCalendar widget.
+  FocusNode? academicCalendarFocusNode;
+  TextEditingController? academicCalendarTextController;
+  String? Function(BuildContext, String?)?
+      academicCalendarTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
@@ -126,26 +183,44 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
     schoolWebsiteFocusNode?.dispose();
     schoolWebsiteTextController?.dispose();
 
+    schoolPicLinkFocusNode?.dispose();
+    schoolPicLinkTextController?.dispose();
+
     countryCodeFocusNode?.dispose();
     countryCodeTextController?.dispose();
 
-    regionFocusNode?.dispose();
-    regionTextController?.dispose();
+    stateFocusNode?.dispose();
+    stateTextController?.dispose();
 
-    cityFocusNode1?.dispose();
-    cityTextController1?.dispose();
+    cityFocusNode?.dispose();
+    cityTextController?.dispose();
 
     zipFocusNode?.dispose();
     zipTextController?.dispose();
 
+    regionFocusNode?.dispose();
+    regionTextController?.dispose();
+
     addressFocusNode?.dispose();
     addressTextController?.dispose();
 
-    geoPointFocusNode?.dispose();
-    geoPointTextController?.dispose();
+    latitudeFocusNode?.dispose();
+    latitudeTextController?.dispose();
+
+    longitudeFocusNode?.dispose();
+    longitudeTextController?.dispose();
 
     tutionFocusNode?.dispose();
     tutionTextController?.dispose();
+
+    costAfterAidFocusNode?.dispose();
+    costAfterAidTextController?.dispose();
+
+    percentRecievingAidFocusNode?.dispose();
+    percentRecievingAidTextController?.dispose();
+
+    enrollmentFocusNode?.dispose();
+    enrollmentTextController?.dispose();
 
     acceptanceRateFocusNode?.dispose();
     acceptanceRateTextController?.dispose();
@@ -153,34 +228,52 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
     displayRankFocusNode?.dispose();
     displayRankTextController?.dispose();
 
-    enrollmentFocusNode?.dispose();
-    enrollmentTextController?.dispose();
+    rankSortRankFocusNode?.dispose();
+    rankSortRankTextController?.dispose();
 
-    hsGpaAvgFocusNode1?.dispose();
-    hsGpaAvgTextController1?.dispose();
+    actAvgFocusNode?.dispose();
+    actAvgTextController?.dispose();
 
-    actAvgFocusNode1?.dispose();
-    actAvgTextController1?.dispose();
+    satActRangeACTFocusNode?.dispose();
+    satActRangeACTTextController?.dispose();
 
-    satAvgFocusNode1?.dispose();
-    satAvgTextController1?.dispose();
+    satAvgFocusNode?.dispose();
+    satAvgTextController?.dispose();
+
+    satActRangeSATFocusNode?.dispose();
+    satActRangeSATTextController?.dispose();
+
+    hsGpaAvgFocusNode?.dispose();
+    hsGpaAvgTextController?.dispose();
 
     engRepScoreFocusNode?.dispose();
     engRepScoreTextController?.dispose();
 
-    cityFocusNode2?.dispose();
-    cityTextController2?.dispose();
+    busRepScoreFocusNode?.dispose();
+    busRepScoreTextController?.dispose();
 
-    hsGpaAvgFocusNode2?.dispose();
-    hsGpaAvgTextController2?.dispose();
+    instituationalControlFocusNode?.dispose();
+    instituationalControlTextController?.dispose();
 
-    actAvgFocusNode2?.dispose();
-    actAvgTextController2?.dispose();
+    religiousAffiliationFocusNode?.dispose();
+    religiousAffiliationTextController?.dispose();
 
-    satAvgFocusNode2?.dispose();
-    satAvgTextController2?.dispose();
+    schoolTypeFocusNode?.dispose();
+    schoolTypeTextController?.dispose();
 
-    satAvgFocusNode3?.dispose();
-    satAvgTextController3?.dispose();
+    schoolTypeNationalFocusNode?.dispose();
+    schoolTypeNationalTextController?.dispose();
+
+    yearFoundedFocusNode?.dispose();
+    yearFoundedTextController?.dispose();
+
+    settingFocusNode?.dispose();
+    settingTextController?.dispose();
+
+    endowment2018FocusNode?.dispose();
+    endowment2018TextController?.dispose();
+
+    academicCalendarFocusNode?.dispose();
+    academicCalendarTextController?.dispose();
   }
 }

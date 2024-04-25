@@ -30,22 +30,22 @@ class ProgramDataRecord extends FirestoreRecord {
   String get programImage => _programImage ?? '';
   bool hasProgramImage() => _programImage != null;
 
-  // "programJobs" field.
-  List<String>? _programJobs;
-  List<String> get programJobs => _programJobs ?? const [];
-  bool hasProgramJobs() => _programJobs != null;
-
   // "programWebsite" field.
   String? _programWebsite;
   String get programWebsite => _programWebsite ?? '';
   bool hasProgramWebsite() => _programWebsite != null;
 
+  // "programJobs" field.
+  String? _programJobs;
+  String get programJobs => _programJobs ?? '';
+  bool hasProgramJobs() => _programJobs != null;
+
   void _initializeFields() {
     _programName = snapshotData['programName'] as String?;
     _programDescription = snapshotData['programDescription'] as String?;
     _programImage = snapshotData['programImage'] as String?;
-    _programJobs = getDataList(snapshotData['programJobs']);
     _programWebsite = snapshotData['programWebsite'] as String?;
+    _programJobs = snapshotData['programJobs'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -87,6 +87,7 @@ Map<String, dynamic> createProgramDataRecordData({
   String? programDescription,
   String? programImage,
   String? programWebsite,
+  String? programJobs,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -94,6 +95,7 @@ Map<String, dynamic> createProgramDataRecordData({
       'programDescription': programDescription,
       'programImage': programImage,
       'programWebsite': programWebsite,
+      'programJobs': programJobs,
     }.withoutNulls,
   );
 
@@ -105,12 +107,11 @@ class ProgramDataRecordDocumentEquality implements Equality<ProgramDataRecord> {
 
   @override
   bool equals(ProgramDataRecord? e1, ProgramDataRecord? e2) {
-    const listEquality = ListEquality();
     return e1?.programName == e2?.programName &&
         e1?.programDescription == e2?.programDescription &&
         e1?.programImage == e2?.programImage &&
-        listEquality.equals(e1?.programJobs, e2?.programJobs) &&
-        e1?.programWebsite == e2?.programWebsite;
+        e1?.programWebsite == e2?.programWebsite &&
+        e1?.programJobs == e2?.programJobs;
   }
 
   @override
@@ -118,8 +119,8 @@ class ProgramDataRecordDocumentEquality implements Equality<ProgramDataRecord> {
         e?.programName,
         e?.programDescription,
         e?.programImage,
-        e?.programJobs,
-        e?.programWebsite
+        e?.programWebsite,
+        e?.programJobs
       ]);
 
   @override

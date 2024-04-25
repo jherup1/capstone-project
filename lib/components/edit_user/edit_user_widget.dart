@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -15,10 +14,12 @@ export 'edit_user_model.dart';
 class EditUserWidget extends StatefulWidget {
   const EditUserWidget({
     super.key,
-    this.userDoc,
+    required this.userDoc,
+    required this.userDocRef,
   });
 
   final UsersRecord? userDoc;
+  final DocumentReference? userDocRef;
 
   @override
   State<EditUserWidget> createState() => _EditUserWidgetState();
@@ -41,17 +42,21 @@ class _EditUserWidgetState extends State<EditUserWidget>
     super.initState();
     _model = createModel(context, () => EditUserModel());
 
-    _model.userDisplayNameTextController ??=
+    _model.displayNameTextController ??=
         TextEditingController(text: widget.userDoc?.displayName);
-    _model.userDisplayNameFocusNode ??= FocusNode();
+    _model.displayNameFocusNode ??= FocusNode();
 
-    _model.userLastNameTextController ??=
+    _model.lastNameTextController ??=
         TextEditingController(text: widget.userDoc?.lastName);
-    _model.userLastNameFocusNode ??= FocusNode();
+    _model.lastNameFocusNode ??= FocusNode();
 
-    _model.userEmailTextController ??=
+    _model.emailTextController ??=
         TextEditingController(text: widget.userDoc?.email);
-    _model.userEmailFocusNode ??= FocusNode();
+    _model.emailFocusNode ??= FocusNode();
+
+    _model.phoneNumberTextController ??=
+        TextEditingController(text: widget.userDoc?.phoneNumber);
+    _model.phoneNumberFocusNode ??= FocusNode();
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
@@ -149,7 +154,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                     child: Text(
-                      'Below are your profile details',
+                      'Below are the user\'s profile fields to edit',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             fontFamily:
                                 FlutterFlowTheme.of(context).labelMediumFamily,
@@ -171,13 +176,12 @@ class _EditUserWidgetState extends State<EditUserWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: TextFormField(
-                                controller:
-                                    _model.userDisplayNameTextController,
-                                focusNode: _model.userDisplayNameFocusNode,
+                                controller: _model.displayNameTextController,
+                                focusNode: _model.displayNameFocusNode,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'User Display Name',
+                                  labelText: 'Display Name',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -252,7 +256,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
-                                    .userDisplayNameTextControllerValidator
+                                    .displayNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -262,12 +266,12 @@ class _EditUserWidgetState extends State<EditUserWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: TextFormField(
-                                controller: _model.userLastNameTextController,
-                                focusNode: _model.userLastNameFocusNode,
+                                controller: _model.lastNameTextController,
+                                focusNode: _model.lastNameFocusNode,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'User Last Name',
+                                  labelText: 'Last Name',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -342,7 +346,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
-                                    .userLastNameTextControllerValidator
+                                    .lastNameTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -357,12 +361,12 @@ class _EditUserWidgetState extends State<EditUserWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: TextFormField(
-                                controller: _model.userEmailTextController,
-                                focusNode: _model.userEmailFocusNode,
+                                controller: _model.emailTextController,
+                                focusNode: _model.emailFocusNode,
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText: 'User Email',
+                                  labelText: 'Email',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -436,9 +440,100 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                     ),
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
-                                validator: _model
-                                    .userEmailTextControllerValidator
+                                validator: _model.emailTextControllerValidator
                                     .asValidator(context),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 16.0, 16.0, 0.0),
+                              child: TextFormField(
+                                controller: _model.phoneNumberTextController,
+                                focusNode: _model.phoneNumberFocusNode,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText: 'Phone Number',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily),
+                                      ),
+                                  hintText: widget.userDoc?.phoneNumber,
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .labelMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMediumFamily),
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  filled: true,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  contentPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 24.0, 20.0, 24.0),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                                keyboardType: TextInputType.phone,
+                                cursorColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                validator: _model
+                                    .phoneNumberTextControllerValidator
+                                    .asValidator(context),
+                                inputFormatters: [_model.phoneNumberMask],
                               ),
                             ),
                           ),
@@ -448,13 +543,13 @@ class _EditUserWidgetState extends State<EditUserWidget>
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 0.0),
                         child: FlutterFlowDropDown<String>(
-                          controller: _model.dropDownValueController ??=
+                          controller: _model.roleDropDownValueController ??=
                               FormFieldController<String>(
-                            _model.dropDownValue ??= widget.userDoc?.role,
+                            _model.roleDropDownValue ??= widget.userDoc?.role,
                           ),
                           options: const ['user', 'support', 'admin'],
                           onChanged: (val) =>
-                              setState(() => _model.dropDownValue = val),
+                              setState(() => _model.roleDropDownValue = val),
                           width: double.infinity,
                           height: 58.0,
                           textStyle: FlutterFlowTheme.of(context)
@@ -467,7 +562,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                     FlutterFlowTheme.of(context)
                                         .bodyMediumFamily),
                               ),
-                          hintText: widget.userDoc?.role,
+                          hintText: 'Please select role...',
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,
                             color: FlutterFlowTheme.of(context).secondaryText,
@@ -492,60 +587,6 @@ class _EditUserWidgetState extends State<EditUserWidget>
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Expanded(
-                              flex: 4,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 16.0, 0.0, 0.0),
-                                    child: SelectionArea(
-                                        child: Text(
-                                      'The user\'s list of schools:',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily),
-                                          ),
-                                    )),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 4.0, 0.0, 0.0),
-                                    child: SelectionArea(
-                                        child: Text(
-                                      widget.userDoc!.schools
-                                          .contains(widget.userDoc?.schools
-                                              .take(5)
-                                              .toList()
-                                              .first)
-                                          .toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLargeFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLargeFamily),
-                                          ),
-                                    )),
-                                  ),
-                                ],
-                              ),
-                            ),
                             Expanded(
                               flex: 2,
                               child: Column(
@@ -577,8 +618,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                         16.0, 4.0, 0.0, 0.0),
                                     child: SelectionArea(
                                         child: Text(
-                                      dateTimeFormat('M/d/y h:mm a',
-                                          widget.userDoc!.createdTime!),
+                                      widget.userDoc!.createdTime!.toString(),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
@@ -713,7 +753,7 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                           return AlertDialog(
                                             title: const Text('Confirmation'),
                                             content: const Text(
-                                                'Are you sure you want to save these changes?'),
+                                                'Are you sure you want save these changes?'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
@@ -731,20 +771,21 @@ class _EditUserWidgetState extends State<EditUserWidget>
                                       ) ??
                                       false;
                               if (confirmDialogResponse) {
-                                await currentUserReference!
+                                await widget.userDocRef!
                                     .update(createUsersRecordData(
                                   displayName:
-                                      _model.userDisplayNameTextController.text,
-                                  lastName:
-                                      _model.userLastNameTextController.text,
-                                  email: widget.userDoc?.email,
-                                  role: _model.dropDownValue,
+                                      _model.displayNameTextController.text,
+                                  lastName: _model.lastNameTextController.text,
+                                  email: _model.emailTextController.text,
+                                  phoneNumber:
+                                      _model.phoneNumberTextController.text,
+                                  role: _model.roleDropDownValue,
                                 ));
                                 context.pop();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
-                                      'You successfully updated your profile information!',
+                                      'You successfully updated the user profile information!',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

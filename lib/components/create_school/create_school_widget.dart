@@ -1,13 +1,13 @@
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +20,7 @@ class CreateSchoolWidget extends StatefulWidget {
     this.schoolDoc,
   });
 
-  final SchoolDataRecord? schoolDoc;
+  final DocumentReference? schoolDoc;
 
   @override
   State<CreateSchoolWidget> createState() => _CreateSchoolWidgetState();
@@ -55,6 +55,9 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
     _model.schoolWebsiteTextController ??= TextEditingController();
     _model.schoolWebsiteFocusNode ??= FocusNode();
 
+    _model.schoolImageLinkTextController ??= TextEditingController();
+    _model.schoolImageLinkFocusNode ??= FocusNode();
+
     _model.countryCodeTextController ??= TextEditingController();
     _model.countryCodeFocusNode ??= FocusNode();
 
@@ -73,8 +76,11 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
     _model.addressTextController ??= TextEditingController();
     _model.addressFocusNode ??= FocusNode();
 
-    _model.geoPointTextController ??= TextEditingController();
-    _model.geoPointFocusNode ??= FocusNode();
+    _model.latitudeTextController ??= TextEditingController();
+    _model.latitudeFocusNode ??= FocusNode();
+
+    _model.longitudeTextController ??= TextEditingController();
+    _model.longitudeFocusNode ??= FocusNode();
 
     _model.tutionTextController ??= TextEditingController();
     _model.tutionFocusNode ??= FocusNode();
@@ -197,6 +203,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
             child: Container(
               width: double.infinity,
+              height: 900.0,
               constraints: const BoxConstraints(
                 maxWidth: 670.0,
               ),
@@ -214,42 +221,45 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                 ],
                 borderRadius: BorderRadius.circular(16.0),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 0.0, 0.0),
-                    child: Text(
-                      'Create School Profile',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .headlineMediumFamily,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .headlineMediumFamily),
-                              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 0.0, 0.0),
+                      child: Text(
+                        'Create School Profile',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: FlutterFlowTheme.of(context)
+                                  .headlineMediumFamily,
+                              letterSpacing: 0.0,
+                              useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                  FlutterFlowTheme.of(context)
+                                      .headlineMediumFamily),
+                            ),
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
-                    child: Text(
-                      'Below are the school profile details',
-                      style: FlutterFlowTheme.of(context).labelMedium.override(
-                            fontFamily:
-                                FlutterFlowTheme.of(context).labelMediumFamily,
-                            letterSpacing: 0.0,
-                            useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                FlutterFlowTheme.of(context).labelMediumFamily),
-                          ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                      child: Text(
+                        'Below are the school profile details',
+                        style:
+                            FlutterFlowTheme.of(context).labelMedium.override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                      ),
                     ),
-                  ),
-                  SingleChildScrollView(
-                    child: Column(
+                    Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -285,106 +295,11 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                           const Duration(milliseconds: 500),
                                       fadeOutDuration:
                                           const Duration(milliseconds: 500),
-                                      imageUrl: _model.uploadedFileUrl,
+                                      imageUrl: _model
+                                          .schoolImageLinkTextController.text,
                                       fit: BoxFit.fitWidth,
                                     ),
                                   ),
-                                ),
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  final selectedMedia = await selectMedia(
-                                    mediaSource: MediaSource.photoGallery,
-                                    multiImage: false,
-                                  );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isDataUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
-
-                                    var downloadUrls = <String>[];
-                                    try {
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                                blurHash: m.blurHash,
-                                              ))
-                                          .toList();
-
-                                      downloadUrls = (await Future.wait(
-                                        selectedMedia.map(
-                                          (m) async => await uploadData(
-                                              m.storagePath, m.bytes),
-                                        ),
-                                      ))
-                                          .where((u) => u != null)
-                                          .map((u) => u!)
-                                          .toList();
-                                    } finally {
-                                      _model.isDataUploading = false;
-                                    }
-                                    if (selectedUploadedFiles.length ==
-                                            selectedMedia.length &&
-                                        downloadUrls.length ==
-                                            selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                        _model.uploadedFileUrl =
-                                            downloadUrls.first;
-                                      });
-                                    } else {
-                                      setState(() {});
-                                      return;
-                                    }
-                                  }
-                                },
-                                text: 'Select Photo',
-                                options: FFButtonOptions(
-                                  height: 44.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                  hoverColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  hoverBorderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                    width: 2.0,
-                                  ),
-                                  hoverTextColor:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  hoverElevation: 3.0,
                                 ),
                               ),
                             ].divide(const SizedBox(width: 16.0)),
@@ -749,6 +664,90 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             cursorColor: FlutterFlowTheme.of(context).primary,
                             validator: _model
                                 .schoolWebsiteTextControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 16.0, 16.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.schoolImageLinkTextController,
+                            focusNode: _model.schoolImageLinkFocusNode,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'School Picture Link',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .labelMediumFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .labelMediumFamily),
+                                  ),
+                              hintText: 'Insert a link of an image',
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodySmallFamily,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodySmallFamily),
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).error,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              filled: true,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 24.0, 20.0, 24.0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .bodyMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily),
+                                ),
+                            keyboardType: TextInputType.url,
+                            cursorColor: FlutterFlowTheme.of(context).primary,
+                            validator: _model
+                                .schoolImageLinkTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -1151,7 +1150,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMediumFamily),
                                         ),
-                                    hintText: 'west',
+                                    hintText: 'West',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -1327,13 +1326,12 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.geoPointTextController,
-                                  focusNode: _model.geoPointFocusNode,
+                                  controller: _model.latitudeTextController,
+                                  focusNode: _model.latitudeFocusNode,
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText:
-                                        'GeoPoint [in the form \"LatLng(lat: LAT, lng: LNG)\"]',
+                                    labelText: 'Latitude',
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -1347,8 +1345,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                       .labelMediumFamily),
                                         ),
                                     alignLabelWithHint: false,
-                                    hintText:
-                                        'LatLng(lat: 39.5442688, lng: -119.81631051527071)',
+                                    hintText: '39.5442688',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -1414,7 +1411,102 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                   cursorColor:
                                       FlutterFlowTheme.of(context).primary,
                                   validator: _model
-                                      .geoPointTextControllerValidator
+                                      .latitudeTextControllerValidator
+                                      .asValidator(context),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 16.0, 16.0, 0.0),
+                                child: TextFormField(
+                                  controller: _model.longitudeTextController,
+                                  focusNode: _model.longitudeFocusNode,
+                                  autofocus: true,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText: 'Longitude',
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMediumFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily),
+                                        ),
+                                    alignLabelWithHint: false,
+                                    hintText: '-119.81631051527071)',
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .bodySmall
+                                        .override(
+                                          fontFamily:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodySmallFamily,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: GoogleFonts.asMap()
+                                              .containsKey(
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmallFamily),
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    filled: true,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    contentPadding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 24.0, 20.0, 24.0),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: FlutterFlowTheme.of(context)
+                                            .bodyMediumFamily,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMediumFamily),
+                                      ),
+                                  cursorColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  validator: _model
+                                      .longitudeTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -2445,7 +2537,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                   autofocus: true,
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText: 'SAT Average',
+                                    labelText: 'SAT Range',
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -2846,7 +2938,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .labelMediumFamily),
                                         ),
-                                    hintText: 'public',
+                                    hintText: 'Public',
                                     hintStyle: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -3374,7 +3466,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMediumFamily),
                                           ),
-                                      hintText: 'city',
+                                      hintText: 'City',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -3574,7 +3666,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                     FlutterFlowTheme.of(context)
                                                         .labelMediumFamily),
                                           ),
-                                      hintText: 'semester',
+                                      hintText: 'Semester',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -3655,236 +3747,267 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                         ),
                       ],
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.05),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              Navigator.pop(context);
-                            },
-                            text: 'Cancel',
-                            options: FFButtonOptions(
-                              height: 44.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                              hoverColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              hoverBorderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2.0,
-                              ),
-                              hoverTextColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              hoverElevation: 3.0,
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.0, 0.05),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              var confirmDialogResponse =
-                                  await showDialog<bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Confirmation'),
-                                            content: const Text(
-                                                'Are you sure you want to create this school?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('Cancel'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Confirm'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                              if (confirmDialogResponse) {
-                                await SchoolDataRecord.collection
-                                    .doc()
-                                    .set(createSchoolDataRecordData(
-                                      displayName:
-                                          _model.displayNameTextController.text,
-                                      aliasNames:
-                                          _model.aliasNameTextController.text,
-                                      description: _model
-                                          .schoolDescriptionTextController.text,
-                                      schoolWebsite: _model
-                                          .schoolWebsiteTextController.text,
-                                      countryCode:
-                                          _model.countryCodeTextController.text,
-                                      region: _model.regionTextController.text,
-                                      city: _model.cityTextController.text,
-                                      zip: int.tryParse(
-                                          _model.zipTextController.text),
-                                      address:
-                                          _model.addressTextController.text,
-                                      geoPoint: widget.schoolDoc?.geoPoint,
-                                      tuition: int.tryParse(
-                                          _model.tutionTextController.text),
-                                      acceptanceRate: double.tryParse(_model
-                                          .acceptanceRateTextController.text),
-                                      rankingDisplayRank:
-                                          _model.displayRankTextController.text,
-                                      enrollment: int.tryParse(
-                                          _model.enrollmentTextController.text),
-                                      hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgTextController.text),
-                                      actAvg: int.tryParse(
-                                          _model.actAvgTextController.text),
-                                      satAvg: int.tryParse(
-                                          _model.satAvgTextController.text),
-                                      engineeringRepScore: double.tryParse(
-                                          _model
-                                              .engRepScoreTextController.text),
-                                      businessRepScore: double.tryParse(_model
-                                          .busRepScoreTextController.text),
-                                      institutionalControl: _model
-                                          .instituationalControlTextController
-                                          .text,
-                                      religiousAffiliation: _model
-                                          .religiousAffiliationTextController
-                                          .text,
-                                      schoolType:
-                                          _model.schoolTypeTextController.text,
-                                      schoolTypeNationalUniversities: _model
-                                          .schoolTypeNationalTextController
-                                          .text,
-                                      isPublic: _model.isPublicValue != null &&
-                                          _model.isPublicValue != '',
-                                      academicCalendar: _model
-                                          .academicCalendarTextController.text,
-                                      costAfterAid: double.tryParse(_model
-                                          .costAfterAidTextController.text),
-                                      endowment2018: _model
-                                          .endowment2018TextController.text,
-                                      percentReceivingAId: double.tryParse(
-                                          _model
-                                              .percentRecievingAidTextController
-                                              .text),
-                                      rankingIsTied:
-                                          _model.rankIsTiedValue != null &&
-                                              _model.rankIsTiedValue != '',
-                                      rankingSortRank: int.tryParse(_model
-                                          .rankSortRankTextController.text),
-                                      satActRangeACT: _model
-                                          .satActRangeACTTextController.text,
-                                      satActRangeSAT: _model
-                                          .satActRangeSATTextController.text,
-                                      setting:
-                                          _model.settingTextController.text,
-                                      state: _model.stateTextController.text,
-                                      yearFounded: int.tryParse(_model
-                                          .yearFoundedTextController.text),
-                                      primaryPhoto: _model.uploadedFileUrl,
-                                    ));
-                                context.pop();
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Successfully updated user profile.',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily,
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMediumFamily),
-                                          ),
-                                    ),
-                                    duration: const Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              } else {
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          24.0, 12.0, 24.0, 24.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.05),
+                            child: FFButtonWidget(
+                              onPressed: () async {
                                 Navigator.pop(context);
-                              }
-                            },
-                            text: 'Create School',
-                            options: FFButtonOptions(
-                              height: 44.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleSmallFamily,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleSmallFamily),
-                                  ),
-                              elevation: 3.0,
-                              borderSide: const BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                              },
+                              text: 'Cancel',
+                              options: FFButtonOptions(
+                                height: 44.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).alternate,
+                                hoverBorderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  width: 2.0,
+                                ),
+                                hoverTextColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                hoverElevation: 3.0,
                               ),
-                              borderRadius: BorderRadius.circular(12.0),
-                              hoverColor: FlutterFlowTheme.of(context).accent1,
-                              hoverBorderSide: BorderSide(
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                width: 1.0,
-                              ),
-                              hoverTextColor:
-                                  FlutterFlowTheme.of(context).secondary,
-                              hoverElevation: 0.0,
                             ),
                           ),
-                        ),
-                      ],
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.05),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                var confirmDialogResponse =
+                                    await showDialog<bool>(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: const Text('Confirmation'),
+                                              content: const Text(
+                                                  'Are you sure you want to create this school?'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          false),
+                                                  child: const Text('Cancel'),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext,
+                                                          true),
+                                                  child: const Text('Confirm'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        ) ??
+                                        false;
+                                if (confirmDialogResponse) {
+                                  await SchoolDataRecord.collection
+                                      .doc()
+                                      .set(createSchoolDataRecordData(
+                                        displayName: _model
+                                            .displayNameTextController.text,
+                                        aliasNames:
+                                            _model.aliasNameTextController.text,
+                                        description: _model
+                                            .schoolDescriptionTextController
+                                            .text,
+                                        schoolWebsite: _model
+                                            .schoolWebsiteTextController.text,
+                                        countryCode: _model
+                                            .countryCodeTextController.text,
+                                        region:
+                                            _model.regionTextController.text,
+                                        city: _model.cityTextController.text,
+                                        zip: int.tryParse(
+                                            _model.zipTextController.text),
+                                        address:
+                                            _model.addressTextController.text,
+                                        tuition: int.tryParse(
+                                            _model.tutionTextController.text),
+                                        acceptanceRate: double.tryParse(_model
+                                            .acceptanceRateTextController.text),
+                                        rankingDisplayRank: _model
+                                            .displayRankTextController.text,
+                                        enrollment: int.tryParse(_model
+                                            .enrollmentTextController.text),
+                                        hsGpaAvg: double.tryParse(
+                                            _model.hsGpaAvgTextController.text),
+                                        actAvg: int.tryParse(
+                                            _model.actAvgTextController.text),
+                                        satAvg: int.tryParse(
+                                            _model.satAvgTextController.text),
+                                        engineeringRepScore: double.tryParse(
+                                            _model.engRepScoreTextController
+                                                .text),
+                                        businessRepScore: double.tryParse(_model
+                                            .busRepScoreTextController.text),
+                                        institutionalControl: _model
+                                            .instituationalControlTextController
+                                            .text,
+                                        religiousAffiliation: _model
+                                            .religiousAffiliationTextController
+                                            .text,
+                                        schoolType: _model
+                                            .schoolTypeTextController.text,
+                                        schoolTypeNationalUniversities: _model
+                                            .schoolTypeNationalTextController
+                                            .text,
+                                        isPublic:
+                                            _model.isPublicValue != null &&
+                                                _model.isPublicValue != '',
+                                        academicCalendar: _model
+                                            .academicCalendarTextController
+                                            .text,
+                                        costAfterAid: double.tryParse(_model
+                                            .costAfterAidTextController.text),
+                                        endowment2018: _model
+                                            .endowment2018TextController.text,
+                                        percentReceivingAId: double.tryParse(
+                                            _model
+                                                .percentRecievingAidTextController
+                                                .text),
+                                        rankingIsTied:
+                                            _model.rankIsTiedValue != null &&
+                                                _model.rankIsTiedValue != '',
+                                        rankingSortRank: int.tryParse(_model
+                                            .rankSortRankTextController.text),
+                                        satActRangeACT: _model
+                                            .satActRangeACTTextController.text,
+                                        satActRangeSAT: _model
+                                            .satActRangeSATTextController.text,
+                                        setting:
+                                            _model.settingTextController.text,
+                                        state: _model.stateTextController.text,
+                                        yearFounded: int.tryParse(_model
+                                            .yearFoundedTextController.text),
+                                        primaryPhoto: _model
+                                            .schoolImageLinkTextController.text,
+                                      ));
+                                  _model.querySchool =
+                                      await querySchoolDataRecordOnce(
+                                    queryBuilder: (schoolDataRecord) =>
+                                        schoolDataRecord.where(
+                                      'displayName',
+                                      isEqualTo:
+                                          _model.displayNameTextController.text,
+                                    ),
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  await actions.addGeopoint(
+                                    _model.querySchool!.reference.id,
+                                    double.parse(
+                                        _model.latitudeTextController.text),
+                                    double.parse(
+                                        _model.longitudeTextController.text),
+                                  );
+                                  context.pop();
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Successfully created school.',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMediumFamily),
+                                            ),
+                                      ),
+                                      duration: const Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                } else {
+                                  Navigator.pop(context);
+                                }
+
+                                setState(() {});
+                              },
+                              text: 'Create School',
+                              options: FFButtonOptions(
+                                height: 44.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .titleSmallFamily,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmallFamily),
+                                    ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                                hoverColor:
+                                    FlutterFlowTheme.of(context).accent1,
+                                hoverBorderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  width: 1.0,
+                                ),
+                                hoverTextColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                                hoverElevation: 0.0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
           ),
