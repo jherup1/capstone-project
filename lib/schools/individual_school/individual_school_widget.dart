@@ -2,10 +2,8 @@ import '/components/individ_schools_program_info/individ_schools_program_info_wi
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'individual_school_model.dart';
 export 'individual_school_model.dart';
 
@@ -67,7 +65,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                     print('IconButton pressed ...');
                   },
                 ),
-                actions: [],
+                actions: const [],
                 centerTitle: false,
                 elevation: 0.0,
               )
@@ -75,19 +73,19 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 5.0, 0.0),
                           child: FlutterFlowIconButton(
                             buttonSize: 45.0,
@@ -102,7 +100,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 5.0, 0.0),
                           child: Text(
                             'School Details',
@@ -134,7 +132,7 @@ class _IndividualSchoolWidgetState extends State<IndividualSchoolWidget> {
                   wrapWithModel(
                     model: _model.individSchoolsProgramInfoModel,
                     updateCallback: () => setState(() {}),
-                    child: IndividSchoolsProgramInfoWidget(),
+                    child: const IndividSchoolsProgramInfoWidget(),
                   ),
                 ],
               ),

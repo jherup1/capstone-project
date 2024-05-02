@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
-import 'backend/api_requests/api_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -26,78 +24,78 @@ class FFAppState extends ChangeNotifier {
 
   List<String> _roleCache = [];
   List<String> get roleCache => _roleCache;
-  set roleCache(List<String> _value) {
-    _roleCache = _value;
+  set roleCache(List<String> value) {
+    _roleCache = value;
   }
 
-  void addToRoleCache(String _value) {
-    _roleCache.add(_value);
+  void addToRoleCache(String value) {
+    _roleCache.add(value);
   }
 
-  void removeFromRoleCache(String _value) {
-    _roleCache.remove(_value);
+  void removeFromRoleCache(String value) {
+    _roleCache.remove(value);
   }
 
-  void removeAtIndexFromRoleCache(int _index) {
-    _roleCache.removeAt(_index);
+  void removeAtIndexFromRoleCache(int index) {
+    _roleCache.removeAt(index);
   }
 
   void updateRoleCacheAtIndex(
-    int _index,
+    int index,
     String Function(String) updateFn,
   ) {
-    _roleCache[_index] = updateFn(_roleCache[_index]);
+    _roleCache[index] = updateFn(_roleCache[index]);
   }
 
-  void insertAtIndexInRoleCache(int _index, String _value) {
-    _roleCache.insert(_index, _value);
+  void insertAtIndexInRoleCache(int index, String value) {
+    _roleCache.insert(index, value);
   }
 
   LatLng? _tapped;
   LatLng? get tapped => _tapped;
-  set tapped(LatLng? _value) {
-    _tapped = _value;
+  set tapped(LatLng? value) {
+    _tapped = value;
   }
 
   String _loginAttempt = '';
   String get loginAttempt => _loginAttempt;
-  set loginAttempt(String _value) {
-    _loginAttempt = _value;
+  set loginAttempt(String value) {
+    _loginAttempt = value;
   }
 
   String _createAccountAttempt = '';
   String get createAccountAttempt => _createAccountAttempt;
-  set createAccountAttempt(String _value) {
-    _createAccountAttempt = _value;
+  set createAccountAttempt(String value) {
+    _createAccountAttempt = value;
   }
 
   String _updateAccountAttempt = '';
   String get updateAccountAttempt => _updateAccountAttempt;
-  set updateAccountAttempt(String _value) {
-    _updateAccountAttempt = _value;
+  set updateAccountAttempt(String value) {
+    _updateAccountAttempt = value;
   }
 
   String _passwordChangeAttempt = '';
   String get passwordChangeAttempt => _passwordChangeAttempt;
-  set passwordChangeAttempt(String _value) {
-    _passwordChangeAttempt = _value;
+  set passwordChangeAttempt(String value) {
+    _passwordChangeAttempt = value;
   }
 
   int _smile = 5;
   int get smile => _smile;
-  set smile(int _value) {
-    _smile = _value;
+  set smile(int value) {
+    _smile = value;
   }
 
   bool _schoolSearchActive = false;
   bool get schoolSearchActive => _schoolSearchActive;
-  set schoolSearchActive(bool _value) {
-    _schoolSearchActive = _value;
+  set schoolSearchActive(bool value) {
+    _schoolSearchActive = value;
   }
 
   bool _programSearchActive = false;
   bool get programSearchActive => _programSearchActive;
-  set programSearchActive(bool _value) {
-    _programSearchActive = _value;
+  set programSearchActive(bool value) {
+    _programSearchActive = value;
   }
 }

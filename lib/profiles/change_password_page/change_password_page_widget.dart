@@ -66,14 +66,14 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
@@ -91,7 +91,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel1,
                   updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
+                  child: const SideBarNavWidget(),
                 ),
               Flexible(
                 child: Column(
@@ -100,14 +100,14 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                     wrapWithModel(
                       model: _model.breadcrumbsHeaderModel,
                       updateCallback: () => setState(() {}),
-                      child: BreadcrumbsHeaderWidget(
+                      child: const BreadcrumbsHeaderWidget(
                         pageDetails: 'Change Your Password!',
                         pageTitle: 'Change Password Page',
                       ),
                     ),
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: StreamBuilder<UsersRecord>(
                           stream:
                               UsersRecord.getDocument(currentUserReference!),
@@ -130,7 +130,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                             return Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,
                               height: MediaQuery.sizeOf(context).height * 0.9,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -140,7 +140,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 0.0, 0.0),
                                         child: Text(
                                           'Hello, ${valueOrDefault<String>(
@@ -169,7 +169,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 0.0, 0.0),
                                     child: Text(
                                       'Change Password:',
@@ -193,7 +193,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 12.0, 20.0, 12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -203,7 +203,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -225,7 +225,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.emailAddressTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -290,7 +290,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -303,7 +303,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -316,7 +316,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -331,7 +331,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -366,7 +366,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -383,7 +383,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.currentPasswordTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -449,7 +449,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -492,7 +492,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -546,7 +546,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -563,7 +563,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.newPasswordTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -629,7 +629,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -672,7 +672,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -726,7 +726,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -743,7 +743,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.confirmNewPasswordTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -809,7 +809,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -852,7 +852,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -914,7 +914,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     opacity: 0.0,
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         ' ',
@@ -942,7 +942,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     'unknown') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'An unknown error has occured. Please try again.',
@@ -972,7 +972,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     'success') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Password updated successfully!',
@@ -1002,7 +1002,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     'passwords-do-not-match') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'The new passwords provided do not match. Please try again.',
@@ -1028,11 +1028,11 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     ),
                                                   );
                                                 } else if (FFAppState()
-                                                        .updateAccountAttempt ==
+                                                        .passwordChangeAttempt ==
                                                     'invalid-credential') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Password incorrect, please try again.',
@@ -1057,39 +1057,64 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                               ),
                                                     ),
                                                   );
+                                                } else if (FFAppState()
+                                                        .passwordChangeAttempt ==
+                                                    'weak--password') {
+                                                  return Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            -0.96, 0.0),
+                                                    child: Text(
+                                                      'Password is too weak.  Passwords must contain one number, one lowercase letter, one uppercase letter, and one symbol.',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  );
                                                 } else {
                                                   return Opacity(
                                                     opacity: 0.0,
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Text(
-                                                        ' ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMediumFamily,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                      ),
+                                                    child: Text(
+                                                      '',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
                                                     ),
                                                   );
                                                 }
                                               },
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 24.0, 0.0, 0.0),
                                               child: Row(
@@ -1100,26 +1125,14 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                   FFButtonWidget(
                                                     onPressed: ((_model
                                                                         .emailAddressTextController.text ==
-                                                                    null ||
-                                                                _model
-                                                                        .emailAddressTextController.text ==
                                                                     '') ||
                                                             (_model.currentPasswordTextController
-                                                                        .text ==
-                                                                    null ||
-                                                                _model.currentPasswordTextController
                                                                         .text ==
                                                                     '') ||
                                                             (_model.newPasswordTextController
                                                                         .text ==
-                                                                    null ||
-                                                                _model.newPasswordTextController
-                                                                        .text ==
                                                                     '') ||
                                                             (_model.confirmNewPasswordTextController
-                                                                        .text ==
-                                                                    null ||
-                                                                _model.confirmNewPasswordTextController
                                                                         .text ==
                                                                     '') ||
                                                             (_model.newPasswordTextController
@@ -1151,14 +1164,14 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                       width: 150.0,
                                                       height: 50.0,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1191,7 +1204,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                                             .titleSmallFamily),
                                                               ),
                                                       elevation: 10.0,
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                       ),

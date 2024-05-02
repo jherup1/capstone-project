@@ -6,10 +6,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'program_scroll_fav_model.dart';
 export 'program_scroll_fav_model.dart';
 
@@ -66,7 +64,7 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
         final containerUsersRecord = snapshot.data!;
         return Container(
           height: 250.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -79,10 +77,10 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
             builder: (context) {
               final programs = containerUsersRecord.programs.toList();
               return ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 scrollDirection: Axis.horizontal,
                 itemCount: programs.length,
-                separatorBuilder: (_, __) => SizedBox(width: 20.0),
+                separatorBuilder: (_, __) => const SizedBox(width: 20.0),
                 itemBuilder: (context, programsIndex) {
                   final programsItem = programs[programsIndex];
                   return StreamBuilder<ProgramDataRecord>(
@@ -106,7 +104,7 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                       return Container(
                         width: 300.0,
                         height: 100.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.transparent,
                           boxShadow: [
                             BoxShadow(
@@ -136,7 +134,7 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                     ),
                                   ).image,
                                 ),
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
                                   topLeft: Radius.circular(16.0),
@@ -146,13 +144,13 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                               child: Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x50000000),
                                 ),
                                 child: Align(
-                                  alignment: AlignmentDirectional(-1.0, 1.0),
+                                  alignment: const AlignmentDirectional(-1.0, 1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 10.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -178,13 +176,13 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 1.0),
+                              alignment: const AlignmentDirectional(0.0, 1.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 75.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(16.0),
                                     bottomRight: Radius.circular(16.0),
                                     topLeft: Radius.circular(0.0),
@@ -199,9 +197,9 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                          const AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -211,7 +209,7 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primary,
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.remove_rounded,
                                             color: Colors.white,
                                             size: 24.0,
@@ -230,10 +228,10 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(1.0, 0.0),
+                                            const AlignmentDirectional(1.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 5.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -262,10 +260,10 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                             text: 'See More',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -288,7 +286,7 @@ class _ProgramScrollFavWidgetState extends State<ProgramScrollFavWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: BorderSide(
+                                              borderSide: const BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

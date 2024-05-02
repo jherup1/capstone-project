@@ -7,10 +7,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'school_information_bottom_model.dart';
 export 'school_information_bottom_model.dart';
 
@@ -55,7 +53,7 @@ class _SchoolInformationBottomWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(0.0),
         child: BackdropFilter(
@@ -64,12 +62,12 @@ class _SchoolInformationBottomWidgetState
             sigmaY: 8.0,
           ),
           child: Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0x00EEEEEE),
+                color: const Color(0x00EEEEEE),
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Column(
@@ -78,7 +76,7 @@ class _SchoolInformationBottomWidgetState
                 children: [
                   Expanded(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: MediaQuery.sizeOf(context).height * 0.7,
@@ -89,7 +87,7 @@ class _SchoolInformationBottomWidgetState
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 12.0,
                               color: Color(0x33000000),
@@ -103,7 +101,7 @@ class _SchoolInformationBottomWidgetState
                           shape: BoxShape.rectangle,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 0.0, 20.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -138,7 +136,7 @@ class _SchoolInformationBottomWidgetState
                                       .secondaryBackground,
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -173,10 +171,10 @@ class _SchoolInformationBottomWidgetState
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 4.0, 0.0, 4.0),
                                                 child: Text(
@@ -218,11 +216,11 @@ class _SchoolInformationBottomWidgetState
                                                             ''))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -268,11 +266,11 @@ class _SchoolInformationBottomWidgetState
                                                             ''))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -315,11 +313,11 @@ class _SchoolInformationBottomWidgetState
                                                             0.0))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -329,7 +327,7 @@ class _SchoolInformationBottomWidgetState
                                                             'Acceptance Rate: ${valueOrDefault<String>(
                                                               widget.school
                                                                   ?.acceptanceRate
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                               '-',
                                                             )}',
                                                             style: FlutterFlowTheme
@@ -363,11 +361,11 @@ class _SchoolInformationBottomWidgetState
                                                             0.0))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -377,7 +375,7 @@ class _SchoolInformationBottomWidgetState
                                                             'Cost After Aid: ${valueOrDefault<String>(
                                                               widget.school
                                                                   ?.costAfterAid
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                               '-',
                                                             )}',
                                                             style: FlutterFlowTheme
@@ -411,11 +409,11 @@ class _SchoolInformationBottomWidgetState
                                                             0))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -425,7 +423,7 @@ class _SchoolInformationBottomWidgetState
                                                             'Average SAT: ${valueOrDefault<String>(
                                                               widget.school
                                                                   ?.satAvg
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                               '-',
                                                             )}',
                                                             style: FlutterFlowTheme
@@ -459,11 +457,11 @@ class _SchoolInformationBottomWidgetState
                                                             0))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -473,7 +471,7 @@ class _SchoolInformationBottomWidgetState
                                                             'Average ACT: ${valueOrDefault<String>(
                                                               widget.school
                                                                   ?.actAvg
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                               '-',
                                                             )}',
                                                             style: FlutterFlowTheme
@@ -507,11 +505,11 @@ class _SchoolInformationBottomWidgetState
                                                             0.0))
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 -1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       4.0,
@@ -521,7 +519,7 @@ class _SchoolInformationBottomWidgetState
                                                             'Average HS GPA: ${valueOrDefault<String>(
                                                               widget.school
                                                                   ?.hsGpaAvg
-                                                                  ?.toString(),
+                                                                  .toString(),
                                                               '-',
                                                             )}',
                                                             style: FlutterFlowTheme
@@ -568,9 +566,9 @@ class _SchoolInformationBottomWidgetState
                                           ),
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(-1.0, 0.0),
+                                                const AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Column(
@@ -582,7 +580,7 @@ class _SchoolInformationBottomWidgetState
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Text(
                                                       valueOrDefault<String>(
@@ -611,11 +609,11 @@ class _SchoolInformationBottomWidgetState
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -646,7 +644,7 @@ class _SchoolInformationBottomWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -680,14 +678,14 @@ class _SchoolInformationBottomWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -712,7 +710,7 @@ class _SchoolInformationBottomWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -745,14 +743,14 @@ class _SchoolInformationBottomWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -777,7 +775,7 @@ class _SchoolInformationBottomWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -810,14 +808,14 @@ class _SchoolInformationBottomWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -842,7 +840,7 @@ class _SchoolInformationBottomWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -875,14 +873,14 @@ class _SchoolInformationBottomWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -907,7 +905,7 @@ class _SchoolInformationBottomWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -940,14 +938,14 @@ class _SchoolInformationBottomWidgetState
                                                                 FFButtonOptions(
                                                               height: 40.0,
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
                                                                           0.0,
                                                                           24.0,
                                                                           0.0),
                                                               iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -972,7 +970,7 @@ class _SchoolInformationBottomWidgetState
                                                                       ),
                                                               elevation: 3.0,
                                                               borderSide:
-                                                                  BorderSide(
+                                                                  const BorderSide(
                                                                 color: Colors
                                                                     .transparent,
                                                                 width: 1.0,
@@ -984,16 +982,16 @@ class _SchoolInformationBottomWidgetState
                                                             ),
                                                           ),
                                                       ].divide(
-                                                          SizedBox(width: 5.0)),
+                                                          const SizedBox(width: 5.0)),
                                                     ),
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1024,7 +1022,7 @@ class _SchoolInformationBottomWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Builder(
@@ -1032,7 +1030,7 @@ class _SchoolInformationBottomWidgetState
                                                         final programRef = widget
                                                                 .school
                                                                 ?.programRef
-                                                                ?.toList() ??
+                                                                .toList() ??
                                                             [];
                                                         return Row(
                                                           mainAxisSize:
@@ -1109,14 +1107,14 @@ class _SchoolInformationBottomWidgetState
                                                                       FFButtonOptions(
                                                                     height:
                                                                         40.0,
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             24.0,
                                                                             0.0,
                                                                             24.0,
                                                                             0.0),
                                                                     iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                        const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
@@ -1140,7 +1138,7 @@ class _SchoolInformationBottomWidgetState
                                                                     elevation:
                                                                         3.0,
                                                                     borderSide:
-                                                                        BorderSide(
+                                                                        const BorderSide(
                                                                       color: Colors
                                                                           .transparent,
                                                                       width:
@@ -1153,7 +1151,7 @@ class _SchoolInformationBottomWidgetState
                                                                 );
                                                               },
                                                             );
-                                                          }).divide(SizedBox(
+                                                          }).divide(const SizedBox(
                                                               width: 5.0)),
                                                         );
                                                       },
@@ -1161,11 +1159,11 @@ class _SchoolInformationBottomWidgetState
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1197,7 +1195,7 @@ class _SchoolInformationBottomWidgetState
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child:
                                                           SingleChildScrollView(
@@ -1207,12 +1205,12 @@ class _SchoolInformationBottomWidgetState
                                                           children: [
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       -1.0,
                                                                       0.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             8.0,
@@ -1259,9 +1257,9 @@ class _SchoolInformationBottomWidgetState
                               ),
                               Flexible(
                                 child: Align(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: const AlignmentDirectional(0.0, 1.0),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 8.0, 20.0, 12.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1272,7 +1270,7 @@ class _SchoolInformationBottomWidgetState
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 16.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -1280,8 +1278,8 @@ class _SchoolInformationBottomWidgetState
                                             },
                                             text: 'Cancel',
                                             options: FFButtonOptions(
-                                              padding: EdgeInsets.all(24.0),
-                                              iconPadding: EdgeInsetsDirectional
+                                              padding: const EdgeInsets.all(24.0),
+                                              iconPadding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1324,9 +1322,9 @@ class _SchoolInformationBottomWidgetState
                                           },
                                           text: 'Add Favorite',
                                           options: FFButtonOptions(
-                                            padding: EdgeInsets.all(24.0),
+                                            padding: const EdgeInsets.all(24.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -1348,7 +1346,7 @@ class _SchoolInformationBottomWidgetState
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 1.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),

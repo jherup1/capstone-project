@@ -14,3 +14,5 @@ export 'update_all_support_stats.dart' show updateAllSupportStats;
 export 'add_fav_school.dart' show addFavSchool;
 export 'delete_fav_school.dart' show deleteFavSchool;
 export 'add_geopoint.dart' show addGeopoint;
+export 'convert_geopoint_lng.dart' show convertGeopointLng;
+export 'convert_geopoint_lat.dart' show convertGeopointLat;

@@ -3,7 +3,6 @@ import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -11,7 +10,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'package:provider/provider.dart';
 import 'dashboard_k_p_i_model.dart';
 export 'dashboard_k_p_i_model.dart';
 
@@ -53,14 +51,14 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
@@ -76,11 +74,11 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
               wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(),
+                child: const SideBarNavWidget(),
               ),
             Flexible(
               child: Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: StreamBuilder<List<FeedbackRecord>>(
                   stream: queryFeedbackRecord(),
                   builder: (context, snapshot) {
@@ -101,7 +99,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                     List<FeedbackRecord> containerFeedbackRecordList =
                         snapshot.data!;
                     return Container(
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: FutureBuilder<List<UsersRecord>>(
                         future: queryUsersRecordOnce(),
                         builder: (context, snapshot) {
@@ -122,7 +120,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                           List<UsersRecord> containerUsersRecordList =
                               snapshot.data!;
                           return Container(
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -130,7 +128,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                 wrapWithModel(
                                   model: _model.breadcrumbsHeaderModel,
                                   updateCallback: () => setState(() {}),
-                                  child: BreadcrumbsHeaderWidget(
+                                  child: const BreadcrumbsHeaderWidget(
                                     pageDetails: 'Usage Satistics ',
                                     pageTitle: 'KPI Dashboard',
                                   ),
@@ -142,7 +140,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                       Flexible(
                                         child: Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
@@ -154,7 +152,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBackground,
-                                              borderRadius: BorderRadius.only(
+                                              borderRadius: const BorderRadius.only(
                                                 bottomLeft:
                                                     Radius.circular(15.0),
                                                 bottomRight:
@@ -220,7 +218,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                       .of(context)
                                                                   .secondaryBackground,
                                                               borderRadius:
-                                                                  BorderRadius
+                                                                  const BorderRadius
                                                                       .only(
                                                                 bottomLeft: Radius
                                                                     .circular(
@@ -250,7 +248,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -259,7 +257,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -303,7 +301,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -312,7 +310,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -356,7 +354,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -365,7 +363,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -409,7 +407,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -418,7 +416,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -459,7 +457,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -468,7 +466,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                     child:
                                                                         Container(
                                                                       decoration:
-                                                                          BoxDecoration(),
+                                                                          const BoxDecoration(),
                                                                       child:
                                                                           Column(
                                                                         mainAxisSize:
@@ -509,7 +507,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -543,7 +541,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                             snapshot.data!;
                                                                         return Container(
                                                                           decoration:
-                                                                              BoxDecoration(),
+                                                                              const BoxDecoration(),
                                                                           child:
                                                                               Column(
                                                                             mainAxisSize:
@@ -594,7 +592,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 1.0),
                                                   child: Container(
                                                     width: MediaQuery.sizeOf(
@@ -610,7 +608,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                               .of(context)
                                                           .secondaryBackground,
                                                       borderRadius:
-                                                          BorderRadius.only(
+                                                          const BorderRadius.only(
                                                         bottomLeft:
                                                             Radius.circular(
                                                                 0.0),
@@ -631,7 +629,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       10.0,
@@ -669,7 +667,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                       .width *
                                                                   0.12,
                                                               decoration:
-                                                                  BoxDecoration(),
+                                                                  const BoxDecoration(),
                                                               child: Text(
                                                                 'Name',
                                                                 style: FlutterFlowTheme.of(
@@ -690,7 +688,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           30.0,
                                                                           0.0,
@@ -702,7 +700,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         .width *
                                                                     0.1,
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                                 child: Text(
                                                                   'Date of Last Resolved Ticket',
                                                                   style: FlutterFlowTheme.of(
@@ -721,7 +719,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           50.0,
                                                                           0.0,
@@ -733,7 +731,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         .width *
                                                                     0.1,
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                                 child: Text(
                                                                   'Number of Tickets Resolved',
                                                                   style: FlutterFlowTheme.of(
@@ -752,7 +750,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           30.0,
                                                                           0.0,
@@ -764,7 +762,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         .width *
                                                                     0.1,
                                                                 decoration:
-                                                                    BoxDecoration(),
+                                                                    const BoxDecoration(),
                                                                 child: Text(
                                                                   '% of total tickets resolved',
                                                                   style: FlutterFlowTheme.of(
@@ -783,10 +781,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             ),
                                                           ]
                                                               .addToStart(
-                                                                  SizedBox(
+                                                                  const SizedBox(
                                                                       width:
                                                                           100.0))
-                                                              .addToEnd(SizedBox(
+                                                              .addToEnd(const SizedBox(
                                                                   width:
                                                                       100.0)),
                                                         ),
@@ -951,7 +949,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                 [
                                                                               Container(
                                                                                 width: MediaQuery.sizeOf(context).width * 0.12,
-                                                                                decoration: BoxDecoration(),
+                                                                                decoration: const BoxDecoration(),
                                                                                 child: Text(
                                                                                   valueOrDefault<String>(
                                                                                     containerUsersRecord?.displayName,
@@ -965,10 +963,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   width: MediaQuery.sizeOf(context).width * 0.1,
-                                                                                  decoration: BoxDecoration(),
+                                                                                  decoration: const BoxDecoration(),
                                                                                   child: Text(
                                                                                     dateTimeFormat('relative', listViewSupportStatsRecord.lastResolved!),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -980,10 +978,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(50.0, 0.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   width: MediaQuery.sizeOf(context).width * 0.1,
-                                                                                  decoration: BoxDecoration(),
+                                                                                  decoration: const BoxDecoration(),
                                                                                   child: Text(
                                                                                     listViewSupportStatsRecord.numTickets.toString(),
                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -995,10 +993,10 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 0.0, 0.0),
                                                                                 child: Container(
                                                                                   width: MediaQuery.sizeOf(context).width * 0.1,
-                                                                                  decoration: BoxDecoration(),
+                                                                                  decoration: const BoxDecoration(),
                                                                                   child: Text(
                                                                                     formatNumber(
                                                                                       listViewSupportStatsRecord.numTickets / rowCount,
@@ -1012,7 +1010,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ].addToStart(SizedBox(width: 100.0)).addToEnd(SizedBox(width: 100.0)),
+                                                                            ].addToStart(const SizedBox(width: 100.0)).addToEnd(const SizedBox(width: 100.0)),
                                                                           );
                                                                         },
                                                                       ),
@@ -1029,28 +1027,28 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                 ),
                                               ]
                                                   .divide(
-                                                      SizedBox(height: 10.0))
+                                                      const SizedBox(height: 10.0))
                                                   .around(
-                                                      SizedBox(height: 10.0)),
+                                                      const SizedBox(height: 10.0)),
                                             ),
                                           ),
                                         ),
                                       ),
                                       Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Container(
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               1.0,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Container(
                                                   width:
@@ -1066,7 +1064,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             context)
                                                         .secondaryBackground,
                                                     borderRadius:
-                                                        BorderRadius.only(
+                                                        const BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(15.0),
                                                       bottomRight:
@@ -1089,7 +1087,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     20.0,
@@ -1125,7 +1123,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                           Flexible(
                                                             child: Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Text(
                                                                 'Average Rating: ',
@@ -1151,7 +1149,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                           Flexible(
                                                             child: Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Text(
                                                                 valueOrDefault<
@@ -1190,15 +1188,15 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                           ),
                                                         ]
                                                             .addToStart(
-                                                                SizedBox(
+                                                                const SizedBox(
                                                                     width:
                                                                         50.0))
-                                                            .addToEnd(SizedBox(
+                                                            .addToEnd(const SizedBox(
                                                                 width: 50.0)),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     10.0,
@@ -1208,7 +1206,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             RatingBarIndicator(
                                                           itemBuilder: (context,
                                                                   index) =>
-                                                              Icon(
+                                                              const Icon(
                                                             Icons.star_rounded,
                                                             color: Color(
                                                                 0xFF4E48EE),
@@ -1234,20 +1232,20 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                       Flexible(
                                                         child: Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.0, -1.0),
                                                           child: Container(
                                                             width:
                                                                 double.infinity,
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           40.0,
                                                                           0.0,
@@ -1328,7 +1326,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               .cover,
                                                                         ),
                                                                       ),
-                                                                    ].divide(SizedBox(
+                                                                    ].divide(const SizedBox(
                                                                         height:
                                                                             20.0)),
                                                                   ),
@@ -1359,7 +1357,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         animateFromLastPercent:
                                                                             true,
                                                                         progressColor:
-                                                                            Color(0xFF4E48EE),
+                                                                            const Color(0xFF4E48EE),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).accent4,
                                                                         center:
@@ -1381,7 +1379,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               ),
                                                                         ),
                                                                         barRadius:
-                                                                            Radius.circular(5.0),
+                                                                            const Radius.circular(5.0),
                                                                         padding:
                                                                             EdgeInsets.zero,
                                                                       ),
@@ -1401,7 +1399,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         animateFromLastPercent:
                                                                             true,
                                                                         progressColor:
-                                                                            Color(0xFF00FF2E),
+                                                                            const Color(0xFF00FF2E),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).accent4,
                                                                         center:
@@ -1421,7 +1419,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               ),
                                                                         ),
                                                                         barRadius:
-                                                                            Radius.circular(5.0),
+                                                                            const Radius.circular(5.0),
                                                                         padding:
                                                                             EdgeInsets.zero,
                                                                       ),
@@ -1441,7 +1439,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         animateFromLastPercent:
                                                                             true,
                                                                         progressColor:
-                                                                            Color(0xFFF7FD09),
+                                                                            const Color(0xFFF7FD09),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).accent4,
                                                                         center:
@@ -1461,7 +1459,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               ),
                                                                         ),
                                                                         barRadius:
-                                                                            Radius.circular(5.0),
+                                                                            const Radius.circular(5.0),
                                                                         padding:
                                                                             EdgeInsets.zero,
                                                                       ),
@@ -1481,7 +1479,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         animateFromLastPercent:
                                                                             true,
                                                                         progressColor:
-                                                                            Color(0xFFFF6900),
+                                                                            const Color(0xFFFF6900),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).accent4,
                                                                         center:
@@ -1501,7 +1499,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               ),
                                                                         ),
                                                                         barRadius:
-                                                                            Radius.circular(5.0),
+                                                                            const Radius.circular(5.0),
                                                                         padding:
                                                                             EdgeInsets.zero,
                                                                       ),
@@ -1521,7 +1519,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                         animateFromLastPercent:
                                                                             true,
                                                                         progressColor:
-                                                                            Color(0xFFF61616),
+                                                                            const Color(0xFFF61616),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).accent4,
                                                                         center:
@@ -1541,12 +1539,12 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                               ),
                                                                         ),
                                                                         barRadius:
-                                                                            Radius.circular(5.0),
+                                                                            const Radius.circular(5.0),
                                                                         padding:
                                                                             EdgeInsets.zero,
                                                                       ),
                                                                     ),
-                                                                  ].divide(SizedBox(
+                                                                  ].divide(const SizedBox(
                                                                       height:
                                                                           20.0)),
                                                                 ),
@@ -1560,7 +1558,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 1.0),
                                                 child: StreamBuilder<
                                                     List<UsersRecord>>(
@@ -1602,7 +1600,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   15.0),
@@ -1628,11 +1626,11 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         -1.0),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           10.0,
@@ -1656,11 +1654,11 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         -1.0),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           10.0,
@@ -1685,12 +1683,12 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           -1.0,
                                                                           -1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             20.0,
                                                                             10.0,
@@ -1717,7 +1715,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         15.0,
                                                                         35.0,
@@ -1847,7 +1845,7 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                             ],
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 20.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1865,9 +1863,9 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                                           Flexible(
                                                                             child:
                                                                                 Align(
-                                                                              alignment: AlignmentDirectional(-1.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(-1.0, 0.0),
                                                                               child: Padding(
-                                                                                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                                                                                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                                                                                 child: Text(
                                                                                   listViewFeedbackRecord.reviewDescription,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1894,14 +1892,14 @@ class _DashboardKPIWidgetState extends State<DashboardKPIWidget> {
                                                 ),
                                               ),
                                             ]
-                                                .divide(SizedBox(height: 10.0))
-                                                .around(SizedBox(height: 10.0)),
+                                                .divide(const SizedBox(height: 10.0))
+                                                .around(const SizedBox(height: 10.0)),
                                           ),
                                         ),
                                       ),
                                     ]
-                                        .divide(SizedBox(width: 10.0))
-                                        .around(SizedBox(width: 10.0)),
+                                        .divide(const SizedBox(width: 10.0))
+                                        .around(const SizedBox(width: 10.0)),
                                   ),
                                 ),
                               ],

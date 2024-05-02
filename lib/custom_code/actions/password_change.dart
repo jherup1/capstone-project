@@ -23,6 +23,15 @@ Future passwordChange(
         FFAppState().passwordChangeAttempt = 'passwords-do-not-match';
       });
       return;
+    } else if ((newPassword.length < 8) |
+        (!newPassword.contains(RegExp(r'\d'))) |
+        (!newPassword.contains(RegExp(r'[a-z]'))) |
+        (!newPassword.contains(RegExp(r'[A-Z}'))) |
+        (!newPassword.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))) {
+      FFAppState().update(() {
+        FFAppState().passwordChangeAttempt = 'weak-password';
+      });
+      return;
     }
     final user = FirebaseAuth.instance.currentUser;
     await user?.reauthenticateWithCredential(

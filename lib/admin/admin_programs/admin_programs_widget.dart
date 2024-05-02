@@ -11,7 +11,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'admin_programs_model.dart';
 export 'admin_programs_model.dart';
@@ -57,7 +56,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -70,7 +69,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
               child: wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: SideBarNavWidget(),
+                child: const SideBarNavWidget(),
               ),
             ),
           ),
@@ -90,7 +89,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
+                  child: const SideBarNavWidget(),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -102,13 +101,13 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: BreadcrumbsHeaderWidget(
+                        child: const BreadcrumbsHeaderWidget(
                           pageDetails: 'Edit each program or add a new one!',
                           pageTitle: 'Admin Programs',
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -119,7 +118,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     'Programs',
@@ -147,7 +146,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: AlignmentDirectional(
+                                            alignment: const AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
@@ -159,7 +158,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CreateProgramWidget(),
+                                              child: const CreateProgramWidget(),
                                             ),
                                           );
                                         },
@@ -168,10 +167,10 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                     text: 'Create Program Profile',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               10.0, 0.0, 10.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -189,7 +188,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -213,7 +212,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                         clipBehavior: Clip.none,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             child: Wrap(
                               spacing: 8.0,
@@ -236,7 +235,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 10.0),
                                       child: Container(
                                         width: 1078.0,
@@ -244,7 +243,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(0.0),
@@ -256,7 +255,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: Icon(
@@ -269,7 +268,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -403,7 +402,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           record,
                                                                           [
                                                                     record
-                                                                        .programName!
+                                                                        .programName
                                                                   ]),
                                                             )
                                                             .toList(),
@@ -428,11 +427,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                               text: 'Search',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(10.0, 0.0,
                                                             10.0, 0.0),
                                                 color:
@@ -456,7 +455,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                       .titleSmallFamily),
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -465,7 +464,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: FlutterFlowIconButton(
@@ -560,7 +559,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                     .listViewPagingController1!
                                                     .itemList![listViewIndex];
                                             return Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 8.0, 8.0, 8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -582,7 +581,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: Column(
@@ -594,11 +593,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.9, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -622,7 +621,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -639,7 +638,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -671,11 +670,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -696,7 +695,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       5.0,
                                                                       5.0,
@@ -726,7 +725,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 12.0, 0.0),
                                                     child: Column(
@@ -738,11 +737,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                       children: [
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.9, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -781,7 +780,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           15.0,
                                                                           4.0,
                                                                           4.0,
@@ -797,7 +796,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -822,14 +821,14 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.9, 0.0),
                                                           child: Builder(
                                                             builder:
                                                                 (context) =>
                                                                     Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -860,7 +859,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                         backgroundColor:
                                                                             Colors.transparent,
                                                                         alignment:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             GestureDetector(
                                                                           onTap: () => _model.unfocusNode.canRequestFocus
@@ -898,7 +897,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -914,7 +913,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -940,11 +939,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              AlignmentDirectional(
+                                                              const AlignmentDirectional(
                                                                   0.9, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -969,16 +968,16 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           builder:
                                                                               (alertDialogContext) {
                                                                             return AlertDialog(
-                                                                              title: Text('Confirmation'),
-                                                                              content: Text('Are you sure you want to delete this school?'),
+                                                                              title: const Text('Confirmation'),
+                                                                              content: const Text('Are you sure you want to delete this school?'),
                                                                               actions: [
                                                                                 TextButton(
                                                                                   onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                  child: Text('Cancel'),
+                                                                                  child: const Text('Cancel'),
                                                                                 ),
                                                                                 TextButton(
                                                                                   onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                  child: Text('Confirm'),
+                                                                                  child: const Text('Confirm'),
                                                                                 ),
                                                                               ],
                                                                             );
@@ -1012,7 +1011,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           15.0,
                                                                           4.0,
                                                                           4.0,
@@ -1028,7 +1027,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1079,7 +1078,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                   searchResult[
                                                       searchResultIndex];
                                               return Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 8.0, 8.0, 8.0),
                                                 child: Row(
@@ -1103,7 +1102,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1118,11 +1117,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1146,7 +1145,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           4.0,
                                                                           4.0,
@@ -1162,7 +1161,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1190,11 +1189,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1215,7 +1214,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         5.0,
@@ -1245,7 +1244,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1260,11 +1259,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1304,7 +1303,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -1320,7 +1319,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -1345,14 +1344,14 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Builder(
                                                               builder:
                                                                   (context) =>
                                                                       Padding(
                                                                 padding:
-                                                                    EdgeInsetsDirectional
+                                                                    const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1384,7 +1383,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           backgroundColor:
                                                                               Colors.transparent,
                                                                           alignment:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           child:
                                                                               GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus
@@ -1421,7 +1420,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               15.0,
                                                                               4.0,
                                                                               4.0,
@@ -1436,7 +1435,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               10.0,
                                                                               0.0,
                                                                               0.0,
@@ -1460,11 +1459,11 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1490,16 +1489,16 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                             builder:
                                                                                 (alertDialogContext) {
                                                                               return AlertDialog(
-                                                                                title: Text('Confirmation'),
-                                                                                content: Text('Are you sure you want to delete this school?'),
+                                                                                title: const Text('Confirmation'),
+                                                                                content: const Text('Are you sure you want to delete this school?'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                    child: Text('Cancel'),
+                                                                                    child: const Text('Cancel'),
                                                                                   ),
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                    child: Text('Confirm'),
+                                                                                    child: const Text('Confirm'),
                                                                                   ),
                                                                                 ],
                                                                               );
@@ -1533,7 +1532,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -1549,7 +1548,7 @@ class _AdminProgramsWidgetState extends State<AdminProgramsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,

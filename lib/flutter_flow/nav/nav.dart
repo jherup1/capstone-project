@@ -1,20 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -79,23 +72,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
           routes: [
             FFRoute(
               name: 'signIn',
               path: 'signIn',
-              builder: (context, params) => SignInWidget(),
+              builder: (context, params) => const SignInWidget(),
             ),
             FFRoute(
               name: 'signUp',
               path: 'signUp',
-              builder: (context, params) => SignUpWidget(),
+              builder: (context, params) => const SignUpWidget(),
             ),
             FFRoute(
               name: 'homePage',
@@ -110,7 +103,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'forgotPassword',
               path: 'forgotPassword',
-              builder: (context, params) => ForgotPasswordWidget(),
+              builder: (context, params) => const ForgotPasswordWidget(),
             ),
             FFRoute(
               name: 'schools',
@@ -129,17 +122,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'profilePage',
               path: 'profile',
-              builder: (context, params) => ProfilePageWidget(),
+              builder: (context, params) => const ProfilePageWidget(),
             ),
             FFRoute(
               name: 'support_TicketList',
               path: 'supportTicketList',
-              builder: (context, params) => SupportTicketListWidget(),
+              builder: (context, params) => const SupportTicketListWidget(),
             ),
             FFRoute(
               name: 'support_SubmitTicket',
               path: 'supportSubmitTicket',
-              builder: (context, params) => SupportSubmitTicketWidget(),
+              builder: (context, params) => const SupportSubmitTicketWidget(),
             ),
             FFRoute(
               name: 'support_TicketDetails',
@@ -158,18 +151,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'individualSchool',
               path: 'individualSchool',
-              builder: (context, params) => IndividualSchoolWidget(),
+              builder: (context, params) => const IndividualSchoolWidget(),
             ),
             FFRoute(
               name: 'adminPortal',
               path: 'adminPortal',
               requireAuth: true,
-              builder: (context, params) => AdminPortalWidget(),
+              builder: (context, params) => const AdminPortalWidget(),
             ),
             FFRoute(
               name: 'editProfilePage',
               path: 'editProfile',
-              builder: (context, params) => EditProfilePageWidget(),
+              builder: (context, params) => const EditProfilePageWidget(),
             ),
             FFRoute(
               name: 'adminUsers',
@@ -202,17 +195,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'adminSchools',
               path: 'adminSchools',
               requireAuth: true,
-              builder: (context, params) => AdminSchoolsWidget(),
+              builder: (context, params) => const AdminSchoolsWidget(),
             ),
             FFRoute(
               name: 'changePasswordPage',
               path: 'changePassowrd',
-              builder: (context, params) => ChangePasswordPageWidget(),
+              builder: (context, params) => const ChangePasswordPageWidget(),
             ),
             FFRoute(
               name: 'DashboardKPI',
               path: 'dashboardKPI',
-              builder: (context, params) => DashboardKPIWidget(),
+              builder: (context, params) => const DashboardKPIWidget(),
             ),
             FFRoute(
               name: 'searchSchools',
@@ -231,13 +224,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'allSchools',
               path: 'allSchools',
-              builder: (context, params) => AllSchoolsWidget(),
+              builder: (context, params) => const AllSchoolsWidget(),
             ),
             FFRoute(
               name: 'adminPrograms',
               path: 'adminPrograms',
               requireAuth: true,
-              builder: (context, params) => AdminProgramsWidget(),
+              builder: (context, params) => const AdminProgramsWidget(),
             ),
             FFRoute(
               name: 'programs',
@@ -501,7 +494,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

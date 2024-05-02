@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -16,7 +15,7 @@ class GetLatLngCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getLatLng',
       apiUrl:
-          'https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${key}',
+          'https://maps.googleapis.com/maps/api/geocode/json?address=$address&key=$key',
       callType: ApiCallType.GET,
       headers: {},
       params: {

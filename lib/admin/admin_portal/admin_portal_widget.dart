@@ -4,12 +4,9 @@ import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'admin_portal_model.dart';
 export 'admin_portal_model.dart';
 
@@ -59,14 +56,14 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel1,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
@@ -87,7 +84,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                     wrapWithModel(
                       model: _model.sideBarNavModel2,
                       updateCallback: () => setState(() {}),
-                      child: SideBarNavWidget(),
+                      child: const SideBarNavWidget(),
                     ),
                   Expanded(
                     child: Column(
@@ -98,7 +95,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                         wrapWithModel(
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
-                          child: BreadcrumbsHeaderWidget(
+                          child: const BreadcrumbsHeaderWidget(
                             pageDetails:
                                 'Manage various aspects of PsySearch here',
                             pageTitle: 'Admin Portal',
@@ -106,7 +103,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                         ),
                         Expanded(
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: StreamBuilder<UsersRecord>(
                               stream: UsersRecord.getDocument(
                                   currentUserReference!),
@@ -131,7 +128,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                   width: MediaQuery.sizeOf(context).width * 0.9,
                                   height:
                                       MediaQuery.sizeOf(context).height * 0.9,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -143,7 +140,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 0.0),
                                             child: Text(
                                               'Hello, ${valueOrDefault<String>(
@@ -176,7 +173,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -193,7 +190,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 5.0,
                                                   color: Color(0x3416202A),
@@ -214,7 +211,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -227,7 +224,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -253,7 +250,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
@@ -272,7 +269,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -289,7 +286,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 5.0,
                                                   color: Color(0x3416202A),
@@ -310,7 +307,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -323,7 +320,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -349,7 +346,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,
@@ -368,7 +365,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -394,7 +391,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              boxShadow: [
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   blurRadius: 5.0,
                                                   color: Color(0x3416202A),
@@ -415,7 +412,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(8.0),
+                                              padding: const EdgeInsets.all(8.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
@@ -428,7 +425,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -454,7 +451,7 @@ class _AdminPortalWidgetState extends State<AdminPortalWidget> {
                                                   Expanded(
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Icon(
                                                         Icons.arrow_forward_ios,

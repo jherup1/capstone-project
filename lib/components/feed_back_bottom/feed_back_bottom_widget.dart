@@ -52,7 +52,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(0.0),
         child: BackdropFilter(
@@ -61,12 +61,12 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
             sigmaY: 8.0,
           ),
           child: Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: Color(0x00EEEEEE),
+                color: const Color(0x00EEEEEE),
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Column(
@@ -74,7 +74,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: MediaQuery.sizeOf(context).height * 0.6,
@@ -84,7 +84,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                       ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 12.0,
                             color: Color(0x33000000),
@@ -98,7 +98,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                         shape: BoxShape.rectangle,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             15.0, 15.0, 15.0, 15.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -111,9 +111,9 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                               children: [
                                 Flexible(
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           22.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Feedback',
@@ -154,9 +154,9 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                               ],
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Text(
                                   'How was your experience?',
@@ -177,7 +177,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                             ),
                             Flexible(
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Container(
                                   width: MediaQuery.sizeOf(context).width * 0.3,
                                   height: 100.0,
@@ -200,7 +200,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                             FFAppState().smile = 1;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 80.0,
                                           height: 70.0,
                                           child: Stack(
@@ -231,7 +231,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                   ),
                                                 ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -243,7 +243,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
                                                     alignment:
-                                                        Alignment(0.0, 0.0),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -261,7 +261,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                             FFAppState().smile = 2;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 80.0,
                                           height: 70.0,
                                           child: Stack(
@@ -292,7 +292,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                   ),
                                                 ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -304,7 +304,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
                                                     alignment:
-                                                        Alignment(0.0, 0.0),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -322,7 +322,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                             FFAppState().smile = 3;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 80.0,
                                           height: 70.0,
                                           child: Stack(
@@ -353,7 +353,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                   ),
                                                 ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -365,7 +365,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
                                                     alignment:
-                                                        Alignment(0.0, 0.0),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -383,7 +383,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                             FFAppState().smile = 4;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 80.0,
                                           height: 70.0,
                                           child: Stack(
@@ -414,7 +414,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                   ),
                                                 ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -426,7 +426,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
                                                     alignment:
-                                                        Alignment(0.0, 0.0),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -444,7 +444,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                             FFAppState().smile = 5;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 80.0,
                                           height: 70.0,
                                           child: Stack(
@@ -475,7 +475,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                   ),
                                                 ),
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -487,7 +487,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                     height: 50.0,
                                                     fit: BoxFit.cover,
                                                     alignment:
-                                                        Alignment(0.0, 0.0),
+                                                        const Alignment(0.0, 0.0),
                                                   ),
                                                 ),
                                               ),
@@ -495,15 +495,15 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                           ),
                                         ),
                                       ),
-                                    ].divide(SizedBox(width: 15.0)),
+                                    ].divide(const SizedBox(width: 15.0)),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 10.0),
                                 child: Text(
                                   'Any Additional Thoughts?',
@@ -529,14 +529,14 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                     .secondaryBackground,
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 0.0, 8.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.textController,
                                   focusNode: _model.textFieldFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.textController',
-                                    Duration(milliseconds: 20),
+                                    const Duration(milliseconds: 20),
                                     () => setState(() {}),
                                   ),
                                   autofocus: false,
@@ -602,9 +602,9 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                             ),
                             Flexible(
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 1.0),
+                                alignment: const AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 20.0, 12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -612,7 +612,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 16.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -620,9 +620,9 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                           },
                                           text: 'Cancel',
                                           options: FFButtonOptions(
-                                            padding: EdgeInsets.all(24.0),
+                                            padding: const EdgeInsets.all(24.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
@@ -666,9 +666,9 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                         },
                                         text: 'Send',
                                         options: FFButtonOptions(
-                                          padding: EdgeInsets.all(24.0),
+                                          padding: const EdgeInsets.all(24.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -689,7 +689,7 @@ class _FeedBackBottomWidgetState extends State<FeedBackBottomWidget> {
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 1.0,
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

@@ -5,7 +5,6 @@ import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -20,7 +19,7 @@ class SearchProgramsWidget extends StatefulWidget {
     super.key,
     this.pageTitle,
     String? pageDetails,
-  }) : this.pageDetails = pageDetails ?? 'detailsxxx';
+  }) : pageDetails = pageDetails ?? 'detailsxxx';
 
   final String? pageTitle;
   final String pageDetails;
@@ -96,14 +95,14 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
           child: Scaffold(
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            drawer: Container(
+            drawer: SizedBox(
               width: MediaQuery.sizeOf(context).width * 0.5,
               child: Drawer(
                 elevation: 16.0,
                 child: wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
+                  child: const SideBarNavWidget(),
                 ),
               ),
             ),
@@ -121,11 +120,11 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                     wrapWithModel(
                       model: _model.sideBarNavModel1,
                       updateCallback: () => setState(() {}),
-                      child: SideBarNavWidget(),
+                      child: const SideBarNavWidget(),
                     ),
                   Flexible(
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
+                      alignment: const AlignmentDirectional(0.0, -1.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -134,20 +133,20 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                             wrapWithModel(
                               model: _model.breadcrumbsHeaderModel,
                               updateCallback: () => setState(() {}),
-                              child: BreadcrumbsHeaderWidget(
+                              child: const BreadcrumbsHeaderWidget(
                                 pageDetails: 'Search for programs!',
                                 pageTitle: 'Search Programs',
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
                                     child: Autocomplete<String>(
-                                      initialValue: TextEditingValue(),
+                                      initialValue: const TextEditingValue(),
                                       optionsBuilder: (textEditingValue) {
                                         if (textEditingValue.text == '') {
                                           return const Iterable<String>.empty();
@@ -186,7 +185,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                                 context)
                                                             .bodyMediumFamily),
                                               ),
-                                          textHighlightStyle: TextStyle(),
+                                          textHighlightStyle: const TextStyle(),
                                           elevation: 4.0,
                                           optionBackgroundColor:
                                               FlutterFlowTheme.of(context)
@@ -221,7 +220,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                           onChanged: (_) =>
                                               EasyDebounce.debounce(
                                             '_model.textController',
-                                            Duration(milliseconds: 2000),
+                                            const Duration(milliseconds: 2000),
                                             () async {
                                               safeSetState(() {
                                                 _model.simpleSearchResults =
@@ -232,7 +231,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                             TextSearchItem
                                                                 .fromTerms(
                                                                     record, [
-                                                          record.programName!
+                                                          record.programName
                                                         ]),
                                                       )
                                                       .toList(),
@@ -242,7 +241,6 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                             .text)
                                                         .map((r) => r.object)
                                                         .toList();
-                                                ;
                                               });
                                               setState(() {
                                                 FFAppState()
@@ -333,7 +331,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .primaryBackground,
                                             contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 24.0, 20.0, 24.0),
                                             prefixIcon: Icon(
                                               Icons.search,
@@ -405,7 +403,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                       final programNoSearchItem =
                                           programNoSearch[programNoSearchIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
@@ -417,7 +415,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 8.0, 12.0, 8.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -481,7 +479,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -532,7 +530,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                       final programSearchItem =
                                           programSearch[programSearchIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 12.0, 16.0, 0.0),
                                         child: Container(
                                           width: double.infinity,
@@ -544,7 +542,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 8.0, 12.0, 8.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -608,7 +606,7 @@ class _SearchProgramsWidgetState extends State<SearchProgramsWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(16.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(

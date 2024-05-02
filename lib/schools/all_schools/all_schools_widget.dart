@@ -2,10 +2,8 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'all_schools_model.dart';
 export 'all_schools_model.dart';
 
@@ -72,7 +70,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                     context.pushNamed(
                       'schools',
                       extra: <String, dynamic>{
-                        kTransitionInfoKey: TransitionInfo(
+                        kTransitionInfoKey: const TransitionInfo(
                           hasTransition: true,
                           transitionType: PageTransitionType.leftToRight,
                           duration: Duration(milliseconds: 220),
@@ -91,7 +89,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                             FlutterFlowTheme.of(context).titleLargeFamily),
                       ),
                 ),
-                actions: [],
+                actions: const [],
                 centerTitle: false,
                 elevation: 0.0,
               )
@@ -105,7 +103,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 8.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 8.0, 0.0),
                     child: TextFormField(
                       controller: _model.searchBarTextController,
                       focusNode: _model.searchBarFocusNode,
@@ -162,7 +160,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).primaryBackground,
-                        contentPadding: EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 24.0, 20.0, 24.0),
                         prefixIcon: Icon(
                           Icons.search,
@@ -183,7 +181,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 12.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 12.0, 0.0),
                   child: FlutterFlowIconButton(
                     borderColor: Colors.transparent,
                     borderRadius: 30.0,
@@ -232,7 +230,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                       final columnSchoolDataRecord =
                           columnSchoolDataRecordList[columnIndex];
                       return Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
@@ -242,7 +240,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                             borderRadius: BorderRadius.circular(12.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 8.0, 12.0, 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -258,7 +256,7 @@ class _AllSchoolsWidgetState extends State<AllSchoolsWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     columnSchoolDataRecord.displayName,

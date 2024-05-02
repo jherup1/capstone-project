@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'programs_model.dart';
 export 'programs_model.dart';
 
@@ -16,7 +15,7 @@ class ProgramsWidget extends StatefulWidget {
     super.key,
     this.pageTitle,
     String? pageDetails,
-  }) : this.pageDetails = pageDetails ?? 'detailsxxx';
+  }) : pageDetails = pageDetails ?? 'detailsxxx';
 
   final String? pageTitle;
   final String pageDetails;
@@ -55,14 +54,14 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
@@ -80,11 +79,11 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel1,
                   updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
+                  child: const SideBarNavWidget(),
                 ),
               Flexible(
                 child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -93,16 +92,16 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                         wrapWithModel(
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
-                          child: BreadcrumbsHeaderWidget(
+                          child: const BreadcrumbsHeaderWidget(
                             pageDetails:
                                 'Find a program that fits you, and add it to your favorites by clicking the star!',
                             pageTitle: 'Programs',
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 32.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
@@ -110,7 +109,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -122,12 +121,12 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                 ],
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -136,10 +135,10 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                       text: 'Search Programs',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 10.0, 24.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -159,7 +158,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 3.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -169,7 +168,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -179,7 +178,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -193,13 +192,13 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .lineColor,
-                                                    offset: Offset(
+                                                    offset: const Offset(
                                                       0.0,
                                                       1.0,
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -211,7 +210,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(16.0),
+                                                padding: const EdgeInsets.all(16.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -222,7 +221,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -257,7 +256,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -292,7 +291,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
                                               'Your favorite programs',
@@ -318,14 +317,14 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                             model: _model.programScrollFavModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: ProgramScrollFavWidget(),
+                                            child: const ProgramScrollFavWidget(),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -335,7 +334,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -349,13 +348,13 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .lineColor,
-                                                    offset: Offset(
+                                                    offset: const Offset(
                                                       0.0,
                                                       1.0,
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: BorderRadius.only(
+                                                borderRadius: const BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -367,7 +366,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(16.0),
+                                                padding: const EdgeInsets.all(16.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -378,7 +377,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -413,7 +412,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -448,7 +447,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
                                               'All programs',
@@ -474,7 +473,7 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                             model: _model.programScrollModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: ProgramScrollWidget(),
+                                            child: const ProgramScrollWidget(),
                                           ),
                                         ],
                                       ),

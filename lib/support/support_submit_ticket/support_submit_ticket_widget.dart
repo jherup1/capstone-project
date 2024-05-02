@@ -8,10 +8,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'support_submit_ticket_model.dart';
 export 'support_submit_ticket_model.dart';
 
@@ -57,21 +55,21 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +82,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                   wrapWithModel(
                     model: _model.sideBarNavModel1,
                     updateCallback: () => setState(() {}),
-                    child: SideBarNavWidget(),
+                    child: const SideBarNavWidget(),
                   ),
                 Flexible(
                   child: Column(
@@ -94,14 +92,14 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: BreadcrumbsHeaderWidget(
+                        child: const BreadcrumbsHeaderWidget(
                           pageDetails: 'Create a support ticket here',
                           pageTitle: 'Support',
                         ),
                       ),
                       Flexible(
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             width: MediaQuery.sizeOf(context).width * 0.9,
                             height: MediaQuery.sizeOf(context).height * 0.9,
@@ -113,7 +111,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0x33000000),
@@ -126,7 +124,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -134,7 +132,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -143,7 +141,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Create a Ticket',
                                             style: FlutterFlowTheme.of(context)
@@ -164,10 +162,10 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               'Fill out the form below to submit a ticket.',
@@ -192,8 +190,8 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Container(
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.7,
@@ -286,7 +284,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                           12.0),
                                                 ),
                                                 contentPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(16.0, 24.0,
                                                             16.0, 12.0),
                                               ),
@@ -318,7 +316,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             'Choose a priority level',
                                             style: FlutterFlowTheme.of(context)
@@ -340,9 +338,9 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: FlutterFlowChoiceChips(
-                                            options: [
+                                            options: const [
                                               ChipData('Low'),
                                               ChipData('Medium'),
                                               ChipData('High'),
@@ -377,7 +375,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                       .tertiary,
                                               iconSize: 18.0,
                                               labelPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                               elevation: 0.0,
@@ -417,7 +415,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                       .primary,
                                               iconSize: 18.0,
                                               labelPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           12.0, 4.0, 12.0, 4.0),
                                               elevation: 0.0,
@@ -443,13 +441,13 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                             wrapped: false,
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 12.0)),
+                                      ].divide(const SizedBox(height: 12.0)),
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 25.0, 16.0, 12.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -501,14 +499,14 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
-                                                  title: Text(
+                                                  title: const Text(
                                                       'Thank you for submitting your ticket!'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: Text(
+                                                      child: const Text(
                                                           'You\'re welcome'),
                                                     ),
                                                   ],
@@ -520,7 +518,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                           setState(() {});
                                         },
                                         text: 'Submit Ticket',
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.receipt_long,
                                           size: 15.0,
                                         ),
@@ -531,9 +529,9 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               0.06,
-                                          padding: EdgeInsets.all(0.0),
+                                          padding: const EdgeInsets.all(0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .tertiary,
@@ -554,7 +552,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                             .titleSmallFamily),
                                               ),
                                           elevation: 4.0,
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
@@ -564,7 +562,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 4.0)),
+                                ].divide(const SizedBox(height: 4.0)),
                               ),
                             ),
                           ),

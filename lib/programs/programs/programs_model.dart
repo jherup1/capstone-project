@@ -2,13 +2,9 @@ import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/program_scroll/program_scroll_widget.dart';
 import '/components/program_scroll_fav/program_scroll_fav_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'programs_widget.dart' show ProgramsWidget;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class ProgramsModel extends FlutterFlowModel<ProgramsWidget> {
   ///  State fields for stateful widgets in this page.

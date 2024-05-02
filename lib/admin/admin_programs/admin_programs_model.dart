@@ -1,19 +1,10 @@
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/components/create_program/create_program_widget.dart';
-import '/components/edit_program/edit_program_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'admin_programs_widget.dart' show AdminProgramsWidget;
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:provider/provider.dart';
-import 'package:text_search/text_search.dart';
 
 class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
   ///  Local state fields for this page.
@@ -58,7 +49,9 @@ class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    listViewStreamSubscriptions1.forEach((s) => s?.cancel());
+    for (var s in listViewStreamSubscriptions1) {
+      s?.cancel();
+    }
     listViewPagingController1?.dispose();
   }
 

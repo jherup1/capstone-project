@@ -63,14 +63,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: Container(
+        drawer: SizedBox(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: SideBarNavWidget(),
+              child: const SideBarNavWidget(),
             ),
           ),
         ),
@@ -88,7 +88,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel1,
                   updateCallback: () => setState(() {}),
-                  child: SideBarNavWidget(),
+                  child: const SideBarNavWidget(),
                 ),
               Flexible(
                 child: Column(
@@ -97,14 +97,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                     wrapWithModel(
                       model: _model.breadcrumbsHeaderModel,
                       updateCallback: () => setState(() {}),
-                      child: BreadcrumbsHeaderWidget(
+                      child: const BreadcrumbsHeaderWidget(
                         pageDetails: 'Edit your profile information!',
                         pageTitle: 'Edit Profile Page',
                       ),
                     ),
                     Expanded(
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: StreamBuilder<UsersRecord>(
                           stream:
                               UsersRecord.getDocument(currentUserReference!),
@@ -127,7 +127,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                             return Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,
                               height: MediaQuery.sizeOf(context).height * 0.9,
-                              decoration: BoxDecoration(),
+                              decoration: const BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -137,7 +137,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 0.0, 0.0),
                                         child: Text(
                                           'Hello, ${valueOrDefault<String>(
@@ -166,7 +166,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 0.0, 0.0),
                                     child: Text(
                                       'Account Details:',
@@ -190,7 +190,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 12.0, 20.0, 12.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -200,7 +200,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -211,7 +211,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   16.0,
@@ -231,7 +231,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                             EasyDebounce
                                                                 .debounce(
                                                           '_model.firstNameTextController',
-                                                          Duration(
+                                                          const Duration(
                                                               milliseconds:
                                                                   100),
                                                           () async {
@@ -295,7 +295,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -308,7 +308,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -321,7 +321,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -336,7 +336,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           contentPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       24.0,
@@ -380,7 +380,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   16.0,
@@ -400,7 +400,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                             EasyDebounce
                                                                 .debounce(
                                                           '_model.lastNameTextController',
-                                                          Duration(
+                                                          const Duration(
                                                               milliseconds:
                                                                   100),
                                                           () async {
@@ -463,7 +463,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -476,7 +476,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -489,7 +489,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0x00000000),
                                                               width: 2.0,
@@ -504,7 +504,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                   .of(context)
                                                               .secondaryBackground,
                                                           contentPadding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
                                                                       24.0,
@@ -540,7 +540,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -562,7 +562,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.emailAddressTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -627,7 +627,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -640,7 +640,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -653,7 +653,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -668,7 +668,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -703,7 +703,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 16.0, 0.0, 0.0),
                                               child: Row(
@@ -720,7 +720,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       onChanged: (_) =>
                                                           EasyDebounce.debounce(
                                                         '_model.passwordTextController',
-                                                        Duration(
+                                                        const Duration(
                                                             milliseconds: 100),
                                                         () async {
                                                           setState(() {
@@ -786,7 +786,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0x00000000),
                                                             width: 2.0,
@@ -829,7 +829,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                         contentPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
                                                                     24.0,
@@ -891,7 +891,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     opacity: 0.0,
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         ' ',
@@ -919,7 +919,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'no-email') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Please ensure you provide an email.',
@@ -949,7 +949,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'no-first-name') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Please ensure you provide a first name.',
@@ -979,7 +979,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'unknown') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'An unknown error has occured. Please try again.',
@@ -1009,7 +1009,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'success') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Account details updated successfully!',
@@ -1039,7 +1039,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'no-password') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Please input your current password.',
@@ -1069,7 +1069,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     'invalid-credential') {
                                                   return Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             -0.97, 0.0),
                                                     child: Text(
                                                       'Password incorrect, please try again.',
@@ -1099,7 +1099,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     opacity: 0.0,
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         ' ',
@@ -1129,7 +1129,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -1155,7 +1155,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 24.0, 0.0, 0.0),
                                               child: Row(
@@ -1165,7 +1165,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 16.0, 0.0),
                                                     child: FFButtonWidget(
@@ -1177,14 +1177,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       options: FFButtonOptions(
                                                         height: 50.0,
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
                                                         iconPadding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1218,7 +1218,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                               .titleSmallFamily),
                                                                 ),
                                                         elevation: 10.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                         ),
@@ -1229,23 +1229,13 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                     ),
                                                   ),
                                                   FFButtonWidget(
-                                                    onPressed: ((_model
-                                                                        .firstNameTextController
-                                                                        .text ==
-                                                                    null ||
-                                                                _model.firstNameTextController
+                                                    onPressed: ((_model.firstNameTextController
                                                                         .text ==
                                                                     '') ||
                                                             (_model.emailAddressTextController
                                                                         .text ==
-                                                                    null ||
-                                                                _model.emailAddressTextController
-                                                                        .text ==
                                                                     '') ||
                                                             (_model.passwordTextController
-                                                                        .text ==
-                                                                    null ||
-                                                                _model.passwordTextController
                                                                         .text ==
                                                                     ''))
                                                         ? null
@@ -1274,14 +1264,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                       width: 150.0,
                                                       height: 50.0,
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   24.0,
                                                                   0.0,
                                                                   24.0,
                                                                   0.0),
                                                       iconPadding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1314,7 +1304,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                                             .titleSmallFamily),
                                                               ),
                                                       elevation: 10.0,
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
                                                             Colors.transparent,
                                                       ),
