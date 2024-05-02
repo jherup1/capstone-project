@@ -219,7 +219,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                                       .labelMediumFamily),
                                                         ),
                                                 hintText:
-                                                    'Short Description of what is going on...',
+                                                    'Short Description of what is going on...\n\n- Incorrect School/Program Information\n\n- Issues with Account Information\n\n- More...',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -361,10 +361,7 @@ class _SupportSubmitTicketWidgetState extends State<SupportSubmitTicketWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMediumFamily,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
+                                                        color: Colors.white,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: GoogleFonts
                                                                 .asMap()
