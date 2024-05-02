@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -8,7 +9,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'edit_school_model.dart';
@@ -44,16 +44,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => EditSchoolModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.lat = await actions.convertGeopointLat(
-        widget.schoolDocRef!.id,
-      );
-      _model.lng = await actions.convertGeopointLng(
-        widget.schoolDocRef!.id,
-      );
-    });
 
     _model.displayNameTextController ??=
         TextEditingController(text: widget.schoolDoc?.displayName);
@@ -97,14 +87,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
     _model.addressTextController ??=
         TextEditingController(text: widget.schoolDoc?.address);
     _model.addressFocusNode ??= FocusNode();
-
-    _model.latitudeTextController ??=
-        TextEditingController(text: _model.lat?.toString());
-    _model.latitudeFocusNode ??= FocusNode();
-
-    _model.longitudeTextController ??=
-        TextEditingController(text: _model.lng?.toString());
-    _model.longitudeFocusNode ??= FocusNode();
 
     _model.tutionTextController ??=
         TextEditingController(text: widget.schoolDoc?.tuition.toString());
@@ -1372,196 +1354,6 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                       FlutterFlowTheme.of(context).primary,
                                   validator: _model
                                       .addressTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.latitudeTextController,
-                                  focusNode: _model.latitudeFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Latitude',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily),
-                                        ),
-                                    alignLabelWithHint: false,
-                                    hintText: '39.5442688',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 24.0, 20.0, 24.0),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                  cursorColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  validator: _model
-                                      .latitudeTextControllerValidator
-                                      .asValidator(context),
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 0.0),
-                                child: TextFormField(
-                                  controller: _model.longitudeTextController,
-                                  focusNode: _model.longitudeFocusNode,
-                                  autofocus: true,
-                                  obscureText: false,
-                                  decoration: InputDecoration(
-                                    labelText: 'Longitude',
-                                    labelStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMediumFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMediumFamily),
-                                        ),
-                                    alignLabelWithHint: false,
-                                    hintText: '-119.81631051527071)',
-                                    hintStyle: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .override(
-                                          fontFamily:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmallFamily,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey(
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmallFamily),
-                                        ),
-                                    enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color:
-                                            FlutterFlowTheme.of(context).error,
-                                        width: 2.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    filled: true,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 24.0, 20.0, 24.0),
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: FlutterFlowTheme.of(context)
-                                            .bodyMediumFamily,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: GoogleFonts.asMap()
-                                            .containsKey(
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMediumFamily),
-                                      ),
-                                  cursorColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  validator: _model
-                                      .longitudeTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -3913,336 +3705,88 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                         ) ??
                                         false;
                                 if (confirmDialogResponse) {
-                                  if ((_model.schoolPicLinkTextController.text !=
-                                              '') &&
-                                      (_model.latitudeTextController.text !=
-                                              '') &&
-                                      (_model.longitudeTextController.text !=
-                                              '')) {
-                                    await widget.schoolDoc!.reference
-                                        .update(createSchoolDataRecordData(
-                                      academicCalendar: _model
-                                          .academicCalendarTextController.text,
-                                      acceptanceRate: double.tryParse(_model
-                                          .acceptanceRateTextController.text),
-                                      actAvg: int.tryParse(
-                                          _model.actAvgTextController.text),
-                                      address:
-                                          _model.addressTextController.text,
-                                      aliasNames:
-                                          _model.aliasNameTextController.text,
-                                      businessRepScore: double.tryParse(_model
-                                          .busRepScoreTextController.text),
-                                      city: _model.cityTextController.text,
-                                      costAfterAid: double.tryParse(_model
-                                          .costAfterAidTextController.text),
-                                      countryCode:
-                                          _model.countryCodeTextController.text,
-                                      description: _model
-                                          .schoolDescriptionTextController.text,
-                                      displayName:
-                                          _model.displayNameTextController.text,
-                                      endowment2018: _model
-                                          .endowment2018TextController.text,
-                                      engineeringRepScore: double.tryParse(
-                                          _model
-                                              .engRepScoreTextController.text),
-                                      enrollment: int.tryParse(
-                                          _model.enrollmentTextController.text),
-                                      hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgTextController.text),
-                                      institutionalControl: _model
-                                          .instituationalControlTextController
-                                          .text,
-                                      isPublic: _model.isPublicValue == 'True',
-                                      percentReceivingAId: double.tryParse(
-                                          _model
-                                              .percentRecievingAidTextController
-                                              .text),
-                                      rankingDisplayRank:
-                                          _model.displayRankTextController.text,
-                                      rankingIsTied:
-                                          _model.rankIsTiedValue == 'True',
-                                      rankingSortRank: int.tryParse(_model
-                                          .rankSortRankTextController.text),
-                                      region: _model.regionTextController.text,
-                                      religiousAffiliation: _model
-                                          .religiousAffiliationTextController
-                                          .text,
-                                      satActRangeACT: _model
-                                          .satActRangeACTTextController.text,
-                                      satActRangeSAT: _model
-                                          .satActRangeSATTextController.text,
-                                      satAvg: int.tryParse(
-                                          _model.satAvgTextController.text),
-                                      schoolType:
-                                          _model.schoolTypeTextController.text,
-                                      schoolTypeNationalUniversities: _model
-                                          .schoolTypeNationalTextController
-                                          .text,
-                                      schoolWebsite: _model
-                                          .schoolWebsiteTextController.text,
-                                      setting:
-                                          _model.settingTextController.text,
-                                      state: _model.stateTextController.text,
-                                      tuition: int.tryParse(
-                                          _model.tutionTextController.text),
-                                      yearFounded: int.tryParse(_model
-                                          .yearFoundedTextController.text),
-                                      zip: int.tryParse(
-                                          _model.zipTextController.text),
-                                      primaryPhoto: _model
-                                          .schoolPicLinkTextController.text,
-                                    ));
-                                    await actions.addGeopoint(
-                                      widget.schoolDoc!.reference.id,
-                                      double.parse(
-                                          _model.latitudeTextController.text),
-                                      double.parse(
-                                          _model.longitudeTextController.text),
-                                    );
-                                  } else if ((_model.schoolPicLinkTextController.text ==
-                                              '') &&
-                                      (_model.latitudeTextController.text !=
-                                              '') &&
-                                      (_model.longitudeTextController.text !=
-                                              '')) {
-                                    await widget.schoolDoc!.reference
-                                        .update(createSchoolDataRecordData(
-                                      academicCalendar: _model
-                                          .academicCalendarTextController.text,
-                                      acceptanceRate: double.tryParse(_model
-                                          .acceptanceRateTextController.text),
-                                      actAvg: int.tryParse(
-                                          _model.actAvgTextController.text),
-                                      address:
-                                          _model.addressTextController.text,
-                                      aliasNames:
-                                          _model.aliasNameTextController.text,
-                                      businessRepScore: double.tryParse(_model
-                                          .busRepScoreTextController.text),
-                                      city: _model.cityTextController.text,
-                                      costAfterAid: double.tryParse(_model
-                                          .costAfterAidTextController.text),
-                                      countryCode:
-                                          _model.countryCodeTextController.text,
-                                      description: _model
-                                          .schoolDescriptionTextController.text,
-                                      displayName:
-                                          _model.displayNameTextController.text,
-                                      endowment2018: _model
-                                          .endowment2018TextController.text,
-                                      engineeringRepScore: double.tryParse(
-                                          _model
-                                              .engRepScoreTextController.text),
-                                      enrollment: int.tryParse(
-                                          _model.enrollmentTextController.text),
-                                      hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgTextController.text),
-                                      institutionalControl: _model
-                                          .instituationalControlTextController
-                                          .text,
-                                      isPublic: _model.isPublicValue == 'True',
-                                      percentReceivingAId: double.tryParse(
-                                          _model
-                                              .percentRecievingAidTextController
-                                              .text),
-                                      rankingDisplayRank:
-                                          _model.displayRankTextController.text,
-                                      rankingIsTied:
-                                          _model.rankIsTiedValue == 'True',
-                                      rankingSortRank: int.tryParse(_model
-                                          .rankSortRankTextController.text),
-                                      region: _model.regionTextController.text,
-                                      religiousAffiliation: _model
-                                          .religiousAffiliationTextController
-                                          .text,
-                                      satActRangeACT: _model
-                                          .satActRangeACTTextController.text,
-                                      satActRangeSAT: _model
-                                          .satActRangeSATTextController.text,
-                                      satAvg: int.tryParse(
-                                          _model.satAvgTextController.text),
-                                      schoolType:
-                                          _model.schoolTypeTextController.text,
-                                      schoolTypeNationalUniversities: _model
-                                          .schoolTypeNationalTextController
-                                          .text,
-                                      schoolWebsite: _model
-                                          .schoolWebsiteTextController.text,
-                                      setting:
-                                          _model.settingTextController.text,
-                                      state: _model.stateTextController.text,
-                                      tuition: int.tryParse(
-                                          _model.tutionTextController.text),
-                                      yearFounded: int.tryParse(_model
-                                          .yearFoundedTextController.text),
-                                      zip: int.tryParse(
-                                          _model.zipTextController.text),
-                                    ));
-                                    await actions.addGeopoint(
-                                      widget.schoolDoc!.reference.id,
-                                      double.parse(
-                                          _model.latitudeTextController.text),
-                                      double.parse(
-                                          _model.longitudeTextController.text),
-                                    );
-                                  } else if ((_model.schoolPicLinkTextController.text !=
-                                              '') &&
-                                      (_model.latitudeTextController.text ==
-                                              '') &&
-                                      (_model.longitudeTextController.text == '')) {
-                                    await widget.schoolDoc!.reference
-                                        .update(createSchoolDataRecordData(
-                                      academicCalendar: _model
-                                          .academicCalendarTextController.text,
-                                      acceptanceRate: double.tryParse(_model
-                                          .acceptanceRateTextController.text),
-                                      actAvg: int.tryParse(
-                                          _model.actAvgTextController.text),
-                                      address:
-                                          _model.addressTextController.text,
-                                      aliasNames:
-                                          _model.aliasNameTextController.text,
-                                      businessRepScore: double.tryParse(_model
-                                          .busRepScoreTextController.text),
-                                      city: _model.cityTextController.text,
-                                      costAfterAid: double.tryParse(_model
-                                          .costAfterAidTextController.text),
-                                      countryCode:
-                                          _model.countryCodeTextController.text,
-                                      description: _model
-                                          .schoolDescriptionTextController.text,
-                                      displayName:
-                                          _model.displayNameTextController.text,
-                                      endowment2018: _model
-                                          .endowment2018TextController.text,
-                                      engineeringRepScore: double.tryParse(
-                                          _model
-                                              .engRepScoreTextController.text),
-                                      enrollment: int.tryParse(
-                                          _model.enrollmentTextController.text),
-                                      hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgTextController.text),
-                                      institutionalControl: _model
-                                          .instituationalControlTextController
-                                          .text,
-                                      isPublic: _model.isPublicValue == 'True',
-                                      percentReceivingAId: double.tryParse(
-                                          _model
-                                              .percentRecievingAidTextController
-                                              .text),
-                                      rankingDisplayRank:
-                                          _model.displayRankTextController.text,
-                                      rankingIsTied:
-                                          _model.rankIsTiedValue == 'True',
-                                      rankingSortRank: int.tryParse(_model
-                                          .rankSortRankTextController.text),
-                                      region: _model.regionTextController.text,
-                                      religiousAffiliation: _model
-                                          .religiousAffiliationTextController
-                                          .text,
-                                      satActRangeACT: _model
-                                          .satActRangeACTTextController.text,
-                                      satActRangeSAT: _model
-                                          .satActRangeSATTextController.text,
-                                      satAvg: int.tryParse(
-                                          _model.satAvgTextController.text),
-                                      schoolType:
-                                          _model.schoolTypeTextController.text,
-                                      schoolTypeNationalUniversities: _model
-                                          .schoolTypeNationalTextController
-                                          .text,
-                                      schoolWebsite: _model
-                                          .schoolWebsiteTextController.text,
-                                      setting:
-                                          _model.settingTextController.text,
-                                      state: _model.stateTextController.text,
-                                      tuition: int.tryParse(
-                                          _model.tutionTextController.text),
-                                      yearFounded: int.tryParse(_model
-                                          .yearFoundedTextController.text),
-                                      zip: int.tryParse(
-                                          _model.zipTextController.text),
-                                      primaryPhoto: _model
-                                          .schoolPicLinkTextController.text,
-                                    ));
-                                  } else {
-                                    await widget.schoolDoc!.reference
-                                        .update(createSchoolDataRecordData(
-                                      academicCalendar: _model
-                                          .academicCalendarTextController.text,
-                                      acceptanceRate: double.tryParse(_model
-                                          .acceptanceRateTextController.text),
-                                      actAvg: int.tryParse(
-                                          _model.actAvgTextController.text),
-                                      address:
-                                          _model.addressTextController.text,
-                                      aliasNames:
-                                          _model.aliasNameTextController.text,
-                                      businessRepScore: double.tryParse(_model
-                                          .busRepScoreTextController.text),
-                                      city: _model.cityTextController.text,
-                                      costAfterAid: double.tryParse(_model
-                                          .costAfterAidTextController.text),
-                                      countryCode:
-                                          _model.countryCodeTextController.text,
-                                      description: _model
-                                          .schoolDescriptionTextController.text,
-                                      displayName:
-                                          _model.displayNameTextController.text,
-                                      endowment2018: _model
-                                          .endowment2018TextController.text,
-                                      engineeringRepScore: double.tryParse(
-                                          _model
-                                              .engRepScoreTextController.text),
-                                      enrollment: int.tryParse(
-                                          _model.enrollmentTextController.text),
-                                      hsGpaAvg: double.tryParse(
-                                          _model.hsGpaAvgTextController.text),
-                                      institutionalControl: _model
-                                          .instituationalControlTextController
-                                          .text,
-                                      isPublic: _model.isPublicValue == 'True',
-                                      percentReceivingAId: double.tryParse(
-                                          _model
-                                              .percentRecievingAidTextController
-                                              .text),
-                                      rankingDisplayRank:
-                                          _model.displayRankTextController.text,
-                                      rankingIsTied:
-                                          _model.rankIsTiedValue == 'True',
-                                      rankingSortRank: int.tryParse(_model
-                                          .rankSortRankTextController.text),
-                                      region: _model.regionTextController.text,
-                                      religiousAffiliation: _model
-                                          .religiousAffiliationTextController
-                                          .text,
-                                      satActRangeACT: _model
-                                          .satActRangeACTTextController.text,
-                                      satActRangeSAT: _model
-                                          .satActRangeSATTextController.text,
-                                      satAvg: int.tryParse(
-                                          _model.satAvgTextController.text),
-                                      schoolType:
-                                          _model.schoolTypeTextController.text,
-                                      schoolTypeNationalUniversities: _model
-                                          .schoolTypeNationalTextController
-                                          .text,
-                                      schoolWebsite: _model
-                                          .schoolWebsiteTextController.text,
-                                      setting:
-                                          _model.settingTextController.text,
-                                      state: _model.stateTextController.text,
-                                      tuition: int.tryParse(
-                                          _model.tutionTextController.text),
-                                      yearFounded: int.tryParse(_model
-                                          .yearFoundedTextController.text),
-                                      zip: int.tryParse(
-                                          _model.zipTextController.text),
-                                    ));
-                                  }
-
+                                  await widget.schoolDoc!.reference
+                                      .update(createSchoolDataRecordData(
+                                    academicCalendar: _model
+                                        .academicCalendarTextController.text,
+                                    acceptanceRate: double.tryParse(_model
+                                        .acceptanceRateTextController.text),
+                                    actAvg: int.tryParse(
+                                        _model.actAvgTextController.text),
+                                    address: _model.addressTextController.text,
+                                    aliasNames:
+                                        _model.aliasNameTextController.text,
+                                    businessRepScore: double.tryParse(
+                                        _model.busRepScoreTextController.text),
+                                    city: _model.cityTextController.text,
+                                    costAfterAid: double.tryParse(
+                                        _model.costAfterAidTextController.text),
+                                    countryCode:
+                                        _model.countryCodeTextController.text,
+                                    description: _model
+                                        .schoolDescriptionTextController.text,
+                                    displayName:
+                                        _model.displayNameTextController.text,
+                                    endowment2018:
+                                        _model.endowment2018TextController.text,
+                                    engineeringRepScore: double.tryParse(
+                                        _model.engRepScoreTextController.text),
+                                    enrollment: int.tryParse(
+                                        _model.enrollmentTextController.text),
+                                    hsGpaAvg: double.tryParse(
+                                        _model.hsGpaAvgTextController.text),
+                                    institutionalControl: _model
+                                        .instituationalControlTextController
+                                        .text,
+                                    isPublic: _model.isPublicValue == 'True',
+                                    percentReceivingAId: double.tryParse(_model
+                                        .percentRecievingAidTextController
+                                        .text),
+                                    rankingDisplayRank:
+                                        _model.displayRankTextController.text,
+                                    rankingIsTied:
+                                        _model.rankIsTiedValue == 'True',
+                                    rankingSortRank: int.tryParse(
+                                        _model.rankSortRankTextController.text),
+                                    region: _model.regionTextController.text,
+                                    religiousAffiliation: _model
+                                        .religiousAffiliationTextController
+                                        .text,
+                                    satActRangeACT: _model
+                                        .satActRangeACTTextController.text,
+                                    satActRangeSAT: _model
+                                        .satActRangeSATTextController.text,
+                                    satAvg: int.tryParse(
+                                        _model.satAvgTextController.text),
+                                    schoolType:
+                                        _model.schoolTypeTextController.text,
+                                    schoolTypeNationalUniversities: _model
+                                        .schoolTypeNationalTextController.text,
+                                    schoolWebsite:
+                                        _model.schoolWebsiteTextController.text,
+                                    setting: _model.settingTextController.text,
+                                    state: _model.stateTextController.text,
+                                    tuition: int.tryParse(
+                                        _model.tutionTextController.text),
+                                    yearFounded: int.tryParse(
+                                        _model.yearFoundedTextController.text),
+                                    zip: int.tryParse(
+                                        _model.zipTextController.text),
+                                    primaryPhoto:
+                                        _model.schoolPicLinkTextController.text,
+                                  ));
+                                  _model.apiCall = await GetLatLngCall.call(
+                                    address: _model.addressTextController.text,
+                                  );
+                                  await actions.addGeopoint(
+                                    widget.schoolDoc!.reference.id,
+                                    GetLatLngCall.lat(
+                                      (_model.apiCall?.jsonBody ?? ''),
+                                    )!,
+                                    GetLatLngCall.lng(
+                                      (_model.apiCall?.jsonBody ?? ''),
+                                    )!,
+                                  );
                                   context.pop();
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
@@ -4273,6 +3817,8 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                 } else {
                                   Navigator.pop(context);
                                 }
+
+                                setState(() {});
                               },
                               text: 'Update School',
                               options: FFButtonOptions(

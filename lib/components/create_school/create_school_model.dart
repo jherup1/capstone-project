@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -53,14 +54,6 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   FocusNode? addressFocusNode;
   TextEditingController? addressTextController;
   String? Function(BuildContext, String?)? addressTextControllerValidator;
-  // State field(s) for latitude widget.
-  FocusNode? latitudeFocusNode;
-  TextEditingController? latitudeTextController;
-  String? Function(BuildContext, String?)? latitudeTextControllerValidator;
-  // State field(s) for longitude widget.
-  FocusNode? longitudeFocusNode;
-  TextEditingController? longitudeTextController;
-  String? Function(BuildContext, String?)? longitudeTextControllerValidator;
   // State field(s) for tution widget.
   FocusNode? tutionFocusNode;
   TextEditingController? tutionTextController;
@@ -163,6 +156,8 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
   TextEditingController? academicCalendarTextController;
   String? Function(BuildContext, String?)?
       academicCalendarTextControllerValidator;
+  // Stores action output result for [Backend Call - API (getLatLng)] action in Button widget.
+  ApiCallResponse? apiCall;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   SchoolDataRecord? querySchool;
 
@@ -203,12 +198,6 @@ class CreateSchoolModel extends FlutterFlowModel<CreateSchoolWidget> {
 
     addressFocusNode?.dispose();
     addressTextController?.dispose();
-
-    latitudeFocusNode?.dispose();
-    latitudeTextController?.dispose();
-
-    longitudeFocusNode?.dispose();
-    longitudeTextController?.dispose();
 
     tutionFocusNode?.dispose();
     tutionTextController?.dispose();

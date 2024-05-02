@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'edit_school_widget.dart' show EditSchoolWidget;
@@ -6,10 +7,6 @@ import 'package:flutter/material.dart';
 class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Custom Action - convertGeopointLat] action in editSchool widget.
-  double? lat;
-  // Stores action output result for [Custom Action - convertGeopointLng] action in editSchool widget.
-  double? lng;
   // State field(s) for displayName widget.
   FocusNode? displayNameFocusNode;
   TextEditingController? displayNameTextController;
@@ -55,14 +52,6 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   FocusNode? addressFocusNode;
   TextEditingController? addressTextController;
   String? Function(BuildContext, String?)? addressTextControllerValidator;
-  // State field(s) for latitude widget.
-  FocusNode? latitudeFocusNode;
-  TextEditingController? latitudeTextController;
-  String? Function(BuildContext, String?)? latitudeTextControllerValidator;
-  // State field(s) for longitude widget.
-  FocusNode? longitudeFocusNode;
-  TextEditingController? longitudeTextController;
-  String? Function(BuildContext, String?)? longitudeTextControllerValidator;
   // State field(s) for tution widget.
   FocusNode? tutionFocusNode;
   TextEditingController? tutionTextController;
@@ -165,6 +154,8 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
   TextEditingController? academicCalendarTextController;
   String? Function(BuildContext, String?)?
       academicCalendarTextControllerValidator;
+  // Stores action output result for [Backend Call - API (getLatLng)] action in Button widget.
+  ApiCallResponse? apiCall;
 
   @override
   void initState(BuildContext context) {}
@@ -203,12 +194,6 @@ class EditSchoolModel extends FlutterFlowModel<EditSchoolWidget> {
 
     addressFocusNode?.dispose();
     addressTextController?.dispose();
-
-    latitudeFocusNode?.dispose();
-    latitudeTextController?.dispose();
-
-    longitudeFocusNode?.dispose();
-    longitudeTextController?.dispose();
 
     tutionFocusNode?.dispose();
     tutionTextController?.dispose();
