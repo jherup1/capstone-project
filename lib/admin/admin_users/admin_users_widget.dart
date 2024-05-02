@@ -9,9 +9,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'admin_users_model.dart';
 export 'admin_users_model.dart';
@@ -61,7 +63,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -74,7 +76,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
               child: wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: const SideBarNavWidget(),
+                child: SideBarNavWidget(),
               ),
             ),
           ),
@@ -94,7 +96,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -106,14 +108,14 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: const BreadcrumbsHeaderWidget(
+                        child: BreadcrumbsHeaderWidget(
                           pageDetails:
                               'Administrate all users by searching by email or roles.',
                           pageTitle: 'Admin Users',
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -138,7 +140,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Wrap(
                           spacing: 8.0,
@@ -161,7 +163,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Container(
                                     width: 700.0,
@@ -169,7 +171,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -182,7 +184,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           child: Icon(
                                             Icons.search,
@@ -194,7 +196,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model.textController,
@@ -320,7 +322,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                               TextSearchItem
                                                                   .fromTerms(
                                                                       record, [
-                                                            record.email
+                                                            record.email!
                                                           ]),
                                                         )
                                                         .toList(),
@@ -344,10 +346,10 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -369,7 +371,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -379,7 +381,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -429,10 +431,10 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           child: Text(
                                             'Filter by role:',
@@ -456,7 +458,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         ),
                                       ),
                                       FlutterFlowChoiceChips(
-                                        options: const [
+                                        options: [
                                           ChipData('user'),
                                           ChipData('support'),
                                           ChipData('admin')
@@ -491,7 +493,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   .primaryText,
                                           iconSize: 18.0,
                                           labelPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 5.0, 0.0),
                                           elevation: 4.0,
                                           borderRadius:
@@ -539,7 +541,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                         wrapped: true,
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor:
@@ -625,7 +627,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                             .itemList![listViewIndex];
                                         return Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 8.0, 8.0, 8.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -637,11 +639,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -665,7 +667,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           4.0,
@@ -703,11 +705,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -731,7 +733,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -747,7 +749,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -778,11 +780,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -806,7 +808,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                           children: [
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -823,7 +825,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -859,11 +861,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -887,22 +889,22 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                     builder:
                                                                         (alertDialogContext) {
                                                                       return AlertDialog(
-                                                                        title: const Text(
+                                                                        title: Text(
                                                                             'Confirmation'),
                                                                         content:
-                                                                            const Text('Are you sure you want to reset the password?'),
+                                                                            Text('Are you sure you want to reset the password?'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>
                                                                                 Navigator.pop(alertDialogContext, false),
                                                                             child:
-                                                                                const Text('Cancel'),
+                                                                                Text('Cancel'),
                                                                           ),
                                                                           TextButton(
                                                                             onPressed: () =>
                                                                                 Navigator.pop(alertDialogContext, true),
                                                                             child:
-                                                                                const Text('Confirm'),
+                                                                                Text('Confirm'),
                                                                           ),
                                                                         ],
                                                                       );
@@ -916,7 +918,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                               ScaffoldMessenger
                                                                       .of(context)
                                                                   .showSnackBar(
-                                                                const SnackBar(
+                                                                SnackBar(
                                                                   content: Text(
                                                                     'Email required!',
                                                                   ),
@@ -950,7 +952,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -962,7 +964,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -978,7 +980,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -1008,13 +1010,13 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Builder(
                                                       builder: (context) =>
                                                           Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1042,7 +1044,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                   backgroundColor:
                                                                       Colors
                                                                           .transparent,
-                                                                  alignment: const AlignmentDirectional(
+                                                                  alignment: AlignmentDirectional(
                                                                           0.0,
                                                                           0.0)
                                                                       .resolve(
@@ -1090,7 +1092,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                       .min,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -1105,7 +1107,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,
@@ -1135,11 +1137,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   ),
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.9, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1163,22 +1165,22 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                     builder:
                                                                         (alertDialogContext) {
                                                                       return AlertDialog(
-                                                                        title: const Text(
+                                                                        title: Text(
                                                                             'Confirmation'),
                                                                         content:
-                                                                            const Text('Are you sure you want to delete this user?'),
+                                                                            Text('Are you sure you want to delete this user?'),
                                                                         actions: [
                                                                           TextButton(
                                                                             onPressed: () =>
                                                                                 Navigator.pop(alertDialogContext, false),
                                                                             child:
-                                                                                const Text('Cancel'),
+                                                                                Text('Cancel'),
                                                                           ),
                                                                           TextButton(
                                                                             onPressed: () =>
                                                                                 Navigator.pop(alertDialogContext, true),
                                                                             child:
-                                                                                const Text('Confirm'),
+                                                                                Text('Confirm'),
                                                                           ),
                                                                         ],
                                                                       );
@@ -1212,7 +1214,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -1229,7 +1231,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -1283,7 +1285,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                               searchResult[searchResultIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 8.0, 8.0, 8.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1296,11 +1298,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1325,7 +1327,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             4.0,
@@ -1363,11 +1365,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1392,7 +1394,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -1408,7 +1410,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -1436,11 +1438,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1465,7 +1467,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -1482,7 +1484,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -1516,11 +1518,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1545,17 +1547,17 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                           (alertDialogContext) {
                                                                         return AlertDialog(
                                                                           title:
-                                                                              const Text('Confirmation'),
+                                                                              Text('Confirmation'),
                                                                           content:
-                                                                              const Text('Are you sure you want to reset the password?'),
+                                                                              Text('Are you sure you want to reset the password?'),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: const Text('Cancel'),
+                                                                              child: Text('Cancel'),
                                                                             ),
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: const Text('Confirm'),
+                                                                              child: Text('Confirm'),
                                                                             ),
                                                                           ],
                                                                         );
@@ -1569,7 +1571,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                 ScaffoldMessenger.of(
                                                                         context)
                                                                     .showSnackBar(
-                                                                  const SnackBar(
+                                                                  SnackBar(
                                                                     content:
                                                                         Text(
                                                                       'Email required!',
@@ -1605,7 +1607,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1617,7 +1619,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                         .max,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -1634,7 +1636,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -1664,13 +1666,13 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Builder(
                                                         builder: (context) =>
                                                             Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -1701,7 +1703,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                     backgroundColor:
                                                                         Colors
                                                                             .transparent,
-                                                                    alignment: const AlignmentDirectional(
+                                                                    alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0)
                                                                         .resolve(
@@ -1747,7 +1749,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                         .min,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             4.0,
                                                                             4.0,
@@ -1764,7 +1766,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             10.0,
                                                                             0.0,
@@ -1794,11 +1796,11 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1823,17 +1825,17 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                           (alertDialogContext) {
                                                                         return AlertDialog(
                                                                           title:
-                                                                              const Text('Confirmation'),
+                                                                              Text('Confirmation'),
                                                                           content:
-                                                                              const Text('Are you sure you want to delete this user?'),
+                                                                              Text('Are you sure you want to delete this user?'),
                                                                           actions: [
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: const Text('Cancel'),
+                                                                              child: Text('Cancel'),
                                                                             ),
                                                                             TextButton(
                                                                               onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: const Text('Confirm'),
+                                                                              child: Text('Confirm'),
                                                                             ),
                                                                           ],
                                                                         );
@@ -1867,7 +1869,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                       .max,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           4.0,
@@ -1883,7 +1885,7 @@ class _AdminUsersWidgetState extends State<AdminUsersWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           10.0,
                                                                           0.0,

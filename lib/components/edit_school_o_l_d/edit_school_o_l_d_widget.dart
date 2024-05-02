@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,9 +8,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_school_o_l_d_model.dart';
 export 'edit_school_o_l_d_model.dart';
 
@@ -71,7 +75,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
     _model.cityFocusNode1 ??= FocusNode();
 
     _model.zipTextController ??=
-        TextEditingController(text: widget.schoolDoc?.zip.toString());
+        TextEditingController(text: widget.schoolDoc?.zip?.toString());
     _model.zipFocusNode ??= FocusNode();
 
     _model.addressTextController ??=
@@ -83,11 +87,11 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
     _model.geoPointFocusNode ??= FocusNode();
 
     _model.tutionTextController ??=
-        TextEditingController(text: widget.schoolDoc?.tuition.toString());
+        TextEditingController(text: widget.schoolDoc?.tuition?.toString());
     _model.tutionFocusNode ??= FocusNode();
 
     _model.acceptanceRateTextController ??= TextEditingController(
-        text: widget.schoolDoc?.acceptanceRate.toString());
+        text: widget.schoolDoc?.acceptanceRate?.toString());
     _model.acceptanceRateFocusNode ??= FocusNode();
 
     _model.displayRankTextController ??=
@@ -95,27 +99,27 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
     _model.displayRankFocusNode ??= FocusNode();
 
     _model.enrollmentTextController ??=
-        TextEditingController(text: widget.schoolDoc?.enrollment.toString());
+        TextEditingController(text: widget.schoolDoc?.enrollment?.toString());
     _model.enrollmentFocusNode ??= FocusNode();
 
     _model.hsGpaAvgTextController1 ??=
-        TextEditingController(text: widget.schoolDoc?.hsGpaAvg.toString());
+        TextEditingController(text: widget.schoolDoc?.hsGpaAvg?.toString());
     _model.hsGpaAvgFocusNode1 ??= FocusNode();
 
     _model.actAvgTextController1 ??=
-        TextEditingController(text: widget.schoolDoc?.actAvg.toString());
+        TextEditingController(text: widget.schoolDoc?.actAvg?.toString());
     _model.actAvgFocusNode1 ??= FocusNode();
 
     _model.satAvgTextController1 ??=
-        TextEditingController(text: widget.schoolDoc?.satAvg.toString());
+        TextEditingController(text: widget.schoolDoc?.satAvg?.toString());
     _model.satAvgFocusNode1 ??= FocusNode();
 
     _model.engRepScoreTextController ??= TextEditingController(
-        text: widget.schoolDoc?.engineeringRepScore.toString());
+        text: widget.schoolDoc?.engineeringRepScore?.toString());
     _model.engRepScoreFocusNode ??= FocusNode();
 
     _model.cityTextController2 ??= TextEditingController(
-        text: widget.schoolDoc?.businessRepScore.toString());
+        text: widget.schoolDoc?.businessRepScore?.toString());
     _model.cityFocusNode2 ??= FocusNode();
 
     _model.hsGpaAvgTextController2 ??=
@@ -143,8 +147,8 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
             curve: Curves.bounceOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -182,22 +186,22 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
         color: FlutterFlowTheme.of(context).accent4,
       ),
       child: Align(
-        alignment: const AlignmentDirectional(0.0, 0.0),
+        alignment: AlignmentDirectional(0.0, 0.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 670.0,
                   ),
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: const [
+                    boxShadow: [
                       BoxShadow(
                         blurRadius: 12.0,
                         color: Color(0x1E000000),
@@ -214,7 +218,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 16.0, 0.0, 0.0),
                         child: Text(
                           'Edit School Profile - ${widget.schoolDoc?.displayName}',
@@ -232,7 +236,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Below are the school profile details',
                           style: FlutterFlowTheme.of(context)
@@ -252,7 +256,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -271,12 +275,12 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding: EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 90.0,
                                       height: 90.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -347,9 +351,9 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                   text: 'Change Photo',
                                   options: FFButtonOptions(
                                     height: 44.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -397,12 +401,12 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
+                                    padding: EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 90.0,
                                       height: 90.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -412,7 +416,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 16.0)),
+                              ].divide(SizedBox(width: 16.0)),
                             ),
                           ),
                           Row(
@@ -420,7 +424,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -494,7 +498,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -519,7 +523,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.aliasNameTextController,
@@ -593,7 +597,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -619,7 +623,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller:
@@ -683,7 +687,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                 filled: true,
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 24.0, 20.0, 24.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -706,7 +710,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.schoolWebsiteTextController,
@@ -769,7 +773,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                 filled: true,
                                 fillColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 24.0, 20.0, 24.0),
                               ),
                               style: FlutterFlowTheme.of(context)
@@ -794,7 +798,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -869,7 +873,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -894,7 +898,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.regionTextController,
@@ -968,7 +972,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -993,7 +997,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.cityTextController1,
@@ -1067,7 +1071,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1092,7 +1096,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.zipTextController,
@@ -1114,7 +1118,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText:
-                                          widget.schoolDoc?.zip.toString(),
+                                          widget.schoolDoc?.zip?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1167,7 +1171,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1196,7 +1200,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.addressTextController,
@@ -1270,7 +1274,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1295,7 +1299,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.geoPointTextController,
@@ -1371,7 +1375,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1401,7 +1405,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.tutionTextController,
@@ -1423,7 +1427,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText:
-                                          widget.schoolDoc?.tuition.toString(),
+                                          widget.schoolDoc?.tuition?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1476,7 +1480,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1501,7 +1505,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -1524,7 +1528,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText: widget.schoolDoc?.acceptanceRate
-                                          .toString(),
+                                          ?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1577,7 +1581,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1602,7 +1606,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -1678,7 +1682,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1703,7 +1707,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.enrollmentTextController,
@@ -1725,7 +1729,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText: widget.schoolDoc?.enrollment
-                                          .toString(),
+                                          ?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1778,7 +1782,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1808,7 +1812,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.hsGpaAvgTextController1,
@@ -1830,7 +1834,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText: widget.schoolDoc?.hsGpaAvg
-                                          .toString(),
+                                          ?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1883,7 +1887,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -1908,7 +1912,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.actAvgTextController1,
@@ -1930,7 +1934,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText:
-                                          widget.schoolDoc?.actAvg.toString(),
+                                          widget.schoolDoc?.actAvg?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1983,7 +1987,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2008,7 +2012,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.satAvgTextController1,
@@ -2030,7 +2034,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText:
-                                          widget.schoolDoc?.satAvg.toString(),
+                                          widget.schoolDoc?.satAvg?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -2083,7 +2087,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2113,7 +2117,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -2137,7 +2141,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                           ),
                                       hintText: widget
                                           .schoolDoc?.engineeringRepScore
-                                          .toString(),
+                                          ?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -2190,7 +2194,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2215,7 +2219,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.cityTextController2,
@@ -2238,7 +2242,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                           ),
                                       hintText: widget
                                           .schoolDoc?.businessRepScore
-                                          .toString(),
+                                          ?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -2291,7 +2295,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2321,7 +2325,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.hsGpaAvgTextController2,
@@ -2396,7 +2400,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2421,7 +2425,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.actAvgTextController2,
@@ -2443,7 +2447,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         .labelMediumFamily),
                                           ),
                                       hintText:
-                                          widget.schoolDoc?.actAvg.toString(),
+                                          widget.schoolDoc?.actAvg?.toString(),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -2496,7 +2500,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2521,7 +2525,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.satAvgTextController2,
@@ -2595,7 +2599,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2620,7 +2624,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.satAvgTextController3,
@@ -2695,7 +2699,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -2721,15 +2725,15 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController ??=
                                   FormFieldController<String>(
                                 _model.dropDownValue ??=
-                                    widget.schoolDoc?.isPublic.toString(),
+                                    widget.schoolDoc?.isPublic?.toString(),
                               ),
-                              options: const ['True', 'False'],
+                              options: ['True', 'False'],
                               onChanged: (val) =>
                                   setState(() => _model.dropDownValue = val),
                               width: double.infinity,
@@ -2759,7 +2763,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                   FlutterFlowTheme.of(context).alternate,
                               borderWidth: 2.0,
                               borderRadius: 12.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 4.0, 16.0, 4.0),
                               hidesUnderline: true,
                               isSearchable: false,
@@ -2767,7 +2771,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 24.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -2780,7 +2784,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 0.0, 0.0),
                                         child: SelectionArea(
                                             child: Text(
@@ -2802,7 +2806,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                         )),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 0.0, 0.0),
                                         child: SelectionArea(
                                             child: Text(
@@ -2835,7 +2839,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 0.0, 0.0),
                                         child: SelectionArea(
                                             child: Text(
@@ -2857,7 +2861,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                         )),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 4.0, 0.0, 0.0),
                                         child: SelectionArea(
                                             child: Text(
@@ -2881,20 +2885,20 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                     ],
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 16.0)),
+                              ].divide(SizedBox(width: 16.0)),
                             ),
                           ),
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             24.0, 12.0, 24.0, 24.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.05),
+                              alignment: AlignmentDirectional(0.0, 0.05),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   Navigator.pop(context);
@@ -2902,9 +2906,9 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                 text: 'Cancel',
                                 options: FFButtonOptions(
                                   height: 44.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -2940,7 +2944,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.05),
+                              alignment: AlignmentDirectional(0.0, 0.05),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   var confirmDialogResponse =
@@ -2948,8 +2952,8 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: const Text('Confirmation'),
-                                                content: const Text(
+                                                title: Text('Confirmation'),
+                                                content: Text(
                                                     'Are you sure you want to save the changes?'),
                                                 actions: [
                                                   TextButton(
@@ -2957,14 +2961,14 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                         Navigator.pop(
                                                             alertDialogContext,
                                                             false),
-                                                    child: const Text('Cancel'),
+                                                    child: Text('Cancel'),
                                                   ),
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext,
                                                             true),
-                                                    child: const Text('Confirm'),
+                                                    child: Text('Confirm'),
                                                   ),
                                                 ],
                                               );
@@ -3041,7 +3045,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                             .bodyMediumFamily),
                                               ),
                                         ),
-                                        duration: const Duration(milliseconds: 4000),
+                                        duration: Duration(milliseconds: 4000),
                                         backgroundColor:
                                             FlutterFlowTheme.of(context)
                                                 .secondary,
@@ -3054,9 +3058,9 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                 text: 'Save Changes',
                                 options: FFButtonOptions(
                                   height: 44.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -3073,7 +3077,7 @@ class _EditSchoolOLDWidgetState extends State<EditSchoolOLDWidget>
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),

@@ -3,10 +3,13 @@ import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/support/empty_state_dynamic/empty_state_dynamic_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'support_ticket_list_model.dart';
 export 'support_ticket_list_model.dart';
 
@@ -49,14 +52,14 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: const SideBarNavWidget(),
+              child: SideBarNavWidget(),
             ),
           ),
         ),
@@ -73,7 +76,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel1,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Expanded(
                 child: Column(
@@ -82,17 +85,17 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                     wrapWithModel(
                       model: _model.breadcrumbsHeaderModel,
                       updateCallback: () => setState(() {}),
-                      child: const BreadcrumbsHeaderWidget(
+                      child: BreadcrumbsHeaderWidget(
                         pageDetails: 'Click on a ticket to vew details',
                         pageTitle: 'List of Tickets',
                       ),
                     ),
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: MediaQuery.sizeOf(context).height * 1.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,7 +130,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                   if (listViewSupportTicketsRecordList
                                       .isEmpty) {
                                     return Center(
-                                      child: SizedBox(
+                                      child: Container(
                                         height: 330.0,
                                         child: EmptyStateDynamicWidget(
                                           icon: Icon(
@@ -149,7 +152,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                     );
                                   }
                                   return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
+                                    padding: EdgeInsets.fromLTRB(
                                       0,
                                       12.0,
                                       0,
@@ -159,13 +162,13 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                     itemCount:
                                         listViewSupportTicketsRecordList.length,
                                     separatorBuilder: (_, __) =>
-                                        const SizedBox(height: 12.0),
+                                        SizedBox(height: 12.0),
                                     itemBuilder: (context, listViewIndex) {
                                       final listViewSupportTicketsRecord =
                                           listViewSupportTicketsRecordList[
                                               listViewIndex];
                                       return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -189,7 +192,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                           },
                                           child: Container(
                                             width: double.infinity,
-                                            constraints: const BoxConstraints(
+                                            constraints: BoxConstraints(
                                               maxWidth: 570.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -206,7 +209,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(12.0),
+                                              padding: EdgeInsets.all(12.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -260,7 +263,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 4.0),
                                                     child: Row(
@@ -279,7 +282,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                               if (listViewSupportTicketsRecord
                                                                       .priorityLevel ==
                                                                   'High') {
-                                                                return const Color(
+                                                                return Color(
                                                                     0x4CFF5963);
                                                               } else if (listViewSupportTicketsRecord
                                                                       .priorityLevel ==
@@ -334,11 +337,11 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                         Expanded(
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           8.0,
                                                                           0.0,
@@ -429,11 +432,11 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                           ),
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           0.0,
@@ -494,7 +497,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   8.0,
                                                                   4.0,
@@ -515,7 +518,7 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                                       .textScaler,
                                                               text: TextSpan(
                                                                 children: [
-                                                                  const TextSpan(
+                                                                  TextSpan(
                                                                     text:
                                                                         'Ticket #: ',
                                                                     style:
@@ -576,12 +579,12 @@ class _SupportTicketListWidgetState extends State<SupportTicketListWidget> {
                                                                               .labelSmallFamily),
                                                                 ),
                                                           ),
-                                                        ].divide(const SizedBox(
+                                                        ].divide(SizedBox(
                                                             width: 8.0)),
                                                       ),
                                                     ),
                                                   ),
-                                                ].divide(const SizedBox(height: 8.0)),
+                                                ].divide(SizedBox(height: 8.0)),
                                               ),
                                             ),
                                           ),

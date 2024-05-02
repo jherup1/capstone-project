@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'admin_tickets_model.dart';
 export 'admin_tickets_model.dart';
@@ -57,7 +58,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -70,7 +71,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
               child: wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: const SideBarNavWidget(),
+                child: SideBarNavWidget(),
               ),
             ),
           ),
@@ -90,7 +91,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -102,14 +103,14 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: const BreadcrumbsHeaderWidget(
+                        child: BreadcrumbsHeaderWidget(
                           pageDetails:
                               'Edit tickets and assign to support users',
                           pageTitle: 'Admin Tickets',
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -134,7 +135,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Wrap(
                           spacing: 8.0,
@@ -157,7 +158,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Container(
                                     width: 1078.0,
@@ -165,7 +166,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: const BorderRadius.only(
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(0.0),
@@ -178,7 +179,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           child: Icon(
                                             Icons.search,
@@ -190,7 +191,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: TextFormField(
                                               controller: _model.textController,
@@ -316,7 +317,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                               TextSearchItem
                                                                   .fromTerms(
                                                                       record, [
-                                                            record.name
+                                                            record.name!
                                                           ]),
                                                         )
                                                         .toList(),
@@ -340,10 +341,10 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
@@ -365,7 +366,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                                   .titleSmallFamily),
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -375,7 +376,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 0.0, 10.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor:
@@ -451,14 +452,14 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                   listViewIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 8.0, 8.0, 8.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -476,7 +477,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -492,7 +493,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -523,7 +524,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -541,7 +542,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -558,7 +559,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -589,7 +590,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -607,7 +608,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -623,7 +624,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -654,7 +655,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -672,7 +673,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -688,7 +689,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -719,7 +720,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 200.0,
@@ -737,7 +738,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       4.0,
@@ -753,7 +754,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -784,7 +785,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 200.0,
@@ -802,7 +803,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       4.0,
@@ -818,7 +819,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -849,7 +850,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: InkWell(
                                                     splashColor:
@@ -881,7 +882,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         4.0,
@@ -898,7 +899,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -953,14 +954,14 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                               searchResult[searchResultIndex];
                                           return Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 8.0, 8.0, 8.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -978,7 +979,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -994,7 +995,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1025,7 +1026,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -1043,7 +1044,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -1060,7 +1061,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1091,7 +1092,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -1109,7 +1110,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -1125,7 +1126,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1156,7 +1157,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 170.0,
@@ -1174,7 +1175,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       4.0,
@@ -1190,7 +1191,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1221,7 +1222,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 200.0,
@@ -1239,7 +1240,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       4.0,
@@ -1255,7 +1256,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1286,7 +1287,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: Container(
                                                     width: 200.0,
@@ -1304,7 +1305,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       4.0,
@@ -1320,7 +1321,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       10.0,
                                                                       0.0,
@@ -1351,7 +1352,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.9, 0.0),
                                                   child: InkWell(
                                                     splashColor:
@@ -1383,7 +1384,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         4.0,
@@ -1400,7 +1401,7 @@ class _AdminTicketsWidgetState extends State<AdminTicketsWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,

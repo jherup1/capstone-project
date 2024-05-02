@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'admin_schools_model.dart';
 export 'admin_schools_model.dart';
@@ -55,7 +56,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -68,7 +69,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
               child: wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: const SideBarNavWidget(),
+                child: SideBarNavWidget(),
               ),
             ),
           ),
@@ -88,7 +89,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -100,13 +101,13 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: const BreadcrumbsHeaderWidget(
+                        child: BreadcrumbsHeaderWidget(
                           pageDetails: 'Edit each school or add a new one!',
                           pageTitle: 'Admin Schools',
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -117,7 +118,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 20.0, 0.0),
                                   child: Text(
                                     'Schools',
@@ -145,7 +146,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                             elevation: 0,
                                             insetPadding: EdgeInsets.zero,
                                             backgroundColor: Colors.transparent,
-                                            alignment: const AlignmentDirectional(
+                                            alignment: AlignmentDirectional(
                                                     0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
@@ -157,7 +158,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: const CreateSchoolWidget(),
+                                              child: CreateSchoolWidget(),
                                             ),
                                           );
                                         },
@@ -166,10 +167,10 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                     text: 'Create School Profile',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               10.0, 0.0, 10.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -187,7 +188,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         .titleSmallFamily),
                                           ),
                                       elevation: 3.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -211,7 +212,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                         clipBehavior: Clip.none,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             child: Wrap(
                               spacing: 8.0,
@@ -234,7 +235,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 10.0),
                                       child: Container(
                                         width: 1078.0,
@@ -242,7 +243,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                         decoration: BoxDecoration(
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryBackground,
-                                          borderRadius: const BorderRadius.only(
+                                          borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(0.0),
@@ -254,7 +255,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: Icon(
@@ -267,7 +268,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -401,7 +402,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           record,
                                                                           [
                                                                     record
-                                                                        .displayName
+                                                                        .displayName!
                                                                   ]),
                                                             )
                                                             .toList(),
@@ -426,11 +427,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                               text: 'Search',
                                               options: FFButtonOptions(
                                                 height: 40.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(10.0, 0.0,
                                                             10.0, 0.0),
                                                 color:
@@ -454,7 +455,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                       .titleSmallFamily),
                                                         ),
                                                 elevation: 3.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Colors.transparent,
                                                   width: 1.0,
                                                 ),
@@ -463,7 +464,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 10.0, 0.0),
                                               child: FlutterFlowIconButton(
@@ -544,7 +545,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                   listViewSchoolDataRecordList[
                                                       listViewIndex];
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 8.0, 8.0, 8.0),
                                                 child: Row(
@@ -568,7 +569,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -583,11 +584,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -611,7 +612,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           4.0,
                                                                           4.0,
@@ -627,7 +628,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -652,11 +653,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -680,7 +681,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           4.0,
                                                                           4.0,
@@ -696,7 +697,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -723,11 +724,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.9, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -748,7 +749,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         5.0,
@@ -777,7 +778,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -792,11 +793,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -836,7 +837,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -852,7 +853,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -877,14 +878,14 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Builder(
                                                               builder:
                                                                   (context) =>
                                                                       Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -916,7 +917,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           backgroundColor:
                                                                               Colors.transparent,
                                                                           alignment:
-                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           child:
                                                                               GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus
@@ -953,7 +954,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               15.0,
                                                                               4.0,
                                                                               4.0,
@@ -968,7 +969,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               10.0,
                                                                               0.0,
                                                                               0.0,
@@ -992,11 +993,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1022,16 +1023,16 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             builder:
                                                                                 (alertDialogContext) {
                                                                               return AlertDialog(
-                                                                                title: const Text('Confirmation'),
-                                                                                content: const Text('Are you sure you want to delete this school?'),
+                                                                                title: Text('Confirmation'),
+                                                                                content: Text('Are you sure you want to delete this school?'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                    child: const Text('Cancel'),
+                                                                                    child: Text('Cancel'),
                                                                                   ),
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                    child: const Text('Confirm'),
+                                                                                    child: Text('Confirm'),
                                                                                   ),
                                                                                 ],
                                                                               );
@@ -1065,7 +1066,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -1081,7 +1082,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -1133,7 +1134,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                   searchResult[
                                                       searchResultIndex];
                                               return Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 8.0, 8.0, 8.0),
                                                 child: Row(
@@ -1157,7 +1158,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1172,11 +1173,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1200,7 +1201,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           4.0,
                                                                           4.0,
@@ -1216,7 +1217,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1241,11 +1242,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1269,7 +1270,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           4.0,
                                                                           4.0,
                                                                           4.0,
@@ -1285,7 +1286,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1312,11 +1313,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               -1.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -1337,7 +1338,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         5.0,
@@ -1367,7 +1368,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   12.0,
                                                                   0.0,
@@ -1382,11 +1383,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1426,7 +1427,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -1442,7 +1443,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,
@@ -1467,14 +1468,14 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Builder(
                                                               builder:
                                                                   (context) =>
                                                                       Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -1506,7 +1507,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           backgroundColor:
                                                                               Colors.transparent,
                                                                           alignment:
-                                                                              const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           child:
                                                                               GestureDetector(
                                                                             onTap: () => _model.unfocusNode.canRequestFocus
@@ -1543,7 +1544,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                               .max,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               15.0,
                                                                               4.0,
                                                                               4.0,
@@ -1558,7 +1559,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               10.0,
                                                                               0.0,
                                                                               0.0,
@@ -1582,11 +1583,11 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.9, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1612,16 +1613,16 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             builder:
                                                                                 (alertDialogContext) {
                                                                               return AlertDialog(
-                                                                                title: const Text('Confirmation'),
-                                                                                content: const Text('Are you sure you want to delete this school?'),
+                                                                                title: Text('Confirmation'),
+                                                                                content: Text('Are you sure you want to delete this school?'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                    child: const Text('Cancel'),
+                                                                                    child: Text('Cancel'),
                                                                                   ),
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                    child: const Text('Confirm'),
+                                                                                    child: Text('Confirm'),
                                                                                   ),
                                                                                 ],
                                                                               );
@@ -1655,7 +1656,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             .max,
                                                                     children: [
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             4.0,
                                                                             4.0,
@@ -1671,7 +1672,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             10.0,
                                                                             0.0,
                                                                             0.0,

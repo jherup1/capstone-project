@@ -6,8 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'school_scroll_fav_model.dart';
 export 'school_scroll_fav_model.dart';
 
@@ -64,7 +66,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
         final containerUsersRecord = snapshot.data!;
         return Container(
           height: 250.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -78,10 +80,10 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
               final schools =
                   containerUsersRecord.schools.toList().take(20).toList();
               return ListView.separated(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
                 scrollDirection: Axis.horizontal,
                 itemCount: schools.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 20.0),
+                separatorBuilder: (_, __) => SizedBox(width: 20.0),
                 itemBuilder: (context, schoolsIndex) {
                   final schoolsItem = schools[schoolsIndex];
                   return StreamBuilder<SchoolDataRecord>(
@@ -105,7 +107,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                       return Container(
                         width: 300.0,
                         height: 100.0,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.transparent,
                           boxShadow: [
                             BoxShadow(
@@ -135,7 +137,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                     ),
                                   ).image,
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(0.0),
                                   bottomRight: Radius.circular(0.0),
                                   topLeft: Radius.circular(16.0),
@@ -145,13 +147,13 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                               child: Container(
                                 width: 100.0,
                                 height: 100.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x50000000),
                                 ),
                                 child: Align(
-                                  alignment: const AlignmentDirectional(-1.0, 1.0),
+                                  alignment: AlignmentDirectional(-1.0, 1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 10.0, 10.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -177,13 +179,13 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 75.0,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: const BorderRadius.only(
+                                  borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(16.0),
                                     bottomRight: Radius.circular(16.0),
                                     topLeft: Radius.circular(0.0),
@@ -198,9 +200,9 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                   children: [
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
@@ -210,7 +212,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primary,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.remove_rounded,
                                             color: Colors.white,
                                             size: 24.0,
@@ -229,10 +231,10 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 5.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () async {
@@ -261,10 +263,10 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                             text: 'See More',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -287,7 +289,7 @@ class _SchoolScrollFavWidgetState extends State<SchoolScrollFavWidget> {
                                                                     .titleSmallFamily),
                                                       ),
                                               elevation: 3.0,
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Colors.transparent,
                                                 width: 1.0,
                                               ),

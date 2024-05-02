@@ -1,10 +1,18 @@
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'dashboard_k_p_i_widget.dart' show DashboardKPIWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 
 class DashboardKPIModel extends FlutterFlowModel<DashboardKPIWidget> {
   ///  State fields for stateful widgets in this page.
@@ -37,9 +45,7 @@ class DashboardKPIModel extends FlutterFlowModel<DashboardKPIWidget> {
     unfocusNode.dispose();
     sideBarNavModel1.dispose();
     breadcrumbsHeaderModel.dispose();
-    for (var s in listViewStreamSubscriptions1) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions1.forEach((s) => s?.cancel());
     listViewPagingController1?.dispose();
 
     sideBarNavModel2.dispose();

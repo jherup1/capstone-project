@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,7 +61,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
@@ -73,7 +74,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               child: wrapWithModel(
                 model: _model.sideBarNavModel1,
                 updateCallback: () => setState(() {}),
-                child: const SideBarNavWidget(),
+                child: SideBarNavWidget(),
               ),
             ),
           ),
@@ -93,7 +94,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel2,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Expanded(
                 child: SingleChildScrollView(
@@ -105,7 +106,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       wrapWithModel(
                         model: _model.breadcrumbsHeaderModel,
                         updateCallback: () => setState(() {}),
-                        child: const BreadcrumbsHeaderWidget(
+                        child: BreadcrumbsHeaderWidget(
                           pageDetails:
                               'Find a nearby school, or look globally!',
                           pageTitle: 'Home Page',
@@ -134,7 +135,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 0.0, 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -157,7 +158,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 0.0),
                                       child: Text(
                                         'Nearby Universities',
@@ -181,16 +182,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 16.0, 16.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       currentUserLocationValue =
                                           await getCurrentUserLocation(
                                               defaultLocation:
-                                                  const LatLng(0.0, 0.0));
+                                                  LatLng(0.0, 0.0));
                                       await actions.updateLocation(
                                         context,
                                         rowUsersRecord.uid,
@@ -201,10 +202,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     options: FFButtonOptions(
                                       width: 270.0,
                                       height: 50.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -221,7 +222,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         .titleMediumFamily),
                                           ),
                                       elevation: 0.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Colors.black,
                                         width: 1.0,
                                       ),
@@ -236,7 +237,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                       Flexible(
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: StreamBuilder<List<SchoolDataRecord>>(
                             stream: querySchoolDataRecord(),
                             builder: (context, snapshot) {
@@ -272,7 +273,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                   ),
                                   child: AuthUserStreamWidget(
-                                    builder: (context) => SizedBox(
+                                    builder: (context) => Container(
                                       width: double.infinity,
                                       height: double.infinity,
                                       child: custom_widgets.ClusterMapCopy(

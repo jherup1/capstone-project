@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'schools_model.dart';
 export 'schools_model.dart';
 
@@ -18,7 +19,7 @@ class SchoolsWidget extends StatefulWidget {
     super.key,
     this.pageTitle,
     String? pageDetails,
-  }) : pageDetails = pageDetails ?? 'detailsxxx';
+  }) : this.pageDetails = pageDetails ?? 'detailsxxx';
 
   final String? pageTitle;
   final String pageDetails;
@@ -57,14 +58,14 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        drawer: SizedBox(
+        drawer: Container(
           width: MediaQuery.sizeOf(context).width * 0.5,
           child: Drawer(
             elevation: 16.0,
             child: wrapWithModel(
               model: _model.sideBarNavModel2,
               updateCallback: () => setState(() {}),
-              child: const SideBarNavWidget(),
+              child: SideBarNavWidget(),
             ),
           ),
         ),
@@ -82,11 +83,11 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                 wrapWithModel(
                   model: _model.sideBarNavModel1,
                   updateCallback: () => setState(() {}),
-                  child: const SideBarNavWidget(),
+                  child: SideBarNavWidget(),
                 ),
               Flexible(
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -95,16 +96,16 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                         wrapWithModel(
                           model: _model.breadcrumbsHeaderModel,
                           updateCallback: () => setState(() {}),
-                          child: const BreadcrumbsHeaderWidget(
+                          child: BreadcrumbsHeaderWidget(
                             pageDetails:
                                 'Find a school that fits you, and add it to your favorites by clicking the star!',
                             pageTitle: 'Schools',
                           ),
                         ),
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 32.0, 16.0, 0.0),
                             child: Container(
                               width: double.infinity,
@@ -112,7 +113,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                boxShadow: const [
+                                boxShadow: [
                                   BoxShadow(
                                     blurRadius: 4.0,
                                     color: Color(0x33000000),
@@ -124,12 +125,12 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                 ],
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -138,10 +139,10 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                       text: 'Search Schools',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 10.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -161,7 +162,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                           .titleSmallFamily),
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -171,7 +172,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -181,7 +182,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -195,13 +196,13 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .lineColor,
-                                                    offset: const Offset(
+                                                    offset: Offset(
                                                       0.0,
                                                       1.0,
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -213,7 +214,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(16.0),
+                                                padding: EdgeInsets.all(16.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -224,7 +225,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -259,7 +260,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -294,7 +295,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
                                               'Your favorite schools',
@@ -320,14 +321,14 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                             model: _model.schoolScrollFavModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: const SchoolScrollFavWidget(),
+                                            child: SchoolScrollFavWidget(),
                                           ),
                                         ],
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -337,7 +338,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -351,13 +352,13 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .lineColor,
-                                                    offset: const Offset(
+                                                    offset: Offset(
                                                       0.0,
                                                       1.0,
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -369,7 +370,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(16.0),
+                                                padding: EdgeInsets.all(16.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -380,7 +381,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -415,7 +416,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -448,7 +449,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                               .dropDownValueController ??=
                                                           FormFieldController<
                                                               String>(null),
-                                                      options: const [
+                                                      options: [
                                                         'AL',
                                                         'AK',
                                                         'AZ',
@@ -544,7 +545,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                       borderWidth: 2.0,
                                                       borderRadius: 8.0,
                                                       margin:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   4.0,
@@ -562,7 +563,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
                                               'All schools',
@@ -597,7 +598,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 16.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -607,7 +608,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 1.0, 0.0, 0.0),
                                             child: Container(
                                               width: double.infinity,
@@ -621,13 +622,13 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .lineColor,
-                                                    offset: const Offset(
+                                                    offset: Offset(
                                                       0.0,
                                                       1.0,
                                                     ),
                                                   )
                                                 ],
-                                                borderRadius: const BorderRadius.only(
+                                                borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(0.0),
                                                   bottomRight:
@@ -639,7 +640,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(16.0),
+                                                padding: EdgeInsets.all(16.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -650,7 +651,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -685,7 +686,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -720,7 +721,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 0.0, 8.0),
                                             child: Text(
                                               'All schools',
@@ -746,7 +747,7 @@ class _SchoolsWidgetState extends State<SchoolsWidget> {
                                             model: _model.schoolScrollModel,
                                             updateCallback: () =>
                                                 setState(() {}),
-                                            child: const SchoolScrollWidget(),
+                                            child: SchoolScrollWidget(),
                                           ),
                                         ],
                                       ),

@@ -62,10 +62,10 @@ class _SignInWidgetState extends State<SignInWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 570.0,
                   ),
                   decoration: BoxDecoration(
@@ -73,14 +73,14 @@ class _SignInWidgetState extends State<SignInWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 30.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -119,7 +119,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 4.0, 0.0, 0.0),
                           child: Text(
                             'Use the form below to access your account.',
@@ -136,7 +136,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -144,7 +144,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 16.0, 0.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -152,7 +152,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     focusNode: _model.emailAddressFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.emailAddressTextController',
-                                      const Duration(milliseconds: 100),
+                                      Duration(milliseconds: 100),
                                       () async {
                                         if (FFAppState().loginAttempt ==
                                             'email-not-verified') {
@@ -165,7 +165,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       },
                                     ),
                                     autofocus: true,
-                                    autofillHints: const [AutofillHints.email],
+                                    autofillHints: [AutofillHints.email],
                                     textCapitalization: TextCapitalization.none,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -205,7 +205,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(40.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 2.0,
                                         ),
@@ -213,7 +213,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(40.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 2.0,
                                         ),
@@ -221,7 +221,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                             BorderRadius.circular(40.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 2.0,
                                         ),
@@ -232,7 +232,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       fillColor: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               16.0, 24.0, 0.0, 24.0),
                                       suffixIcon: _model
                                               .emailAddressTextController!
@@ -254,7 +254,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                 });
                                                 setState(() {});
                                               },
-                                              child: const Icon(
+                                              child: Icon(
                                                 Icons.clear,
                                                 color: Color(0xFF757575),
                                                 size: 22.0,
@@ -285,7 +285,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -297,7 +297,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   focusNode: _model.passwordFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.passwordTextController',
-                                    const Duration(milliseconds: 100),
+                                    Duration(milliseconds: 100),
                                     () async {
                                       if (FFAppState().loginAttempt ==
                                           'email-not-verified') {
@@ -310,7 +310,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     },
                                   ),
                                   autofocus: false,
-                                  autofillHints: const [AutofillHints.password],
+                                  autofillHints: [AutofillHints.password],
                                   obscureText: !_model.passwordVisibility,
                                   decoration: InputDecoration(
                                     labelText: 'Password',
@@ -348,7 +348,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                       borderRadius: BorderRadius.circular(40.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 2.0,
                                       ),
@@ -374,7 +374,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     fillColor: FlutterFlowTheme.of(context)
                                         .primaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             16.0, 24.0, 24.0, 24.0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
@@ -437,7 +437,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 visible: FFAppState().loginAttempt ==
                                     'invalid-credential',
                                 child: Align(
-                                  alignment: const AlignmentDirectional(-0.87, 0.0),
+                                  alignment: AlignmentDirectional(-0.87, 0.0),
                                   child: Text(
                                     'Invalid email or password. Please try again',
                                     textAlign: TextAlign.start,
@@ -461,7 +461,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             } else if (FFAppState().loginAttempt ==
                                 'too-many-requests') {
                               return Align(
-                                alignment: const AlignmentDirectional(-0.8, 0.0),
+                                alignment: AlignmentDirectional(-0.8, 0.0),
                                 child: Text(
                                   'Too many login attempts. Please try again in a moment.',
                                   style: FlutterFlowTheme.of(context)
@@ -481,7 +481,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               );
                             } else if (FFAppState().loginAttempt == 'unknown') {
                               return Align(
-                                alignment: const AlignmentDirectional(-0.85, 0.0),
+                                alignment: AlignmentDirectional(-0.85, 0.0),
                                 child: Text(
                                   'An unknown error has occured. Please try again.',
                                   style: FlutterFlowTheme.of(context)
@@ -502,7 +502,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             } else if (FFAppState().loginAttempt ==
                                 'email-not-verified') {
                               return Align(
-                                alignment: const AlignmentDirectional(-0.83, 0.0),
+                                alignment: AlignmentDirectional(-0.83, 0.0),
                                 child: Text(
                                   'Email not verified. Please verify email and try again.',
                                   style: FlutterFlowTheme.of(context)
@@ -542,7 +542,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           },
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -553,7 +553,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   if (_model.emailAddressTextController.text
                                       .isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
+                                      SnackBar(
                                         content: Text(
                                           'Email required!',
                                         ),
@@ -571,11 +571,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 options: FFButtonOptions(
                                   width: 170.0,
                                   height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0x00FFFFFF),
+                                  color: Color(0x00FFFFFF),
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
@@ -588,7 +588,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                     .bodySmallFamily),
                                       ),
                                   elevation: 0.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -597,8 +597,13 @@ class _SignInWidgetState extends State<SignInWidget> {
                               FFButtonWidget(
                                 onPressed: ((_model.emailAddressTextController
                                                     .text ==
+                                                null ||
+                                            _model.emailAddressTextController
+                                                    .text ==
                                                 '') ||
-                                        (_model.passwordTextController
+                                        (_model.passwordTextController.text ==
+                                                null ||
+                                            _model.passwordTextController
                                                     .text ==
                                                 ''))
                                     ? null
@@ -614,9 +619,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 options: FFButtonOptions(
                                   width: 150.0,
                                   height: 50.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).tertiary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -634,7 +639,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                     .titleSmallFamily),
                                       ),
                                   elevation: 10.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                   ),
                                   borderRadius: BorderRadius.circular(50.0),
@@ -660,9 +665,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                             options: FFButtonOptions(
                               width: 200.0,
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -680,21 +685,21 @@ class _SignInWidgetState extends State<SignInWidget> {
                                                 .titleSmallFamily),
                                   ),
                               elevation: 10.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                               ),
                               borderRadius: BorderRadius.circular(50.0),
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 24.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 8.0, 0.0, 8.0),
                                 child: Text(
                                   'Don\'t have an account?',
@@ -712,7 +717,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 8.0, 0.0, 8.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -723,7 +728,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     context.pushNamed(
                                       'signUp',
                                       extra: <String, dynamic>{
-                                        kTransitionInfoKey: const TransitionInfo(
+                                        kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.leftToRight,
@@ -755,7 +760,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 24.0, 0.0, 24.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -770,7 +775,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 0.0, 8.0),
                                   child: Text(
                                     'Contact Support',

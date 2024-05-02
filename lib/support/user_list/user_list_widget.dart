@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/support/user_list_small/user_list_small_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'user_list_model.dart';
 export 'user_list_model.dart';
 
@@ -45,15 +46,15 @@ class _UserListWidgetState extends State<UserListWidget> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 64.0, 16.0, 16.0),
+          padding: EdgeInsetsDirectional.fromSTEB(16.0, 64.0, 16.0, 16.0),
           child: Container(
             width: double.infinity,
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxHeight: 500.0,
             ),
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   blurRadius: 4.0,
                   color: Color(0x33000000),
@@ -66,14 +67,14 @@ class _UserListWidgetState extends State<UserListWidget> {
               borderRadius: BorderRadius.circular(12.0),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 4.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 4.0),
                     child: Text(
                       'Assign User',
                       style:
@@ -89,7 +90,7 @@ class _UserListWidgetState extends State<UserListWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 8.0),
                     child: Text(
                       'Select a user from the list below to continue.',
                       style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -182,12 +183,6 @@ class _UserListWidgetState extends State<UserListWidget> {
                   MouseRegion(
                     opaque: false,
                     cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                    onEnter: ((event) async {
-                      setState(() => _model.mouseRegionHovered = true);
-                    }),
-                    onExit: ((event) async {
-                      setState(() => _model.mouseRegionHovered = false);
-                    }),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -197,24 +192,24 @@ class _UserListWidgetState extends State<UserListWidget> {
                         Navigator.pop(context);
                       },
                       child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
+                        duration: Duration(milliseconds: 150),
                         curve: Curves.easeInOut,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: _model.mouseRegionHovered
+                          color: _model.mouseRegionHovered!
                               ? FlutterFlowTheme.of(context).primaryBackground
                               : FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 8.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 16.0, 12.0, 16.0),
                                   child: Text(
                                     'Close',
@@ -239,6 +234,12 @@ class _UserListWidgetState extends State<UserListWidget> {
                         ),
                       ),
                     ),
+                    onEnter: ((event) async {
+                      setState(() => _model.mouseRegionHovered = true);
+                    }),
+                    onExit: ((event) async {
+                      setState(() => _model.mouseRegionHovered = false);
+                    }),
                   ),
                 ],
               ),

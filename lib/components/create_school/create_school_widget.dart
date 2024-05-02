@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -8,10 +9,13 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'create_school_model.dart';
 export 'create_school_model.dart';
 
@@ -152,8 +156,8 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
             curve: Curves.bounceOut,
             delay: 300.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -195,16 +199,16 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
             child: Container(
               width: double.infinity,
               height: 900.0,
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 670.0,
               ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: const [
+                boxShadow: [
                   BoxShadow(
                     blurRadius: 12.0,
                     color: Color(0x1E000000),
@@ -223,7 +227,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 16.0, 0.0, 0.0),
                       child: Text(
                         'Create School Profile',
                         style: FlutterFlowTheme.of(context)
@@ -240,7 +244,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                       child: Text(
                         'Below are the school profile details',
                         style:
@@ -259,7 +263,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -277,19 +281,19 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(2.0),
+                                  padding: EdgeInsets.all(2.0),
                                   child: Container(
                                     width: 90.0,
                                     height: 90.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: CachedNetworkImage(
                                       fadeInDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       fadeOutDuration:
-                                          const Duration(milliseconds: 500),
+                                          Duration(milliseconds: 500),
                                       imageUrl: _model
                                           .schoolImageLinkTextController.text,
                                       fit: BoxFit.fitWidth,
@@ -297,7 +301,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                   ),
                                 ),
                               ),
-                            ].divide(const SizedBox(width: 16.0)),
+                            ].divide(SizedBox(width: 16.0)),
                           ),
                         ),
                         Row(
@@ -305,7 +309,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.displayNameTextController,
@@ -375,7 +379,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -399,7 +403,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.aliasNameTextController,
@@ -469,7 +473,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -494,7 +498,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.schoolDescriptionTextController,
@@ -558,7 +562,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -580,7 +584,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.schoolWebsiteTextController,
@@ -643,7 +647,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -663,7 +667,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.schoolImageLinkTextController,
@@ -726,7 +730,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               filled: true,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 24.0, 20.0, 24.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -751,7 +755,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.countryCodeTextController,
@@ -821,7 +825,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -845,7 +849,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.stateTextController,
@@ -915,7 +919,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -938,7 +942,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.cityTextController,
@@ -1008,7 +1012,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1031,7 +1035,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.zipTextController,
@@ -1101,7 +1105,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1124,7 +1128,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.regionTextController,
@@ -1194,7 +1198,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1223,7 +1227,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.addressTextController,
@@ -1294,7 +1298,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1323,7 +1327,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.tutionTextController,
@@ -1393,7 +1397,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1417,7 +1421,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.costAfterAidTextController,
@@ -1487,7 +1491,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1511,7 +1515,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -1583,7 +1587,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1607,7 +1611,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.enrollmentTextController,
@@ -1677,7 +1681,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1706,7 +1710,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -1777,7 +1781,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1801,7 +1805,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.displayRankTextController,
@@ -1871,7 +1875,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1895,7 +1899,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.rankSortRankTextController,
@@ -1965,7 +1969,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -1988,12 +1992,12 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.rankIsTiedValueController ??=
                                     FormFieldController<String>(null),
-                                options: const ['True', 'False'],
+                                options: ['True', 'False'],
                                 onChanged: (val) => setState(
                                     () => _model.rankIsTiedValue = val),
                                 width: 134.0,
@@ -2023,7 +2027,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     FlutterFlowTheme.of(context).alternate,
                                 borderWidth: 2.0,
                                 borderRadius: 12.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 4.0),
                                 hidesUnderline: true,
                                 isOverButton: true,
@@ -2050,7 +2054,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.actAvgTextController,
@@ -2120,7 +2124,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2144,7 +2148,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -2215,7 +2219,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2239,7 +2243,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.satAvgTextController,
@@ -2309,7 +2313,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2333,7 +2337,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -2404,7 +2408,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2433,7 +2437,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.hsGpaAvgTextController,
@@ -2503,7 +2507,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2527,7 +2531,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.engRepScoreTextController,
@@ -2597,7 +2601,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2621,7 +2625,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.busRepScoreTextController,
@@ -2691,7 +2695,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2720,7 +2724,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model
@@ -2792,7 +2796,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2816,7 +2820,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -2888,7 +2892,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -2912,7 +2916,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.schoolTypeTextController,
@@ -2982,7 +2986,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -3006,7 +3010,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller:
@@ -3077,7 +3081,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                     fillColor: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             20.0, 24.0, 20.0, 24.0),
                                   ),
                                   style: FlutterFlowTheme.of(context)
@@ -3102,12 +3106,12 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 16.0, 0.0),
                           child: FlutterFlowDropDown<String>(
                             controller: _model.isPublicValueController ??=
                                 FormFieldController<String>(null),
-                            options: const ['True', 'False'],
+                            options: ['True', 'False'],
                             onChanged: (val) =>
                                 setState(() => _model.isPublicValue = val),
                             width: double.infinity,
@@ -3134,7 +3138,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             borderColor: FlutterFlowTheme.of(context).alternate,
                             borderWidth: 2.0,
                             borderRadius: 12.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 4.0),
                             hidesUnderline: true,
                             isSearchable: false,
@@ -3142,7 +3146,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 24.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -3150,7 +3154,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -3225,7 +3229,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -3250,7 +3254,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.settingTextController,
@@ -3324,7 +3328,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -3349,7 +3353,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -3424,7 +3428,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -3449,7 +3453,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 16.0, 16.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -3524,7 +3528,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 24.0, 20.0, 24.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -3553,14 +3557,14 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 12.0, 24.0, 24.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.05),
+                            alignment: AlignmentDirectional(0.0, 0.05),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 Navigator.pop(context);
@@ -3568,9 +3572,9 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               text: 'Cancel',
                               options: FFButtonOptions(
                                 height: 44.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -3604,7 +3608,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.05),
+                            alignment: AlignmentDirectional(0.0, 0.05),
                             child: FFButtonWidget(
                               onPressed: () async {
                                 var confirmDialogResponse =
@@ -3612,8 +3616,8 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                           context: context,
                                           builder: (alertDialogContext) {
                                             return AlertDialog(
-                                              title: const Text('Confirmation'),
-                                              content: const Text(
+                                              title: Text('Confirmation'),
+                                              content: Text(
                                                   'Are you sure you want to create this school?'),
                                               actions: [
                                                 TextButton(
@@ -3621,14 +3625,14 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                       Navigator.pop(
                                                           alertDialogContext,
                                                           false),
-                                                  child: const Text('Cancel'),
+                                                  child: Text('Cancel'),
                                                 ),
                                                 TextButton(
                                                   onPressed: () =>
                                                       Navigator.pop(
                                                           alertDialogContext,
                                                           true),
-                                                  child: const Text('Confirm'),
+                                                  child: Text('Confirm'),
                                                 ),
                                               ],
                                             );
@@ -3761,7 +3765,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                           .bodyMediumFamily),
                                             ),
                                       ),
-                                      duration: const Duration(milliseconds: 4000),
+                                      duration: Duration(milliseconds: 4000),
                                       backgroundColor:
                                           FlutterFlowTheme.of(context)
                                               .secondary,
@@ -3776,9 +3780,9 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                               text: 'Create School',
                               options: FFButtonOptions(
                                 height: 44.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).primary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -3795,7 +3799,7 @@ class _CreateSchoolWidgetState extends State<CreateSchoolWidget>
                                                   .titleSmallFamily),
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),

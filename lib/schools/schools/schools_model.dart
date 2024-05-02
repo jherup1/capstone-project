@@ -3,10 +3,15 @@ import '/components/school_scroll/school_scroll_widget.dart';
 import '/components/school_scroll_copy/school_scroll_copy_widget.dart';
 import '/components/school_scroll_fav/school_scroll_fav_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'schools_widget.dart' show SchoolsWidget;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class SchoolsModel extends FlutterFlowModel<SchoolsWidget> {
   ///  State fields for stateful widgets in this page.

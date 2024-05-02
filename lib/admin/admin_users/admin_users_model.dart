@@ -1,11 +1,21 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
+import '/components/edit_user/edit_user_widget.dart';
 import '/components/side_bar_nav/side_bar_nav_widget.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'admin_users_widget.dart' show AdminUsersWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
+import 'package:text_search/text_search.dart';
 
 class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
   ///  Local state fields for this page.
@@ -55,9 +65,7 @@ class AdminUsersModel extends FlutterFlowModel<AdminUsersWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    for (var s in listViewStreamSubscriptions1) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions1.forEach((s) => s?.cancel());
     listViewPagingController1?.dispose();
   }
 
