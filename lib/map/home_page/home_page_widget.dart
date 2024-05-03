@@ -278,7 +278,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       child: custom_widgets.ClusterMap(
                                         width: double.infinity,
                                         height: double.infinity,
-                                        zoom: 15,
+                                        zoom: 14,
                                         initialCenter:
                                             currentUserDocument?.location,
                                         markerLocations:
