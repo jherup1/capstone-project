@@ -671,7 +671,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .titleSmallFamily,
                                     color: Colors.white,
-                                    fontSize: 20.0,
+                                    fontSize: 21.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                     useGoogleFonts: GoogleFonts.asMap()
