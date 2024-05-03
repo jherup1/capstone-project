@@ -242,7 +242,7 @@ packages:
     source: hosted
     version: "2.0.1"
   equatable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: equatable
       sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
@@ -547,14 +547,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.2.0"
-  flutter_map_supercluster:
-    dependency: "direct main"
-    description:
-      name: flutter_map_supercluster
-      sha256: "1b5526c7f93750214067541752331d501ef70d646f7e15d1d3299be84fa2c1f8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.3.0"
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -605,14 +597,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "10.6.0"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.1"
   from_css_color:
     dependency: "direct main"
     description:
@@ -629,6 +613,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  geoflutterfire2:
+    dependency: "direct main"
+    description:
+      name: geoflutterfire2
+      sha256: "343a3ef87f81f39e64a2b82ee392efa93fa646475564853daca565afc38096bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.15"
   geolocator:
     dependency: "direct main"
     description:
@@ -965,14 +957,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.2"
-  kdbush:
-    dependency: transitive
-    description:
-      name: kdbush
-      sha256: f48295414e5d6b28f49f3b446ecc2900f578ed700af53e68829777b8b253fb62
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.5"
   latlng:
     dependency: "direct main"
     description:
@@ -1049,10 +1033,10 @@ packages:
     dependency: "direct main"
     description:
       name: mask_text_input_formatter
-      sha256: "978c58ec721c25621ceb468e633f4eef64b64d45424ac4540e0565d4f7c800cd"
+      sha256: "19bb7809c3c2559277e95521b3ee421e1409eb2cc85efd2feb191696c92490f4"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.0"
+    version: "2.4.0"
   matcher:
     dependency: transitive
     description:
@@ -1317,14 +1301,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
-  rbush:
-    dependency: transitive
-    description:
-      name: rbush
-      sha256: "48b683421b4afb43a642f82c6aa31911e54f3069143d31c7d33cbe329df13403"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.1"
   rfc_6901:
     dependency: transitive
     description:
@@ -1586,14 +1562,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.33"
-  supercluster:
-    dependency: transitive
-    description:
-      name: supercluster
-      sha256: b956072ae2e5f9430c227a0b6a5863b261abd6eb7488411c042bd620a203aab9
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.4.0"
   synchronized:
     dependency: transitive
     description:
