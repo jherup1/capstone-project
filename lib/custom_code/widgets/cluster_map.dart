@@ -53,7 +53,7 @@ class _ClusterMapState extends State<ClusterMap> {
         width: 80.0,
         height: 80.0,
         point: latlong2Location,
-        builder: (ctx) => GestureDetector(
+        child: GestureDetector(
           onTap: () async {
             // Update the FFAppState().tapped with the marker's LatLng for bottom sheet
             FFAppState().tapped =
