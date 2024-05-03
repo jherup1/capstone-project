@@ -198,6 +198,11 @@ class SchoolDataRecord extends FirestoreRecord {
   String get primaryPhoto => _primaryPhoto ?? '';
   bool hasPrimaryPhoto() => _primaryPhoto != null;
 
+  // "programRef" field.
+  List<DocumentReference>? _programRef;
+  List<DocumentReference> get programRef => _programRef ?? const [];
+  bool hasProgramRef() => _programRef != null;
+
   void _initializeFields() {
     _academicCalendar = snapshotData['academicCalendar'] as String?;
     _acceptanceRate = castToType<double>(snapshotData['acceptanceRate']);
@@ -238,6 +243,7 @@ class SchoolDataRecord extends FirestoreRecord {
     _yearFounded = castToType<int>(snapshotData['yearFounded']);
     _zip = castToType<int>(snapshotData['zip']);
     _primaryPhoto = snapshotData['primaryPhoto'] as String?;
+    _programRef = getDataList(snapshotData['programRef']);
   }
 
   static CollectionReference get collection =>
@@ -361,6 +367,7 @@ class SchoolDataRecordDocumentEquality implements Equality<SchoolDataRecord> {
 
   @override
   bool equals(SchoolDataRecord? e1, SchoolDataRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.academicCalendar == e2?.academicCalendar &&
         e1?.acceptanceRate == e2?.acceptanceRate &&
         e1?.actAvg == e2?.actAvg &&
@@ -397,7 +404,8 @@ class SchoolDataRecordDocumentEquality implements Equality<SchoolDataRecord> {
         e1?.tuition == e2?.tuition &&
         e1?.yearFounded == e2?.yearFounded &&
         e1?.zip == e2?.zip &&
-        e1?.primaryPhoto == e2?.primaryPhoto;
+        e1?.primaryPhoto == e2?.primaryPhoto &&
+        listEquality.equals(e1?.programRef, e2?.programRef);
   }
 
   @override
@@ -437,7 +445,8 @@ class SchoolDataRecordDocumentEquality implements Equality<SchoolDataRecord> {
         e?.tuition,
         e?.yearFounded,
         e?.zip,
-        e?.primaryPhoto
+        e?.primaryPhoto,
+        e?.programRef
       ]);
 
   @override

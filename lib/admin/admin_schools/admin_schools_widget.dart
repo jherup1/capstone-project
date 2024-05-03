@@ -507,7 +507,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                       return StreamBuilder<
                                           List<SchoolDataRecord>>(
                                         stream: querySchoolDataRecord(
-                                          limit: 10,
+                                          limit: 15,
                                         ),
                                         builder: (context, snapshot) {
                                           // Customize what your widget looks like when it's loading.
@@ -925,6 +925,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             child:
                                                                                 EditSchoolWidget(
                                                                               schoolDoc: listViewSchoolDataRecord,
+                                                                              schoolDocRef: listViewSchoolDataRecord.reference,
                                                                             ),
                                                                           ),
                                                                         );
@@ -1514,6 +1515,7 @@ class _AdminSchoolsWidgetState extends State<AdminSchoolsWidget> {
                                                                             child:
                                                                                 EditSchoolWidget(
                                                                               schoolDoc: searchResultItem,
+                                                                              schoolDocRef: searchResultItem.reference,
                                                                             ),
                                                                           ),
                                                                         );

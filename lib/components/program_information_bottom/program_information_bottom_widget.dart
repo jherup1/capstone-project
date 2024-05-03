@@ -199,46 +199,24 @@ class _ProgramInformationBottomWidgetState
                                                             context)
                                                         .secondaryBackground,
                                                   ),
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      final jobs = widget
-                                                              .program
-                                                              ?.programJobs
-                                                              .toList() ??
-                                                          [];
-                                                      return ListView.builder(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        itemCount: jobs.length,
-                                                        itemBuilder: (context,
-                                                            jobsIndex) {
-                                                          final jobsItem =
-                                                              jobs[jobsIndex];
-                                                          return Text(
-                                                            jobsItem,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily: FlutterFlowTheme.of(
+                                                  child: Text(
+                                                    widget.program!.programJobs,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
                                                                           context)
-                                                                      .bodyMediumFamily,
-                                                                  fontSize:
-                                                                      18.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  useGoogleFonts: GoogleFonts
-                                                                          .asMap()
-                                                                      .containsKey(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .bodyMediumFamily),
-                                                                ),
-                                                          );
-                                                        },
-                                                      );
-                                                    },
+                                                                      .bodyMediumFamily),
+                                                        ),
                                                   ),
                                                 ),
                                               ),

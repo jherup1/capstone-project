@@ -1,25 +1,16 @@
 import '/backend/backend.dart';
-import '/components/breadcrumbs_header/breadcrumbs_header_widget.dart';
-import '/components/side_bar_nav/side_bar_nav_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'admin_programs_widget.dart' show AdminProgramsWidget;
+import 'add_program_widget.dart' show AddProgramWidget;
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
-  ///  Local state fields for this page.
+class AddProgramModel extends FlutterFlowModel<AddProgramWidget> {
+  ///  Local state fields for this component.
 
   bool isShowFullList = true;
 
-  ///  State fields for stateful widgets in this page.
+  ///  State fields for stateful widgets in this component.
 
-  final unfocusNode = FocusNode();
-  // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel1;
-  // Model for sideBarNav component.
-  late SideBarNavModel sideBarNavModel2;
-  // Model for BreadcrumbsHeader component.
-  late BreadcrumbsHeaderModel breadcrumbsHeaderModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -32,20 +23,14 @@ class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
   Query? listViewPagingQuery1;
   List<StreamSubscription?> listViewStreamSubscriptions1 = [];
 
+  // State field(s) for MouseRegion widget.
+  bool mouseRegionHovered = false;
+
   @override
-  void initState(BuildContext context) {
-    sideBarNavModel1 = createModel(context, () => SideBarNavModel());
-    sideBarNavModel2 = createModel(context, () => SideBarNavModel());
-    breadcrumbsHeaderModel =
-        createModel(context, () => BreadcrumbsHeaderModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    unfocusNode.dispose();
-    sideBarNavModel1.dispose();
-    sideBarNavModel2.dispose();
-    breadcrumbsHeaderModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
@@ -81,7 +66,7 @@ class AdminProgramsModel extends FlutterFlowModel<AdminProgramsWidget> {
           nextPageMarker: nextPageMarker,
           streamSubscriptions: listViewStreamSubscriptions1,
           controller: controller,
-          pageSize: 5,
+          pageSize: 4,
           isStream: true,
         ),
       );
