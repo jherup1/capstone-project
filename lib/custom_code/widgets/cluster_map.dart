@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_supercluster/flutter_map_supercluster.dart';
+import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart' as latlong2;
 
 class ClusterMap extends StatefulWidget {
@@ -19,17 +19,17 @@ class ClusterMap extends StatefulWidget {
     this.width,
     this.height,
     this.zoom,
-    required this.initialCenter, // Assuming this is Flutter Flow's LatLng
-    required this.markerLocations, // Assuming these are Flutter Flow's LatLng
-    this.urlTemplate,
+    required this.initialCenter,
+    required this.markerLocations,
+    required this.rebuildPage,
   });
 
+  final Future<dynamic> Function() rebuildPage;
   final double? width;
   final double? height;
   final int? zoom;
   final LatLng? initialCenter; // Flutter Flow's LatLng
   final List<LatLng> markerLocations; // Flutter Flow's LatLng
-  final String? urlTemplate;
 
   @override
   State<ClusterMap> createState() => _ClusterMapState();
@@ -37,8 +37,8 @@ class ClusterMap extends StatefulWidget {
 
 class _ClusterMapState extends State<ClusterMap> {
   late List<Marker> _markers;
+  late final MapController _mapController;
 
-  // Conversion function
   latlong2.LatLng convertToLatlong2(LatLng ffLatLng) {
     return latlong2.LatLng(ffLatLng.latitude, ffLatLng.longitude);
   }
@@ -46,74 +46,90 @@ class _ClusterMapState extends State<ClusterMap> {
   @override
   void initState() {
     super.initState();
-    /*final List<LatLng> testLocations = [
-      LatLng(39.5393, -119.8203), // Example coordinates
-      LatLng(39.5300, -119.8100), // Add a few more to test
-    ];*/
-
+    _mapController = MapController();
     _markers = widget.markerLocations.map((location) {
-      //_markers = testLocations.map((location) {
-      // Convert each location to latlong2.LatLng before creating the Marker
       final latlong2Location = convertToLatlong2(location);
-      print(
-          'Marker location: ${latlong2Location.latitude}, ${latlong2Location.longitude}'); // Log converted location
       return Marker(
         width: 80.0,
         height: 80.0,
         point: latlong2Location,
-        builder: (ctx) => const Icon(Icons.location_on, color: Colors.red),
+        builder: (ctx) => GestureDetector(
+          onTap: () async {
+            // Update the FFAppState().tapped with the marker's LatLng for bottom sheet
+            FFAppState().tapped =
+                LatLng(latlong2Location.latitude, latlong2Location.longitude);
+            await widget.rebuildPage();
+          },
+          child: const Icon(Icons.location_on, color: Colors.red),
+        ),
       );
     }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    print('Total markers: ${_markers.length}');
-    // Convert initialCenter to latlong2.LatLng for MapOptions
     final latlong2InitialCenter = widget.initialCenter != null
         ? convertToLatlong2(widget.initialCenter!)
         : null;
-    if (latlong2InitialCenter != null) {
-      print(
-          'Initial center: ${latlong2InitialCenter.latitude}, ${latlong2InitialCenter.longitude}');
-    }
+
     return Scaffold(
-      body: SizedBox(
-        width: widget.width ?? MediaQuery.of(context).size.width,
-        height: widget.height ?? MediaQuery.of(context).size.height,
-        child: FlutterMap(
-          options: MapOptions(
-            center: latlong2InitialCenter,
-            zoom: widget.zoom?.toDouble() ?? 13,
-            minZoom: 3,
-            maxZoom: 17,
-          ),
-          children: [
-            TileLayer(
-              urlTemplate: widget.urlTemplate ??
-                  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-              subdomains: ['a', 'b', 'c'],
-            ),
-            SuperclusterLayer.immutable(
-              initialMarkers: _markers,
-              clusterWidgetSize: const Size(40, 40),
-              indexBuilder: IndexBuilders.computeWithOriginalMarkers,
-              builder: (context, position, markerCount, extraClusterData) =>
-                  Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: Colors.blue,
+      body: Stack(
+        children: [
+          SizedBox(
+            width: widget.width ?? MediaQuery.of(context).size.width,
+            height: widget.height ?? MediaQuery.of(context).size.height,
+            child: FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                center: latlong2InitialCenter,
+                zoom: widget.zoom?.toDouble() ?? 13,
+                minZoom: 3,
+                maxZoom: 17,
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate:
+                      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                  subdomains: ['a', 'b', 'c', 'd'],
                 ),
-                child: Center(
-                  child: Text(
-                    markerCount.toString(),
-                    style: const TextStyle(color: Colors.white),
+                MarkerClusterLayerWidget(
+                  options: MarkerClusterLayerOptions(
+                    spiderfyCircleRadius: 80,
+                    spiderfySpiralDistanceMultiplier: 2,
+                    circleSpiralSwitchover: 12,
+                    maxClusterRadius: 120,
+                    size: Size(40, 40),
+                    markers: _markers,
+                    polygonOptions: PolygonOptions(
+                      borderColor: Colors.blueAccent,
+                      color: Colors.black12,
+                      borderStrokeWidth: 3,
+                    ),
+                    builder: (context, markers) {
+                      return FloatingActionButton(
+                        child: Text(markers.length.toString()),
+                        onPressed: null,
+                      );
+                    },
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            right: 20,
+            bottom: 20,
+            child: FloatingActionButton(
+              onPressed: () {
+                // When tapped, this button centers the map on initialCenter
+                _mapController.move(convertToLatlong2(widget.initialCenter!),
+                    widget.zoom?.toDouble() ?? 13);
+              },
+              child: Icon(Icons.center_focus_strong),
+              backgroundColor: Color(0x4741ff),
+            ),
+          ),
+        ],
       ),
     );
   }

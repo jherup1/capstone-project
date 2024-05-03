@@ -25,15 +25,6 @@ Future signUp(
         FFAppState().createAccountAttempt = 'passwords-do-not-match';
       });
       return;
-    } else if ((password.length < 8) |
-        (!password.contains(RegExp(r'\d'))) |
-        (!password.contains(RegExp(r'[a-z]'))) |
-        (!password.contains(RegExp(r'[A-Z}'))) |
-        (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))) {
-      FFAppState().update(() {
-        FFAppState().createAccountAttempt = 'weak-password';
-      });
-      return;
     }
     final credential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);

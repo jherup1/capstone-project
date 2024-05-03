@@ -1028,7 +1028,7 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                     ),
                                                   );
                                                 } else if (FFAppState()
-                                                        .passwordChangeAttempt ==
+                                                        .updateAccountAttempt ==
                                                     'invalid-credential') {
                                                   return Align(
                                                     alignment:
@@ -1057,57 +1057,32 @@ class _ChangePasswordPageWidgetState extends State<ChangePasswordPageWidget> {
                                                               ),
                                                     ),
                                                   );
-                                                } else if (FFAppState()
-                                                        .passwordChangeAttempt ==
-                                                    'weak--password') {
-                                                  return Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            -0.96, 0.0),
-                                                    child: Text(
-                                                      'Password is too weak.  Passwords must contain one number, one lowercase letter, one uppercase letter, and one symbol.',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
-                                                    ),
-                                                  );
                                                 } else {
                                                   return Opacity(
                                                     opacity: 0.0,
-                                                    child: Text(
-                                                      '',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts: GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .bodyMediumFamily),
-                                                              ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Text(
+                                                        ' ',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .bodyMediumFamily),
+                                                                ),
+                                                      ),
                                                     ),
                                                   );
                                                 }

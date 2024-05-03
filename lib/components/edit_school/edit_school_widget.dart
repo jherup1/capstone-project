@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/add_program/add_program_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -3629,7 +3630,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 32.0, 0.0),
                                 child: Text(
-                                  'List of Schools',
+                                  'List of Programs',
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
                                       .override(
@@ -3647,45 +3648,68 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                               Flexible(
                                 child: Align(
                                   alignment: const AlignmentDirectional(1.0, 0.0),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 16.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () {
-                                        print('addSchoolButton pressed ...');
-                                      },
-                                      text: 'Add School to the List',
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                                  child: Builder(
+                                    builder: (context) => Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 16.0, 0.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: const AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: AddProgramWidget(
+                                                  schoolDoc: widget.schoolDoc,
+                                                  schoolDocRef:
+                                                      widget.schoolDocRef,
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        },
+                                        text: 'Add Program to the List',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily),
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
                                   ),
@@ -3697,12 +3721,12 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 16.0, 0.0, 16.0),
-                          child: StreamBuilder<List<SchoolDataRecord>>(
-                            stream: querySchoolDataRecord(
-                              queryBuilder: (schoolDataRecord) =>
-                                  schoolDataRecord.where(
-                                'programRef',
-                                arrayContains: widget.programDocRef,
+                          child: StreamBuilder<List<ProgramDataRecord>>(
+                            stream: queryProgramDataRecord(
+                              queryBuilder: (programDataRecord) =>
+                                  programDataRecord.where(
+                                'schoolRef',
+                                arrayContains: widget.schoolDoc?.reference,
                               ),
                             ),
                             builder: (context, snapshot) {
@@ -3720,16 +3744,17 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                   ),
                                 );
                               }
-                              List<SchoolDataRecord>
-                                  listViewSchoolDataRecordList = snapshot.data!;
+                              List<ProgramDataRecord>
+                                  listViewProgramDataRecordList =
+                                  snapshot.data!;
                               return ListView.builder(
                                 padding: EdgeInsets.zero,
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
-                                itemCount: listViewSchoolDataRecordList.length,
+                                itemCount: listViewProgramDataRecordList.length,
                                 itemBuilder: (context, listViewIndex) {
-                                  final listViewSchoolDataRecord =
-                                      listViewSchoolDataRecordList[
+                                  final listViewProgramDataRecord =
+                                      listViewProgramDataRecordList[
                                           listViewIndex];
                                   return Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
@@ -3742,7 +3767,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 10.0, 0.0),
                                           child: Text(
-                                            'School  Display Name - ${listViewSchoolDataRecord.displayName}',
+                                            'Program  Display Name - ${listViewProgramDataRecord.programName}',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -3805,13 +3830,23 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                                   if (confirmDialogResponse) {
                                                     await widget
                                                         .schoolDoc!.reference
-                                                        .update(
-                                                            createSchoolDataRecordData());
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'programRef':
+                                                              FieldValue
+                                                                  .arrayRemove([
+                                                            listViewProgramDataRecord
+                                                                .reference
+                                                          ]),
+                                                        },
+                                                      ),
+                                                    });
                                                   } else {
                                                     Navigator.pop(context);
                                                   }
                                                 },
-                                                text: 'Remove School',
+                                                text: 'Remove Program',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
                                                   padding: const EdgeInsetsDirectional

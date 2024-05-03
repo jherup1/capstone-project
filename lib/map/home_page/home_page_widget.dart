@@ -275,7 +275,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     builder: (context) => SizedBox(
                                       width: double.infinity,
                                       height: double.infinity,
-                                      child: custom_widgets.ClusterMapCopy(
+                                      child: custom_widgets.ClusterMap(
                                         width: double.infinity,
                                         height: double.infinity,
                                         zoom: 15,
