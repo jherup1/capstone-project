@@ -50,7 +50,6 @@ dependencies:
   firebase_storage: 11.6.8
   firebase_storage_platform_interface: 5.1.11
   firebase_storage_web: 3.7.2
-  fl_chart:
   flutter_animate: 4.1.1+1
   flutter_blurhash: 0.8.2
   flutter_cache_manager: 3.3.1
@@ -133,7 +132,6 @@ dependencies:
   latlng: any
   fake_cloud_firestore: ^2.4.8
   share_plus: ^7.2.2
-  text_search: ^1.0.1
   fl_chart: ^0.67.0
 
 dependency_overrides:
