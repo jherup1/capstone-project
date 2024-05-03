@@ -27,7 +27,7 @@ Future<bool> updateSupportStats(
       'numTickets': numTickets,
       'lastResolved': FieldValue.serverTimestamp(),
       'percentTotTickets': percentTotTickets,
-    });
+    }, SetOptions(merge: true));
     return true;
   } on FirebaseException catch (e) {
     return false;
