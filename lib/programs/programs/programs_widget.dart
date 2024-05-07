@@ -122,364 +122,367 @@ class _ProgramsWidgetState extends State<ProgramsWidget> {
                                 borderRadius: BorderRadius.circular(16.0),
                               ),
                               alignment: const AlignmentDirectional(0.0, -1.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 16.0, 0.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        context.pushNamed('searchPrograms');
-                                      },
-                                      text: 'Search Programs',
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 10.0, 24.0, 0.0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmallFamily,
-                                              color: Colors.white,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: GoogleFonts
-                                                      .asMap()
-                                                  .containsKey(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmallFamily),
-                                            ),
-                                        elevation: 3.0,
-                                        borderSide: const BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 0.0),
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed('searchPrograms');
+                                        },
+                                        text: 'Search Programs',
+                                        options: FFButtonOptions(
+                                          height: 40.0,
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 10.0, 24.0, 0.0),
+                                          iconPadding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmallFamily,
+                                                color: Colors.white,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: GoogleFonts
+                                                        .asMap()
+                                                    .containsKey(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmallFamily),
+                                              ),
+                                          elevation: 3.0,
+                                          borderSide: const BorderSide(
+                                            color: Colors.transparent,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 16.0),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 1.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 0.0,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .lineColor,
-                                                    offset: const Offset(
-                                                      0.0,
-                                                      1.0,
-                                                    ),
-                                                  )
-                                                ],
-                                                borderRadius: const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0.0),
-                                                  bottomRight:
-                                                      Radius.circular(0.0),
-                                                  topLeft:
-                                                      Radius.circular(16.0),
-                                                  topRight:
-                                                      Radius.circular(16.0),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 16.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 0.0,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      offset: const Offset(
+                                                        0.0,
+                                                        1.0,
+                                                      ),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0.0),
+                                                    bottomRight:
+                                                        Radius.circular(0.0),
+                                                    topLeft:
+                                                        Radius.circular(16.0),
+                                                    topRight:
+                                                        Radius.circular(16.0),
+                                                  ),
                                                 ),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(16.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              'Your Programs',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .headlineSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                  ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Below you will find a summary of your favorited programs.',
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'Your Programs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmall
+                                                                    .headlineSmall
                                                                     .override(
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
+                                                                              .headlineSmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                              FlutterFlowTheme.of(context).headlineSmallFamily),
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Below you will find a summary of your favorited programs.',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 16.0, 0.0, 8.0),
-                                            child: Text(
-                                              'Your favorite programs',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmallFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily),
-                                                      ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 16.0, 0.0, 8.0),
+                                              child: Text(
+                                                'Your favorite programs',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
+                                              ),
                                             ),
-                                          ),
-                                          wrapWithModel(
-                                            model: _model.programScrollFavModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: const ProgramScrollFavWidget(),
-                                          ),
-                                        ],
+                                            wrapWithModel(
+                                              model:
+                                                  _model.programScrollFavModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: const ProgramScrollFavWidget(),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 16.0),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 1.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    blurRadius: 0.0,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .lineColor,
-                                                    offset: const Offset(
-                                                      0.0,
-                                                      1.0,
-                                                    ),
-                                                  )
-                                                ],
-                                                borderRadius: const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0.0),
-                                                  bottomRight:
-                                                      Radius.circular(0.0),
-                                                  topLeft:
-                                                      Radius.circular(16.0),
-                                                  topRight:
-                                                      Radius.circular(16.0),
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 16.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 1.0, 0.0, 0.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 0.0,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .lineColor,
+                                                      offset: const Offset(
+                                                        0.0,
+                                                        1.0,
+                                                      ),
+                                                    )
+                                                  ],
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(0.0),
+                                                    bottomRight:
+                                                        Radius.circular(0.0),
+                                                    topLeft:
+                                                        Radius.circular(16.0),
+                                                    topRight:
+                                                        Radius.circular(16.0),
+                                                  ),
                                                 ),
-                                              ),
-                                              child: Padding(
-                                                padding: const EdgeInsets.all(16.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    8.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              'All Programs',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .headlineSmall
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .headlineSmallFamily,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    useGoogleFonts: GoogleFonts
-                                                                            .asMap()
-                                                                        .containsKey(
-                                                                            FlutterFlowTheme.of(context).headlineSmallFamily),
-                                                                  ),
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Below you will find all programs.',
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                'All Programs',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .bodySmall
+                                                                    .headlineSmall
                                                                     .override(
                                                                       fontFamily:
                                                                           FlutterFlowTheme.of(context)
-                                                                              .bodySmallFamily,
+                                                                              .headlineSmallFamily,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       useGoogleFonts: GoogleFonts
                                                                               .asMap()
                                                                           .containsKey(
-                                                                              FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                              FlutterFlowTheme.of(context).headlineSmallFamily),
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Below you will find all programs.',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            FlutterFlowTheme.of(context).bodySmallFamily,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        useGoogleFonts:
+                                                                            GoogleFonts.asMap().containsKey(FlutterFlowTheme.of(context).bodySmallFamily),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 16.0, 0.0, 8.0),
-                                            child: Text(
-                                              'All programs',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmallFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmallFamily),
-                                                      ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 16.0, 0.0, 8.0),
+                                              child: Text(
+                                                'All programs',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmallFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmallFamily),
+                                                        ),
+                                              ),
                                             ),
-                                          ),
-                                          wrapWithModel(
-                                            model: _model.programScrollModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: const ProgramScrollWidget(),
-                                          ),
-                                        ],
+                                            wrapWithModel(
+                                              model: _model.programScrollModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: const ProgramScrollWidget(),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

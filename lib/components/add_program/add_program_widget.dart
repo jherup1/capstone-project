@@ -75,7 +75,7 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -318,7 +318,10 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(40.0),
                                     child: Image.network(
-                                      listViewProgramDataRecord.programImage,
+                                      valueOrDefault<String>(
+                                        listViewProgramDataRecord.programImage,
+                                        'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/ves2yc3kcwjd/psysearch_logo_no_text.png',
+                                      ),
                                       width: 32.0,
                                       height: 32.0,
                                       fit: BoxFit.cover,
@@ -360,7 +363,9 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             listViewProgramDataRecord
-                                                .programJobs,
+                                                .programJobs
+                                                .maybeHandleOverflow(
+                                                    maxChars: 100),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodySmall
                                                 .override(
@@ -420,16 +425,18 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                             ) ??
                                             false;
                                     if (confirmDialogResponse) {
-                                      await widget.schoolDoc!.programRef.last
-                                          .update({
+                                      await widget.schoolDoc!.reference.update({
                                         ...mapToFirestore(
                                           {
-                                            'schoolRef': FieldValue.arrayUnion(
-                                                [widget.schoolDocRef]),
+                                            'programRef':
+                                                FieldValue.arrayUnion([
+                                              listViewProgramDataRecord
+                                                  .reference
+                                            ]),
                                           },
                                         ),
                                       });
-                                      context.safePop();
+                                      Navigator.pop(context);
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
                                         SnackBar(
@@ -489,7 +496,10 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40.0),
                                       child: Image.network(
-                                        searchResultItem.programImage,
+                                        valueOrDefault<String>(
+                                          searchResultItem.programImage,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/ves2yc3kcwjd/psysearch_logo_no_text.png',
+                                        ),
                                         width: 32.0,
                                         height: 32.0,
                                         fit: BoxFit.cover,
@@ -531,7 +541,9 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
-                                              searchResultItem.programJobs,
+                                              searchResultItem.programJobs
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 100),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -593,17 +605,18 @@ class _AddProgramWidgetState extends State<AddProgramWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await widget.schoolDoc!.programRef.last
+                                        await widget.schoolDoc!.reference
                                             .update({
                                           ...mapToFirestore(
                                             {
-                                              'schoolRef':
-                                                  FieldValue.arrayUnion(
-                                                      [widget.schoolDocRef]),
+                                              'programRef':
+                                                  FieldValue.arrayUnion([
+                                                searchResultItem.reference
+                                              ]),
                                             },
                                           ),
                                         });
-                                        context.safePop();
+                                        Navigator.pop(context);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(

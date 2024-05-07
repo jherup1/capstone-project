@@ -15,8 +15,6 @@ class AddSchoolModel extends FlutterFlowModel<AddSchoolWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   List<SchoolDataRecord> simpleSearchResults = [];
-  // State field(s) for MouseRegion widget.
-  bool mouseRegionHovered = false;
 
   @override
   void initState(BuildContext context) {}

@@ -3728,6 +3728,7 @@ class _EditSchoolWidgetState extends State<EditSchoolWidget>
                                 'schoolRef',
                                 arrayContains: widget.schoolDoc?.reference,
                               ),
+                              limit: 5,
                             ),
                             builder: (context, snapshot) {
                               // Customize what your widget looks like when it's loading.

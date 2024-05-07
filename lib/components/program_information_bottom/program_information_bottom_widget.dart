@@ -184,7 +184,7 @@ class _ProgramInformationBottomWidgetState
                                         ),
                                         SingleChildScrollView(
                                           child: Column(
-                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [

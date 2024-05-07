@@ -71,7 +71,7 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
           child: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -280,7 +280,10 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40.0),
                                       child: Image.network(
-                                        'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                        valueOrDefault<String>(
+                                          listViewSchoolDataRecord.primaryPhoto,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                        ),
                                         width: 32.0,
                                         height: 32.0,
                                         fit: BoxFit.cover,
@@ -299,7 +302,8 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'Randy Peterson',
+                                            listViewSchoolDataRecord
+                                                .displayName,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -322,7 +326,10 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
-                                              'name@domainname.com',
+                                              listViewSchoolDataRecord
+                                                  .description
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 100),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -384,18 +391,19 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await widget.programDoc!.schoolRef.last
+                                        await widget.programDoc!.reference
                                             .update({
                                           ...mapToFirestore(
                                             {
-                                              'programRef':
+                                              'schoolRef':
                                                   FieldValue.arrayUnion([
-                                                widget.programDoc?.reference
+                                                listViewSchoolDataRecord
+                                                    .reference
                                               ]),
                                             },
                                           ),
                                         });
-                                        context.safePop();
+                                        Navigator.pop(context);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -457,7 +465,10 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(40.0),
                                       child: Image.network(
-                                        searchResultItem.primaryPhoto,
+                                        valueOrDefault<String>(
+                                          searchResultItem.primaryPhoto,
+                                          'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/psy-search-tnxt3v/assets/4ok8945k6kav/default_school.png',
+                                        ),
                                         width: 32.0,
                                         height: 32.0,
                                         fit: BoxFit.cover,
@@ -499,7 +510,9 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
-                                              searchResultItem.description,
+                                              searchResultItem.description
+                                                  .maybeHandleOverflow(
+                                                      maxChars: 100),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodySmall
@@ -561,18 +574,18 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                                               ) ??
                                               false;
                                       if (confirmDialogResponse) {
-                                        await widget.programDoc!.schoolRef.last
+                                        await widget.programDoc!.reference
                                             .update({
                                           ...mapToFirestore(
                                             {
-                                              'programRef':
+                                              'schoolRef':
                                                   FieldValue.arrayUnion([
-                                                widget.programDoc?.reference
+                                                searchResultItem.reference
                                               ]),
                                             },
                                           ),
                                         });
-                                        context.safePop();
+                                        Navigator.pop(context);
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -616,62 +629,46 @@ class _AddSchoolWidgetState extends State<AddSchoolWidget> {
                 thickness: 1.0,
                 color: FlutterFlowTheme.of(context).alternate,
               ),
-              MouseRegion(
-                opaque: false,
-                cursor: SystemMouseCursors.click ?? MouseCursor.defer,
-                onEnter: ((event) async {
-                  setState(() => _model.mouseRegionHovered = true);
-                  Navigator.pop(context);
-                }),
-                onExit: ((event) async {
-                  setState(() => _model.mouseRegionHovered = false);
-                }),
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 150),
-                  curve: Curves.easeInOut,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: _model.mouseRegionHovered
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            size: 20.0,
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 12.0, 0.0),
-                            child: Text(
-                              'Go back',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ],
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.safePop();
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 20.0,
+                      ),
                     ),
-                  ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            12.0, 0.0, 12.0, 0.0),
+                        child: Text(
+                          'Go back',
+                          style: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .override(
+                                fontFamily: FlutterFlowTheme.of(context)
+                                    .bodyMediumFamily,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: GoogleFonts.asMap().containsKey(
+                                    FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily),
+                              ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

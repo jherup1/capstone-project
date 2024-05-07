@@ -99,11 +99,3 @@ List<DateTime> daysInThePast(int numDaysToTrack) {
 
   return daysTracked;
 }
-
-double convGeopointLng(DocumentReference schoolID) {
-  final firestore = FirebaseFirestore.instance;
-
-  GeoPoint geoPoint =
-      await firestore.collection('schoolData').doc(schoolID).data['geopoint'];
-  return geoPoint.getLongitude();
-}
